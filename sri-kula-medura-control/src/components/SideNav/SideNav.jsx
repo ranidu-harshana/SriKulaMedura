@@ -1,6 +1,6 @@
 const SideNav = (props) => {
 	return (
-		<div>SideNav</div>
+		<div >SideNav</div>
 	);
 }
 
