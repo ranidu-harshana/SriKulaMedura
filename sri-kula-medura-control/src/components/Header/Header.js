@@ -1,6 +1,6 @@
 const Header = (props) => {
 	return (
-		<div>Header</div>
+		<div className={`text-orange-400`}>Header</div>
 	);
 }
 
