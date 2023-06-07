@@ -1,6 +1,6 @@
 const CreateItem = (props) => {
 	return (
-		<div>CreateItem</div>
+		<div>Create Item</div>
 	);
 }
 

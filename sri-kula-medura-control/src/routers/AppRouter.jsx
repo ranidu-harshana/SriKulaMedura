@@ -1,6 +1,12 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
+import Inventory from "../pages/Item/Inventory";
+import ItemCategory from "../pages/Item/ItemCategory";
+import CreateItem from "../pages/Item/CreateItem";
+import Branch from "../pages/Branch/Branch";
+import CreateEmployee from "../pages/Employee/CreateEmployee";
+import EmployeesList from "../pages/Employee/EmployeesList";
 
 const router = createBrowserRouter([
 	{
@@ -11,20 +17,36 @@ const router = createBrowserRouter([
 				index: true,
 				element: <Home />
 			},
-			// {
-			// 	path: 'category',
-			// 	element: <Category />
-			// },
-			// {
-			// 	path: "login",
-			// 	element: <Login />
-			// },
+			{
+				path: 'inventory',
+				element: <Inventory />
+			},
+			{
+				path: "itemcategory",
+				element: <ItemCategory />
+			},
+			{
+				path: "createitem",
+				element: <CreateItem />
+			},
+			{
+				path: "branch",
+				element: <Branch />
+			},
+			{
+				path: "createemployee",
+				element: <CreateEmployee />
+			},
+			{
+				path: "employeelist",
+				element: <EmployeesList />
+			},
 			// {
 			// 	element: <UserProtected />,
 			// 	children: [
 			// 		{
 			// 			path: "user",
-			// 			element: <User />
+			// 			element: <Employee />
 			// 		}
 			// 	]
 			// }
