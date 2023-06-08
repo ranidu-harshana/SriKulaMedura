@@ -8,6 +8,8 @@ import Branch from "../pages/Branch/Branch";
 import CreateEmployee from "../pages/Employee/CreateEmployee";
 import EmployeesList from "../pages/Employee/EmployeesList";
 import ControlActivity from "../context/ControlActivity";
+import AdminLogin from "../components/Login/AdminLogin";
+import UserLogin from "../components/Login/UserLogin";
 
 const router = createBrowserRouter([
 	{
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
 			{
 				path: "employeelist",
 				element: <EmployeesList />
+			},
+			{
+				path: "adminlogin",
+				element: <AdminLogin />
+			},
+			{
+				path: "userlogin",
+				element: <UserLogin />
 			},
 			// {
 			// 	element: <UserProtected />,
