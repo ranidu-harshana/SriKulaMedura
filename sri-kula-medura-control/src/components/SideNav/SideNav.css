@@ -2,6 +2,19 @@
     font-family: "Roboto";
 }
 
+.side-nav {
+    padding-top: 15px;
+    width: 230px;
+    position: fixed;
+    height: 100%;
+    overflow: scroll;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.side-nav-hide {
+    display: none;
+}
+
 .sidebar-menu ul {
     font-size: 14px;
     list-style-type: none;

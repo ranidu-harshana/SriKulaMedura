@@ -12,10 +12,13 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import {useContext} from "react";
+import {controlActivity} from "../../context/ControlActivity";
 
 export default function TopNav() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    const {setSideNavVisibility, matchesMedia768} = useContext(controlActivity)
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -124,6 +127,7 @@ export default function TopNav() {
                         color="inherit"
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
+                        onClick={() => setSideNavVisibility(pre => matchesMedia768?!pre:false)}
                     >
                         <MenuIcon />
                     </IconButton>
