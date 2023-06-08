@@ -7,8 +7,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from '@mui/icons-material/People';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import SideNavLink from "./SideNavLink";
-import {useContext} from "react";
-import {controlActivity} from "../../context/ControlActivity";
 
 const SideNav = () => {
 	const navLinks = [

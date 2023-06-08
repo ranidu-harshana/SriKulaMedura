@@ -44,14 +44,6 @@ const router = createBrowserRouter([
 				path: "employeelist",
 				element: <EmployeesList />
 			},
-			{
-				path: "adminlogin",
-				element: <AdminLogin />
-			},
-			{
-				path: "userlogin",
-				element: <UserLogin />
-			},
 			// {
 			// 	element: <UserProtected />,
 			// 	children: [
@@ -61,8 +53,16 @@ const router = createBrowserRouter([
 			// 		}
 			// 	]
 			// }
-		]
-	}
+		],
+	},
+	{
+		path: "adminlogin",
+		element: <AdminLogin />
+	},
+	{
+		path: "userlogin",
+		element: <UserLogin />
+	},
 ])
 const AppRouter = (props) => {
 	return (
