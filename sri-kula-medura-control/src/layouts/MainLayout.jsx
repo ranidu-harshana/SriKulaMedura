@@ -1,20 +1,21 @@
-import Header from "../components/Header/Header";
+import TopNav from "../components/TopNav/TopNav";
 import SideNav from "../components/SideNav/SideNav";
-import Footer from "../components/Footer/Footer";
 import {Outlet} from "react-router-dom";
+import './MainLayout.css'
 
 const MainLayout = (props) => {
 	return (
 		<>
-			<div className="flex flex-row">
-				<Header />
-			</div>
-			<div className="flex flex-row">
-				<div className="basis-1/4"><SideNav /></div>
-				<div className="basis-3/4"><Outlet /></div>
-			</div>
-			<div className="flex flex-row">
-				<Footer />
+			<TopNav/>
+			<div>
+				<div className={`side-nav`}>
+					<SideNav/>
+				</div>
+				<div className={`content-wrapper`}>
+					<div className="content">
+						<Outlet/>
+					</div>
+				</div>
 			</div>
 		</>
 	);
