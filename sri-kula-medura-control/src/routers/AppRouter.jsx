@@ -7,6 +7,7 @@ import CreateItem from "../pages/Item/CreateItem";
 import Branch from "../pages/Branch/Branch";
 import CreateEmployee from "../pages/Employee/CreateEmployee";
 import EmployeesList from "../pages/Employee/EmployeesList";
+import ControlActivity from "../context/ControlActivity";
 
 const router = createBrowserRouter([
 	{
@@ -55,7 +56,9 @@ const router = createBrowserRouter([
 ])
 const AppRouter = (props) => {
 	return (
-		<RouterProvider router={router}/>
+		<ControlActivity>
+			<RouterProvider router={router}/>
+		</ControlActivity>
 	);
 }
 
