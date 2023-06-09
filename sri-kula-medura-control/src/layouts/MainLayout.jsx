@@ -7,13 +7,12 @@ import {useContext} from "react";
 
 const MainLayout = (props) => {
 	const {sideNavVisibility} = useContext(controlActivity)
-	console.log(sideNavVisibility)
 
 	return (
 		<div>
 			<TopNav/>
 			<div>
-				<div className={`${sideNavVisibility?"open-side-nav":"closed-side-nav"}`}>
+				<div className={sideNavVisibility?"open-side-nav":"closed-side-nav"}>
 					<SideNav/>
 				</div>
 				<div className={sideNavVisibility?"content-wrapper":"content-wrapper-open-side-nav"}>
