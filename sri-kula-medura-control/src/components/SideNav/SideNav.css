@@ -80,7 +80,14 @@
     text-rendering: auto;
     line-height: 40px;
     font-size: 18px;
+    transform: rotate(0deg);
+    transition: transform 0.2s linear;
 }
+
+.sidebar-menu .menu-arrow.ex {
+    transform: rotate(0deg);
+}
+
 
 .sidebar-menu .menu-arrow-down {
     position: absolute;
@@ -89,6 +96,11 @@
     text-rendering: auto;
     line-height: 40px;
     font-size: 18px;
+    transform: rotate(90deg);
+    transition: transform 0.2s linear;
+}
+
+.sidebar-menu .menu-arrow-down {
     transform: rotate(90deg);
 }
 
@@ -126,7 +138,11 @@
 .sub-menu-visibility-none {
     max-height: 0;
     overflow: hidden;
+    transition: max-height 0.1s linear;
+}
 
+.sub-menu-visibility-none.expanded {
+    max-height: 0;
 }
 
 .sub-menu-visibility-block {

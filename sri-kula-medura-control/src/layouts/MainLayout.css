@@ -52,6 +52,11 @@
         position: relative;
         margin-left: 0;
         padding: 15px 10px;
+        transition: margin-left 0.3s linear;
+    }
+
+    .content-wrapper.expanded {
+        position: relative;
     }
 
     .open-side-nav {
@@ -61,7 +66,10 @@
         height: 100%;
         overflow: scroll;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        transition: width 0.2s linear;
     }
 
-
+    .open-side-nav.expanded {
+        width: 0;
+    }
 }

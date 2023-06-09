@@ -6,16 +6,16 @@ import {controlActivity} from "../context/ControlActivity";
 import {useContext} from "react";
 
 const MainLayout = (props) => {
-	const {sideNavVisibility} = useContext(controlActivity)
+	const {sideNavVisibility, setSideNavVisibility, matchesMedia768} = useContext(controlActivity)
 
 	return (
-		<div>
+		<div >
 			<TopNav/>
-			<div>
+			<div >
 				<div className={sideNavVisibility?"open-side-nav":"closed-side-nav"}>
 					<SideNav/>
 				</div>
-				<div className={sideNavVisibility?"content-wrapper":"content-wrapper-open-side-nav"}>
+				<div className={sideNavVisibility?"content-wrapper":"content-wrapper-open-side-nav"} onClick={() => setSideNavVisibility(matchesMedia768)}>
 					<div className="content">
 						<Outlet/>
 					</div>
