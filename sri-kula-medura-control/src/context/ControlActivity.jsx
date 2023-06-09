@@ -3,7 +3,7 @@ import {useMediaQuery} from "@mui/material";
 
 export const controlActivity = createContext({})
 const ControlActivity = ({children}) => {
-	const [sideNavVisibility, setSideNavVisibility] = useState(false);
+	const [sideNavVisibility, setSideNavVisibility] = useState(true);
 	const matchesMedia768 = useMediaQuery("(max-width:768px)");
 
 	return (

@@ -127,7 +127,7 @@ export default function TopNav() {
                         color="inherit"
                         aria-label="open drawer"
                         sx={{ mr: 2 }}
-                        onClick={() => setSideNavVisibility(pre => matchesMedia768?!pre:false)}
+                        onClick={() => setSideNavVisibility(pre => matchesMedia768?!pre:true)}
                     >
                         <MenuIcon />
                     </IconButton>
