@@ -15,7 +15,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import {useContext} from "react";
 import {controlActivity} from "../../context/ControlActivity";
 
-export default function TopNav() {
+const TopNav =()=> {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const {setSideNavVisibility, matchesMedia768} = useContext(controlActivity)
@@ -186,3 +186,6 @@ export default function TopNav() {
         </Box>
     );
 }
+
+
+export default TopNav;
