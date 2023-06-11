@@ -37,6 +37,178 @@ const SideNav = () => {
 				link: "createemployee"
 			}]
 		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+		{
+			title: "Employees",
+			submenu: true,
+			icon: <AccountCircleIcon/>,
+			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+				title: "Create Employee",
+				link: "createemployee"
+			}]
+		},
+
 		{title: "Chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5}
 	]
 
