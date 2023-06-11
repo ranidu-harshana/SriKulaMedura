@@ -1,6 +1,10 @@
+import InputForm from "../../components/Form/TextInput";
+
 const Home = (props) => {
 	return (
-		<div>Home</div>
+		<div>
+			<InputForm/>
+		</div>
 	);
 }
 
