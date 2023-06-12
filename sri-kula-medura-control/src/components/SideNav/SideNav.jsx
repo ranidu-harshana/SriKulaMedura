@@ -218,6 +218,7 @@ const SideNav = () => {
 				<ul>
 					{navLinks.map((navLink, index) => {
 						if (navLink.submenu) {
+							return (<SideNavLink {...navLink} key={index}/>)
 						} else {
 							return (<SideNavLink {...navLink} key={index}/>)
 						}
