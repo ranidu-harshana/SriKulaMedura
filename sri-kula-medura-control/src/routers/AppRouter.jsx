@@ -10,6 +10,8 @@ import EmployeesList from "../pages/Employee/EmployeesList";
 import ControlActivity from "../context/ControlActivity";
 import AdminLogin from "../components/Login/AdminLogin";
 import UserLogin from "../components/Login/UserLogin";
+import ChatLayout from "../layouts/ChatLayout";
+import Chat from "../components/Chat/Chat";
 
 const router = createBrowserRouter([
 	{
@@ -63,6 +65,16 @@ const router = createBrowserRouter([
 		path: "userlogin",
 		element: <UserLogin />
 	},
+	{
+		path: "chat",
+		element: <ChatLayout/>,
+		children: [
+			{
+				index: true,
+				element: <Chat />
+			}
+		]
+	}
 ])
 const AppRouter = (props) => {
 	return (
