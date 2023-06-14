@@ -29,10 +29,12 @@ const Chat = (props) => {
 											<span className="chat-time">8:30 am</span>
 										</div>
 									</div>
-								</div>
-							</div>
-							<div className="chat chat-right">
-								<div className="chat-body">
+									<div className="chat-bubble">
+										<div className="chat-content">
+											<p>Hello. What can I do for you?</p>
+											<span className="chat-time">8:30 am</span>
+										</div>
+									</div>
 									<div className="chat-bubble">
 										<div className="chat-content">
 											<p>Hello. What can I do for you?</p>
@@ -40,6 +42,78 @@ const Chat = (props) => {
 										</div>
 									</div>
 								</div>
+							</div>
+
+							<div className="chat chat-left">
+								<div className="chat-body">
+									<div className="chat-bubble">
+										<div className="chat-content">
+											<p>I'm just looking around.</p>
+											<p>Will you tell me something about yourself? </p>
+											<span className="chat-time">8:35 am</span>
+										</div>
+									</div>
+									<div className="chat-bubble">
+										<div className="chat-content">
+											<p>Are you there? That time!</p>
+											<span className="chat-time">8:40 am</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div className="chat chat-left">
+								<div className="chat-body">
+									<div className="chat-bubble">
+										<div className="chat-content">
+											<p>I'm just looking around.</p>
+											<p>Will you tell me something about yourself? </p>
+											<span className="chat-time">8:35 am</span>
+										</div>
+									</div>
+									<div className="chat-bubble">
+										<div className="chat-content">
+											<p>Are you there? That time!</p>
+											<span className="chat-time">8:40 am</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div className="chat chat-left">
+								<div className="chat-body">
+									<div className="chat-bubble">
+										<div className="chat-content">
+											<p>I'm just looking around.</p>
+											<p>Will you tell me something about yourself? </p>
+											<span className="chat-time">8:35 am</span>
+										</div>
+									</div>
+									<div className="chat-bubble">
+										<div className="chat-content">
+											<p>Are you there? That time!</p>
+											<span className="chat-time">8:40 am</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div className="chat-footer">
+				<div className="message-bar">
+					<div className="message-inner">
+						<a className="link attach-icon" href="#" data-toggle="modal" data-target="#drag_files"><img
+							src="assets/img/attachment.png" alt=""/></a>
+						<div className="message-area">
+							<div className="input-group">
+								<textarea className="form-control" placeholder="Type message..."></textarea>
+								<span className="input-group-append">
+													<button className="btn btn-primary" type="button"><i
+														className="fa fa-send"></i></button>
+												</span>
 							</div>
 						</div>
 					</div>

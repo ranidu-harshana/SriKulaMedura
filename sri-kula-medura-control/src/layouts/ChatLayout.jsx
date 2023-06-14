@@ -13,7 +13,7 @@ const ChatLayout = (props) => {
 				<div className={sideNavVisibility?"open-side-nav":"closed-side-nav"} style={{boxShadow: "none", borderRight: "1px solid #eee"}}>
 
 				</div>
-				<div className={sideNavVisibility?"chat-content-wrapper":"chat-content-wrapper-open-side-nav"} style={{borderLeft: "1px solid #eeee", height: "1000px"}} onClick={() => setSideNavVisibility(matchesMedia768)}>
+				<div className={sideNavVisibility?"chat-content-wrapper":"chat-content-wrapper-open-side-nav"} style={{borderLeft: "1px solid #eeee"}} onClick={() => setSideNavVisibility(matchesMedia768)}>
 					<div>
 						<Outlet/>
 					</div>
