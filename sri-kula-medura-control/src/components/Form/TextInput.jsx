@@ -29,7 +29,764 @@ const TextInput = () => {
             type: 'email',
             id: 'email',
             autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
+        },
+        {
+            required: true,
+            fullWidth: true,
+            name: 'email',
+            label: 'Email',
+            type: 'email',
+            id: 'email',
+            autoComplete: 'email'
         }
+
     ];
 
     return (

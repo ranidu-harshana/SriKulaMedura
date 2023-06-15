@@ -1,7 +1,7 @@
 import TopNav from "../components/TopNav/TopNav";
 import SideNav from "../components/SideNav/SideNav";
 import {Outlet} from "react-router-dom";
-import './MainLayout.css'
+import './Layout.css'
 import {controlActivity} from "../context/ControlActivity";
 import {useContext} from "react";
 
