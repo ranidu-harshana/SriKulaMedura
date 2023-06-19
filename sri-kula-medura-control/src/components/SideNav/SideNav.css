@@ -2,6 +2,10 @@
     display: none;
 }
 
+.sidebar-menu {
+    padding-bottom: 70px;
+}
+
 .sidebar-menu ul {
     font-size: 14px;
     list-style-type: none;
