@@ -27,4 +27,3 @@ const ButtonInput = () => {
 };
 
 export default ButtonInput;
-Footer
