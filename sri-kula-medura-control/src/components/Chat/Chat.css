@@ -2,8 +2,7 @@
     background-color: white;
     border-bottom: 1px solid #eeee;
     position: fixed;
-    margin-bottom: 500px;
-    margin-left: 10px;
+    width: 100%;
 }
 
 .last-seen {
@@ -117,5 +116,4 @@
     border-top: 1px solid #eeee;
     position: fixed;
     margin-left: 10px;
-    width: 88%;
 }

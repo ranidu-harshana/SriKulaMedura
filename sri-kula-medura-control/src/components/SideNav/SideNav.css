@@ -89,7 +89,6 @@
     transform: rotate(0deg);
 }
 
-
 .sidebar-menu .menu-arrow-down {
     position: absolute;
     right: 15px;
@@ -103,6 +102,13 @@
 
 .sidebar-menu .menu-arrow-down {
     transform: rotate(90deg);
+}
+
+.chat-count {
+    position: absolute;
+    right: 15px;
+    display: inline-block;
+    text-rendering: auto;
 }
 
 .sidebar-menu a {
