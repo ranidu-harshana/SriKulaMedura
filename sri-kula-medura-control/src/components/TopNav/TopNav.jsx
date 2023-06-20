@@ -14,6 +14,9 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import {useContext} from "react";
 import {controlActivity} from "../../context/ControlActivity";
+import Avatar from "@mui/material/Avatar";
+import {Divider, ListItemIcon} from "@mui/material";
+import {Logout, PersonAdd, Settings} from "@mui/icons-material";
 
 const TopNav =()=> {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -56,10 +59,31 @@ const TopNav =()=> {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Sign out</MenuItem>
+            <MenuItem >
+                <Avatar /> Profile
+            </MenuItem>
+            <MenuItem >
+                <Avatar /> My account
+            </MenuItem>
+            <Divider />
+            <MenuItem >
+                <ListItemIcon>
+                    <PersonAdd fontSize="small" />
+                </ListItemIcon>
+                Add another account
+            </MenuItem>
+            <MenuItem >
+                <ListItemIcon>
+                    <Settings fontSize="small" />
+                </ListItemIcon>
+                Settings
+            </MenuItem>
+            <MenuItem >
+                <ListItemIcon>
+                    <Logout fontSize="small" />
+                </ListItemIcon>
+                Logout
+            </MenuItem>
         </Menu>
     );
 
