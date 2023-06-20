@@ -11,7 +11,7 @@
     position: relative;
     margin-left: 230px;
     padding: 15px 10px;
-    transition: margin-left 0.15s linear;
+    transition: margin-left 1ms linear;
     margin-top: 60px;
 }
 
@@ -37,7 +37,7 @@
     left: 0;
     position: relative;
     margin-left: 230px;
-    transition: margin-left 0.15s linear;
+    transition: margin-left 1ms linear;
     background-color: #eee;
     margin-top: 60px;
 }
@@ -62,7 +62,7 @@
     height: 100%;
     overflow: scroll;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    transition: width 0.15s linear;
+    transition: width 1ms linear;
 }
 
 .closed-side-nav {
@@ -75,7 +75,7 @@
         position: relative;
         margin-left: 0;
         padding: 15px 10px;
-        transition: margin-left 0.3s linear;
+        transition: margin-left 1ms linear;
     }
 
     .content-wrapper.expanded {
@@ -87,7 +87,7 @@
         position: relative;
         margin-left: 0;
         background-color: #eee;
-        transition: margin-left 0.3s linear;
+        transition: margin-left 1ms linear;
     }
 
     .chat-content-wrapper.expanded {
@@ -101,7 +101,7 @@
         height: 100%;
         overflow: scroll;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        transition: width 0.2s linear;
+        transition: width 1ms linear;
     }
 
     .open-side-nav.expanded {

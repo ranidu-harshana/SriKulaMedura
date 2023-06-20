@@ -82,7 +82,7 @@
     line-height: 40px;
     font-size: 18px;
     transform: rotate(0deg);
-    transition: transform 0.2s linear;
+    transition: transform 1ms linear;
 }
 
 .sidebar-menu .menu-arrow.ex {
@@ -97,7 +97,7 @@
     line-height: 40px;
     font-size: 18px;
     transform: rotate(90deg);
-    transition: transform 0.2s linear;
+    transition: transform 1ms linear;
 }
 
 .sidebar-menu .menu-arrow-down {
@@ -124,7 +124,7 @@
     display: flex;
     justify-content: flex-start;
     position: relative;
-    transition: all 0.2s ease-in-out 0s;
+    transition: all 1ms ease-in-out 0s;
 }
 .sidebar-menu ul li a i {
     align-items: center;
@@ -133,7 +133,7 @@
     min-height: 24px;
     line-height: 18px;
     width: 20px;
-    transition: all 0.2s ease-in-out 0s;
+    transition: all 1ms ease-in-out 0s;
 }
 .sidebar-menu ul li.menu-title a i {
     font-size: 16px;
@@ -145,7 +145,7 @@
 .sub-menu-visibility-none {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.1s linear;
+    transition: max-height 1ms linear;
 }
 
 .sub-menu-visibility-none.expanded {
@@ -155,7 +155,7 @@
 .sub-menu-visibility-block {
     max-height: 500px;
     overflow-y: hidden;
-    transition: max-height 0.8s linear;
+    transition: max-height 1ms linear;
 }
 
 .sub-menu-visibility-block.expanded {
