@@ -6,13 +6,10 @@ import ChatFooter from "./ChatFooter";
 const Chat = (props) => {
 	return (
 		<>
-			<div className={'col-12'}>
-				<ChatHeader/>
-				<ChatBody/>
-				<ChatFooter/>
-			</div>
+			<ChatHeader/>
+			<ChatBody/>
+			<ChatFooter/>
 		</>
-
 	);
 }
 
