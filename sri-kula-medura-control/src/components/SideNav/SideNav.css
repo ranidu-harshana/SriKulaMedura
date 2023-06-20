@@ -12,6 +12,7 @@
     margin: 0;
     padding: 0;
 }
+
 .sidebar-menu li a {
     color: #888;
     display: block;
@@ -20,19 +21,23 @@
     padding: 0 20px;
     text-decoration: none;
 }
+
 .sidebar-menu li a:hover {
     color: #009efb;
 }
+
 .sidebar-menu li.active a {
     color: #009efb;
     background-color: #f3f3f3;
 }
+
 .sidebar-menu li.menu-title a {
     color: #009efb;
     display: inline-block;
     float: right;
     padding: 0;
 }
+
 .sidebar-menu li.menu-title a.btn {
     color: #fff;
     display: block;
@@ -41,16 +46,19 @@
     line-height: inherit;
     margin-bottom: 15px;
 }
+
 .sidebar-menu ul ul a.active {
     color: #009efb;
     text-decoration: underline;
 }
+
 .sidebar .sidebar-menu > ul > li > a span {
     transition: all 0.2s ease-in-out 0s;
     display: inline-block;
     margin-left: 10px;
     white-space: nowrap;
 }
+
 .sidebar .sidebar-menu > ul > li > a span.badge {
     color: #fff;
     margin-left: auto;
@@ -62,18 +70,23 @@
     padding: 9px 10px 9px 50px;
     position: relative;
 }
+
 .sidebar-menu ul ul {
     background-color: #f3f3f3;
 }
+
 .sidebar-menu ul ul ul a {
     padding-left: 70px;
 }
+
 .sidebar-menu ul ul ul ul a {
     padding-left: 90px;
 }
+
 .sidebar-menu > ul > li {
     position: relative;
 }
+
 .sidebar-menu .menu-arrow {
     position: absolute;
     right: 15px;
@@ -118,6 +131,7 @@
     -ms-transition: unset;
     -webkit-transition: unset;
 }
+
 .sidebar-menu > ul > li > a {
     padding: 12px 20px;
     align-items: center;
@@ -126,6 +140,7 @@
     position: relative;
     transition: all 1ms ease-in-out 0s;
 }
+
 .sidebar-menu ul li a i {
     align-items: center;
     display: inline-flex;
@@ -135,6 +150,7 @@
     width: 20px;
     transition: all 1ms ease-in-out 0s;
 }
+
 .sidebar-menu ul li.menu-title a i {
     font-size: 16px;
     margin-right: 0;

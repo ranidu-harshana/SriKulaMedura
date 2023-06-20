@@ -1,7 +1,5 @@
 const Branch = (props) => {
-	return (
-		<div>Branch</div>
-	);
+	return (<>Branch</>);
 }
 
 export default Branch;

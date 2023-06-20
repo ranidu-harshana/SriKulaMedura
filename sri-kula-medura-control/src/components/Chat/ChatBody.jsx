@@ -8,8 +8,7 @@ import ChatUserDetails from "./ChatUserDetails";
 const ChatBody = (props) => {
 	const wHeight = window.innerHeight;
 
-	return (
-		<>
+	return (<>
 			<div className={"chat-body-container"} style={{minHeight: `${wHeight}px`}}>
 				<div className="col-8 chat-content-wrap">
 					<div className="chat-wrap-inner">
@@ -43,7 +42,11 @@ const ChatBody = (props) => {
 										<div className="chat-bubble">
 											<div className="chat-content">
 												<p className={''}>I'm just looking around.</p>
-												<p className={''}>Will you tell me something about yourself? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorum ducimus eveniet excepturi hic, impedit incidunt inventore labore minus natus placeat quidem sequi tempora. Asperiores cumque nihil placeat vel voluptates.</p>
+												<p className={''}>Will you tell me something about yourself? Lorem ipsum
+													dolor sit amet, consectetur adipisicing elit. Dolor dolorum ducimus
+													eveniet excepturi hic, impedit incidunt inventore labore minus natus
+													placeat quidem sequi tempora. Asperiores cumque nihil placeat vel
+													voluptates.</p>
 												<span className="chat-time">8:35 am</span>
 											</div>
 										</div>
@@ -76,7 +79,7 @@ const ChatBody = (props) => {
 							</div>
 						</div>
 					</div>
-				</div >
+				</div>
 			</div>
 
 			<div className={'chat-user-details'}>
@@ -96,9 +99,7 @@ const ChatBody = (props) => {
 					<ChatUserDetails topic="Branches" value={"Colombo, Gampaha"}/>
 				</div>
 			</div>
-		</>
-	)
-		;
+		</>);
 }
 
 export default ChatBody;

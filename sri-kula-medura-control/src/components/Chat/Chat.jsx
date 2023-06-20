@@ -4,13 +4,11 @@ import ChatBody from "./ChatBody";
 import ChatFooter from "./ChatFooter";
 
 const Chat = (props) => {
-	return (
-		<>
+	return (<>
 			<ChatHeader/>
 			<ChatBody/>
 			<ChatFooter/>
-		</>
-	);
+		</>);
 }
 
 export default Chat;
