@@ -9,210 +9,27 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import SideNavLink from "./SideNavLink";
 
 const SideNav = () => {
-	const navLinks = [
-		{title: "Dashboard", link: "/", submenu: false, icon: <DashboardIcon/>},
-		{title: "Branch", link: "branch", submenu: false, icon: <DomainIcon/>},
-		{title: "Customers", submenu: false, icon: <PeopleIcon/>},
-		{
-			title: "Reservations",
-			submenu: true,
-			icon: <DomainIcon/>,
-			subMenuLinks: [{title: "Reservations List"}, {title: "Add Reservation"}]
-		},
-		{
-			title: "Item",
-			submenu: true,
-			icon: <InventoryIcon/>,
-			subMenuLinks: [{title: "Inventory", link: "inventory"}, {
-				title: "Create Item",
-				link: "createitem"
-			}, {title: "Item Category", link: "itemcategory"}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
-		{
-			title: "Employees",
-			submenu: true,
-			icon: <AccountCircleIcon/>,
-			subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
-				title: "Create Employee",
-				link: "createemployee"
-			}]
-		},
+	const navLinks = [{title: "Dashboard", link: "/", submenu: false, icon: <DashboardIcon/>}, {
+		title: "Branch", link: "branch", submenu: false, icon: <DomainIcon/>
+	}, {title: "Customers", submenu: false, icon: <PeopleIcon/>}, {
+		title: "Reservations",
+		submenu: true,
+		icon: <DomainIcon/>,
+		subMenuLinks: [{title: "Reservations List"}, {title: "Add Reservation"}]
+	}, {
+		title: "Item", submenu: true, icon: <InventoryIcon/>, subMenuLinks: [{title: "Inventory", link: "inventory"}, {
+			title: "Create Item", link: "createitem"
+		}, {title: "Item Category", link: "itemcategory"}]
+	}, {
+		title: "Employees",
+		submenu: true,
+		icon: <AccountCircleIcon/>,
+		subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
+			title: "Create Employee", link: "createemployee"
+		}]
+	}, {title: "Chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5}]
 
-		{title: "Chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5}
-	]
-
-	return (
+	return (<>
 		<div>
 			<div className="sidebar-menu">
 				<ul>
@@ -226,7 +43,7 @@ const SideNav = () => {
 				</ul>
 			</div>
 		</div>
-	);
+	</>);
 }
 
 export default SideNav
