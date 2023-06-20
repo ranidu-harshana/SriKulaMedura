@@ -27,7 +27,7 @@ const SideNav = () => {
 		subMenuLinks: [{title: "Employees List", link: "employeelist"}, {
 			title: "Create Employee", link: "createemployee"
 		}]
-	}, {title: "Chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5}]
+	}, {title: "Chat", link: "chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5}]
 
 	return (<>
 		<div>
