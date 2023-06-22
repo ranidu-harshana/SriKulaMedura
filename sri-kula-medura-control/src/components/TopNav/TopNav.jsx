@@ -46,32 +46,18 @@ const TopNav =()=> {
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
-            anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             id={menuId}
             keepMounted
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
             <MenuItem >
-                <Avatar /> Profile
-            </MenuItem>
-            <MenuItem >
                 <Avatar /> My account
             </MenuItem>
             <Divider />
-            <MenuItem >
-                <ListItemIcon>
-                    <PersonAdd fontSize="small" />
-                </ListItemIcon>
-                Add another account
-            </MenuItem>
             <MenuItem >
                 <ListItemIcon>
                     <Settings fontSize="small" />
