@@ -1,0 +1,678 @@
+.user-login {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.user-login .div {
+    background-color: #ffffff;
+    border: 1px none;
+    height: 1832px;
+    overflow: hidden;
+    position: relative;
+    width: 1440px;
+}
+
+.user-login .overlap {
+    background: linear-gradient(180deg, rgb(12.15, 132.81, 1.66) 0%, rgb(19.09, 137.61, 163.62) 100%);
+    border-radius: 10px;
+    height: 507px;
+    left: 497px;
+    position: absolute;
+    top: 240px;
+    width: 447px;
+}
+
+.user-login .overlap-group {
+    height: 157px;
+    left: 0;
+    position: absolute;
+    top: 21px;
+    width: 447px;
+}
+
+.user-login .account-circle {
+    height: 103px;
+    left: 172px;
+    position: absolute;
+    top: 0;
+    width: 103px;
+}
+
+.user-login .text-wrapper {
+    color: #ffffff;
+    font-family: "Roboto-Bold", Helvetica;
+    font-size: 26px;
+    font-weight: 700;
+    height: 58px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 99px;
+    width: 447px;
+}
+
+.user-login .div-wrapper {
+    background-color: #ffffff;
+    border-radius: 37px;
+    height: 35px;
+    left: 96px;
+    position: absolute;
+    top: 198px;
+    width: 254px;
+}
+
+.user-login .text-wrapper-2 {
+    color: #9f9f9f;
+    font-family: "Roboto-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    height: 31px;
+    left: 22px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 1px;
+    width: 132px;
+}
+
+.user-login .overlap-2 {
+    background-color: #ffffff;
+    border-radius: 37px;
+    height: 35px;
+    left: 96px;
+    position: absolute;
+    top: 246px;
+    width: 254px;
+}
+
+.user-login .text-wrapper-3 {
+    color: #9f9f9f;
+    font-family: "Roboto-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    height: 31px;
+    left: 19px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 1px;
+    width: 132px;
+}
+
+.user-login .overlap-3 {
+    height: 34px;
+    left: 181px;
+    position: absolute;
+    top: 323px;
+    width: 101px;
+}
+
+.user-login .rectangle {
+    background-color: #ffffff;
+    border-radius: 37px;
+    height: 33px;
+    left: 0;
+    position: absolute;
+    top: 1px;
+    width: 101px;
+}
+
+.user-login .text-wrapper-4 {
+    color: #45a146;
+    font-family: "Roboto-Black", Helvetica;
+    font-size: 18px;
+    font-weight: 900;
+    height: 33px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 101px;
+}
+
+.user-login .text-wrapper-5 {
+    color: #ffffff;
+    font-family: "Roboto-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    height: 31px;
+    left: 101px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 281px;
+    width: 248px;
+}
+
+.user-login .rectangle-2 {
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 2px;
+    left: 54px;
+    position: absolute;
+    top: 376px;
+    width: 339px;
+}
+
+.user-login .icon-rounded {
+    height: 33px;
+    left: 218px;
+    position: absolute;
+    top: 398px;
+    width: 33px;
+}
+
+.user-login .img {
+    height: 33px;
+    left: 276px;
+    position: absolute;
+    top: 398px;
+    width: 33px;
+}
+
+.user-login .icon-rounded-2 {
+    height: 33px;
+    left: 160px;
+    position: absolute;
+    top: 398px;
+    width: 33px;
+}
+
+.user-login .navigation-bar {
+    height: 93px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1442px;
+}
+
+.user-login .overlap-group-2 {
+    background: linear-gradient(180deg, rgb(12.15, 132.81, 1.66) 0%, rgb(19.09, 137.61, 163.62) 100%);
+    height: 93px;
+    position: relative;
+    width: 1440px;
+}
+
+.user-login .overlap-4 {
+    height: 91px;
+    left: 936px;
+    position: absolute;
+    top: 0;
+    width: 350px;
+}
+
+.user-login .divider {
+    background-color: #ffffff;
+    height: 38px;
+    left: 347px;
+    position: absolute;
+    top: 27px;
+    width: 3px;
+}
+
+.user-login .home-about-us-FAQ {
+    color: #ffffff;
+    font-family: "Roboto-Bold", Helvetica;
+    font-size: 24px;
+    font-weight: 700;
+    height: 91px;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 0;
+    width: 350px;
+}
+
+.user-login .facebook-ficon {
+    height: 30px;
+    left: 1305px;
+    position: absolute;
+    top: 31px;
+    width: 30px;
+}
+
+.user-login .instagram-ficon {
+    height: 30px;
+    left: 1354px;
+    position: absolute;
+    top: 31px;
+    width: 30px;
+}
+
+.user-login .sri-kula-medura-logo {
+    height: 51px;
+    left: 40px;
+    object-fit: cover;
+    position: absolute;
+    top: 20px;
+    width: 91px;
+}
+
+.user-login .section {
+    height: 126px;
+    left: -23px;
+    position: absolute;
+    top: 1751px;
+    width: 1488px;
+}
+
+.user-login .copyright-sri-wrapper {
+    background-color: #ffffff;
+    border: 5px solid;
+    border-color: #378b75;
+    height: 126px;
+    position: relative;
+    width: 1486px;
+}
+
+.user-login .copyright-sri {
+    color: #378b75;
+    font-family: "Roboto-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    height: 57px;
+    left: 81px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 5px;
+    width: 1367px;
+}
+
+.user-login .overlap-wrapper {
+    height: 634px;
+    left: 0;
+    position: absolute;
+    top: 1117px;
+    width: 1450px;
+}
+
+.user-login .overlap-5 {
+    background-color: #c9e8e0;
+    height: 634px;
+    position: relative;
+    width: 1440px;
+}
+
+.user-login .text-wrapper-6 {
+    color: #378b75;
+    font-family: "Roboto-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    height: 57px;
+    left: 74px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 41px;
+    width: 352px;
+}
+
+.user-login .text-wrapper-7 {
+    color: #378b75;
+    font-family: "Roboto-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    height: 57px;
+    left: 471px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 41px;
+    width: 352px;
+}
+
+.user-login .text-wrapper-8 {
+    color: #378b75;
+    font-family: "Roboto-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    height: 57px;
+    left: 868px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 41px;
+    width: 352px;
+}
+
+.user-login .flex-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    height: 250px;
+    left: 73px;
+    position: absolute;
+    top: 119px;
+    width: 313px;
+}
+
+.user-login .text {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .span {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .span-wrapper {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-9 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-2 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-10 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-3 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-11 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-4 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-12 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-5 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-13 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .flex-container-2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    height: 265px;
+    left: 473px;
+    position: absolute;
+    top: 119px;
+    width: 313px;
+}
+
+.user-login .text-6 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-14 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-7 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-15 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-8 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-16 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-9 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-17 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-10 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-18 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-11 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-19 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-12 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-20 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-13 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-21 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .text-14 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.user-login .text-wrapper-22 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.user-login .rectangle-3 {
+    height: 500px;
+    left: 865px;
+    object-fit: cover;
+    position: absolute;
+    top: 98px;
+    width: 500px;
+}
