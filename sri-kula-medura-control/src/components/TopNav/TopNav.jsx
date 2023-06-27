@@ -55,7 +55,7 @@ const TopNav =()=> {
             onClose={handleMenuClose}
         >
             <MenuItem >
-                <Avatar /> My account
+                <Avatar sx={{ width: 26, height: 26 }} /> &nbsp; My account
             </MenuItem>
             <Divider />
             <MenuItem >
