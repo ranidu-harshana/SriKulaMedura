@@ -9,21 +9,18 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.sql.Date;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class Item {
+public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    private ItemCategory item_category;
+    private String note;
 
-    private String item_code;
-    private String item_name;
-    private String item_type;
-    private String item_image_url;
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private boolean status;
 
     @Column(nullable = false, updatable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
@@ -32,4 +29,7 @@ public class Item {
     @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     private Date updated_at;
+
+    @ManyToOne
+    private Reservation reservation;
 }

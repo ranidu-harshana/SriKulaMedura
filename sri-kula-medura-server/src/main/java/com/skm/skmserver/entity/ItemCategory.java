@@ -22,10 +22,14 @@ public class ItemCategory {
     @Column(nullable = false)
     private String category_name;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     private Date created_at;
 
-    @OneToMany(mappedBy = "itemCategory")
+    @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    private Date updated_at;
+
+    @OneToMany(mappedBy = "item_category")
     private List<Item> items;
 }

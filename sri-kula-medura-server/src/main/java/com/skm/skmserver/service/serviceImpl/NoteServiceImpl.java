@@ -1,8 +1,8 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.service.ItemService;
+import com.skm.skmserver.service.NoteService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ItemServiceImpl implements ItemService {
+public class NoteServiceImpl implements NoteService {
 }
