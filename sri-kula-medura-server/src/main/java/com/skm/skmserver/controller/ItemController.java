@@ -13,4 +13,8 @@ import java.util.List;
 @RequestMapping(value = "api/v1/items")
 public class ItemController {
 
+    @GetMapping(value = "/")
+    public String hi () {
+        return "hi";
+    }
 }
