@@ -1,12 +1,14 @@
 package com.skm.skmserver.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.sql.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -16,5 +18,14 @@ public class ItemCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String cat_name;
+
+    @Column(nullable = false)
+    private String category_name;
+
+    @Column(nullable = false, updatable = false)
+    @CreationTimestamp
+    private Date created_at;
+
+    @OneToMany(mappedBy = "itemCategory")
+    private List<Item> items;
 }
