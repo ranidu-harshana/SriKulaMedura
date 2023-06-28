@@ -1,12 +1,12 @@
 package com.skm.skmserver.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.sql.Date;
 
 @Entity
 @AllArgsConstructor
@@ -14,11 +14,18 @@ import lombok.NoArgsConstructor;
 @Data
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int item_category_id;
+
+    @ManyToOne
+    private ItemCategory itemCategory;
+
     private String item_code;
-    private String item_desc;
+    private String item_name;
     private String item_type;
     private String item_image_url;
+
+    @Column(nullable = false, updatable = false)
+    @CreationTimestamp
+    private Date created_at;
 }
