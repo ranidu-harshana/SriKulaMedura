@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 
-public class branch {
+public class Branch {
     @Id
     private String id;
 
