@@ -29,5 +29,7 @@ public class Item {
     @CreationTimestamp
     private Date created_at;
 
-
+    @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    private Date updated_at;
 }

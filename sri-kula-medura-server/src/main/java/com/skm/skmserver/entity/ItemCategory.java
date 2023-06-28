@@ -26,6 +26,10 @@ public class ItemCategory {
     @CreationTimestamp
     private Date created_at;
 
+    @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    private Date updated_at;
+
     @OneToMany(mappedBy = "item_category")
     private List<Item> items;
 }
