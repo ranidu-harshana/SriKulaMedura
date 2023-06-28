@@ -18,14 +18,16 @@ public class Item {
     private int id;
 
     @ManyToOne
-    private ItemCategory itemCategory;
+    private ItemCategory item_category;
 
     private String item_code;
     private String item_name;
     private String item_type;
     private String item_image_url;
 
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false, updatable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     private Date created_at;
+
+
 }
