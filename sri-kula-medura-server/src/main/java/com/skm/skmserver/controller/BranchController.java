@@ -1,6 +1,5 @@
 package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.BranchDTO;
-import com.skm.skmserver.entity.Branch;
 import com.skm.skmserver.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
