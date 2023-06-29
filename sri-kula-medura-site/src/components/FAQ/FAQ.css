@@ -1,0 +1,63 @@
+.box {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.box .element-wrapper {
+    border: 0px none;
+    height: 121px;
+    width: 1224px;
+}
+
+.box .element {
+    background-color: #ffffff;
+    border-radius: 15px;
+    height: 121px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 1224px;
+}
+
+.box .div {
+    height: 96px;
+    left: 40px;
+    position: relative;
+    top: 12px;
+    width: 1146px;
+}
+
+.box .payment {
+    height: 96px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 96px;
+}
+
+.box .text-wrapper {
+    color: #000000;
+    font-family: "Roboto-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    height: 58px;
+    left: 154px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 19px;
+    width: 905px;
+    margin-top: 9px;
+
+}
+
+.box .drop-down {
+    height: 50px;
+    left: 1094px;
+    position: absolute;
+    top: 23px;
+    width: 50px;
+}
