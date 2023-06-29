@@ -10,18 +10,13 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-public class Item {
+@NoArgsConstructor
+@AllArgsConstructor
+public class WishList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private String item_code;
-    private String item_name;
-    private String item_type;
-    private String item_image_url;
 
     @Column(nullable = false, updatable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
@@ -31,15 +26,9 @@ public class Item {
     @CreationTimestamp
     private Date updated_at;
 
-    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
-    private boolean rented_status; // to check if rented or not
+    @OneToOne
+    private Customer customer;
 
-    @ManyToOne
-    private ItemCategory item_category;
-
-    @OneToMany(mappedBy = "item")
-    private List<DressSelection> dress_selections;
-
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "wish_list")
     private List<ItemWishList> user_wishlist;
 }
