@@ -3,6 +3,7 @@ import com.skm.skmserver.dto.BranchDTO;
 import com.skm.skmserver.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/branch")
@@ -11,9 +12,9 @@ public class BranchController {
     @Autowired
     private BranchService branchService;
 
-    @GetMapping("/get")
-    public String getBranch(){
-        return "branch";
+    @GetMapping("/")
+    public List<BranchDTO> getBranches(){
+        return branchService.getAllBranches();
     }
     @PostMapping("/save")
     public BranchDTO saveBranch(@RequestBody BranchDTO branchDTO){
@@ -22,6 +23,7 @@ public class BranchController {
 
     @PutMapping("/update")
     public String updateBranch(){
+
         return "update";
     }
 
