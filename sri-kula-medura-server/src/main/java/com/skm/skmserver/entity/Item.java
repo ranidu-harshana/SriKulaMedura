@@ -41,5 +41,5 @@ public class Item {
     private List<DressSelection> dress_selections;
 
     @OneToMany(mappedBy = "item")
-    private List<ItemWishList> user_wishlist;
+    private List<WishList> wishlist;
 }

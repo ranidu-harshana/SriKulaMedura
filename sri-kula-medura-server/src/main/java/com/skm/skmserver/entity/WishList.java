@@ -22,13 +22,9 @@ public class WishList {
     @CreationTimestamp
     private Date created_at;
 
-    @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
-    @CreationTimestamp
-    private Date updated_at;
+    @ManyToOne
+    private Item item;
 
-    @OneToOne
-    private Customer customer;
-
-    @OneToMany(mappedBy = "wish_list")
-    private List<ItemWishList> user_wishlist;
+    @ManyToOne
+    private User user;
 }
