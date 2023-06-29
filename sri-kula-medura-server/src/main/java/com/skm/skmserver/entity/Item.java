@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -16,9 +17,6 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne
-    private ItemCategory item_category;
 
     private String item_code;
     private String item_name;
@@ -32,4 +30,13 @@ public class Item {
     @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     private Date updated_at;
+
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private boolean rented_status; // to check if rented or not
+
+    @ManyToOne
+    private ItemCategory item_category;
+
+    @OneToMany(mappedBy = "item")
+    private List<DressSelection> dress_selections;
 }
