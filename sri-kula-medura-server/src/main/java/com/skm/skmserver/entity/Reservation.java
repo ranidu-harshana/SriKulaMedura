@@ -57,4 +57,10 @@ public class Reservation {
 
     @OneToMany(mappedBy = "reservation")
     private List<DressSelection> dress_selections;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Customer customer;
 }
