@@ -17,9 +17,6 @@ public class Measurement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    private Type type; // (GROOM, BRIDE, ...)
-
     @Column(nullable = true)
     private String shoulder;
 
@@ -48,4 +45,10 @@ public class Measurement {
     @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
     private Date updated_at;
+
+    @ManyToOne
+    private Reservation reservation;
+
+    @ManyToOne
+    private Type type; // (GROOM, BRIDE, ...)
 }

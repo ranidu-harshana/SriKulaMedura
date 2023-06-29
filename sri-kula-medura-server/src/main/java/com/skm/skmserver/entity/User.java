@@ -1,5 +1,6 @@
 package com.skm.skmserver.entity;
 
+import com.skm.skmserver.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,18 +11,29 @@ import java.sql.Date;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
-public class Item {
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String item_code;
-    private String item_name;
-    private String item_type;
-    private String item_image_url;
+    private String name;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = true)
+    private String address;
+
+    @Column(nullable = true)
+    private String mobile_no;
+
+    @Column(nullable = true)
+    private Date email_verified_at;
+
+    private String password;
 
     @Column(nullable = false, updatable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
     @CreationTimestamp
@@ -31,15 +43,13 @@ public class Item {
     @CreationTimestamp
     private Date updated_at;
 
-    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
-    private boolean rented_status; // to check if rented or not
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @ManyToOne
-    private ItemCategory item_category;
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
 
-    @OneToMany(mappedBy = "item")
-    private List<DressSelection> dress_selections;
-
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "user")
     private List<WishList> wishlist;
+
 }
