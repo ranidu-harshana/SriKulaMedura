@@ -1,0 +1,46 @@
+.box {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.box .section-wrapper {
+    border: 0px none;
+    height: 126px;
+    overflow-x: hidden;
+    width: 1486px;
+}
+
+.box .section {
+    height: 126px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 1488px;
+}
+
+.box .overlap-group {
+    background-color: #ffffff;
+    border: 5px solid;
+    border-color: #378b75;
+    height: 126px;
+    position: relative;
+    width: 1873px;
+}
+
+.box .copyright-sri {
+    color: #378b75;
+    font-family: "Roboto-Regular", Helvetica;
+    font-size: 24px;
+    font-weight: 400;
+    height: 57px;
+    left: 81px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 5px;
+    width: 1367px;
+    margin-top: 40px;
+}
