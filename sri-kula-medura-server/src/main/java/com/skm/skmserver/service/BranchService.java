@@ -25,9 +25,14 @@ public class BranchService {
         List<Branch> branchList = branchRepository.findAll();
         return modelMapper.map(branchList,new TypeToken<List<BranchDTO>>(){}.getType());
     }
-    public BranchDTO updateBranch(BranchDTO branchDTO){
-        Branch branch = modelMapper.map(branchDTO,Branch.class);
+    public BranchDTO updateBranch(BranchDTO branchDTO) {
+        Branch branch = modelMapper.map(branchDTO, Branch.class);
         branchRepository.save(branch);
         return branchDTO;
+    }
+    public void deleteBranch(Integer id) {
+        if (branchRepository.existsById(id)) {
+            branchRepository.deleteById(id);
+        }
     }
 }

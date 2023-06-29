@@ -1,7 +1,9 @@
 package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.BranchDTO;
+import com.skm.skmserver.entity.Branch;
 import com.skm.skmserver.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -20,15 +22,13 @@ public class BranchController {
     public BranchDTO saveBranch(@RequestBody BranchDTO branchDTO){
         return branchService.saveBranch(branchDTO);
     }
-
     @PutMapping("/update")
-    public String updateBranch(){
-
-        return "update";
+    public BranchDTO updateBranch(@RequestBody BranchDTO branchDTO) {
+        return branchService.updateBranch(branchDTO);
     }
-
-    @DeleteMapping("/delete")
-    public String deleteBranch(){
-        return "delete";
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        branchService.deleteBranch(id);
+        return ResponseEntity.noContent().build();
     }
 }
