@@ -51,4 +51,10 @@ public class Reservation {
 
     @OneToMany(mappedBy = "reservation")
     private List<Note> notes;
+
+    @OneToMany(mappedBy = "reservation")
+    private List<Measurement> measurements;
+
+    @OneToMany(mappedBy = "reservation")
+    private List<DressSelection> dress_selections;
 }
