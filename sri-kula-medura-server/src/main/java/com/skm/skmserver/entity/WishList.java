@@ -26,5 +26,5 @@ public class WishList {
     private Item item;
 
     @ManyToOne
-    private User user;
+    private Customer customer;
 }
