@@ -1,0 +1,404 @@
+.box {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.box .section-wrapper {
+    border: 0px none;
+    height: 634px;
+    overflow-x: hidden;
+    width: 1440px;
+}
+
+.box .section {
+    height: 634px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 1450px;
+}
+
+.box .overlap-group {
+    background-color: #c9e8e0;
+    height: 634px;
+    position: relative;
+    width: 1440px;
+}
+
+.box .text-wrapper {
+    color: #378b75;
+    font-family: "Roboto-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    height: 57px;
+    left: 74px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 41px;
+    width: 352px;
+}
+
+.box .div {
+    color: #378b75;
+    font-family: "Roboto-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    height: 57px;
+    left: 471px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 41px;
+    width: 352px;
+}
+
+.box .text-wrapper-2 {
+    color: #378b75;
+    font-family: "Roboto-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    height: 57px;
+    left: 868px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 41px;
+    width: 352px;
+}
+
+.box .flex-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    height: 250px;
+    left: 73px;
+    position: absolute;
+    top: 119px;
+    width: 313px;
+}
+
+.box .text {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .span {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .span-wrapper {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-3 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-2 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-4 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-3 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-5 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-4 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-6 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-5 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-7 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .flex-container-2 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    height: 265px;
+    left: 473px;
+    position: absolute;
+    top: 119px;
+    width: 313px;
+}
+
+.box .text-6 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-8 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-7 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-9 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-8 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-10 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-9 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-11 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-10 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-12 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-11 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-13 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-12 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-14 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-13 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-15 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .text-14 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    white-space: nowrap;
+    width: 313px;
+}
+
+.box .text-wrapper-16 {
+    color: #000000;
+    font-family: "Roboto-Medium", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.box .rectangle {
+    height: 500px;
+    left: 865px;
+    object-fit: cover;
+    position: absolute;
+    top: 98px;
+    width: 500px;
+}
