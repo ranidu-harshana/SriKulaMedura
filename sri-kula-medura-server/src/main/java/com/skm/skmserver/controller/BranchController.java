@@ -1,6 +1,6 @@
 package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.BranchDTO;
-import com.skm.skmserver.service.BranchService;
+import com.skm.skmserver.service.serviceImpl.BranchServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,24 +9,40 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class BranchController {
     @Autowired
-    private BranchService branchService;
+    private BranchServiceImpl branchServiceImpl;
 
-    @GetMapping("/get")
-    public String getBranch(){
+    @GetMapping("/")
+    public String index(){
         return "branch";
     }
-    @PostMapping("/save")
-    public BranchDTO saveBranch(@RequestBody BranchDTO branchDTO){
-        return branchService.saveBranch(branchDTO);
+
+    @PostMapping("/")
+    public BranchDTO store(@RequestBody BranchDTO branchDTO){
+        return branchServiceImpl.saveBranch(branchDTO);
     }
 
-    @PutMapping("/update")
-    public String updateBranch(){
+    @GetMapping("/create")
+    public String create(){
+        return "";
+    }
+
+    @GetMapping("/{branch}")
+    public String show(@PathVariable int id){
+        return "";
+    }
+
+    @PutMapping("/{branch}")
+    public String update(@RequestBody Object object, @PathVariable int id){
         return "update";
     }
 
-    @DeleteMapping("/delete")
-    public String deleteBranch(){
+    @DeleteMapping("/{branch}")
+    public String delete(@PathVariable int id){
         return "delete";
+    }
+
+    @GetMapping("/{branch}/edit")
+    public String edit(@PathVariable int id){
+        return "edit";
     }
 }
