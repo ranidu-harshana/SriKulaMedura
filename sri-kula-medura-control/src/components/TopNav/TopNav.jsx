@@ -16,7 +16,7 @@ import {useContext} from "react";
 import {controlActivity} from "../../context/ControlActivity";
 import Avatar from "@mui/material/Avatar";
 import {Divider, ListItemIcon} from "@mui/material";
-import {Logout, PersonAdd, Settings} from "@mui/icons-material";
+import {Logout, Settings} from "@mui/icons-material";
 
 const TopNav =()=> {
     const [anchorEl, setAnchorEl] = React.useState(null);
