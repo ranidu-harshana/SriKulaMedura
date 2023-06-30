@@ -26,22 +26,22 @@ public class BranchController {
         return "";
     }
 
-    @GetMapping("/{branch}")
+    @GetMapping("/{id}")
     public String show(@PathVariable int id){
-        return "";
+        return "Id : "  + id;
     }
 
-    @PutMapping("/{branch}")
-    public String update(@RequestBody Object object, @PathVariable int id){
-        return "update";
+    @PutMapping("/{id}")
+    public String update(@RequestBody BranchDTO branchDTO, @PathVariable int id){
+        return "update: " + id;
     }
 
-    @DeleteMapping("/{branch}")
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable int id){
         return "delete";
     }
 
-    @GetMapping("/{branch}/edit")
+    @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id){
         return "edit";
     }

@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import java.util.Date;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
 public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
