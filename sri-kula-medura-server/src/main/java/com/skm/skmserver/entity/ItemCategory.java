@@ -30,6 +30,6 @@ public class ItemCategory {
     @CreationTimestamp
     private Date updated_at;
 
-    @OneToMany(mappedBy = "item_category")
-    private List<Item> items;
+//    @OneToMany(mappedBy = "item_category")
+//    private List<Item> items;
 }
