@@ -10,21 +10,10 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 public class BranchDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
-
     private boolean status;
-
     private String prefix;
-
-    @Column(nullable = false, updatable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
-    @CreationTimestamp
     private Date created_at;
-
-    @Column(nullable = false, updatable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
-    @CreationTimestamp
     private Date updated_at;
 }

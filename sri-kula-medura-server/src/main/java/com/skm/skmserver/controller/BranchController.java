@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "api/v1/branch")
 @CrossOrigin
 public class BranchController {
-    private BranchServiceImpl branchServiceImpl;
+    private final BranchServiceImpl branchServiceImpl;
 
     public BranchController(BranchServiceImpl branchServiceImpl) {
         this.branchServiceImpl = branchServiceImpl;
