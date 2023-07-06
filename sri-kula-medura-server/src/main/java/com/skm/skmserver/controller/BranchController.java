@@ -1,7 +1,6 @@
 package com.skm.skmserver.controller;
-import com.skm.skmserver.dto.BranchDTO;
+import com.skm.skmserver.dto.Branch.BranchDTO;
 import com.skm.skmserver.service.serviceImpl.BranchServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

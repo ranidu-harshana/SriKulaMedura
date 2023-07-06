@@ -1,6 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.BranchDTO;
+import com.skm.skmserver.dto.Branch.BranchDTO;
 import com.skm.skmserver.entity.Branch;
 import com.skm.skmserver.repo.BranchRepo;
 import com.skm.skmserver.service.BranchService;
