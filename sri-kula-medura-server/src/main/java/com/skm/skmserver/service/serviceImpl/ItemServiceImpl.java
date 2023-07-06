@@ -1,6 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.ItemDTO;
+import com.skm.skmserver.dto.Item.ItemDTO;
+import com.skm.skmserver.dto.Item.UpdateItemDTO;
 import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.repo.ItemCategoryRepository;
 import com.skm.skmserver.repo.ItemRepository;
@@ -8,8 +9,9 @@ import com.skm.skmserver.service.ItemService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -39,8 +41,19 @@ public class ItemServiceImpl implements ItemService {
         return modelMapper.map(itemRepository.findById(id), ItemDTO.class);
     }
 
-    public ItemDTO updateItem(ItemDTO itemDTO, int id) {
-        // TODO need to implement
-        return null;
+    public ItemDTO updateItem(UpdateItemDTO itemDTO, int id) {
+        Item item = itemRepository.findById(id);
+        modelMapper.map(itemDTO, item);
+        item.setItem_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()));
+        item.setUpdated_at(Date.valueOf(LocalDate.now()));
+        return modelMapper.map(itemRepository.save(item), ItemDTO.class);
+    }
+
+    public boolean deleteItem(int id) {
+        if (itemRepository.findById(id) == null) {
+            return false;
+        }
+        itemRepository.deleteById(id);
+        return true;
     }
 }
