@@ -1,16 +1,14 @@
 package com.skm.skmserver.controller;
 
-import com.skm.skmserver.dto.BranchDTO;
-import com.skm.skmserver.dto.ItemDTO;
-import com.skm.skmserver.entity.Item;
-import com.skm.skmserver.repo.ItemRepository;
+import com.skm.skmserver.dto.Item.ItemDTO;
+import com.skm.skmserver.dto.Item.UpdateItemDTO;
 import com.skm.skmserver.service.serviceImpl.ItemServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/v1/items")
+@RequestMapping(value = "api/v1/item")
 public class ItemController {
     private final ItemServiceImpl itemService;
     public ItemController(ItemServiceImpl itemService) {
@@ -38,13 +36,16 @@ public class ItemController {
     }
 
     @PutMapping("/{id}")
-    public ItemDTO update(@RequestBody ItemDTO itemDTO, @PathVariable int id){
+    public ItemDTO update(@RequestBody UpdateItemDTO itemDTO, @PathVariable int id){
         return itemService.updateItem(itemDTO, id);
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable int id){
-        return "delete";
+        if(itemService.deleteItem(id)){
+            return "Item deleted successfully";
+        }
+        return "Item delete failed";
     }
 
     @GetMapping("/{id}/edit")
