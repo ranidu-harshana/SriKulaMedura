@@ -1,4 +1,4 @@
-package com.skm.skmserver.dto;
+package com.skm.skmserver.dto.Branch;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

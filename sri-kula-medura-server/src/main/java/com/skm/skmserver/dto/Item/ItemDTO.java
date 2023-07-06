@@ -1,4 +1,4 @@
-package com.skm.skmserver.dto;
+package com.skm.skmserver.dto.Item;
 
 import com.skm.skmserver.entity.ItemCategory;
 import lombok.AllArgsConstructor;
@@ -18,6 +18,6 @@ public class ItemDTO {
     private String item_image_url;
     private Date created_at;
     private Date updated_at;
-    private boolean rented_status; // to check if rented or not
+    private boolean rented_status;
     private ItemCategory item_category;
 }
