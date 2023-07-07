@@ -1,6 +1,12 @@
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+
 const Home = (props) => {
 	return (
-		<div>Home</div>
+		<>
+			<Header/>
+			<Footer/>
+		</>
 	);
 }
 
