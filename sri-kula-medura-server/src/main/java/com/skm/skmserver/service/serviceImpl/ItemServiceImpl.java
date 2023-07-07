@@ -45,7 +45,6 @@ public class ItemServiceImpl implements ItemService {
         Item item = itemRepository.findById(id);
         modelMapper.map(itemDTO, item);
         item.setItem_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()));
-        item.setUpdated_at(Date.valueOf(LocalDate.now()));
         return modelMapper.map(itemRepository.save(item), ItemDTO.class);
     }
 

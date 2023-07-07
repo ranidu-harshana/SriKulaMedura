@@ -5,8 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -27,12 +28,14 @@ public class Customer {
     @Column(nullable = true)
     private int discount;
 
-    @Column(nullable = false, updatable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
+    @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     private Date created_at;
 
-    @Column(nullable = false, columnDefinition = "DATE DEFAULT CURRENT_TIMESTAMP")
-    @CreationTimestamp
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private Date updated_at;
 
     @OneToOne
