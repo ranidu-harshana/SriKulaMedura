@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -31,6 +32,6 @@ public class ItemCategory {
     @UpdateTimestamp
     private Date updated_at;
 
-//    @OneToMany(mappedBy = "item_category")
-//    private List<Item> items;
+    @OneToMany(mappedBy = "itemCategory")
+    private List<Item> items;
 }
