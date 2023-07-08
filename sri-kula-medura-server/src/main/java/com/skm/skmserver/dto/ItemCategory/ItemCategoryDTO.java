@@ -1,10 +1,13 @@
 package com.skm.skmserver.dto.ItemCategory;
 
+import com.skm.skmserver.dto.Item.ItemDTO;
+import com.skm.skmserver.entity.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,4 +17,5 @@ public class ItemCategoryDTO {
     private String category_name;
     private Date created_at;
     private Date updated_at;
+    private List<ItemDTO> items;
 }
