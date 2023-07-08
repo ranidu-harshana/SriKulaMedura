@@ -25,10 +25,10 @@ public class Reservation {
     @Column(nullable = true)
     private String function_place;
 
-    @Column(nullable = true)
+    @Column(nullable = true, columnDefinition = "INT DEFAULT 0")
     private int no_of_bestmen;
 
-    @Column(nullable = true)
+    @Column(nullable = true, columnDefinition = "INT DEFAULT 0")
     private int no_of_pageboys;
 
     @Column(nullable = true)
