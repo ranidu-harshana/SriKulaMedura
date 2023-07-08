@@ -37,7 +37,7 @@ public class Item {
 
     private boolean rented_status; // to check if rented or not
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private ItemCategory item_category;
 
     @OneToMany(mappedBy = "item")

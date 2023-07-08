@@ -1,6 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.ItemCategoryDTO;
+import com.skm.skmserver.dto.ItemCategory.ItemCategoryDTO;
 import com.skm.skmserver.entity.ItemCategory;
 import com.skm.skmserver.repo.ItemCategoryRepository;
 import com.skm.skmserver.service.ItemCategoryService;

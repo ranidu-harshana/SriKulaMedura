@@ -1,4 +1,4 @@
-package com.skm.skmserver.dto;
+package com.skm.skmserver.dto.ItemCategory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,5 +12,4 @@ public class ItemCategoryDTO {
     private String category_name;
     private Date created_at;
     private Date updated_at;
-
 }
