@@ -31,9 +31,11 @@ public class DressSelection {
     @UpdateTimestamp
     private Date updated_at;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Reservation reservation;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Item item;
 }

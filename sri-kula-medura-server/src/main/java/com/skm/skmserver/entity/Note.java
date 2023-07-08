@@ -33,6 +33,7 @@ public class Note {
     @UpdateTimestamp
     private Date updated_at;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Reservation reservation;
 }
