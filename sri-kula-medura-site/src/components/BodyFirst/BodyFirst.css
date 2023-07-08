@@ -1,0 +1,380 @@
+.weddingCoupleImg{
+    width: 60%;
+}
+
+@media screen and (max-width: 576px) {
+    .BodyFirstBox{
+        background-color: #C9E8E0;
+        height: 450px;
+    }
+
+    .weddingCoupleImg{
+        margin-top: -5%;
+    }
+
+    #circleSM1 {
+        width: 40px;
+        height: 40px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 66%;
+        margin-top: 31%;
+    }
+
+    #circleLG1 {
+        width: 60px;
+        height: 60px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 65%;
+        margin-top: 30%;
+    }
+
+    #circleSM2 {
+        width: 30px;
+        height: 30px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 11%;
+        margin-top: 61%;
+    }
+
+    #circleLG2 {
+        width: 50px;
+        height: 50px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 10%;
+        margin-top: 60%;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .BodyFirstBox{
+        background-color: #C9E8E0;
+        height: 400px;
+    }
+
+    .weddingCoupleImg{
+        width: 100%;
+    }
+
+    .bodyTextFirst{
+        margin-top: 30%;
+    }
+
+    #circleSM1 {
+        width: 50px;
+        height: 50px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 48%;
+        margin-top: 3%;
+    }
+
+    #circleLG1 {
+        width: 80px;
+        height: 80px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 47%;
+        margin-top: 2%;
+    }
+
+    #circleSM2 {
+        width: 50px;
+        height: 50px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 11%;
+        margin-top: 31%;
+    }
+
+    #circleLG2 {
+        width: 80px;
+        height: 80px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 10%;
+        margin-top: 30%;
+    }
+
+    #circleSM3 {
+        width: 40px;
+        height: 40px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 85%;
+        margin-top: 31%;
+    }
+
+    #circleLG3 {
+        width: 60px;
+        height: 60px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 84%;
+        margin-top: 30%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .BodyFirstBox{
+        background-color: #C9E8E0;
+        height: 450px;
+
+    }
+
+    .weddingCoupleImg{
+        width: 60%;
+    }
+
+    .bodyTextFirst{
+        margin-top: 0%;
+    }
+
+    #circleSM1 {
+        width: 70px;
+        height: 70px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 51%;
+        margin-top: 3%;
+    }
+
+    #circleLG1 {
+        width: 100px;
+        height: 100px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 50%;
+        margin-top: 2%;
+    }
+
+    #circleSM2 {
+        width: 70px;
+        height: 70px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 11%;
+        margin-top: 16%;
+    }
+
+    #circleLG2 {
+        width: 100px;
+        height: 100px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 10%;
+        margin-top: 15%;
+    }
+
+    #circleSM3 {
+        width: 50px;
+        height: 50px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 5.5%;
+        margin-top: 4%;
+    }
+
+    #circleLG3 {
+        width: 70px;
+        height: 70px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 5%;
+        margin-top: 4%;
+    }
+
+    #circleSM4 {
+        width: 50px;
+        height: 50px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 75.4%;
+        margin-top: 13.2%;
+    }
+
+    #circleLG4 {
+        width: 70px;
+        height: 70px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 75%;
+        margin-top: 13%;
+    }
+
+    #circleSM5 {
+        width: 30px;
+        height: 30px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 40.3%;
+        margin-top: 17.3%;
+    }
+
+    #circleLG5 {
+        width: 50px;
+        height: 50px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 40%;
+        margin-top: 17%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .BodyFirstBox{
+        background-color: #C9E8E0;
+        height: 450px;
+    }
+
+    .weddingCoupleImg{
+        width: 60%;
+    }
+
+    .bodyTextFirst{
+        margin-top: 0%;
+    }
+
+    #circleSM1 {
+        width: 70px;
+        height: 70px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 51%;
+        margin-top: 3%;
+    }
+
+    #circleLG1 {
+        width: 100px;
+        height: 100px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 50%;
+        margin-top: 2%;
+    }
+
+    #circleSM2 {
+        width: 70px;
+        height: 70px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 11%;
+        margin-top: 16%;
+    }
+
+    #circleLG2 {
+        width: 100px;
+        height: 100px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 10%;
+        margin-top: 15%;
+    }
+
+    #circleSM3 {
+        width: 50px;
+        height: 50px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 5.5%;
+        margin-top: 4%;
+    }
+
+    #circleLG3 {
+        width: 70px;
+        height: 70px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 5%;
+        margin-top: 4%;
+    }
+
+    #circleSM4 {
+        width: 50px;
+        height: 50px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 75.4%;
+        margin-top: 13.2%;
+    }
+
+    #circleLG4 {
+        width: 70px;
+        height: 70px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 75%;
+        margin-top: 13%;
+    }
+
+    #circleSM5 {
+        width: 30px;
+        height: 30px;
+        background: rgba(239, 239, 239, 0.69);
+        border-radius: 50%;
+        position: absolute;
+        z-index: 2;
+        margin-left: 40.3%;
+        margin-top: 17.3%;
+    }
+
+    #circleLG5 {
+        width: 50px;
+        height: 50px;
+        background: #7ed4af;
+        border-radius: 50%;
+        position: absolute;
+        margin-left: 40%;
+        margin-top: 17%;
+    }
+}
+
+
+.columnFirst , .columnSecond{
+    z-index: 3;
+}
