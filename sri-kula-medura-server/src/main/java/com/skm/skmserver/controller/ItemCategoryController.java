@@ -1,9 +1,11 @@
 package com.skm.skmserver.controller;
 
-import com.skm.skmserver.dto.Item.ItemDTO;
 import com.skm.skmserver.dto.ItemCategory.ItemCategoryDTO;
+import com.skm.skmserver.dto.ItemCategory.UpdateItemCategoryDTO;
 import com.skm.skmserver.service.serviceImpl.ItemCategoryServiceImpl;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/itemcategory")
@@ -15,8 +17,8 @@ public class ItemCategoryController {
     }
 
     @GetMapping("/")
-    public String index() {
-        return "Item Category";
+    public List<ItemCategoryDTO> index() {
+        return itemCategoryService.allItemCategories();
     }
 
     @PostMapping("/")
@@ -30,18 +32,21 @@ public class ItemCategoryController {
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable int id) {
-        return "Show Item Category :" + id;
+    public ItemCategoryDTO show(@PathVariable int id) {
+        return itemCategoryService.getItemCategory(id);
     }
 
     @PutMapping("/{id}")
-    public String update(@RequestBody ItemDTO itemDTO, @PathVariable int id) {
-        return "Update Item Category :" + id;
+    public ItemCategoryDTO update(@RequestBody UpdateItemCategoryDTO itemCategoryDTO, @PathVariable int id) {
+        return itemCategoryService.updateItemCategory(itemCategoryDTO, id);
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable int id) {
-        return "Delete Item Category :" + id;
+        if(itemCategoryService.deleteItemCategory(id)){
+            return "Item deleted successfully";
+        }
+        return "Item delete failed";
     }
 
     @GetMapping("/{id}/edit")
