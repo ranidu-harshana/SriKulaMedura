@@ -1,9 +1,9 @@
 package com.skm.skmserver.dto.Branch;
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
+
 import java.util.Date;
 
 @NoArgsConstructor

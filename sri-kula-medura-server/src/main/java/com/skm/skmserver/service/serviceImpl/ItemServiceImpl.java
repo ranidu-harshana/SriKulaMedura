@@ -10,8 +10,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -34,9 +32,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     public ItemDTO saveItem(ItemDTO itemDTO){
-        itemDTO.setItem_category(itemCategoryRepository.findById(1));
         Item item = itemRepository.save(modelMapper.map(itemDTO, Item.class));
-        return modelMapper.map(item, ItemDTO.class);
+        item.setItem_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()));
+        ItemDTO dto = modelMapper.map(item, ItemDTO.class);
+        dto.setItem_category_id(itemDTO.getItem_category_id());
+        return dto;
     }
 
     public ItemDTO getItem (int id) {
@@ -47,7 +47,9 @@ public class ItemServiceImpl implements ItemService {
         Item item = itemRepository.findById(id);
         modelMapper.map(itemDTO, item);
         item.setItem_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()));
-        return modelMapper.map(itemRepository.save(item), ItemDTO.class);
+        ItemDTO dto = modelMapper.map(itemRepository.save(item), ItemDTO.class);
+        dto.setItem_category_id(itemDTO.getItem_category_id());
+        return dto;
     }
 
     public boolean deleteItem(int id) {
