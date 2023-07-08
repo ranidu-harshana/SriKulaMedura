@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
 
-export const Footer = () => {
+const Footer = () => {
     return (
         <div className="box">
             <div className="section-wrapper">
