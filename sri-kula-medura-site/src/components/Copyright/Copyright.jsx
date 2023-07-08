@@ -1,7 +1,7 @@
 import React from "react";
 import "./Copyright.css";
 
-export const Copyright = () => {
+const Copyright = () => {
     return (
         <div className="box">
             <div className="section-wrapper">
