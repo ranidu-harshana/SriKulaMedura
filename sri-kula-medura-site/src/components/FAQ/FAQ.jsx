@@ -1,7 +1,7 @@
 import React from "react";
 import "./FAQ.css";
 
-export const FAQ = () => {
+const FAQ = () => {
     return (
         <div className="box">
             <div className="element-wrapper">
