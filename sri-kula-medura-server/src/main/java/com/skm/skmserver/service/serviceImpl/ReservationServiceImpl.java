@@ -1,7 +1,9 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.Item.ItemDTO;
 import com.skm.skmserver.dto.Reservation.ReservationDTO;
 import com.skm.skmserver.dto.Reservation.UpdateReservationDTO;
+import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.ReservationRepository;
@@ -53,12 +55,23 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDTO updateReservation(UpdateReservationDTO noteDTO, int id) {
-        return null;
+    public ReservationDTO updateReservation(UpdateReservationDTO reservationDTO, int id) {
+        Reservation reservation = reservationRepository.findById(id);
+        modelMapper.map(reservationDTO, reservation);
+        reservation.setCustomer(customerRepository.findById(reservationDTO.getCustomer_id()));
+        reservation.setUser(userRepository.findById(reservationDTO.getUser_id()));
+        ReservationDTO dto = modelMapper.map(reservationRepository.save(reservation), ReservationDTO.class);
+        dto.setCustomer_id(reservationDTO.getCustomer_id());
+        dto.setUser_id(reservationDTO.getUser_id());
+        return dto;
     }
 
     @Override
     public boolean deleteReservation(int id) {
-        return false;
+        if (reservationRepository.findById(id) == null) {
+            return false;
+        }
+        reservationRepository.deleteById(id);
+        return true;
     }
 }
