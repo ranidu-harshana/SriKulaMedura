@@ -1,0 +1,79 @@
+.BodySecondBox{
+    background-color: #fafafa;
+    border-top: 8px solid #378B75;
+    border-bottom: 8px solid #378B75;
+}
+
+.button-decoration-2{
+    background-color: #378B75;
+    width: 25%;
+}
+
+.arText{
+    color: #378B75;
+}
+
+@media screen and (max-width: 576px) {
+    .BodySecondBox{
+        height: 400px;
+    }
+
+    .arImg1{
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 576px) {
+    .BodySecondBox{
+        height: 250px;
+    }
+
+    .arText{
+        margin-left: -30%;
+    }
+
+    .arImg1{
+        width: 150%;
+    }
+
+    .cntSection1{
+        margin-top: 3%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .arImg1{
+        margin-left: -40%;
+    }
+
+    .arText{
+        margin-left: -30%;
+    }
+
+    .BodySecondBox{
+        height: 450px;
+    }
+
+    .cntSection1{
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .arText{
+        margin-left: -30%;
+    }
+
+    .arImg1{
+        margin-left: -40%;
+    }
+
+    .BodySecondBox{
+        height: 450px;
+    }
+
+    .cntSection1{
+        margin-top: 0;
+    }
+}
