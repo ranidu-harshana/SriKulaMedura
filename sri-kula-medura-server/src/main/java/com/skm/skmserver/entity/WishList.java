@@ -28,9 +28,11 @@ public class WishList {
     @UpdateTimestamp
     private Date updated_at;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Item item;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Customer customer;
 }

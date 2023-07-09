@@ -1,10 +1,12 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.Item.ItemDTO;
 import com.skm.skmserver.dto.ItemCategory.ItemCategoryDTO;
 import com.skm.skmserver.dto.ItemCategory.UpdateItemCategoryDTO;
 import com.skm.skmserver.entity.ItemCategory;
 import com.skm.skmserver.repo.ItemCategoryRepository;
 import com.skm.skmserver.service.ItemCategoryService;
+import com.skm.skmserver.util.MapAll;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,20 +16,18 @@ import java.util.List;
 @Service
 @Transactional
 public class ItemCategoryServiceImpl implements ItemCategoryService {
-
     private final ItemCategoryRepository itemCategoryRepository;
-
     private final ModelMapper modelMapper;
+    private final MapAll<ItemCategory, ItemCategoryDTO> mapAll;
 
-    public ItemCategoryServiceImpl(ItemCategoryRepository itemCategoryRepository,ModelMapper modelMapper){
+    public ItemCategoryServiceImpl(ItemCategoryRepository itemCategoryRepository, ModelMapper modelMapper, MapAll<ItemCategory, ItemCategoryDTO> mapAll){
         this.itemCategoryRepository=itemCategoryRepository;
         this.modelMapper=modelMapper;
+        this.mapAll = mapAll;
     }
 
     public List<ItemCategoryDTO> allItemCategories() {
-        return itemCategoryRepository.findAll()
-                .stream()
-                .map(itemCategory -> modelMapper.map(itemCategory, ItemCategoryDTO.class)).toList();
+        return mapAll.mapAllEntities(itemCategoryRepository.findAll(), ItemCategoryDTO.class);
     }
 
     public ItemCategoryDTO saveItemCategory(ItemCategoryDTO itemCategoryDTO){

@@ -38,7 +38,7 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public BranchDTO updateItemCategory(UpdateBranchDTO branchDTO, int id) {
+    public BranchDTO updateBranch(UpdateBranchDTO branchDTO, int id) {
         return null;
     }
 

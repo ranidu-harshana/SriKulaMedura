@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,15 +20,15 @@ public class Reservation {
     private String bill_number;
 
     @Column(nullable = true)
-    private Date function_date;
+    private LocalDate function_date;
 
     @Column(nullable = true)
     private String function_place;
 
-    @Column(nullable = true)
+    @Column(nullable = true, columnDefinition = "INT DEFAULT 0")
     private int no_of_bestmen;
 
-    @Column(nullable = true)
+    @Column(nullable = true, columnDefinition = "INT DEFAULT 0")
     private int no_of_pageboys;
 
     @Column(nullable = true)
@@ -40,7 +41,7 @@ public class Reservation {
     private boolean status;
 
     @Column(nullable = true)
-    private Date measurement_date;
+    private LocalDate measurement_date;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -61,9 +62,11 @@ public class Reservation {
     @OneToMany(mappedBy = "reservation")
     private List<DressSelection> dress_selections;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Customer customer;
 }

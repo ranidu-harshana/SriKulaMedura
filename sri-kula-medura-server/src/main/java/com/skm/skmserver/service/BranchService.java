@@ -11,6 +11,6 @@ public interface BranchService {
     List<BranchDTO> allBranches();
     BranchDTO saveBranch(BranchDTO branchDTO);
     BranchDTO getBranch (int id);
-    BranchDTO updateItemCategory(UpdateBranchDTO branchDTO, int id);
+    BranchDTO updateBranch(UpdateBranchDTO branchDTO, int id);
     boolean deleteBranch(int id);
 }
