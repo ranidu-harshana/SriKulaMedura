@@ -33,8 +33,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     public ItemDTO saveItem(ItemDTO itemDTO){
-        Item item = itemRepository.save(modelMapper.map(itemDTO, Item.class));
+        Item item = modelMapper.map(itemDTO, Item.class);
         item.setItem_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()));
+        itemRepository.save(item);
         ItemDTO dto = modelMapper.map(item, ItemDTO.class);
         dto.setItem_category_id(itemDTO.getItem_category_id());
         return dto;
