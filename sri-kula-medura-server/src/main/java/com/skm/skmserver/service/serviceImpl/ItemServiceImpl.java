@@ -6,6 +6,7 @@ import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.repo.ItemCategoryRepository;
 import com.skm.skmserver.repo.ItemRepository;
 import com.skm.skmserver.service.ItemService;
+import com.skm.skmserver.util.MapAll;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,17 +19,17 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final ItemCategoryRepository itemCategoryRepository;
     private final ModelMapper modelMapper;
+    private final MapAll<Item, ItemDTO> mapAll;
 
-    public ItemServiceImpl(ItemRepository itemRepository, ItemCategoryRepository itemCategoryRepository, ModelMapper modelMapper) {
+    public ItemServiceImpl(ItemRepository itemRepository, ItemCategoryRepository itemCategoryRepository, ModelMapper modelMapper, MapAll<Item, ItemDTO> mapAll) {
         this.itemRepository = itemRepository;
         this.itemCategoryRepository = itemCategoryRepository;
         this.modelMapper = modelMapper;
+        this.mapAll = mapAll;
     }
 
     public List<ItemDTO> allItems() {
-        return itemRepository.findAll()
-                .stream()
-                .map(item -> modelMapper.map(item, ItemDTO.class)).toList();
+        return mapAll.mapAllEntities(itemRepository.findAll(), ItemDTO.class);
     }
 
     public ItemDTO saveItem(ItemDTO itemDTO){
