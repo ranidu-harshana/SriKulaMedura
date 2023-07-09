@@ -1,11 +1,12 @@
 import useravatar from "../../assets/chat/patient-thumb-02.jpg";
 import {Link} from "react-router-dom";
+import RoundedImage from "../RoundedImage/RoundedImage";
 
 const ChatHeader = (props) => {
 	return (<>
 		<div className="d-flex p-2 chat-header">
 			<div style={{width: "45px"}} className={`my-1 ms-3`}>
-				<img src={useravatar} width="100%" alt="" className="rounded-circle"/>
+				<RoundedImage width={100} userAvatar={useravatar}/>
 			</div>
 			<div className="mx-2 my-1">
 				<Link to={``} className={`text-decoration-none`}>
