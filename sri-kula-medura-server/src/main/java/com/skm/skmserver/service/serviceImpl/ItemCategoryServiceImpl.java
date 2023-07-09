@@ -16,7 +16,6 @@ import java.util.List;
 @Service
 @Transactional
 public class ItemCategoryServiceImpl implements ItemCategoryService {
-
     private final ItemCategoryRepository itemCategoryRepository;
     private final ModelMapper modelMapper;
     private final MapAll<ItemCategory, ItemCategoryDTO> mapAll;
