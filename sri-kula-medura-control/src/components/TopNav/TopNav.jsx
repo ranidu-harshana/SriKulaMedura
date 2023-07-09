@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useContext} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,7 +13,6 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import {useContext} from "react";
 import {controlActivity} from "../../context/ControlActivity";
 import Avatar from "@mui/material/Avatar";
 import {Divider, ListItemIcon} from "@mui/material";
