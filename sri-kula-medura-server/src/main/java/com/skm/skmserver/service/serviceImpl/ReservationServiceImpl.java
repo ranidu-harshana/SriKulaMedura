@@ -1,9 +1,11 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.Item.ItemDTO;
 import com.skm.skmserver.dto.Reservation.ReservationDTO;
 import com.skm.skmserver.dto.Reservation.UpdateReservationDTO;
+import com.skm.skmserver.entity.Reservation;
+import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.ReservationRepository;
+import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.ReservationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,14 @@ import java.util.List;
 @Transactional
 public class ReservationServiceImpl implements ReservationService {
     private final ReservationRepository reservationRepository;
+    private final CustomerRepository customerRepository;
+    private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
-    public ReservationServiceImpl(ReservationRepository reservationRepository, ModelMapper modelMapper) {
+    public ReservationServiceImpl(ReservationRepository reservationRepository, CustomerRepository customerRepository, UserRepository userRepository, ModelMapper modelMapper) {
         this.reservationRepository = reservationRepository;
+        this.customerRepository = customerRepository;
+        this.userRepository = userRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -30,8 +36,15 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDTO saveReservation(ReservationDTO noteDTO) {
-        return null;
+    public ReservationDTO saveReservation(ReservationDTO reservationDTO) {
+        Reservation reservation = modelMapper.map(reservationDTO, Reservation.class);
+        reservation.setCustomer(customerRepository.findById(reservationDTO.getCustomer_id()));
+        reservation.setUser(userRepository.findById(reservationDTO.getUser_id()));
+        reservationRepository.save(reservation);
+        ReservationDTO dto = modelMapper.map(reservation, ReservationDTO.class);
+        dto.setCustomer_id(reservationDTO.getCustomer_id());
+        dto.setUser_id(reservationDTO.getUser_id());
+        return dto;
     }
 
     @Override
