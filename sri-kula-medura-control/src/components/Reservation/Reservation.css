@@ -1,0 +1,34 @@
+.amount-to-be-paid {
+    color: #009efb;
+    font-weight: bold;
+}
+
+.image-width {
+    width: 100%;
+}
+
+.text-details {
+    font-size: 15px;
+}
+
+.left-border {
+    border-left-style: dashed;
+    border-left-color: #9FA6B2;
+    border-left-width: 2px;
+}
+
+@media screen and (max-width: 768px) {
+    .image-width {
+        width: 50%;
+    }
+
+    .text-details {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .left-border {
+        border: none;
+    }
+}
