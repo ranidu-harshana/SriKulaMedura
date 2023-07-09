@@ -9,6 +9,7 @@ import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.ReservationService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,18 +18,12 @@ import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class ReservationServiceImpl implements ReservationService {
     private final ReservationRepository reservationRepository;
     private final CustomerRepository customerRepository;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-
-    public ReservationServiceImpl(ReservationRepository reservationRepository, CustomerRepository customerRepository, UserRepository userRepository, ModelMapper modelMapper) {
-        this.reservationRepository = reservationRepository;
-        this.customerRepository = customerRepository;
-        this.userRepository = userRepository;
-        this.modelMapper = modelMapper;
-    }
 
     @Override
     public List<ReservationDTO> allReservations() {

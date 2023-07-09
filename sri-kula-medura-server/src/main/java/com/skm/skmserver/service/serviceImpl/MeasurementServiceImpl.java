@@ -3,6 +3,7 @@ package com.skm.skmserver.service.serviceImpl;
 import com.skm.skmserver.dto.Measurement.MeasurementDTO;
 import com.skm.skmserver.dto.Measurement.UpdateMeasurementDTO;
 import com.skm.skmserver.service.MeasurementService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class MeasurementServiceImpl implements MeasurementService {
     @Override
     public List<MeasurementDTO> allMeasurements() {

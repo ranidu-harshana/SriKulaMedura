@@ -3,6 +3,7 @@ package com.skm.skmserver.service.serviceImpl;
 import com.skm.skmserver.dto.DressSelection.DressSelectionDTO;
 import com.skm.skmserver.dto.DressSelection.UpdateDressSelectionDTO;
 import com.skm.skmserver.service.DressSelectionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class DressSelectionServiceImpl implements DressSelectionService {
     @Override
     public List<DressSelectionDTO> allDressSelections() {

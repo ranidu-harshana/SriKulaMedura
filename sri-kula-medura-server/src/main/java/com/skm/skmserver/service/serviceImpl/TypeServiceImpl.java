@@ -3,6 +3,7 @@ package com.skm.skmserver.service.serviceImpl;
 import com.skm.skmserver.dto.Type.TypeDTO;
 import com.skm.skmserver.dto.Type.UpdateTypeDTO;
 import com.skm.skmserver.service.TypeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class TypeServiceImpl implements TypeService {
     @Override
     public List<TypeDTO> allTypes() {
