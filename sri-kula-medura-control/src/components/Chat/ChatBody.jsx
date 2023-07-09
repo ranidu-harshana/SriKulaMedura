@@ -4,6 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import GoogleIcon from '@mui/icons-material/Google';
 import './Chat.css'
 import ChatUserDetails from "./ChatUserDetails";
+import RoundedImage from "../RoundedImage/RoundedImage";
 
 const ChatBody = (props) => {
 	const wHeight = window.innerHeight;
@@ -84,7 +85,7 @@ const ChatBody = (props) => {
 
 			<div className={'chat-user-details'}>
 				<div className="text-center">
-					<img className={'rounded-circle'} src={useravatar} alt=""/>
+					<RoundedImage userAvatar={useravatar}/>
 					<h4 className={'mt-2'}>Sachini Deepashika</h4>
 				</div>
 

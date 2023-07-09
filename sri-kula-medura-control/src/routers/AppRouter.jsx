@@ -12,6 +12,9 @@ import AdminLogin from "../components/Login/AdminLogin";
 import UserLogin from "../components/Login/UserLogin";
 import ChatLayout from "../layouts/ChatLayout";
 import Chat from "../components/Chat/Chat";
+import CreateReservation from "../pages/Reservation/CreateReservation";
+import AllReservations from "../pages/Reservation/AllReservations";
+import ReservationProfile from "../pages/Reservation/ReservationProfile";
 
 const router = createBrowserRouter([
 	{
@@ -45,6 +48,18 @@ const router = createBrowserRouter([
 			{
 				path: "employeelist",
 				element: <EmployeesList />
+			},
+			{
+				path: "reservation",
+				element: <CreateReservation />
+			},
+			{
+				path: "allreservations",
+				element: <AllReservations />
+			},
+			{
+				path: "reservation/:id",
+				element: <ReservationProfile />
 			},
 			// {
 			// 	element: <UserProtected />,

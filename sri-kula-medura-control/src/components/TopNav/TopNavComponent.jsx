@@ -1,4 +1,3 @@
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import DomainIcon from "@mui/icons-material/Domain";
 import PeopleIcon from "@mui/icons-material/People";
 import * as React from "react";
