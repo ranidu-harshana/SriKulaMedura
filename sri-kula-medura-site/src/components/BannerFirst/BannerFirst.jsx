@@ -1,8 +1,8 @@
 import React from 'react';
-import './BodyFirst.css';
+import './BannerFirst.css';
 import weddingCouple from '../../assets/Body/weddingCouple.png';
-import zIndex from "@mui/material/styles/zIndex";
-const BodyFirst = (props) =>{
+
+const BannerFirst = (props) =>{
     return(
         <>
         <containor fluid>
@@ -36,4 +36,4 @@ const BodyFirst = (props) =>{
     );
 }
 
-export default BodyFirst;
+export default BannerFirst;
