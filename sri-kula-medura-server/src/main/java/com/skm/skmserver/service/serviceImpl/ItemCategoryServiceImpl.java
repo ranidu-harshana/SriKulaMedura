@@ -19,8 +19,9 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
         this.modelMapper=modelMapper;
     }
 
-    public ItemCategoryDTO saveItemCategory(ItemCategoryDTO itemCategoryDTO){
-        itemCategoryRepository.save(modelMapper.map(itemCategoryDTO, ItemCategory.class));
-        return itemCategoryDTO;
+    public ItemCategoryDTO saveItemCategory(ItemCategoryDTO itemCategoryDTO) {
+        ItemCategory itemCategory = modelMapper.map(itemCategoryDTO, ItemCategory.class);
+        ItemCategory savedItemCategory = itemCategoryRepository.save(itemCategory);
+        return modelMapper.map(savedItemCategory, ItemCategoryDTO.class);
     }
 }
