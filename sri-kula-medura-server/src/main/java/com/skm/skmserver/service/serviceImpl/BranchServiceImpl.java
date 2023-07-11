@@ -43,4 +43,9 @@ public class BranchServiceImpl implements BranchService {
     public boolean deleteBranch(int id) {
         return false;
     }
+
+    @Override
+    public BranchDTO getBranchDTOWithValues(Branch item) {
+        return null;
+    }
 }

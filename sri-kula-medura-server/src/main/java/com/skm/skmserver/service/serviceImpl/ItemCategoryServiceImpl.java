@@ -1,7 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.ItemCategory.ItemCategoryDTO;
-import com.skm.skmserver.dto.ItemCategory.UpdateItemCategoryDTO;
 import com.skm.skmserver.entity.ItemCategory;
 import com.skm.skmserver.repo.ItemCategoryRepository;
 import com.skm.skmserver.service.ItemCategoryService;
@@ -35,7 +34,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
         return modelMapper.map(itemCategoryRepository.findById(id), ItemCategoryDTO.class);
     }
 
-    public ItemCategoryDTO updateItemCategory(UpdateItemCategoryDTO itemCategoryDTO, int id) {
+    public ItemCategoryDTO updateItemCategory(ItemCategoryDTO itemCategoryDTO, int id) {
         ItemCategory category = itemCategoryRepository.findById(id);
         category.setCategory_name(itemCategoryDTO.getCategory_name());
         return modelMapper.map(itemCategoryRepository.save(category), ItemCategoryDTO.class);
@@ -47,5 +46,10 @@ public class ItemCategoryServiceImpl implements ItemCategoryService {
         }
         itemCategoryRepository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public ItemCategoryDTO getItemCategoryDTOWithValues(ItemCategory itemCategory) {
+        return null;
     }
 }

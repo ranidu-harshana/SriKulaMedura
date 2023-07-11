@@ -1,7 +1,6 @@
 package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.ItemCategory.ItemCategoryDTO;
-import com.skm.skmserver.dto.ItemCategory.UpdateItemCategoryDTO;
 import com.skm.skmserver.service.serviceImpl.ItemCategoryServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +36,7 @@ public class ItemCategoryController {
     }
 
     @PutMapping("/{id}")
-    public ItemCategoryDTO update(@RequestBody UpdateItemCategoryDTO itemCategoryDTO, @PathVariable int id) {
+    public ItemCategoryDTO update(@RequestBody ItemCategoryDTO itemCategoryDTO, @PathVariable int id) {
         return itemCategoryService.updateItemCategory(itemCategoryDTO, id);
     }
 

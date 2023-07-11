@@ -67,4 +67,9 @@ public class ReservationServiceImpl implements ReservationService {
         reservationRepository.deleteById(id);
         return true;
     }
+
+    @Override
+    public ReservationDTO getReservationDTOWithValues(Reservation reservation) {
+        return null;
+    }
 }
