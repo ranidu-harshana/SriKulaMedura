@@ -1,6 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.DressSelection.DressSelectionDTO;
+import com.skm.skmserver.dto.DressSelectionDTO;
 import com.skm.skmserver.dto.DressSelection.UpdateDressSelectionDTO;
 import com.skm.skmserver.service.DressSelectionService;
 import lombok.RequiredArgsConstructor;

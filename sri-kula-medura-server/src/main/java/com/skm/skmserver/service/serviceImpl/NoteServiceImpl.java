@@ -1,6 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.Note.NoteDTO;
+import com.skm.skmserver.dto.NoteDTO;
 import com.skm.skmserver.dto.Note.UpdateNoteDTO;
 import com.skm.skmserver.service.NoteService;
 import lombok.RequiredArgsConstructor;

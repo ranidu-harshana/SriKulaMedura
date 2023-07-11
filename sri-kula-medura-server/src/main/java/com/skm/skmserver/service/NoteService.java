@@ -1,7 +1,7 @@
 package com.skm.skmserver.service;
 
 
-import com.skm.skmserver.dto.Note.NoteDTO;
+import com.skm.skmserver.dto.NoteDTO;
 import com.skm.skmserver.dto.Note.UpdateNoteDTO;
 
 import java.util.List;

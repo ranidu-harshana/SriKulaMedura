@@ -1,6 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.Type.TypeDTO;
+import com.skm.skmserver.dto.TypeDTO;
 import com.skm.skmserver.dto.Type.UpdateTypeDTO;
 import com.skm.skmserver.service.TypeService;
 import lombok.RequiredArgsConstructor;

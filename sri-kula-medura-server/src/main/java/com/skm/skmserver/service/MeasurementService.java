@@ -1,6 +1,6 @@
 package com.skm.skmserver.service;
 
-import com.skm.skmserver.dto.Measurement.MeasurementDTO;
+import com.skm.skmserver.dto.MeasurementDTO;
 import com.skm.skmserver.dto.Measurement.UpdateMeasurementDTO;
 
 import java.util.List;
