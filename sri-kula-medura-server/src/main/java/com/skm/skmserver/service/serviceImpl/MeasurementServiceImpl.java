@@ -1,7 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.Measurement.MeasurementDTO;
-import com.skm.skmserver.dto.Measurement.UpdateMeasurementDTO;
+import com.skm.skmserver.dto.MeasurementDTO;
+import com.skm.skmserver.entity.Measurement;
 import com.skm.skmserver.service.MeasurementService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,12 +29,17 @@ public class MeasurementServiceImpl implements MeasurementService {
     }
 
     @Override
-    public MeasurementDTO updateMeasurement(UpdateMeasurementDTO measurementDTO, int id) {
+    public MeasurementDTO updateMeasurement(MeasurementDTO measurementDTO, int id) {
         return null;
     }
 
     @Override
     public boolean deleteMeasurement(int id) {
         return false;
+    }
+
+    @Override
+    public MeasurementDTO getMeasurementDTOWithValues(Measurement measurement) {
+        return null;
     }
 }

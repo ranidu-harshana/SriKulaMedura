@@ -1,7 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.NoteDTO;
-import com.skm.skmserver.dto.Note.UpdateNoteDTO;
+import com.skm.skmserver.entity.Note;
 import com.skm.skmserver.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,12 +30,17 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public NoteDTO updateNote(UpdateNoteDTO noteDTO, int id) {
+    public NoteDTO updateNote(NoteDTO noteDTO, int id) {
         return null;
     }
 
     @Override
     public boolean deleteNote(int id) {
         return false;
+    }
+
+    @Override
+    public NoteDTO getNoteDTOWithValues(Note note) {
+        return null;
     }
 }

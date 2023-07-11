@@ -1,7 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.TypeDTO;
-import com.skm.skmserver.dto.Type.UpdateTypeDTO;
+import com.skm.skmserver.entity.Type;
 import com.skm.skmserver.service.TypeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,12 +29,17 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
-    public TypeDTO updateType(UpdateTypeDTO noteDTO, int id) {
+    public TypeDTO updateType(TypeDTO noteDTO, int id) {
         return null;
     }
 
     @Override
     public boolean deleteType(int id) {
         return false;
+    }
+
+    @Override
+    public TypeDTO getTypeDTOWithValues(Type type) {
+        return null;
     }
 }

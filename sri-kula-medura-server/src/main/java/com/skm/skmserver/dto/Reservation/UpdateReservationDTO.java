@@ -1,15 +1,9 @@
 package com.skm.skmserver.dto.Reservation;
 
-import com.skm.skmserver.dto.DressSelection.DressSelectionDTO;
-import com.skm.skmserver.dto.Measurement.MeasurementDTO;
-import com.skm.skmserver.dto.Note.NoteDTO;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 @NoArgsConstructor
 @Data

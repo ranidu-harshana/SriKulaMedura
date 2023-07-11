@@ -1,7 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.DressSelectionDTO;
-import com.skm.skmserver.dto.DressSelection.UpdateDressSelectionDTO;
+import com.skm.skmserver.entity.DressSelection;
 import com.skm.skmserver.service.DressSelectionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,12 +29,17 @@ public class DressSelectionServiceImpl implements DressSelectionService {
     }
 
     @Override
-    public DressSelectionDTO updateDressSelection(UpdateDressSelectionDTO branchDTO, int id) {
+    public DressSelectionDTO updateDressSelection(DressSelectionDTO branchDTO, int id) {
         return null;
     }
 
     @Override
     public boolean deleteDressSelection(int id) {
         return false;
+    }
+
+    @Override
+    public DressSelectionDTO getDressSelectionDTOWithValues(DressSelection dressSelection) {
+        return null;
     }
 }
