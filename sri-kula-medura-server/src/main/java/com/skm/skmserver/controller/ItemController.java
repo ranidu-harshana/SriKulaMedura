@@ -1,7 +1,6 @@
 package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.ItemDTO;
-import com.skm.skmserver.dto.Item.UpdateItemDTO;
 import com.skm.skmserver.service.serviceImpl.ItemServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
