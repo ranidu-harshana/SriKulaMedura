@@ -1,7 +1,6 @@
 package com.skm.skmserver.dto.ItemCategory;
 
-import com.skm.skmserver.dto.Item.ItemDTO;
-import com.skm.skmserver.entity.Item;
+import com.skm.skmserver.dto.ItemDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

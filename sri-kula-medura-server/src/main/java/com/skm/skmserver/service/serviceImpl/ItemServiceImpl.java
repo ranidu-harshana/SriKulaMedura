@@ -1,6 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.Item.ItemDTO;
+import com.skm.skmserver.dto.ItemDTO;
 import com.skm.skmserver.dto.Item.UpdateItemDTO;
 import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.repo.ItemCategoryRepository;
@@ -20,7 +20,6 @@ import java.util.List;
 public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final ItemCategoryRepository itemCategoryRepository;
-    private final ModelMapper modelMapper;
     private final MapAll<Item, ItemDTO> mapAll;
 
     public List<ItemDTO> allItems() {
@@ -28,25 +27,31 @@ public class ItemServiceImpl implements ItemService {
     }
 
     public ItemDTO saveItem(ItemDTO itemDTO){
-        Item item = modelMapper.map(itemDTO, Item.class);
-        item.setItem_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()));
-        itemRepository.save(item);
-        ItemDTO dto = modelMapper.map(item, ItemDTO.class);
-        dto.setItem_category_id(itemDTO.getItem_category_id());
-        return dto;
+        Item item = itemRepository.save(Item.builder()
+                .item_code(itemDTO.getItem_code())
+                .item_name(itemDTO.getItem_name())
+                .item_type(itemDTO.getItem_type())
+                .item_image_url(itemDTO.getItem_image_url())
+                .item_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()))
+                .build());
+        return getItemDTOWithValues(item);
     }
 
     public ItemDTO getItem (int id) {
-        return modelMapper.map(itemRepository.findById(id), ItemDTO.class);
+        Item item = itemRepository.findById(id);
+        return getItemDTOWithValues(item);
     }
 
-    public ItemDTO updateItem(UpdateItemDTO itemDTO, int id) {
+    public ItemDTO updateItem(ItemDTO itemDTO, int id) {
         Item item = itemRepository.findById(id);
-        modelMapper.map(itemDTO, item);
-        item.setItem_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()));
-        ItemDTO dto = modelMapper.map(itemRepository.save(item), ItemDTO.class);
-        dto.setItem_category_id(itemDTO.getItem_category_id());
-        return dto;
+        return getItemDTOWithValues(itemRepository.save(Item.builder()
+                .id(item.getId())
+                .item_code(item.getItem_code())
+                .item_name(itemDTO.getItem_name())
+                .item_type(itemDTO.getItem_type())
+                .item_image_url(itemDTO.getItem_image_url())
+                .item_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()))
+                .build()));
     }
 
     public boolean deleteItem(int id) {
@@ -55,5 +60,18 @@ public class ItemServiceImpl implements ItemService {
         }
         itemRepository.deleteById(id);
         return true;
+    }
+
+    public ItemDTO getItemDTOWithValues(Item item) {
+        return ItemDTO.builder()
+                .id(item.getId())
+                .item_code(item.getItem_code())
+                .item_name(item.getItem_name())
+                .item_type(item.getItem_type())
+                .item_image_url(item.getItem_image_url())
+                .created_at(item.getCreated_at())
+                .updated_at(item.getUpdated_at())
+                .item_category_id(item.getItem_category().getId())
+                .build();
     }
 }

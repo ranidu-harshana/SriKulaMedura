@@ -1,9 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.Item.ItemDTO;
 import com.skm.skmserver.dto.Reservation.ReservationDTO;
 import com.skm.skmserver.dto.Reservation.UpdateReservationDTO;
-import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.ReservationRepository;
