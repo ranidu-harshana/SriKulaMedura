@@ -1,7 +1,6 @@
 package com.skm.skmserver.controller;
 
-import com.skm.skmserver.dto.Reservation.ReservationDTO;
-import com.skm.skmserver.dto.Reservation.UpdateReservationDTO;
+import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +36,7 @@ public class ReservationController {
     }
 
     @PutMapping("/{id}")
-    public ReservationDTO update(@RequestBody UpdateReservationDTO itemDTO, @PathVariable int id){
+    public ReservationDTO update(@RequestBody ReservationDTO itemDTO, @PathVariable int id){
         return reservationService.updateReservation(itemDTO, id);
     }
 

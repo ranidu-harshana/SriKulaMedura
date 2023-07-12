@@ -1,10 +1,10 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.Branch.BranchDTO;
-import com.skm.skmserver.dto.Branch.UpdateBranchDTO;
 import com.skm.skmserver.entity.Branch;
 import com.skm.skmserver.repo.BranchRepo;
 import com.skm.skmserver.service.BranchService;
+import com.skm.skmserver.service.MainService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,9 +15,8 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class BranchServiceImpl implements BranchService {
+public class BranchServiceImpl implements BranchService, MainService<BranchDTO, Branch> {
     private final BranchRepo branchRepo;
-    private final ModelMapper modelMapper;
 
     @Override
     public List<BranchDTO> allBranches() {
@@ -25,17 +24,22 @@ public class BranchServiceImpl implements BranchService {
     }
 
     public BranchDTO saveBranch(BranchDTO branchDTO){
-        branchRepo.save(modelMapper.map(branchDTO,Branch.class));
-        return branchDTO;
+        Branch branch = branchRepo.save(Branch.builder()
+                .name(branchDTO.getName())
+                .prefix(branchDTO.getPrefix())
+                .build());
+        return set(branch);
     }
 
     @Override
     public BranchDTO getBranch(int id) {
-        return null;
+        Branch branch = branchRepo.findById(id);
+        return set(branch);
     }
 
     @Override
-    public BranchDTO updateBranch(UpdateBranchDTO branchDTO, int id) {
+    public BranchDTO updateBranch(BranchDTO branchDTO, int id) {
+        Branch branch = branchRepo.findById(id);
         return null;
     }
 
@@ -45,7 +49,13 @@ public class BranchServiceImpl implements BranchService {
     }
 
     @Override
-    public BranchDTO getBranchDTOWithValues(Branch item) {
-        return null;
+    public BranchDTO set(Branch branch) {
+        return BranchDTO.builder()
+                .id(branch.getId())
+                .name(branch.getName())
+                .prefix(branch.getPrefix())
+                .created_at(branch.getCreated_at())
+                .updated_at(branch.getUpdated_at())
+                .build();
     }
 }

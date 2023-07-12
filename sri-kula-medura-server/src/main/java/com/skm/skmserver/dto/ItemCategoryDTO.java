@@ -1,7 +1,7 @@
-package com.skm.skmserver.dto.ItemCategory;
+package com.skm.skmserver.dto;
 
-import com.skm.skmserver.dto.ItemDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class ItemCategoryDTO {
     private int id;
     private String category_name;

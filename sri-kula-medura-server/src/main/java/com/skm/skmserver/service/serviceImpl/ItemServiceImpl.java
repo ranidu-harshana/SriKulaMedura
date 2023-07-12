@@ -5,6 +5,7 @@ import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.repo.ItemCategoryRepository;
 import com.skm.skmserver.repo.ItemRepository;
 import com.skm.skmserver.service.ItemService;
+import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,13 +16,13 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ItemServiceImpl implements ItemService {
+public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> {
     private final ItemRepository itemRepository;
     private final ItemCategoryRepository itemCategoryRepository;
     private final MapAll<Item, ItemDTO> mapAll;
 
     public List<ItemDTO> allItems() {
-        return mapAll.mapAllEntities(itemRepository.findAll(), ItemDTO.class);
+        return mapAll.mapAllAttributesToDTO(itemRepository.findAll(), this);
     }
 
     public ItemDTO saveItem(ItemDTO itemDTO){
@@ -32,17 +33,17 @@ public class ItemServiceImpl implements ItemService {
                 .item_image_url(itemDTO.getItem_image_url())
                 .item_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()))
                 .build());
-        return getItemDTOWithValues(item);
+        return set(item);
     }
 
     public ItemDTO getItem (int id) {
         Item item = itemRepository.findById(id);
-        return getItemDTOWithValues(item);
+        return set(item);
     }
 
     public ItemDTO updateItem(ItemDTO itemDTO, int id) {
         Item item = itemRepository.findById(id);
-        return getItemDTOWithValues(itemRepository.save(Item.builder()
+        return set(itemRepository.save(Item.builder()
                 .id(item.getId())
                 .item_code(item.getItem_code())
                 .item_name(itemDTO.getItem_name())
@@ -60,7 +61,8 @@ public class ItemServiceImpl implements ItemService {
         return true;
     }
 
-    public ItemDTO getItemDTOWithValues(Item item) {
+    @Override
+    public ItemDTO set(Item item) {
         return ItemDTO.builder()
                 .id(item.getId())
                 .item_code(item.getItem_code())

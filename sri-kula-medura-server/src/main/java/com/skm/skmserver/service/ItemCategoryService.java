@@ -1,7 +1,6 @@
 package com.skm.skmserver.service;
 
-import com.skm.skmserver.dto.ItemCategory.ItemCategoryDTO;
-import com.skm.skmserver.entity.ItemCategory;
+import com.skm.skmserver.dto.ItemCategoryDTO;
 
 import java.util.List;
 
@@ -11,5 +10,4 @@ public interface ItemCategoryService {
     ItemCategoryDTO getItemCategory (int id);
     ItemCategoryDTO updateItemCategory(ItemCategoryDTO itemCategoryDTO, int id);
     boolean deleteItemCategory(int id);
-    ItemCategoryDTO getItemCategoryDTOWithValues(ItemCategory itemCategory);
 }

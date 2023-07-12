@@ -1,9 +1,7 @@
-package com.skm.skmserver.dto.Reservation;
+package com.skm.skmserver.dto;
 
-import com.skm.skmserver.dto.DressSelectionDTO;
-import com.skm.skmserver.dto.MeasurementDTO;
-import com.skm.skmserver.dto.NoteDTO;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class ReservationDTO {
     private int id;
     private String bill_number;

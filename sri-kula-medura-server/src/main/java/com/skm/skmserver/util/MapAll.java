@@ -1,21 +1,15 @@
 package com.skm.skmserver.util;
 
-import org.modelmapper.ModelMapper;
+import com.skm.skmserver.service.MainService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class MapAll<T, D> {
-    private final ModelMapper modelMapper;
-
-    public MapAll(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
-
-    public List<D> mapAllEntities(List<T> list, Class<D> destination) {
+    public List<D> mapAllAttributesToDTO(List<T> list, MainService<D,T> service) {
         return list
                 .stream()
-                .map(item -> modelMapper.map(item, destination)).toList();
+                .map(service::set).toList();
     }
 }

@@ -1,14 +1,14 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.Reservation.ReservationDTO;
-import com.skm.skmserver.dto.Reservation.UpdateReservationDTO;
+import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.repo.UserRepository;
+import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.ReservationService;
+import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,46 +17,55 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ReservationServiceImpl implements ReservationService {
+public class ReservationServiceImpl implements ReservationService, MainService<ReservationDTO, Reservation> {
     private final ReservationRepository reservationRepository;
     private final CustomerRepository customerRepository;
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
+    private final MapAll<Reservation, ReservationDTO> mapAll;
 
     @Override
     public List<ReservationDTO> allReservations() {
-        return reservationRepository.findAll()
-                .stream()
-                .map(reservation -> modelMapper.map(reservation, ReservationDTO.class)).toList();
+        return mapAll.mapAllAttributesToDTO(reservationRepository.findAll(), this);
     }
 
     @Override
     public ReservationDTO saveReservation(ReservationDTO reservationDTO) {
-        Reservation reservation = modelMapper.map(reservationDTO, Reservation.class);
-        reservation.setCustomer(customerRepository.findById(reservationDTO.getCustomer_id()));
-        reservation.setUser(userRepository.findById(reservationDTO.getUser_id()));
-        reservationRepository.save(reservation);
-        ReservationDTO dto = modelMapper.map(reservation, ReservationDTO.class);
-        dto.setCustomer_id(reservationDTO.getCustomer_id());
-        dto.setUser_id(reservationDTO.getUser_id());
-        return dto;
+        Reservation reservation = reservationRepository.save(Reservation.builder()
+                        .bill_number(reservationDTO.getBill_number())
+                        .function_date(reservationDTO.getFunction_date())
+                        .function_place(reservationDTO.getFunction_place())
+                        .no_of_bestmen(reservationDTO.getNo_of_bestmen())
+                        .no_of_pageboys(reservationDTO.getNo_of_pageboys())
+                        .dressing_place(reservationDTO.getDressing_place())
+                        .goingaway_change_place(reservationDTO.getGoingaway_change_place())
+                        .status(reservationDTO.isStatus())
+                        .measurement_date(reservationDTO.getMeasurement_date())
+                        .customer(customerRepository.findById(reservationDTO.getCustomer_id()))
+                        .user(userRepository.findById(reservationDTO.getUser_id()))
+                        .build());
+        return set(reservation);
     }
 
     @Override
     public ReservationDTO getReservation(int id) {
-        return modelMapper.map(reservationRepository.findById(id), ReservationDTO.class);
+        Reservation reservation = reservationRepository.findById(id);
+        return set(reservation);
     }
 
     @Override
-    public ReservationDTO updateReservation(UpdateReservationDTO reservationDTO, int id) {
+    public ReservationDTO updateReservation(ReservationDTO reservationDTO, int id) {
         Reservation reservation = reservationRepository.findById(id);
-        modelMapper.map(reservationDTO, reservation);
-        reservation.setCustomer(customerRepository.findById(reservationDTO.getCustomer_id()));
-        reservation.setUser(userRepository.findById(reservationDTO.getUser_id()));
-        ReservationDTO dto = modelMapper.map(reservationRepository.save(reservation), ReservationDTO.class);
-        dto.setCustomer_id(reservationDTO.getCustomer_id());
-        dto.setUser_id(reservationDTO.getUser_id());
-        return dto;
+        return set(reservationRepository.save(Reservation.builder()
+                .function_place(reservation.getFunction_place())
+                .no_of_bestmen(reservation.getNo_of_bestmen())
+                .no_of_pageboys(reservation.getNo_of_pageboys())
+                .dressing_place(reservation.getDressing_place())
+                .goingaway_change_place(reservation.getGoingaway_change_place())
+                .status(reservation.isStatus())
+                .measurement_date(reservation.getMeasurement_date())
+                .customer(customerRepository.findById(reservation.getCustomer().getId()))
+                .user(userRepository.findById(reservation.getUser().getId()))
+                .build()));
     }
 
     @Override
@@ -69,7 +78,20 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDTO getReservationDTOWithValues(Reservation reservation) {
-        return null;
+    public ReservationDTO set(Reservation reservation) {
+        return ReservationDTO.builder()
+                .id(reservation.getId())
+                .bill_number(reservation.getBill_number())
+                .function_date(reservation.getFunction_date())
+                .function_place(reservation.getFunction_place())
+                .no_of_bestmen(reservation.getNo_of_bestmen())
+                .no_of_pageboys(reservation.getNo_of_pageboys())
+                .dressing_place(reservation.getDressing_place())
+                .goingaway_change_place(reservation.getGoingaway_change_place())
+                .status(reservation.isStatus())
+                .measurement_date(reservation.getMeasurement_date())
+                .customer_id(reservation.getCustomer().getId())
+                .user_id(reservation.getUser().getId())
+                .build();
     }
 }
