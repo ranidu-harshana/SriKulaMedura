@@ -1,7 +1,9 @@
 package com.skm.skmserver.controller;
-import com.skm.skmserver.dto.Branch.BranchDTO;
+import com.skm.skmserver.dto.BranchDTO;
 import com.skm.skmserver.service.serviceImpl.BranchServiceImpl;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/branch")
@@ -14,8 +16,8 @@ public class BranchController {
     }
 
     @GetMapping("/")
-    public String index(){
-        return "branch";
+    public List<BranchDTO> index(){
+        return branchServiceImpl.allBranches();
     }
 
     @PostMapping("/")
@@ -29,18 +31,21 @@ public class BranchController {
     }
 
     @GetMapping("/{id}")
-    public String show(@PathVariable int id){
-        return "Id : "  + id;
+    public BranchDTO show(@PathVariable int id){
+        return branchServiceImpl.getBranch(id);
     }
 
     @PutMapping("/{id}")
-    public String update(@RequestBody BranchDTO branchDTO, @PathVariable int id){
-        return "update: " + id;
+    public BranchDTO update(@RequestBody BranchDTO branchDTO, @PathVariable int id){
+        return branchServiceImpl.updateBranch(branchDTO, id);
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable int id){
-        return "delete";
+        if(branchServiceImpl.deleteBranch(id)){
+            return "Branch deleted successfully";
+        }
+        return "Branch delete failed";
     }
 
     @GetMapping("/{id}/edit")
