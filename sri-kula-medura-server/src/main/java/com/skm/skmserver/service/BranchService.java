@@ -1,6 +1,6 @@
 package com.skm.skmserver.service;
 
-import com.skm.skmserver.dto.Branch.BranchDTO;
+import com.skm.skmserver.dto.BranchDTO;
 
 import java.util.List;
 
