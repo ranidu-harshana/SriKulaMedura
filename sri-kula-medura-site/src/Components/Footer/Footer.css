@@ -16,7 +16,7 @@
 .box .section {
     height: 634px;
     left: 0;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 1450px;
 }
@@ -25,7 +25,10 @@
     background-color: #c9e8e0;
     height: 634px;
     position: relative;
-    width: 1440px;
+    width: 1540px;
+    height: 403px;
+    margin-top: 370px;
+;
 }
 
 .box .text-wrapper {
@@ -38,7 +41,7 @@
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
-    top: 41px;
+    top: 27px;
     width: 352px;
 }
 
@@ -48,12 +51,13 @@
     font-size: 24px;
     font-weight: 600;
     height: 57px;
-    left: 471px;
+    left: 578px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     top: 41px;
     width: 352px;
+    margin-left: -56px;
 }
 
 .box .text-wrapper-2 {
@@ -62,12 +66,13 @@
     font-size: 24px;
     font-weight: 600;
     height: 57px;
-    left: 868px;
+    left: 1087px;
     letter-spacing: 0;
     line-height: normal;
     position: absolute;
     top: 41px;
     width: 352px;
+    margin-left: -107px;
 }
 
 .box .flex-container {
@@ -208,10 +213,11 @@
     flex-direction: column;
     gap: 7px;
     height: 265px;
-    left: 473px;
+    left: 578px;
     position: absolute;
     top: 119px;
     width: 313px;
+    margin-left: -54px;
 }
 
 .box .text-6 {
@@ -395,10 +401,11 @@
 }
 
 .box .rectangle {
-    height: 500px;
-    left: 865px;
+    height: 150px;
+    left: 1087px;
     object-fit: cover;
     position: absolute;
-    top: 98px;
+    top: 116px;
     width: 500px;
+    margin-left: -103px;
 }
