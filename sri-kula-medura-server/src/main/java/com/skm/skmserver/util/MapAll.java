@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class MapAll<T, D> {
-    public List<D> mapAllAttributesToDTO(List<T> list, MainService<D,T> service) {
+public class MapAll<E, D> {
+    public List<D> mapAllAttributesToDTO(List<E> list, MainService<D,E> service) {
         return list
                 .stream()
                 .map(service::set).toList();
