@@ -1,6 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.BranchDTO;
+import com.skm.skmserver.dto.UserBranchesDTO;
 import com.skm.skmserver.entity.Branch;
 import com.skm.skmserver.repo.BranchRepo;
 import com.skm.skmserver.service.BranchService;
@@ -17,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BranchServiceImpl implements BranchService, MainService<BranchDTO, Branch> {
     private final BranchRepo branchRepo;
-
     private final MapAll<Branch, BranchDTO> mapAll;
 
     @Override
