@@ -5,7 +5,7 @@
 </p>
 
 ******
-#Project Description
+# Poject Description
 <p align="justify">The goal of this project is to develop a comprehensive online web application for a dress renting company
 to replace their existing manual system. The web application will provide customers with a convenient
 and user-friendly platform to browse, select, and book dresses for rental, while also offering efficient
@@ -19,6 +19,19 @@ Provide administrative controls for adding, editing, and removing dresses from t
 is to incorporate reporting and analytics features to generate insights on dress rentals, popular choices,
 customer preferences, and other key performance indicators. This data can help the company make
 informed decisions to enhance their services and improve business strategies.</p>
+
+***
+# Usage
+
+
+
+****
+# Installation
+
+
+*******
+# Technologies 
+
 
 
 
