@@ -1,9 +1,9 @@
 import React from 'react';
-import './BannerSecond.css';
-import arImg from '../../assets/BannerSecond/augmentedReality.png';
+import './ARAdBanner.css';
+import arImg from '../../assets/ARAdBanner/augmentedReality.png';
 import Button from 'react-bootstrap/Button';
 
-const BannerSecond = (props) => {
+const ARAdBanner = (props) => {
     return(
         <>
         <containor fluid>
@@ -28,4 +28,4 @@ const BannerSecond = (props) => {
     );
 }
 
-export default BannerSecond;
+export default ARAdBanner;
