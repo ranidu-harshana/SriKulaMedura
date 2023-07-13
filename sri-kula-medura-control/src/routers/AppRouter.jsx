@@ -15,6 +15,7 @@ import Chat from "../components/Chat/Chat";
 import CreateReservation from "../pages/Reservation/CreateReservation";
 import AllReservations from "../pages/Reservation/AllReservations";
 import ReservationProfile from "../pages/Reservation/ReservationProfile";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
 	{
@@ -22,54 +23,50 @@ const router = createBrowserRouter([
 		element: <MainLayout />,
 		children: [
 			{
-				index: true,
-				element: <Home />
-			},
-			{
-				path: 'inventory',
-				element: <Inventory />
-			},
-			{
-				path: "itemcategory",
-				element: <ItemCategory />
-			},
-			{
-				path: "createitem",
-				element: <CreateItem />
-			},
-			{
-				path: "branch",
-				element: <Branch />
-			},
-			{
-				path: "createemployee",
-				element: <CreateEmployee />
-			},
-			{
-				path: "employeelist",
-				element: <EmployeesList />
-			},
-			{
-				path: "reservation",
-				element: <CreateReservation />
-			},
-			{
-				path: "allreservations",
-				element: <AllReservations />
-			},
-			{
-				path: "reservation/:id",
-				element: <ReservationProfile />
-			},
-			// {
-			// 	element: <UserProtected />,
-			// 	children: [
-			// 		{
-			// 			path: "user",
-			// 			element: <Employee />
-			// 		}
-			// 	]
-			// }
+				element: <ProtectedRoute />,
+				children: [
+					{
+						index: true,
+						element: <Home />
+					},
+					{
+						path: 'inventory',
+						element: <Inventory />
+					},
+					{
+						path: "itemcategory",
+						element: <ItemCategory />
+					},
+					{
+						path: "createitem",
+						element: <CreateItem />
+					},
+					{
+						path: "branch",
+						element: <Branch />
+					},
+					{
+						path: "createemployee",
+						element: <CreateEmployee />
+					},
+					{
+						path: "employeelist",
+						element: <EmployeesList />
+					},
+					{
+						path: "reservation",
+						element: <CreateReservation />
+					},
+					{
+						path: "allreservations",
+						element: <AllReservations />
+					},
+					{
+						path: "reservation/:id",
+						element: <ReservationProfile />
+					}
+				]
+			}
 		],
 	},
 	{
@@ -85,8 +82,13 @@ const router = createBrowserRouter([
 		element: <ChatLayout/>,
 		children: [
 			{
-				index: true,
-				element: <Chat />
+				element: <ProtectedRoute />,
+				children: [
+					{
+						index: true,
+						element: <Chat />
+					}
+				]
 			}
 		]
 	}
