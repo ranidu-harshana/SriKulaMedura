@@ -31,13 +31,29 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
                 .reason(additionalPaymentDTO.getReason())
                 .created_at(additionalPaymentDTO.getCreated_at())
                 .updated_at(additionalPaymentDTO.getUpdated_at())
+                .status(additionalPaymentDTO.isStatus())
                 .reservation(reservationRepository.findById(additionalPaymentDTO.getReservation_id()))
                 .build());
         return set(additionalPayment);
     }
 
-    @Override
-    public AdditionalPaymentDTO set(AdditionalPayment d) {
-        return null;
+    public AdditionalPaymentDTO getAdditionalPayment(int id){
+        AdditionalPayment additionalPayment = additionalPaymentRepository.findById(id);
+        return set(additionalPayment);
+
     }
+
+    @Override
+    public AdditionalPaymentDTO set(AdditionalPayment additionalPayment) {
+        return AdditionalPaymentDTO.builder()
+                .id(additionalPayment.getId())
+                .payment(additionalPayment.getPayment())
+                .reason(additionalPayment.getReason())
+                .updated_at(additionalPayment.getUpdated_at())
+                .created_at(additionalPayment.getCreated_at())
+                .status(additionalPayment.isStatus())
+                .reservation_id(additionalPayment.getReservation().getId())
+                .build();
+    }
+
 }
