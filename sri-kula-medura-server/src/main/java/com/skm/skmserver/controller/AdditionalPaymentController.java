@@ -16,13 +16,23 @@ public class AdditionalPaymentController {
     private final AdditionalPaymentServiceImpl additionalPaymentService;
 
     @GetMapping("/")
-    public List<AdditionalPaymentDTO> index(){
+    public List<AdditionalPaymentDTO> index() {
         return additionalPaymentService.allAdditionalPayments();
     }
 
-    @PostMapping ("/")
+    @PostMapping("/")
     public AdditionalPaymentDTO store(@RequestBody AdditionalPaymentDTO additionalPaymentDTO) {
         return additionalPaymentService.saveAdditionalPayment(additionalPaymentDTO);
+    }
+
+    @GetMapping("/create")
+    public String create(){
+            return"";
+    }
+
+    @GetMapping("/{id}")
+    public AdditionalPaymentDTO show(@PathVariable int id) {
+        return additionalPaymentService.getAdditionalPayment(id);
     }
 
 }
