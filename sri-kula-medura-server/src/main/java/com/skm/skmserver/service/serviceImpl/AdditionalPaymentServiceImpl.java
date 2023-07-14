@@ -42,6 +42,25 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
         return set(additionalPayment);
 
     }
+    public AdditionalPaymentDTO updateAdditionalPayment(AdditionalPaymentDTO additionalPaymentDTO,int id){
+        AdditionalPayment additionalPayment = additionalPaymentRepository.findById(id);
+        return set(additionalPaymentRepository.save(AdditionalPayment.builder()
+                .payment(additionalPayment.getPayment())
+                .reason(additionalPayment.getReason())
+                .created_at(additionalPayment.getCreated_at())
+                .updated_at(additionalPayment.getUpdated_at())
+                .status(additionalPayment.isStatus())
+                .reservation(reservationRepository.findById(additionalPayment.getReservation().getId()))
+                .build()));
+    }
+
+    public boolean deleteAdditionalPayment(int id){
+        if(additionalPaymentRepository.findById(id) == null){
+            return false;
+        }
+        additionalPaymentRepository.deleteById(id);
+        return true;
+    }
 
     @Override
     public AdditionalPaymentDTO set(AdditionalPayment additionalPayment) {
