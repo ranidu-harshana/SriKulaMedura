@@ -3,8 +3,6 @@ package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import com.skm.skmserver.service.serviceImpl.AdditionalPaymentServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
