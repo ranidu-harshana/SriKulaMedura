@@ -68,6 +68,9 @@ public class Reservation {
     @OneToMany(mappedBy = "reservation")
     private List<DressSelection> dress_selections;
 
+    @OneToMany(mappedBy = "reservation")
+    private List<AdditionalPayment> additionalPayments;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private User user;
