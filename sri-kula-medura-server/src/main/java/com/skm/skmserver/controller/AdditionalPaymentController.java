@@ -35,4 +35,22 @@ public class AdditionalPaymentController {
         return additionalPaymentService.getAdditionalPayment(id);
     }
 
+    @PutMapping("/{id}")
+    public AdditionalPaymentDTO update(@RequestBody AdditionalPaymentDTO additionalPaymentDTO,@PathVariable int id){
+        return additionalPaymentService.updateAdditionalPayment(additionalPaymentDTO,id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id){
+        if(additionalPaymentService.deleteAdditionalPayment(id)){
+            return "Reservation deleted successfully";
+        }
+        return "Reservation delete failed";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable int id){
+        return "edit";
+    }
+
 }
