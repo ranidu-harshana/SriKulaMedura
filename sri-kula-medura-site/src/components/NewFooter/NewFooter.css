@@ -1,8 +1,11 @@
 body{
-    background-color: #c9e8e0;
     margin-top: 768px;
 }
 
 .div{
     align-content: center;
+}
+.footerbody{
+    background-color: #c9e8e0;
+
 }

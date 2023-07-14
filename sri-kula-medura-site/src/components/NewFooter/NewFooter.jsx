@@ -8,10 +8,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 const NewFooter = () => {
     return (
         <MDBFooter bgColor='' className='text-center text-lg-start text-muted'>
+            <div class='footerbody'>
             <section className=' justify-content-center justify-content-lg-between p-4 square border border-success'>
-                {/*<div className='me-5 d-none d-lg-block'>
-                    <span>Get connected with us on social networks:</span>
-                </div>*/}
 
                 <div className='text-center text-dark'>
                     <a href='' className='me-4 text-reset '>
@@ -112,7 +110,9 @@ const NewFooter = () => {
                     MDBootstrap.com
                 </a>*/}
             </div>
+            </div>
         </MDBFooter>
+
     );
 }
 export default NewFooter;
