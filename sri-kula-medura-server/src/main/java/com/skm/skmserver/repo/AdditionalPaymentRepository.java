@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface AdditionalPaymentRepository extends JpaRepository<AdditionalPayment,Integer> {
-    AdditionalPaymentRepository findById(int id);
+    AdditionalPayment findById(int id);
 
 }
