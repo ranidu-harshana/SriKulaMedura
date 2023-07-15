@@ -26,8 +26,11 @@ public class ReservationDTO {
     private LocalDate measurement_date;
     private Date created_at;
     private Date updated_at;
+    private String date;
     private int customer_id;
     private int user_id;
+    private int branch_id;
+    private String branch_name;
     // TODO: rented date range should be added as a column
     private List<NoteDTO> notes;
     private List<MeasurementDTO> measurements;
