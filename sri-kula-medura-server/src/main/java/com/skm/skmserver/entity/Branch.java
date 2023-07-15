@@ -37,5 +37,8 @@ public class Branch {
     private Date updated_at;
 
     @OneToMany(mappedBy = "branch")
+    private List<Reservation> reservations;
+
+    @OneToMany(mappedBy = "branch")
     private List<UserBranches> user_branches;
 }
