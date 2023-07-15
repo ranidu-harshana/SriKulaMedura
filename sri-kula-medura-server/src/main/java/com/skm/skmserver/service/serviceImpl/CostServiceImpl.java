@@ -28,7 +28,14 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
         Cost cost = costRepository.findById(id);
         return set(cost);
     }
-    
+    public boolean deleteCost(int id) {
+        if (costRepository.findById(id) == null) {
+            return false;
+        }
+        costRepository.deleteById(id);
+        return true;
+    }
+
     @Override
     public CostDTO set(Cost cost) {
         return CostDTO.builder()
