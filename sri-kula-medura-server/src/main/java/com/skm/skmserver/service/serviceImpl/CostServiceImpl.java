@@ -45,7 +45,15 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .depreciation(cost.getDepreciation())
                 .build()));
     }
-    
+    public CostDTO saveCost(CostDTO costDTO) {
+        Cost cost = costRepository.save(Cost.builder()
+                .transport(costDTO.getTransport())
+                .salary(costDTO.getSalary())
+                .cleaning(costDTO.getCleaning())
+                .depreciation(costDTO.getDepreciation())
+                .build());
+        return set(cost);
+    }
     @Override
     public CostDTO set(Cost cost) {
         return CostDTO.builder()
