@@ -23,6 +23,11 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     public List<CostDTO> allCosts() {
         return mapAll.mapAllAttributesToDTO(costRepository.findAll(), this);
     }
+
+    public CostDTO getCost(int id) {
+        Cost cost = costRepository.findById(id);
+        return set(cost);
+    }
     
     @Override
     public CostDTO set(Cost cost) {
