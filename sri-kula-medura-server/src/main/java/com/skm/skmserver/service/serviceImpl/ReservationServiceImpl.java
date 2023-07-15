@@ -2,6 +2,7 @@ package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.entity.Reservation;
+import com.skm.skmserver.repo.BranchRepo;
 import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.repo.UserRepository;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Service
@@ -21,6 +23,8 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     private final ReservationRepository reservationRepository;
     private final CustomerRepository customerRepository;
     private final UserRepository userRepository;
+    private final BranchRepo branchRepo;
+    private final BranchServiceImpl branchService;
     private final MapAll<Reservation, ReservationDTO> mapAll;
 
     @Override
@@ -42,6 +46,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                         .measurement_date(reservationDTO.getMeasurement_date())
                         .customer(customerRepository.findById(reservationDTO.getCustomer_id()))
                         .user(userRepository.findById(reservationDTO.getUser_id()))
+                        .branch(branchRepo.findById(reservationDTO.getBranch_id()))
                         .build());
         return set(reservation);
     }
@@ -56,15 +61,20 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     public ReservationDTO updateReservation(ReservationDTO reservationDTO, int id) {
         Reservation reservation = reservationRepository.findById(id);
         return set(reservationRepository.save(Reservation.builder()
-                .function_place(reservation.getFunction_place())
-                .no_of_bestmen(reservation.getNo_of_bestmen())
-                .no_of_pageboys(reservation.getNo_of_pageboys())
-                .dressing_place(reservation.getDressing_place())
-                .goingaway_change_place(reservation.getGoingaway_change_place())
+                .id(reservation.getId())
+                .bill_number(reservation.getBill_number())
+                .function_date(reservation.getFunction_date())
+                .function_place(reservationDTO.getFunction_place())
+                .no_of_bestmen(reservationDTO.getNo_of_bestmen())
+                .no_of_pageboys(reservationDTO.getNo_of_pageboys())
+                .dressing_place(reservationDTO.getDressing_place())
+                .goingaway_change_place(reservationDTO.getGoingaway_change_place())
                 .status(reservation.isStatus())
-                .measurement_date(reservation.getMeasurement_date())
+                .measurement_date(reservationDTO.getMeasurement_date())
+                .created_at(reservation.getCreated_at())
                 .customer(customerRepository.findById(reservation.getCustomer().getId()))
                 .user(userRepository.findById(reservation.getUser().getId()))
+                .branch(branchRepo.findById(reservation.getBranch().getId()))
                 .build()));
     }
 
@@ -92,6 +102,10 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                 .measurement_date(reservation.getMeasurement_date())
                 .customer_id(reservation.getCustomer().getId())
                 .user_id(reservation.getUser().getId())
+                .branch_name(reservation.getBranch().getName())
+                .created_at(reservation.getCreated_at())
+                .updated_at(reservation.getUpdated_at())
+                .date(new SimpleDateFormat("EEEE, MMMM dd, YYYY").format(reservation.getCreated_at()))
                 .build();
     }
 }

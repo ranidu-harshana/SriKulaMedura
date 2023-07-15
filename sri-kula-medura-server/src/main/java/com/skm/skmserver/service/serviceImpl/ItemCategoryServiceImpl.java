@@ -59,7 +59,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService, MainService
                 .category_name(itemCategory.getCategory_name())
                 .created_at(itemCategory.getCreated_at())
                 .updated_at(itemCategory.getUpdated_at())
-                .items(itemCategory.getItems().stream().map(itemService::set).toList())
+//                .items(itemCategory.getItems().stream().map(itemService::set).toList())
                 .build();
     }
 }

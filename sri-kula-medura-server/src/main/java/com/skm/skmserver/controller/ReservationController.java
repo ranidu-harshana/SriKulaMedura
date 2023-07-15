@@ -3,11 +3,13 @@ package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/reservation")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ReservationController {
     private final ReservationServiceImpl reservationService;
 
@@ -36,8 +38,8 @@ public class ReservationController {
     }
 
     @PutMapping("/{id}")
-    public ReservationDTO update(@RequestBody ReservationDTO itemDTO, @PathVariable int id){
-        return reservationService.updateReservation(itemDTO, id);
+    public ReservationDTO update(@RequestBody ReservationDTO reservationDTO, @PathVariable int id){
+        return reservationService.updateReservation(reservationDTO, id);
     }
 
     @DeleteMapping("/{id}")
