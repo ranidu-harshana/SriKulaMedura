@@ -16,7 +16,7 @@ import FaxIcon from '@mui/icons-material/Fax';
 const Footer = () => {
     return (
         <MDBFooter bgColor='' className='text-center text-lg-start text-muted'>
-            <div class='footerbody'>
+            <div className='footerbody'>
                 <section
                     className=' justify-content-center justify-content-lg-between p-4 square border border-success'>
                     <div className='text-center text-dark'>

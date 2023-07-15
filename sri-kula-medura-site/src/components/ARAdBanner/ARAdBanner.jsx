@@ -14,11 +14,11 @@ const ARAdBanner = (props) => {
                         <p className="text-center fs-3 font-weight-bold arText">
                             Experience the <br/> Augmented Reality Here
                             <br/>
-                            <Button className="button-decoration-2 btn-md mt-4">Try Out</Button>{' '}
+                            <Button className="button-decoration-2 btn-md mt-4">Try Out</Button>
                         </p>
                     </div>
                     <div className="col-md-4 align-self-center">
-                        <img src={arImg} className="arImg1"/>
+                        <img src={arImg} className="arImg1" alt={''}/>
                     </div>
                     <div className="col-md-2"></div>
                 </div>
