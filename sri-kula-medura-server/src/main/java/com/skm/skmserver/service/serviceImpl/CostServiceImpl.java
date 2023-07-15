@@ -36,6 +36,16 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
         return true;
     }
 
+    public CostDTO updateCost(CostDTO costDTO, int id) {
+        Cost cost = costRepository.findById(id);
+        return set(costRepository.save(Cost.builder()
+                .transport(cost.getTransport())
+                .salary(cost.getSalary())
+                .cleaning(cost.getCleaning())
+                .depreciation(cost.getDepreciation())
+                .build()));
+    }
+    
     @Override
     public CostDTO set(Cost cost) {
         return CostDTO.builder()
