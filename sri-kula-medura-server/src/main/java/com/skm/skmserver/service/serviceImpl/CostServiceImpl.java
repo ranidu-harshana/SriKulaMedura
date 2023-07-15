@@ -19,6 +19,10 @@ import java.util.List;
 public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     private final CostRepository costRepository;
     private final MapAll<Cost,CostDTO> mapAll;
+
+    public List<CostDTO> allCosts() {
+        return mapAll.mapAllAttributesToDTO(costRepository.findAll(), this);
+    }
     
     @Override
     public CostDTO set(Cost cost) {
