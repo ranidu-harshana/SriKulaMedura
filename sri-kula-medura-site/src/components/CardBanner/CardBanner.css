@@ -1,9 +1,25 @@
-
-
 @media screen and (max-width: 576px) {
     .CardBannerBox{
-        height: 600px;
+        height: 1550px;
         background-color: #C9E8E0;
+    }
+
+    .card{
+        margin: 5%;
+    }
+
+    .card-img-top{
+        width: 60%;
+    }
+
+    .card-text{
+        color: #8A9290;
+        text-align: justify;
+    }
+
+    .CardBannerText{
+        margin-top: 3%;
+        margin-bottom: -1%;
     }
 }
 
@@ -12,18 +28,99 @@
         height: 600px;
         background-color: #C9E8E0;
     }
+
+    .card-all{
+        margin-left: -7%;
+    }
+
+    .card{
+        width:150%;
+    }
+
+    .card-img-top{
+        width: 60%;
+    }
+
+    .card-text{
+        color: #8A9290;
+        text-align: justify;
+    }
+
+    .CardBannerText{
+        margin-top: 3%;
+        margin-bottom: -1%;
+    }
 }
 
 @media screen and (min-width: 992px) {
     .CardBannerBox{
-        height: 600px;
+        height: 550px;
         background-color: #C9E8E0;
+    }
+
+    .card-all{
+        margin-left: 0;
+    }
+
+    .card{
+        width: auto;
+    }
+
+    .card-img-top{
+        width: 60%;
+    }
+
+    .card-title{
+        font-weight: bold;
+        color: #378B75;
+    }
+
+    .card-text{
+        color: #8A9290;
+        text-align: justify;
+    }
+
+    .CardBannerText{
+        margin-top: 0.4%;
+        margin-bottom: 0;
     }
 }
 
 @media screen and (min-width: 1200px) {
     .CardBannerBox{
-        height: 600px;
+        height: 550px;
         background-color: #C9E8E0;
     }
+
+    .card-all{
+        margin-left: 0;
+    }
+
+    .card{
+        width: auto;
+    }
+
+    .card-img-top{
+        width: 60%;
+    }
+
+    .card-title{
+        font-weight: bold;
+        color: #378B75;
+    }
+
+    .card-text{
+        color: #8A9290;
+        text-align: justify;
+    }
+
+    .CardBannerText{
+        margin-top: 0.4%;
+        margin-bottom: 0;
+    }
+}
+
+.CardBannerText{
+    font-weight: bold;
+    color: #378B75;
 }
