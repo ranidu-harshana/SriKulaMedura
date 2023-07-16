@@ -1,0 +1,29 @@
+
+
+@media screen and (max-width: 576px) {
+    .CardBannerBox{
+        height: 600px;
+        background-color: #C9E8E0;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .CardBannerBox{
+        height: 600px;
+        background-color: #C9E8E0;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .CardBannerBox{
+        height: 600px;
+        background-color: #C9E8E0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .CardBannerBox{
+        height: 600px;
+        background-color: #C9E8E0;
+    }
+}
