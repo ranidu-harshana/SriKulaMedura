@@ -16,7 +16,7 @@ const Reservation = (props) => {
 					<h3>Cristina Groves</h3>
 					<div className={`small`}>
 						<p className={'lh-lg'}>
-							<UserDetails address={'99921 Chadrick Radial New Edmund, RI 26868'} billNumber={'SCB1267'} bookedOn={'2023-07-09 17:02:17'} branch={'Sri Kula Medura Colombo'}/>
+							<UserDetails address={'99921 Chadrick Radial New Edmund, RI 26868'} billNumber={props.bill_number} bookedOn={'2023-07-09 17:02:17'} branch={'Sri Kula Medura Colombo'}/>
 						</p>
 					</div>
 				</div>

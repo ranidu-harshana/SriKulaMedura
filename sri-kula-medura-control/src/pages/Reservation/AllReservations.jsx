@@ -1,4 +1,4 @@
-import { useEffect, useState} from "react";
+import { useEffect } from "react";
 import Table from "../../components/Table/Table";
 import axios from "axios";
 import PageTopic from "../../components/PageTopic/PageTopic";
@@ -7,9 +7,12 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import IconButton from "@mui/material/IconButton";
 import {Link} from "react-router-dom"
 import {ButtonGroup} from "@mui/material";
+import {useDispatch, useSelector} from "react-redux";
+import {addReservations, selectAll} from "../../store/slices/reservationSlice";
 
 const AllReservations = (props) => {
-	const [payload, setPayload] = useState();
+	const reservations = useSelector(selectAll)
+	const dispatcher = useDispatch()
 
 	const columns = [
 		{field: 'id', headerName: "Id", maxWidth: 300},
@@ -24,9 +27,10 @@ const AllReservations = (props) => {
 
 	useEffect(() => {
 		axios.get('http://localhost:8080/api/v1/reservation/').then((response) => {
-			setPayload(response.data);
+			dispatcher(addReservations(response.data))
 		});
-	}, []);
+	}, [dispatcher]);
+
 
 	return (
 		<div>
@@ -34,7 +38,7 @@ const AllReservations = (props) => {
 				{title: 'Home', link: "/", active: false},
 				{title: 'Reservations', active: true}
 			]}/>
-			<Table columns={columns} payload={payload}/>
+			<Table columns={columns} payload={reservations}/>
 		</div>
 	);
 }
