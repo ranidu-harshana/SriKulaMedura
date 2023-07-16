@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import {useEffect} from "react";
 import Table from "../../components/Table/Table";
 import axios from "axios";
 import PageTopic from "../../components/PageTopic/PageTopic";
