@@ -9,13 +9,11 @@ import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-
 public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     private final CostRepository costRepository;
     private final MapAll<Cost,CostDTO> mapAll;
@@ -28,6 +26,7 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
         Cost cost = costRepository.findById(id);
         return set(cost);
     }
+
     public boolean deleteCost(int id) {
         if (costRepository.findById(id) == null) {
             return false;
@@ -45,15 +44,19 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .depreciation(cost.getDepreciation())
                 .build()));
     }
+
     public CostDTO saveCost(CostDTO costDTO) {
         Cost cost = costRepository.save(Cost.builder()
                 .transport(costDTO.getTransport())
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
                 .depreciation(costDTO.getDepreciation())
+                .updated_at(costDTO.getUpdated_at())
+                .created_at(costDTO.getCreated_at())
                 .build());
         return set(cost);
     }
+
     @Override
     public CostDTO set(Cost cost) {
         return CostDTO.builder()
@@ -61,6 +64,8 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .transport(cost.getTransport())
                 .salary(cost.getSalary())
                 .cleaning(cost.getCleaning())
+                .updated_at(cost.getUpdated_at())
+                .created_at(cost.getCreated_at())
                 .depreciation(cost.getDepreciation())
                 .build();
     }
