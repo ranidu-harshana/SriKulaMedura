@@ -29,9 +29,7 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
         AdditionalPayment additionalPayment = additionalPaymentRepository.save(AdditionalPayment.builder()
                 .payment(additionalPaymentDTO.getPayment())
                 .reason(additionalPaymentDTO.getReason())
-                .created_at(additionalPaymentDTO.getCreated_at())
-                .updated_at(additionalPaymentDTO.getUpdated_at())
-                .status(additionalPaymentDTO.isStatus())
+                .status(true)
                 .reservation(reservationRepository.findById(additionalPaymentDTO.getReservation_id()))
                 .build());
         return set(additionalPayment);
@@ -45,11 +43,10 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
     public AdditionalPaymentDTO updateAdditionalPayment(AdditionalPaymentDTO additionalPaymentDTO,int id){
         AdditionalPayment additionalPayment = additionalPaymentRepository.findById(id);
         return set(additionalPaymentRepository.save(AdditionalPayment.builder()
-                .payment(additionalPayment.getPayment())
-                .reason(additionalPayment.getReason())
-                .created_at(additionalPayment.getCreated_at())
-                .updated_at(additionalPayment.getUpdated_at())
+                .payment(additionalPaymentDTO.getPayment())
+                .reason(additionalPaymentDTO.getReason())
                 .status(additionalPayment.isStatus())
+                .created_at(additionalPayment.getCreated_at())
                 .reservation(reservationRepository.findById(additionalPayment.getReservation().getId()))
                 .build()));
     }
@@ -68,9 +65,9 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
                 .id(additionalPayment.getId())
                 .payment(additionalPayment.getPayment())
                 .reason(additionalPayment.getReason())
-                .updated_at(additionalPayment.getUpdated_at())
-                .created_at(additionalPayment.getCreated_at())
                 .status(additionalPayment.isStatus())
+                .created_at(additionalPayment.getCreated_at())
+                .updated_at(additionalPayment.getUpdated_at())
                 .reservation_id(additionalPayment.getReservation().getId())
                 .build();
     }

@@ -22,6 +22,8 @@ public class AdditionalPayment {
     private int id;
     private double payment;
     private String reason;
+
+    @Column(nullable = false, columnDefinition = "boolean default true")
     private boolean status;
 
     @Column(nullable = false, updatable = false)

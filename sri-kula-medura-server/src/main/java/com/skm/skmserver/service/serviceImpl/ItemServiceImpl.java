@@ -31,6 +31,7 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
                 .item_name(itemDTO.getItem_name())
                 .item_type(itemDTO.getItem_type())
                 .item_image_url(itemDTO.getItem_image_url())
+                .rented_status(false)
                 .item_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()))
                 .build());
         return set(item);
@@ -49,6 +50,7 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
                 .item_name(itemDTO.getItem_name())
                 .item_type(itemDTO.getItem_type())
                 .item_image_url(itemDTO.getItem_image_url())
+                .rented_status(item.isRented_status())
                 .item_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()))
                 .build()));
     }
@@ -71,7 +73,9 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
                 .item_image_url(item.getItem_image_url())
                 .created_at(item.getCreated_at())
                 .updated_at(item.getUpdated_at())
+                .rented_status(item.isRented_status())
                 .item_category_id(item.getItem_category().getId())
+                .item_category_name(item.getItem_category().getCategory_name())
                 .build();
     }
 }

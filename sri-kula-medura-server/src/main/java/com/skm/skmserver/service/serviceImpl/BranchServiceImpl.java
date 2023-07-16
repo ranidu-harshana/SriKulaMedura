@@ -29,6 +29,7 @@ public class BranchServiceImpl implements BranchService, MainService<BranchDTO, 
         Branch branch = branchRepo.save(Branch.builder()
                 .name(branchDTO.getName())
                 .prefix(branchDTO.getPrefix())
+                .status(true)
                 .build());
         return set(branch);
     }
@@ -45,7 +46,9 @@ public class BranchServiceImpl implements BranchService, MainService<BranchDTO, 
         return set(branchRepo.save(Branch.builder()
                 .id(branch.getId())
                 .name(branchDTO.getName())
+                .status(branch.isStatus())
                 .prefix(branchDTO.getPrefix())
+                .created_at(branch.getCreated_at())
                 .build()));
     }
 
@@ -63,6 +66,7 @@ public class BranchServiceImpl implements BranchService, MainService<BranchDTO, 
         return BranchDTO.builder()
                 .id(branch.getId())
                 .name(branch.getName())
+                .status(branch.isStatus())
                 .prefix(branch.getPrefix())
                 .created_at(branch.getCreated_at())
                 .updated_at(branch.getUpdated_at())

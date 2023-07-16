@@ -42,7 +42,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                         .no_of_pageboys(reservationDTO.getNo_of_pageboys())
                         .dressing_place(reservationDTO.getDressing_place())
                         .goingaway_change_place(reservationDTO.getGoingaway_change_place())
-                        .status(reservationDTO.isStatus())
+                        .status(true)
                         .measurement_date(reservationDTO.getMeasurement_date())
                         .customer(customerRepository.findById(reservationDTO.getCustomer_id()))
                         .user(userRepository.findById(reservationDTO.getUser_id()))
@@ -100,12 +100,13 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                 .goingaway_change_place(reservation.getGoingaway_change_place())
                 .status(reservation.isStatus())
                 .measurement_date(reservation.getMeasurement_date())
-                .customer_id(reservation.getCustomer().getId())
-                .user_id(reservation.getUser().getId())
-                .branch_name(reservation.getBranch().getName())
                 .created_at(reservation.getCreated_at())
                 .updated_at(reservation.getUpdated_at())
                 .date(new SimpleDateFormat("EEEE, MMMM dd, YYYY").format(reservation.getCreated_at()))
+                .customer_id(reservation.getCustomer().getId())
+                .user_id(reservation.getUser().getId())
+                .branch_id(reservation.getBranch().getId())
+                .branch_name(reservation.getBranch().getName())
                 .build();
     }
 }

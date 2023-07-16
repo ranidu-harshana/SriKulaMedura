@@ -41,6 +41,7 @@ public class ItemCategoryServiceImpl implements ItemCategoryService, MainService
         return set(itemCategoryRepository.save(ItemCategory.builder()
                 .id(itemCategory.getId())
                 .category_name(itemCategoryDTO.getCategory_name())
+                .created_at(itemCategory.getCreated_at())
                 .build()));
     }
 

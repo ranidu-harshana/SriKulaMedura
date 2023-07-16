@@ -21,4 +21,5 @@ public class ItemDTO {
     private Date updated_at;
     private boolean rented_status;
     private int item_category_id;
+    private String item_category_name;
 }

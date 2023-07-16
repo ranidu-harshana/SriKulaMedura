@@ -17,5 +17,5 @@ public class ItemCategoryDTO {
     private String category_name;
     private Date created_at;
     private Date updated_at;
-    private List<ItemDTO> items;
+//    private List<ItemDTO> items;
 }

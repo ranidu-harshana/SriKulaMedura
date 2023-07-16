@@ -22,6 +22,7 @@ public class Branch {
 
     private String name;
 
+    @Column(nullable = false, columnDefinition = "boolean default true")
     private boolean status;
 
     private String prefix;
