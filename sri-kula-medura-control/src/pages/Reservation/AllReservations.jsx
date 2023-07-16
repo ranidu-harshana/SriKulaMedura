@@ -8,10 +8,10 @@ import IconButton from "@mui/material/IconButton";
 import {Link} from "react-router-dom"
 import {ButtonGroup} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {addReservations, selectAll} from "../../store/slices/reservationSlice";
+import {addReservations, selectAllReservation} from "../../store/slices/reservationSlice";
 
 const AllReservations = (props) => {
-	const reservations = useSelector(selectAll)
+	const reservations = useSelector(selectAllReservation)
 	const dispatcher = useDispatch()
 
 	const columns = [

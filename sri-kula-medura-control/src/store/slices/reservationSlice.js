@@ -42,6 +42,11 @@ const reservationSlice = createSlice({
 	}
 })
 
-export const {selectIds, selectById, selectAll, selectEntities, selectTotal} = reservationState.getSelectors(store => store.reservation)
+export const {
+	selectIds: selectIdsReservation,
+	selectById: selectByIdReservation,
+	selectAll: selectAllReservation,
+	selectEntities: selectEntitiesReservation,
+	selectTotal: selectTotalReservation} = reservationState.getSelectors(store => store.reservation)
 export const {addReservations} = reservationSlice.actions
 export default reservationSlice.reducer

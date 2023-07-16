@@ -3,7 +3,6 @@ package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
