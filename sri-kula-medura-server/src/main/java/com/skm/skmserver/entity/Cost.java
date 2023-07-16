@@ -21,16 +21,16 @@ public class Cost {
     private int id;
 
     @Column(nullable = true)
-    private String transport;
+    private double transport;
 
     @Column(nullable = false)
     private double salary;
 
     @Column(nullable = true)
-    private String cleaning;
+    private double cleaning;
 
     @Column(nullable = true)
-    private String depreciation;
+    private double depreciation;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
