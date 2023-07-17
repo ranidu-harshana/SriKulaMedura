@@ -1,0 +1,61 @@
+.box {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.box .section-wrapper {
+    border: 0px none;
+    height: 600px;
+    overflow-x: hidden;
+    width: 1441px;
+}
+
+.box .section {
+    height: 600px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 1443px;
+}
+
+.box .overlap-group {
+    background-color: #c9e8e0;
+    height: 712px;
+    position: relative;
+    width: 2491px;
+}
+
+.box .eclippse {
+    height: 409px;
+    left: 89px;
+    position: absolute;
+    top: 110px;
+    width: 974px;
+}
+
+.box .text-wrapper {
+    color: #000000;
+    font-family: "Roboto-CondensedItalic", Helvetica;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 500;
+    height: 270px;
+    left: 260px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 274px;
+    width: 765px;
+}
+
+.box .couple {
+    height: 359px;
+    left: 976px;
+    position: absolute;
+    top: 87px;
+    width: 334px;
+}
