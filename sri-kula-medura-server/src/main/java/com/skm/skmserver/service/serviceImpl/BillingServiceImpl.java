@@ -18,7 +18,17 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
     private final BillingRepository billingRepository;
     private final ReservationRepository reservationRepository;
     private final MapAll<Billing, BillingDTO> mapAll;
-    
+
+    public BillingDTO saveBilling(BillingDTO billingDTO) {
+        Billing billing = billingRepository.save(Billing.builder()
+                .total_bill(billingDTO.getTotal_bill())
+                .advance(billingDTO.getAdvance())
+                .discount(billingDTO.getDiscount())
+                .reservation(reservationRepository.findById(billingDTO.getReservation_id()))
+                .build());
+        return set(billing);
+    }
+
     public BillingDTO set(Billing billing) {
         return BillingDTO.builder()
                 .id(billing.getId())
