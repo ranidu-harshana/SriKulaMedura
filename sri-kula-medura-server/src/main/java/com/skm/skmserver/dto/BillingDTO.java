@@ -19,5 +19,5 @@ public class BillingDTO {
     private double advance;
     private Date created_at;
     private Date updated_at;
-    private Reservation reservation;
+    private int reservation_id;
 }
