@@ -66,6 +66,9 @@ public class Reservation {
     private List<Measurement> measurements;
 
     @OneToMany(mappedBy = "reservation")
+    private List<Cost> costs;
+
+    @OneToMany(mappedBy = "reservation")
     private List<DressSelection> dress_selections;
 
     @OneToMany(mappedBy = "reservation")
