@@ -1,6 +1,5 @@
 import React from 'react';
 import {MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput} from 'mdb-react-ui-kit';
-import accountcircle from "../../assets/Body/accountcircle.png"
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -23,12 +22,12 @@ const Login = () => {
                             <AccountCircleIcon style={{
                                 fontSize: "100px"
                             }}/>
-                            <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
+                            <h2 className="fw-bold mb-4 text-uppercase">Login</h2>
 
                             <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address'
-                                      id='formControlLg' type='email' size="lg"/>
+                                      id='formControlLg' type='email' size="lg" className={'text-white'}/>
                             <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Password'
-                                      id='formControlLg' type='password' size="lg"/>
+                                      id='formControlLg' type='password' size="lg" className={'text-white'}/>
 
                             <p className="small mb-3 pb-lg-2 text-start"><a class="text-white-50" href="#!">Forgot
                                 password?</a></p>
