@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -19,6 +21,9 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
     private final ReservationRepository reservationRepository;
     private final MapAll<Billing, BillingDTO> mapAll;
 
+    public List<BillingDTO> allBillings(){
+        return mapAll.mapAllAttributesToDTO(billingRepository.findAll(),this);
+    }
     public BillingDTO saveBilling(BillingDTO billingDTO) {
         Billing billing = billingRepository.save(Billing.builder()
                 .total_bill(billingDTO.getTotal_bill())
