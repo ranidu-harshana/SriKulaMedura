@@ -16,7 +16,7 @@ const Reservation = (props) => {
 					<h3>Cristina Groves</h3>
 					<div className={`small`}>
 						<p className={'lh-lg'}>
-							<UserDetails address={'99921 Chadrick Radial New Edmund, RI 26868'} billNumber={props.bill_number} bookedOn={'2023-07-09 17:02:17'} branch={'Sri Kula Medura Colombo'}/>
+							<UserDetails address={'99921 Chadrick Radial New Edmund, RI 26868'} billNumber={props.bill_number} bookedOn={props.created_at} branch={props.branch_name}/>
 						</p>
 					</div>
 				</div>
@@ -25,8 +25,8 @@ const Reservation = (props) => {
 				<ReservationDetails title={"Amount to be paid"} value={"17,874.00"} amountToPaid={true}/>
 				<ReservationDetails title={"Phone 1"} value={"1-509-261-5743"}/>
 				<ReservationDetails title={"Phone 2"} value={"830-673-9495"}/>
-				<ReservationDetails title={"Function Date"} value={"2023-07-02"}/>
-				<ReservationDetails title={"Function Place"} value={"355 Kiara Port Apt. 374 Lilianeside, ID 91685-1487"}/>
+				<ReservationDetails title={"Function Date"} value={props.function_date}/>
+				<ReservationDetails title={"Function Place"} value={props.function_place}/>
 			</div>
 		</div>
 		<div>

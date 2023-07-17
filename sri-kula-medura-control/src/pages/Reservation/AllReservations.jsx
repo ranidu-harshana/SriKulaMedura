@@ -21,7 +21,7 @@ const AllReservations = (props) => {
 		{field: 'function_place', headerName: "Function Place"},
 		{field: 'measurement_date', headerName: "Measurement Date"},
 		{field: 'branch_name', headerName: "Branch Name"},
-		{ field: 'id', headerName: "Actions", cellRenderer: ViewReservationBtn },
+		{field: 'id', headerName: "Actions", cellRenderer: ViewReservationBtn},
 		{field: 'date', headerName: "Created At"}
 	]
 

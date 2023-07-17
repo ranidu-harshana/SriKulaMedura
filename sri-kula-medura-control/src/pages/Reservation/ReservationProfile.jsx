@@ -6,6 +6,7 @@ import {selectByIdReservation} from "../../store/slices/reservationSlice";
 const ReservationProfile = (props) => {
 	const {id} = useParams()
 	const reservation = useSelector((state)=>selectByIdReservation(state, id))
+
 	return (
 		<><Reservation {...reservation}/></>
 	);
