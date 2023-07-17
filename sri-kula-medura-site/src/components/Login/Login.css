@@ -1,0 +1,10 @@
+
+.bg-success {
+    background: rgb(34, 193, 195) !important;
+    background: linear-gradient(79deg, rgb(12.15, 132.81, 1.66) 0%, rgb(19.09, 137.61, 163.62) 100%) !important;
+}
+.btn-outline-white {
+    --mdb-btn-bg: #fff;
+    --mdb-btn-color: #198754;
+    --mdb-btn-font-weight:800;
+}
