@@ -1,6 +1,5 @@
 package com.skm.skmserver.dto;
 
-import com.skm.skmserver.entity.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
