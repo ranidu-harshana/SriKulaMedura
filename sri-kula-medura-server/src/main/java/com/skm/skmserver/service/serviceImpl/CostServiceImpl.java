@@ -41,10 +41,10 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
         Cost cost = costRepository.findById(id);
         return set(costRepository.save(Cost.builder()
                 .id(cost.getId())
-                .transport(cost.getTransport())
-                .salary(cost.getSalary())
-                .cleaning(cost.getCleaning())
-                .depreciation(cost.getDepreciation())
+                .transport(costDTO.getTransport())
+                .salary(costDTO.getSalary())
+                .cleaning(costDTO.getCleaning())
+                .depreciation(costDTO.getDepreciation())
                 .reservation(reservationRepository.findById(cost.getReservation().getId()))
                 .build()));
     }
