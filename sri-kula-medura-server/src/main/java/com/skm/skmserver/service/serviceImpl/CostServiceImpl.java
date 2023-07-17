@@ -3,6 +3,7 @@ package com.skm.skmserver.service.serviceImpl;
 import com.skm.skmserver.dto.CostDTO;
 import com.skm.skmserver.entity.Cost;
 import com.skm.skmserver.repo.CostRepository;
+import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.CostService;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.util.MapAll;
@@ -16,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     private final CostRepository costRepository;
+    private final ReservationRepository reservationRepository;
     private final MapAll<Cost,CostDTO> mapAll;
 
     public List<CostDTO> allCosts() {
@@ -38,10 +40,12 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     public CostDTO updateCost(CostDTO costDTO, int id) {
         Cost cost = costRepository.findById(id);
         return set(costRepository.save(Cost.builder()
+                .id(cost.getId())
                 .transport(cost.getTransport())
                 .salary(cost.getSalary())
                 .cleaning(cost.getCleaning())
                 .depreciation(cost.getDepreciation())
+                .reservation(reservationRepository.findById(cost.getReservation().getId()))
                 .build()));
     }
 
@@ -51,8 +55,7 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
                 .depreciation(costDTO.getDepreciation())
-                .updated_at(costDTO.getUpdated_at())
-                .created_at(costDTO.getCreated_at())
+                .reservation(reservationRepository.findById(costDTO.getReservation_id()))
                 .build());
         return set(cost);
     }
@@ -64,9 +67,10 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .transport(cost.getTransport())
                 .salary(cost.getSalary())
                 .cleaning(cost.getCleaning())
-                .updated_at(cost.getUpdated_at())
-                .created_at(cost.getCreated_at())
                 .depreciation(cost.getDepreciation())
+                .created_at(cost.getCreated_at())
+                .updated_at(cost.getUpdated_at())
+                .reservation_id(cost.getReservation().getId())
                 .build();
     }
 }
