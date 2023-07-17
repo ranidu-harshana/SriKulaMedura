@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -39,7 +40,7 @@ public class Billing {
     @UpdateTimestamp
     private Date updated_at;
 
-    @OneToOne
-    @JoinColumn(name = "reservation_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Reservation reservation;
 }
