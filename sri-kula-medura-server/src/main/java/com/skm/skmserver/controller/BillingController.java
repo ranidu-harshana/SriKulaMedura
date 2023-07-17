@@ -1,6 +1,7 @@
 package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.BillingDTO;
+import com.skm.skmserver.entity.DressSelection;
 import com.skm.skmserver.service.serviceImpl.BillingServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,11 @@ public class BillingController {
     @GetMapping("/{id}")
     public BillingDTO show(@PathVariable int id){
         return billingService.getBilling(id);
+    }
+
+    @PutMapping("/{id}")
+    public BillingDTO update(@RequestBody BillingDTO billingDTO, @PathVariable int id){
+        return billingService.updateBilling(billingDTO,id);
     }
 
 }
