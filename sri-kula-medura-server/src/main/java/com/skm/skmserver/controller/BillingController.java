@@ -24,4 +24,9 @@ public class BillingController {
         return billingService.saveBilling(billingDTO);
     }
 
+    @GetMapping("/create")
+    public String create(){
+        return "create";
+    }
+
 }
