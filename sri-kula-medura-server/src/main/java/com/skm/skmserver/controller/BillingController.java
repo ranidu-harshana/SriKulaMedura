@@ -29,4 +29,9 @@ public class BillingController {
         return "create";
     }
 
+    @GetMapping("/{id}")
+    public BillingDTO show(@PathVariable int id){
+        return billingService.getBilling(id);
+    }
+
 }

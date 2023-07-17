@@ -34,6 +34,11 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
         return set(billing);
     }
 
+    public BillingDTO getBilling(int id){
+        Billing billing= billingRepository.findById(id);
+        return set(billing);
+    }
+
     public BillingDTO set(Billing billing) {
         return BillingDTO.builder()
                 .id(billing.getId())
