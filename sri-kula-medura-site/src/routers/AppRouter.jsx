@@ -2,6 +2,7 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import LoginPage from "../pages/Login/LoginPage";
 
 const router = createBrowserRouter([
 	{
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
 	{
 		path:"/skm",
 		element: <Home />,
+	},
+	{
+		path:"/skm/login",
+		element: <LoginPage />,
 	},
 	{
 		path:"skm",
