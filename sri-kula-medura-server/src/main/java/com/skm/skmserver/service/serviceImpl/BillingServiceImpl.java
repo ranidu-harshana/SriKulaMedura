@@ -50,6 +50,14 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
                 .build()));
     }
 
+    public boolean deleteBilling(int id){
+        if(billingRepository.findById(id)==null){
+            return false;
+        }
+        billingRepository.deleteById(id);
+        return true;
+    }
+
     public BillingDTO set(Billing billing) {
         return BillingDTO.builder()
                 .id(billing.getId())

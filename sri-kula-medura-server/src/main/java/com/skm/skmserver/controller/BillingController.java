@@ -40,4 +40,12 @@ public class BillingController {
         return billingService.updateBilling(billingDTO,id);
     }
 
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id){
+        if(billingService.deleteBilling(id)){
+            return "Billing deleted successfully!!!";
+        }
+        return "Billing delete failed. !";
+    }
+
 }
