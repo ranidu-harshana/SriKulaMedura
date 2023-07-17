@@ -48,4 +48,8 @@ public class BillingController {
         return "Billing delete failed. !";
     }
 
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable int id){
+        return "edit";
+    }
 }
