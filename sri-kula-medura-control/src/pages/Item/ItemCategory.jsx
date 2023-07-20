@@ -2,9 +2,8 @@ import PageTopic from "../../components/PageTopic/PageTopic";
 import Table from "../../components/Table/Table";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import axios from "axios";
-import {BASE_URL} from "../../utils/constants";
 import {addItemCats, selectAllItemCategory} from "../../store/slices/itemCategorySlice";
+import {getAllItemCategories} from "../../repository/itemCategoryRepository";
 
 const ItemCategory = (props) => {
 	const item_cats = useSelector(selectAllItemCategory)
@@ -16,16 +15,14 @@ const ItemCategory = (props) => {
 		{field: 'created_at', headerName: "Created At"}
 	]
 
-	const getItemCats = () => {
-		return axios.get(BASE_URL+'/itemcategory/').then((response) => response.data );
-	}
-
 	useEffect(() => {
-		axios.get(BASE_URL+'/itemcategory/').then((response) => {
-			console.log("IN: " + response.data)
-			dispatcher(addItemCats(response.data))
-		});
-		console.log("OUT: "+ getItemCats())
+		getAllItemCategories()
+			.then((response) => {
+				dispatcher(addItemCats(response.data))
+			})
+			.catch(error => {
+				console.log("ERROR: " + error)
+			})
 	}, [dispatcher]);
 
 	return (

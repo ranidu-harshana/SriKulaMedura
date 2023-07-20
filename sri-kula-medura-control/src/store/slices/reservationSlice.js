@@ -1,5 +1,4 @@
-import {createAsyncThunk, createEntityAdapter, createSelector, createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
+import {createEntityAdapter, createSelector, createSlice} from "@reduxjs/toolkit";
 
 const reservationState = createEntityAdapter({
 	selectId: (reservation) => reservation.id
@@ -28,16 +27,8 @@ const initialState = reservationState.getInitialState({
 	}
 })
 
-export const getReservations = createAsyncThunk("getReservations", async () => {
-	const reservations = await axios.get('http://localhost:8080/api/v1/reservation/');
-
-	if (reservations) {
-		return reservations
-	}
-})
-
 const reservationSlice = createSlice({
-	name: "reservations",
+	name: "reservation",
 	initialState,
 	reducers: {
 		addReservations: {
@@ -90,16 +81,6 @@ const reservationSlice = createSlice({
 				}
 			})
 		}
-	},
-	extraReducers: (builder) =>{
-		builder.addCase(getReservations.pending, (state, action) => {
-			state.status = "Pending"
-		})
-
-		builder.addCase(getReservations.fulfilled, (state, action) => {
-			state.status = "Success"
-			reservationState.addMany(state, action.payload)
-		})
 	}
 })
 
