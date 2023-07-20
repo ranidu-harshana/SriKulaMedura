@@ -63,6 +63,7 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
                 .id(billing.getId())
                 .total_bill(billing.getTotal_bill())
                 .discount(billing.getAdvance())
+                .advance(billing.getAdvance())
                 .created_at(billing.getCreated_at())
                 .updated_at(billing.getUpdated_at())
                 .reservation_id(billing.getReservation().getId())
