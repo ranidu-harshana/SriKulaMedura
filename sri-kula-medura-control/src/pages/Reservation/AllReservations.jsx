@@ -1,6 +1,5 @@
 import {useEffect} from "react";
 import Table from "../../components/Table/Table";
-import axios from "axios";
 import PageTopic from "../../components/PageTopic/PageTopic";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -9,6 +8,7 @@ import {Link} from "react-router-dom"
 import {ButtonGroup} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {addReservations, selectAllReservation} from "../../store/slices/reservationSlice";
+import {getAllReservations} from "../../repository/reservationRepository";
 
 const AllReservations = (props) => {
 	const reservations = useSelector(selectAllReservation)
@@ -26,11 +26,14 @@ const AllReservations = (props) => {
 	]
 
 	useEffect(() => {
-		axios.get('http://localhost:8080/api/v1/reservation/').then((response) => {
-			dispatcher(addReservations(response.data))
-		});
+		getAllReservations()
+			.then((response) => {
+				dispatcher(addReservations(response.data))
+			})
+			.catch((error) => {
+				console.log("ERROR: "+error)
+			})
 	}, [dispatcher]);
-
 
 	return (
 		<div>

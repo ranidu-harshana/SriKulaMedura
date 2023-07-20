@@ -7,7 +7,7 @@ const reservationState = createEntityAdapter({
 
 const initialState = reservationState.getInitialState({
 	status: "",
-	reservation: {
+	single_reservation: {
 		id: null,
 		bill_number: null,
 		function_date: null,
@@ -32,7 +32,6 @@ export const getReservations = createAsyncThunk("getReservations", async () => {
 	const reservations = await axios.get('http://localhost:8080/api/v1/reservation/');
 
 	if (reservations) {
-		console.log(reservations)
 		return reservations
 	}
 })
@@ -48,9 +47,9 @@ const reservationSlice = createSlice({
 				}
 			},
 		},
-		addReservation: {
+		addSingleReservation: {
 			reducer: (state, {type, payload}) => {
-				state.reservation = payload
+				state.single_reservation = payload
 			},
 			prepare: ({
 				          id,
@@ -110,7 +109,7 @@ export const {
 	selectAll: selectAllReservation,
 	selectEntities: selectEntitiesReservation,
 	selectTotal: selectTotalReservation} = reservationState.getSelectors(store => store.reservation)
-export const {addReservations, addReservation} = reservationSlice.actions
-const reservationSel = (store) => store.reservation.reservation
+export const {addReservations, addSingleReservation} = reservationSlice.actions
+const reservationSel = (store) => store.reservation.single_reservation
 export const reservationSelector = createSelector([reservationSel], (reservation) => reservation)
 export default reservationSlice.reducer
