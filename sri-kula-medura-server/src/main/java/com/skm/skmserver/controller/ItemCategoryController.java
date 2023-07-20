@@ -2,18 +2,17 @@ package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.ItemCategoryDTO;
 import com.skm.skmserver.service.serviceImpl.ItemCategoryServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/itemcategory")
+@RequiredArgsConstructor
+@CrossOrigin
 public class ItemCategoryController {
     private final ItemCategoryServiceImpl itemCategoryService;
-
-    public ItemCategoryController(ItemCategoryServiceImpl itemCategoryService) {
-        this.itemCategoryService = itemCategoryService;
-    }
 
     @GetMapping("/")
     public List<ItemCategoryDTO> index() {

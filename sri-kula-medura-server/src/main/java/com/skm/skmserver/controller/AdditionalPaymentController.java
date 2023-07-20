@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "api/v1/additional-payment")
 @RequiredArgsConstructor
+@CrossOrigin
 public class AdditionalPaymentController {
     private final AdditionalPaymentServiceImpl additionalPaymentService;
 

@@ -2,17 +2,17 @@ package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.ItemDTO;
 import com.skm.skmserver.service.serviceImpl.ItemServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/item")
+@RequiredArgsConstructor
+@CrossOrigin
 public class ItemController {
     private final ItemServiceImpl itemService;
-    public ItemController(ItemServiceImpl itemService) {
-        this.itemService = itemService;
-    }
 
     @GetMapping("/")
     public List<ItemDTO> index(){

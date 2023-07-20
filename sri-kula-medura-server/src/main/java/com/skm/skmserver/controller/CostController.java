@@ -9,6 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/cost")
 @RequiredArgsConstructor
+@CrossOrigin
 public class CostController {
     private final CostServiceImpl costService;
 

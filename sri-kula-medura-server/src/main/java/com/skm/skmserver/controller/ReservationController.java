@@ -2,19 +2,17 @@ package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/reservation")
+@RequiredArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ReservationController {
     private final ReservationServiceImpl reservationService;
-
-    public ReservationController(ReservationServiceImpl reservationServiceImpl) {
-        this.reservationService = reservationServiceImpl;
-    }
 
     @GetMapping("/")
     public List<ReservationDTO> index(){
