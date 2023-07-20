@@ -1,4 +1,4 @@
-import {createAsyncThunk, createEntityAdapter, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createEntityAdapter, createSelector, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const reservationState = createEntityAdapter({
@@ -7,13 +7,31 @@ const reservationState = createEntityAdapter({
 
 const initialState = reservationState.getInitialState({
 	status: "",
+	single_reservation: {
+		id: null,
+		bill_number: null,
+		function_date: null,
+		function_place: null,
+		no_of_bestmen: null,
+		no_of_pageboys: null,
+		dressing_place: null,
+		goingaway_change_place: null,
+		status: null,
+		measurement_date: null,
+		created_at: null,
+		updated_at: null,
+		date: null,
+		customer_id: null,
+		user_id: null,
+		branch_id: null,
+		branch_name: null,
+	}
 })
 
 export const getReservations = createAsyncThunk("getReservations", async () => {
 	const reservations = await axios.get('http://localhost:8080/api/v1/reservation/');
 
 	if (reservations) {
-		console.log(reservations)
 		return reservations
 	}
 })
@@ -28,6 +46,49 @@ const reservationSlice = createSlice({
 					reservationState.addMany(state, action.payload)
 				}
 			},
+		},
+		addSingleReservation: {
+			reducer: (state, {type, payload}) => {
+				state.single_reservation = payload
+			},
+			prepare: ({
+				          id,
+				          bill_number,
+				          function_date,
+				          function_place,
+				          no_of_bestmen,
+				          no_of_pageboys,
+				          dressing_place,
+				          goingaway_change_place,
+				          status,
+				          measurement_date,
+				          created_at,
+				          updated_at,
+				          date,
+				          customer_id,
+				          user_id,
+				          branch_id,
+				          branch_name}) => ({
+				payload: {
+					id,
+					bill_number,
+					function_date,
+					function_place,
+					no_of_bestmen,
+					no_of_pageboys,
+					dressing_place,
+					goingaway_change_place,
+					status,
+					measurement_date,
+					created_at,
+					updated_at,
+					date,
+					customer_id,
+					user_id,
+					branch_id,
+					branch_name
+				}
+			})
 		}
 	},
 	extraReducers: (builder) =>{
@@ -48,5 +109,7 @@ export const {
 	selectAll: selectAllReservation,
 	selectEntities: selectEntitiesReservation,
 	selectTotal: selectTotalReservation} = reservationState.getSelectors(store => store.reservation)
-export const {addReservations} = reservationSlice.actions
+export const {addReservations, addSingleReservation} = reservationSlice.actions
+const reservationSel = (store) => store.reservation.single_reservation
+export const reservationSelector = createSelector([reservationSel], (reservation) => reservation)
 export default reservationSlice.reducer
