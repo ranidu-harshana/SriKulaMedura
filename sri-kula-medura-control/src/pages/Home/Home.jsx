@@ -1,7 +1,9 @@
+import CalendarComp from "../../components/Calendar/CalendarComp";
+
 const Home = (props) => {
 	return (
 		<div>
-			Home
+			<CalendarComp/>
 		</div>
 	);
 }
