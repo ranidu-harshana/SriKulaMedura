@@ -85,4 +85,7 @@ public class Reservation {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Branch branch;
+
+    @OneToOne(mappedBy = "reservation")
+    private Billing billing;
 }
