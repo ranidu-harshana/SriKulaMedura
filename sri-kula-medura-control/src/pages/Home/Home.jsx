@@ -7,7 +7,7 @@ const Home = (props) => {
 			<PageTopic topic={"Dashboard"} breadcrumbs={[
 				{title: 'Home', active: true},
 			]}/>
-			<CalendarComp dates={["2023-06-28", "2023-07-16", "2023-08-02", "2023-08-01"]}/>
+			<CalendarComp dates={[new Date("2023-07-28").toLocaleDateString(), new Date("2023-07-16").toLocaleDateString(), new Date("2023-08-02").toLocaleDateString(), new Date("2023-08-01").toLocaleDateString()]}/>
 		</div>
 	);
 }
