@@ -145,8 +145,12 @@
 }
 
 @media screen and (max-width: 768px) {
-    .react-calendar {
-        width: 350px;
+    .react-calendar__navigation__label {
+        font-size: 16px;
+    }
+
+    .react-calendar__navigation__arrow {
+        font-size: 16px;
     }
 
     .react-calendar__navigation {
@@ -160,5 +164,12 @@
     .react-calendar__tile {
         font-size: 15px;
         height: 50px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .react-calendar__tile {
+        font-size: 40px;
+        height: 120px;
     }
 }

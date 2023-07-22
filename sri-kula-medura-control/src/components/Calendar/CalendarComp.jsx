@@ -2,7 +2,7 @@ import './Calendar.css'
 import Calendar from "react-calendar";
 import ReservationIndicator from "./ReservationIndicator";
 
-const CalendarComp = ({dates}) => {
+const CalendarComp = ({dates, type}) => {
 	return (<div>
 			<Calendar
 				showNeighboringMonth={false}
