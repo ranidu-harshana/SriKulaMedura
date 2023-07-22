@@ -4,14 +4,14 @@ import ReservationIndicator from "./ReservationIndicator";
 
 const CalendarComp = ({dates, type}) => {
 	return (<div>
-			<Calendar
-				showNeighboringMonth={false}
-				tileContent={({date, view}) => {
-					return view === 'month' ?
-						<p>{dates.includes(date.toJSON().split('T')[0]) ? <ReservationIndicator/> : null}</p> : null
-				}}
-			/>
-		</div>);
+		<Calendar
+			showNeighboringMonth={false}
+			tileContent={({date, view}) => {
+				return view === 'month' ? dates.includes(date.toLocaleDateString().split('T')[0]) ?
+					<ReservationIndicator/> : null : null
+			}}
+		/>
+	</div>);
 }
 
 export default CalendarComp;
