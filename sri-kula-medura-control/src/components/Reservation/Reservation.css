@@ -17,6 +17,24 @@
     border-left-width: 2px;
 }
 
+.res-detail-link {
+    color: white;
+    font-size: 14px;
+    text-decoration: none
+}
+
+.normal-reservation {
+    background-color: #14A44D;
+}
+
+.cancelled-reservation {
+    background-color: #DC4C64;
+}
+
+.postponed-reservation {
+    background-color: #E4A11B;
+}
+
 @media screen and (max-width: 768px) {
     .image-width {
         width: 50%;
