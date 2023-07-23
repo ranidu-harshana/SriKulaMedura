@@ -17,8 +17,10 @@ import {controlActivity} from "../../context/ControlActivity";
 import Avatar from "@mui/material/Avatar";
 import {Divider, ListItemIcon} from "@mui/material";
 import {Logout, Settings} from "@mui/icons-material";
+import {useTranslation} from "react-i18next";
 
 const TopNav =()=> {
+    const {i18n} = useTranslation()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const {setSideNavVisibility, matchesMedia768} = useContext(controlActivity)
@@ -43,6 +45,12 @@ const TopNav =()=> {
     };
 
     const menuId = 'primary-search-account-menu';
+
+    const lngs = {
+        en: { nativeName: 'En' },
+        si: { nativeName: 'Si' }
+    };
+
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
@@ -150,6 +158,15 @@ const TopNav =()=> {
                         Admin
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
+                    <Box>
+                        <div>
+                            {Object.keys(lngs).map((lng) => (
+                                <button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal', backgroundColor: i18n.resolvedLanguage === lng ? '#76D219' : 'white' }} className={'btn'} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+                                    {lngs[lng].nativeName}
+                                </button>
+                            ))}
+                        </div>
+                    </Box>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="error">
