@@ -28,9 +28,9 @@ const itemSlice = createSlice({
 		},
 
 		addSingleItem: {
-			reducer: (state, action) => {
-				if (action.payload.length > 0) {
-					itemState.addMany(state, action.payload)
+			reducer: (state, {type, payload}) => {
+				if (payload.length > 0) {
+					state.single_item = payload
 				}
 			},
 			prepare: ({
@@ -54,7 +54,7 @@ const itemSlice = createSlice({
 				updated_at,
 				item_category_id
 			})
-		}
+		},
 	}
 })
 

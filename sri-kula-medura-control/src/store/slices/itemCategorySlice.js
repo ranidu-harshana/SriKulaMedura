@@ -23,9 +23,9 @@ const item_categorySlice = createSlice({
 		},
 
 		addSingleItemCat: {
-			reducer: (state, action) => {
-				if (action.payload.length > 0) {
-					item_categoryState.addMany(state, action.payload)
+			reducer: (state, {type, payload}) => {
+				if (payload.length > 0) {
+					state.single_item_category = payload
 				}
 			},
 			prepare: ({
