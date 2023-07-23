@@ -4,8 +4,10 @@ import {useEffect, useRef} from "react";
 import {getAllBranches, storeBranch} from "../../repository/branchRepository";
 import {useDispatch, useSelector} from "react-redux";
 import {addBranches, saveBranch, selectAllBranch} from "../../store/slices/branchSlice";
+import {useTranslation} from "react-i18next";
 
 const Branch = (props) => {
+	const {t} = useTranslation()
 	const branches = useSelector(selectAllBranch)
 	const dispatcher = useDispatch()
 
@@ -32,8 +34,8 @@ const Branch = (props) => {
 	}, [dispatcher])
 
 	return (<>
-			<PageTopic topic={"Branch"}
-			           breadcrumbs={[{title: 'Home', link: "/", active: false}, {title: 'Branch', active: true}]}/>
+			<PageTopic topic={t('branch')}
+			           breadcrumbs={[{title: t("home"), link: "/", active: false}, {title: t("branch"), active: true}]}/>
 
 			<div>
 				<input ref={branchNameRef} type="text" placeholder={'Branch Name'}/><br/>
