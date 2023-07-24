@@ -18,6 +18,7 @@ import Avatar from "@mui/material/Avatar";
 import {Divider, ListItemIcon} from "@mui/material";
 import {Logout, Settings} from "@mui/icons-material";
 import {useTranslation} from "react-i18next";
+import Clock from 'react-live-clock';
 import './TopNav.css'
 
 const TopNav =()=> {
@@ -159,6 +160,11 @@ const TopNav =()=> {
                         Admin
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
+                    <Box>
+                        <button className={'btn btn-sm clockbtn me-3'}>
+                            <Clock format={'LTS'} ticking={true} timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}/>
+                        </button>
+                    </Box>
                     <Box>
                         <div className="btn-group" role="group">
                             {Object.keys(lngs).map((lng) => (
