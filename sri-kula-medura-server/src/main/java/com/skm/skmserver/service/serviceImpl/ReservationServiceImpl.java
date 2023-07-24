@@ -1,5 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.ReservationCustomerDTO;
 import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.repo.BranchRepo;
@@ -8,6 +9,7 @@ import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.ReservationService;
+import com.skm.skmserver.util.GenerateBillNumber;
 import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+
+import static com.skm.skmserver.util.GenerateBillNumber.generateBillNumber;
 
 @Service
 @Transactional
@@ -33,20 +37,16 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     }
 
     @Override
-    public ReservationDTO saveReservation(ReservationDTO reservationDTO) {
+    public ReservationDTO saveReservation(ReservationCustomerDTO reservationCusDTO) {
+        // TODO Save customer and get saved id
+        int customer_id = 1;
         Reservation reservation = reservationRepository.save(Reservation.builder()
-                        .bill_number(reservationDTO.getBill_number())
-                        .function_date(reservationDTO.getFunction_date())
-                        .function_place(reservationDTO.getFunction_place())
-                        .no_of_bestmen(reservationDTO.getNo_of_bestmen())
-                        .no_of_pageboys(reservationDTO.getNo_of_pageboys())
-                        .dressing_place(reservationDTO.getDressing_place())
-                        .goingaway_change_place(reservationDTO.getGoingaway_change_place())
+                        .bill_number(generateBillNumber(reservationCusDTO.getBranch_id(), customer_id))
+                        .function_date(reservationCusDTO.getFunction_date())
                         .status(true)
-                        .measurement_date(reservationDTO.getMeasurement_date())
-                        .customer(customerRepository.findById(reservationDTO.getCustomer_id()))
-                        .user(userRepository.findById(reservationDTO.getUser_id()))
-                        .branch(branchRepo.findById(reservationDTO.getBranch_id()))
+                        .customer(customerRepository.findById(customer_id))
+                        .user(userRepository.findById(reservationCusDTO.getUser_id()))
+                        .branch(branchRepo.findById(reservationCusDTO.getBranch_id()))
                         .build());
         return set(reservation);
     }
