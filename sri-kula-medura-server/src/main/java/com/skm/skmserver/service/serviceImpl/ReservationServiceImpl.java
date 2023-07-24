@@ -9,7 +9,6 @@ import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.ReservationService;
-import com.skm.skmserver.util.GenerateBillNumber;
 import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +28,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     private final UserRepository userRepository;
     private final BranchRepo branchRepo;
     private final BranchServiceImpl branchService;
+    private final CustomerServiceImpl customerService;
     private final MapAll<Reservation, ReservationDTO> mapAll;
 
     @Override
@@ -104,6 +104,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                 .updated_at(reservation.getUpdated_at())
                 .date(new SimpleDateFormat("EEEE, MMMM dd, YYYY").format(reservation.getCreated_at()))
                 .customer_id(reservation.getCustomer().getId())
+                .customer(customerService.set(reservation.getCustomer()))
                 .user_id(reservation.getUser().getId())
                 .branch_id(reservation.getBranch().getId())
                 .branch_name(reservation.getBranch().getName())

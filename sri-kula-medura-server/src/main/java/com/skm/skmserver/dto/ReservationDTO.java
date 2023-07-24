@@ -28,6 +28,7 @@ public class ReservationDTO {
     private Date updated_at;
     private String date;
     private int customer_id;
+    private CustomerDTO customer;
     private int user_id;
     private int branch_id;
     private String branch_name;

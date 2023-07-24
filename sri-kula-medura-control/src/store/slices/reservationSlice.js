@@ -21,6 +21,7 @@ const initialState = reservationState.getInitialState({
 		updated_at: null,
 		date: null,
 		customer_id: null,
+		customer: null,
 		user_id: null,
 		branch_id: null,
 		branch_name: null,
@@ -57,6 +58,7 @@ const reservationSlice = createSlice({
 				          updated_at,
 				          date,
 				          customer_id,
+						  customer,
 				          user_id,
 				          branch_id,
 				          branch_name}) => ({
@@ -75,6 +77,7 @@ const reservationSlice = createSlice({
 					updated_at,
 					date,
 					customer_id,
+					customer,
 					user_id,
 					branch_id,
 					branch_name
