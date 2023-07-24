@@ -1,5 +1,6 @@
 package com.skm.skmserver.controller;
 
+import com.skm.skmserver.dto.ReservationCustomerDTO;
 import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +21,8 @@ public class ReservationController {
     }
 
     @PostMapping("/")
-    public ReservationDTO store(@RequestBody ReservationDTO reservationDTO){
-        return reservationService.saveReservation(reservationDTO);
+    public ReservationDTO store(@RequestBody ReservationCustomerDTO reservationCusDTO){
+        return reservationService.saveReservation(reservationCusDTO);
     }
 
     @GetMapping("/create")
