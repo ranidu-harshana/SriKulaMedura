@@ -18,6 +18,7 @@ import Avatar from "@mui/material/Avatar";
 import {Divider, ListItemIcon} from "@mui/material";
 import {Logout, Settings} from "@mui/icons-material";
 import {useTranslation} from "react-i18next";
+import './TopNav.css'
 
 const TopNav =()=> {
     const {i18n} = useTranslation()
@@ -48,7 +49,7 @@ const TopNav =()=> {
 
     const lngs = {
         en: { nativeName: 'En' },
-        si: { nativeName: 'Si' }
+        si: { nativeName: 'සිං' }
     };
 
     const renderMenu = (
@@ -159,9 +160,9 @@ const TopNav =()=> {
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box>
-                        <div>
+                        <div className="btn-group" role="group">
                             {Object.keys(lngs).map((lng) => (
-                                <button key={lng} style={{ fontWeight: i18n.resolvedLanguage === lng ? 'bold' : 'normal', backgroundColor: i18n.resolvedLanguage === lng ? '#76D219' : 'white' }} className={'btn'} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+                                <button key={lng} className={`btn btn-sm ${i18n.resolvedLanguage === lng ? 'language-btn-active' : 'language-btn'}`} type="submit" onClick={() => i18n.changeLanguage(lng)}>
                                     {lngs[lng].nativeName}
                                 </button>
                             ))}
