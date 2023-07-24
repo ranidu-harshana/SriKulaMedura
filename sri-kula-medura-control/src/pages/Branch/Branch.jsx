@@ -24,14 +24,16 @@ const Branch = (props) => {
 	},]
 
 	useEffect(() => {
-		getAllBranches()
-			.then((response) => {
-				dispatcher(addBranches(response.data))
-			})
-			.catch(error => {
-				console.log("ERROR: " + error)
-			})
-	}, [dispatcher])
+		if (branches.length < 1) {
+			getAllBranches()
+				.then((response) => {
+					dispatcher(addBranches(response.data))
+				})
+				.catch(error => {
+					console.log("ERROR: " + error)
+				})
+		}
+	}, [branches, dispatcher])
 
 	return (<>
 			<PageTopic topic={t('branch')}
