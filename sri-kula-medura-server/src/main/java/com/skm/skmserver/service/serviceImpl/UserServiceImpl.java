@@ -3,7 +3,6 @@ package com.skm.skmserver.service.serviceImpl;
 import com.skm.skmserver.dto.CustomerDTO;
 import com.skm.skmserver.dto.UserDTO;
 import com.skm.skmserver.entity.User;
-import com.skm.skmserver.enums.Role;
 import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.UserService;
@@ -11,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Enumeration;
 import java.util.List;
 
 @Service
