@@ -21,7 +21,7 @@ const initialState = reservationState.getInitialState({
 		updated_at: null,
 		date: null,
 		customer_id: null,
-		customer: null,
+		customer: {},
 		user_id: null,
 		branch_id: null,
 		branch_name: null,
