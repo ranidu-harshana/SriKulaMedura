@@ -12,8 +12,8 @@ const InterimPaymentsTable = (props) => {
 						<h5 className={'col'}>All Interim Payments</h5>
 					</div>
 				</div>
-				<div className="row reservation-section-table">
-					<table className="table table-striped table-sm table-hover px-2">
+				<div className="row reservation-section-table px-2">
+					<table className="table table-striped table-sm table-hover">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
