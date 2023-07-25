@@ -55,6 +55,7 @@ const itemSlice = createSlice({
 				item_category_id
 			})
 		},
+		saveItem: itemState.addOne,
 	}
 })
 
@@ -64,7 +65,7 @@ export const {
 	selectAll: selectAllItem,
 	selectEntities: selectEntitiesItem,
 	selectTotal: selectTotalItem} = itemState.getSelectors(store => store.item)
-export const {addItems, addSingleItem} = itemSlice.actions
+export const {addItems, addSingleItem, saveItem} = itemSlice.actions
 const itemSel = (store) => store.item.single_item
 export const itemSelector = createSelector([itemSel], (item)=>(item))
 export default itemSlice.reducer

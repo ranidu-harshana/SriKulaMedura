@@ -49,7 +49,7 @@ const CreateReservation = (props) => {
 				{title: 'Create Reservation', active: true}
 			]}/>
 
-			<div className="col-6 mt-5 pb-4">
+			<div className="col-12 col-md-6 mt-5 pb-4">
 				<div className="mt-4">
 					<FormControl sx={{ width: "100%" }} size="small">
 						<InputLabel id="demo-select-small-label">Branch</InputLabel>

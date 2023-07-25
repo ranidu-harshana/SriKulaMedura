@@ -16,14 +16,16 @@ const ItemCategory = (props) => {
 	]
 
 	useEffect(() => {
-		getAllItemCategories()
-			.then((response) => {
-				dispatcher(addItemCats(response.data))
-			})
-			.catch(error => {
-				console.log("ERROR: " + error)
-			})
-	}, [dispatcher]);
+		if(item_cats < 1) {
+			getAllItemCategories()
+				.then((response) => {
+					dispatcher(addItemCats(response.data))
+				})
+				.catch(error => {
+					console.log("ERROR: " + error)
+				})
+		}
+	}, [dispatcher, item_cats]);
 
 	return (
 		<div>

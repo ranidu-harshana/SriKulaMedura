@@ -20,19 +20,21 @@ const Inventory = (props) => {
 	]
 
 	useEffect(() => {
-		getAllItems()
-			.then((response) => {
-				dispatcher(addItems(response.data))
-			})
-			.catch(error => {
-				console.log("ERROR: " + error)
-			})
-	}, [dispatcher]);
+		if(items.length < 1) {
+			getAllItems()
+				.then((response) => {
+					dispatcher(addItems(response.data))
+				})
+				.catch(error => {
+					console.log("ERROR: " + error)
+				})
+		}
+	}, [dispatcher, items]);
 
 	return (
 		<>
 			<div>
-				<PageTopic topic={"Reservation"} breadcrumbs={[
+				<PageTopic topic={"Item"} breadcrumbs={[
 					{title: 'Home', link: "/", active: false},
 					{title: 'Items', active: true}
 				]}/>
