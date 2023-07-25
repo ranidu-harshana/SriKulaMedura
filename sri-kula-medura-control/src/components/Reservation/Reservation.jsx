@@ -3,8 +3,30 @@ import useravatar from "../../assets/chat/patient-thumb-02.jpg";
 import ReservationDetails from "./ReservationDetails";
 import ReservationTabs from "./ReservationTabs";
 import UserDetails from "./UserDetails";
+import {useDispatch, useSelector} from "react-redux";
+import {addSingleReservation, reservationSelector, selectByIdReservation} from "../../store/slices/reservationSlice";
+import {useMemo} from "react";
+import {getReservation} from "../../repository/reservationRepository";
 
-const Reservation = (props) => {
+const Reservation = ({id}) => {
+	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
+	const reservationAlt = useSelector(reservationSelector)
+	const dispatcher = useDispatch()
+
+	useMemo(() => {
+		if(!reservationCurr) {
+			getReservation(id)
+				.then((response) => {
+					dispatcher(addSingleReservation(response.data))
+				})
+				.catch(error => {
+					console.log("ERROR: " + error)
+				})
+		}
+	}, [dispatcher, id, reservationCurr]);
+
+	const reservation = reservationCurr ? reservationCurr : reservationAlt
+
 	return (
 		<>
 		<div className={`row p-1 p-lg-3`}>
@@ -13,21 +35,21 @@ const Reservation = (props) => {
 					<RoundedImage width={100} userAvatar={useravatar} className={'image-width mb-3 mb-md-0'}/>
 				</div>
 				<div className="col-12 col-sm-9 ps-3 mt-2">
-					<h3>{props.customer.name}</h3>
+					<h3>{reservation.customer.name}</h3>
 					<div className={`small`}>
 						<p className={'lh-lg'}>
-							<UserDetails address={props.customer.address} billNumber={props.bill_number}
-							             bookedOn={props.created_at} branch={props.branch_name}/>
+							<UserDetails address={"reservation.customer.address"} billNumber={reservation.bill_number}
+							             bookedOn={reservation.created_at} branch={reservation.branch_name}/>
 						</p>
 					</div>
 				</div>
 			</div>
 			<div className="col-12 col-lg-6 row left-border">
 				<ReservationDetails title={"Amount to be paid"} value={"17,874.00"} amountToPaid={true}/>
-				<ReservationDetails title={"Phone 1"} value={props.customer.mobile_no1}/>
+				<ReservationDetails title={"Phone 1"} value={"reservation.customer.mobile_no1"}/>
 				<ReservationDetails title={"Phone 2"} value={"830-673-9495"}/>
-				<ReservationDetails title={"Function Date"} value={props.function_date}/>
-				<ReservationDetails title={"Function Place"} value={props.function_place}/>
+				<ReservationDetails title={"Function Date"} value={reservation.function_date}/>
+				<ReservationDetails title={"Function Place"} value={reservation.function_place}/>
 			</div>
 		</div>
 		<div>
