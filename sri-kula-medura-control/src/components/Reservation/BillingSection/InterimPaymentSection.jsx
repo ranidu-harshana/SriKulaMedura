@@ -32,7 +32,7 @@ const InterimPaymentSection = (props) => {
 					<div className="row mb-3">
 						<div className="col-3"></div>
 						<div className="col-9 text-end">
-							<button className={'btn btn-success w-25'}>Submit</button>
+							<button className={'btn btn-success w-50 w-md-25'}>Submit</button>
 						</div>
 					</div>
 				</div>

@@ -1,3 +1,8 @@
+import {ButtonGroup} from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+
 const AdditionalPaymentsTable = (props) => {
 	return (
 		<>
@@ -7,35 +12,134 @@ const AdditionalPaymentsTable = (props) => {
 						<h5 className={'col'}>All Additional Charges</h5>
 					</div>
 				</div>
-				<table className="table table-striped table-sm">
-					<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">First</th>
-						<th scope="col">Last</th>
-						<th scope="col">Handle</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td colSpan="2">Larry the Bird</td>
-						<td>@twitter</td>
-					</tr>
-					</tbody>
-				</table>
+				<div className="row reservation-section-table table-hover px-2">
+					<table className="table table-striped table-sm">
+						<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Amount</th>
+							<th scope="col">Reason</th>
+							<th scope="col">Date</th>
+							<th scope="col">Action</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">1</th>
+								<td>2000</td>
+								<td>sdjfnsdfkjsndfkjdsfnskfjnsfj Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam debitis dolores hic inventore libero nemo nesciunt nihil, nisi obcaecati, omnis, perspiciatis velit voluptate! Architecto illo ipsa ipsum tempora ut!</td>
+								<td>2023-12-01</td>
+								<td>
+									<ButtonGroup size="small">
+										<IconButton color="success" size="small">
+											<EditIcon />
+										</IconButton>
+										<IconButton sx={{color:"red"}} size="small">
+											<DeleteIcon />
+										</IconButton>
+									</ButtonGroup>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">2</th>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>2023-12-01</td>
+								<td>
+									<ButtonGroup size="small">
+										<IconButton color="success" size="small">
+											<EditIcon />
+										</IconButton>
+										<IconButton sx={{color:"red"}} size="small">
+											<DeleteIcon />
+										</IconButton>
+									</ButtonGroup>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>30000</td>
+								<td>Larry the Bird</td>
+								<td>2023-12-01</td>
+								<td>
+									<ButtonGroup size="small">
+										<IconButton color="success" size="small">
+											<EditIcon />
+										</IconButton>
+										<IconButton sx={{color:"red"}} size="small">
+											<DeleteIcon />
+										</IconButton>
+									</ButtonGroup>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>30000</td>
+								<td>Larry the Bird</td>
+								<td>2023-12-01</td>
+								<td>
+									<ButtonGroup size="small">
+										<IconButton color="success" size="small">
+											<EditIcon />
+										</IconButton>
+										<IconButton sx={{color:"red"}} size="small">
+											<DeleteIcon />
+										</IconButton>
+									</ButtonGroup>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>30000</td>
+								<td>Larry the Bird</td>
+								<td>2023-12-01</td>
+								<td>
+									<ButtonGroup size="small">
+										<IconButton color="success" size="small">
+											<EditIcon />
+										</IconButton>
+										<IconButton sx={{color:"red"}} size="small">
+											<DeleteIcon />
+										</IconButton>
+									</ButtonGroup>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>30000</td>
+								<td>Larry the Bird</td>
+								<td>2023-12-01</td>
+								<td>
+									<ButtonGroup size="small">
+										<IconButton color="success" size="small">
+											<EditIcon />
+										</IconButton>
+										<IconButton sx={{color:"red"}} size="small">
+											<DeleteIcon />
+										</IconButton>
+									</ButtonGroup>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">3</th>
+								<td>30000</td>
+								<td>Larry the Bird</td>
+								<td>2023-12-01</td>
+								<td>
+									<ButtonGroup size="small">
+										<IconButton color="success" size="small">
+											<EditIcon />
+										</IconButton>
+										<IconButton sx={{color:"red"}} size="small">
+											<DeleteIcon />
+										</IconButton>
+									</ButtonGroup>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
 			</div>
 		</>
 	);

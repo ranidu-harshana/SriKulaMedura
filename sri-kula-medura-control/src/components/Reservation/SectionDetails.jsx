@@ -1,4 +1,4 @@
-const BillingDetails = ({topic, value}) => {
+const SectionDetails = ({topic, value}) => {
 	return (
 		<>
 			<div className={'row my-1'}>
@@ -13,4 +13,4 @@ const BillingDetails = ({topic, value}) => {
 	);
 }
 
-export default BillingDetails;
+export default SectionDetails;
