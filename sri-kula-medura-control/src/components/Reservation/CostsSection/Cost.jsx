@@ -12,7 +12,7 @@ const Cost = (props) => {
 		<div className="row">
 			<div className={'col-12 col-md-4 p-0 px-md-2 mt-3 mt-md-0'}>
 				<div className="tab-content-container">
-					<did className="row">
+					<div className="row">
 						<div className={'row mb-3'}>
 							<h5 className={'col'}>Costs</h5>
 							<div className={'col text-end'}>
@@ -20,9 +20,8 @@ const Cost = (props) => {
 								        onClick={() => setEditingStatus(pre => !pre)}>{editingStatus ? "Cancel" : "Edit Costs"}</button>
 							</div>
 						</div>
-
 						{editingStatus ? <EditingCost/> : <ViewingCost/>}
-					</did>
+					</div>
 				</div>
 			</div>
 
@@ -33,8 +32,6 @@ const Cost = (props) => {
 				<OtherCostsTable />
 			</div>
 		</div>
-
-
 	</>);
 }
 
