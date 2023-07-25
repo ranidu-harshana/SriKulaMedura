@@ -2,7 +2,6 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import {useState} from "react";
-import Typography from "@mui/material/Typography";
 import Bill from "./BillingSection/Bill";
 import Cost from "./CostsSection/Cost";
 
@@ -17,7 +16,7 @@ const TabPanel = ({ children, value, index, ...other }) => {
 		>
 			{value === index && (
 				<Box sx={{ p: 3 }}>
-					<Typography>{children}</Typography>
+					<div>{children}</div>
 				</Box>
 			)}
 		</div>
