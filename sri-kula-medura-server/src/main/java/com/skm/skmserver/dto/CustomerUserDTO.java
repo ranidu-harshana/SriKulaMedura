@@ -5,18 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-public class ReservationCustomerDTO {
-    private LocalDate function_date;
-    private int user_id;
-    private int branch_id;
+public class CustomerUserDTO {
+    private int id;
     private String name;
     private String address;
     private String mobile_no1;
     private String mobile_no2;
+    private boolean status;
+    private int discount;
 }

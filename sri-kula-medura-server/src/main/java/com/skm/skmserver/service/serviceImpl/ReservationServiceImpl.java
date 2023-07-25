@@ -1,8 +1,9 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.ReservationCustomerDTO;
-import com.skm.skmserver.dto.ReservationDTO;
+import com.skm.skmserver.dto.*;
 import com.skm.skmserver.entity.Reservation;
+import com.skm.skmserver.entity.User;
+import com.skm.skmserver.enums.Role;
 import com.skm.skmserver.repo.BranchRepo;
 import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.ReservationRepository;
@@ -29,6 +30,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     private final BranchRepo branchRepo;
     private final BranchServiceImpl branchService;
     private final CustomerServiceImpl customerService;
+    private final UserServiceImpl userService;
     private final MapAll<Reservation, ReservationDTO> mapAll;
 
     @Override
@@ -38,13 +40,18 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
 
     @Override
     public ReservationDTO saveReservation(ReservationCustomerDTO reservationCusDTO) {
-        // TODO Save customer and get saved id
-        int customer_id = 1;
+        UserDTO userDTO = userService.saveUser(UserDTO.builder()
+                .name(reservationCusDTO.getName())
+                .email("EmailAddress"+Math.random())
+                .mobile_no(reservationCusDTO.getMobile_no1())
+                .role(Role.CUSTOMER)
+                .address(reservationCusDTO.getAddress())
+                .build());
         Reservation reservation = reservationRepository.save(Reservation.builder()
-                        .bill_number(generateBillNumber(reservationCusDTO.getBranch_id(), customer_id))
+                        .bill_number(generateBillNumber(reservationCusDTO.getBranch_id(), userDTO.getId()))
                         .function_date(reservationCusDTO.getFunction_date())
                         .status(true)
-                        .customer(customerRepository.findById(customer_id))
+                        .customer(customerRepository.findByUserId(userDTO.getId()))
                         .user(userRepository.findById(reservationCusDTO.getUser_id()))
                         .branch(branchRepo.findById(reservationCusDTO.getBranch_id()))
                         .build());
@@ -89,6 +96,16 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
 
     @Override
     public ReservationDTO set(Reservation reservation) {
+        User user = userRepository.findById(reservation.getCustomer().getUser().getId());
+        CustomerUserDTO customerUserDTO = CustomerUserDTO.builder()
+                .id(reservation.getCustomer().getId())
+                .name(user.getName())
+                .address(user.getAddress())
+                .mobile_no1(user.getMobile_no())
+                .mobile_no2(reservation.getCustomer().getMobile_no())
+                .status(reservation.getCustomer().isStatus())
+                .discount(reservation.getCustomer().getDiscount())
+                .build();
         return ReservationDTO.builder()
                 .id(reservation.getId())
                 .bill_number(reservation.getBill_number())
@@ -104,7 +121,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                 .updated_at(reservation.getUpdated_at())
                 .date(new SimpleDateFormat("EEEE, MMMM dd, YYYY").format(reservation.getCreated_at()))
                 .customer_id(reservation.getCustomer().getId())
-                .customer(customerService.set(reservation.getCustomer()))
+                .customer(customerUserDTO)
                 .user_id(reservation.getUser().getId())
                 .branch_id(reservation.getBranch().getId())
                 .branch_name(reservation.getBranch().getName())

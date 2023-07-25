@@ -2,7 +2,9 @@ package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.CustomerDTO;
 import com.skm.skmserver.entity.Customer;
-import com.skm.skmserver.entity.Measurement;
+import com.skm.skmserver.entity.Customer;
+import com.skm.skmserver.repo.CustomerRepository;
+import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.CustomerService;
 import com.skm.skmserver.service.MainService;
 import lombok.RequiredArgsConstructor;
@@ -15,33 +17,41 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService, MainService<CustomerDTO, Customer> {
+    private final CustomerRepository customerRepository;
+    private final UserRepository userRepository;
+
     @Override
-    public List<CustomerDTO> allMeasurements() {
+    public List<CustomerDTO> allCustomers() {
         return null;
     }
 
     @Override
-    public CustomerDTO saveMeasurement(CustomerDTO customerDTO) {
+    public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
+        Customer customer = customerRepository.save(Customer.builder()
+                .status(true)
+                .user(userRepository.findById(customerDTO.getUser_id()))
+                .build());
+        return set(customer);
+    }
+
+    @Override
+    public CustomerDTO getCustomer(int id) {
+        Customer customer = customerRepository.findById(id);
+        return set(customer);
+    }
+
+    @Override
+    public CustomerDTO updateCustomer(CustomerDTO customerDTO, int id) {
         return null;
     }
 
     @Override
-    public CustomerDTO getMeasurement(int id) {
-        return null;
-    }
-
-    @Override
-    public CustomerDTO updateMeasurement(CustomerDTO customerDTO, int id) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteMeasurement(int id) {
+    public boolean deleteCustomer(int id) {
         return false;
     }
 
     @Override
-    public CustomerDTO getCustomerDTOWithValues(Measurement measurement) {
+    public CustomerDTO getCustomerDTOWithValues(Customer measurement) {
         return null;
     }
 
