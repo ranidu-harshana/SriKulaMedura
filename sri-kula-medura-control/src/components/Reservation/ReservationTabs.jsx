@@ -3,6 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import {useState} from "react";
 import Typography from "@mui/material/Typography";
+import FullBill from "./BillingSection/FullBill";
 
 const TabPanel = ({ children, value, index, ...other }) => {
 	return (
@@ -59,7 +60,7 @@ const ReservationTabs = (props) => {
 				Dress Selection
 			</TabPanel>
 			<TabPanel value={value} index={2}>
-				Bill
+				<FullBill />
 			</TabPanel>
 			<TabPanel value={value} index={3}>
 				Costs

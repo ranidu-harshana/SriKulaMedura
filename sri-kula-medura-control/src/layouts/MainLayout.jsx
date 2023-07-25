@@ -17,7 +17,7 @@ const MainLayout = (props) => {
 				</div>
 				<div className={sideNavVisibility ? "content-wrapper" : "content-wrapper-open-side-nav"}
 				     onClick={() => setSideNavVisibility(matchesMedia768)}>
-					<div className="content" style={{height: `${windowHeight}px`}}>
+					<div className="content" style={{minHeight: `${windowHeight}px`}}>
 						<Outlet/>
 					</div>
 				</div>
