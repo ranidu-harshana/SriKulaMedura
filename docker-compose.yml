@@ -9,6 +9,8 @@ services:
       - "8080:8080"
     networks:
       - skm
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://skmdb:3306/skm_db?createDatabaseIfNotExist=true 
     depends_on:
       - skmdb
 
@@ -18,9 +20,14 @@ services:
     networks:
       - skm
     environment:
+      MYSQL_DATABASE: skm_db
+      MYSQL_USER: skm_user
+      MYSQL_PASSWORD: abcd12@ABCD
       MYSQL_ROOT_PASSWORD: abcd12@ABCD
     ports:
-      - '3308:3306'
+      - '3307:3306'
+    expose:
+      - '3307'
     volumes:
       - skm-db:/var/lib/mysql
 
