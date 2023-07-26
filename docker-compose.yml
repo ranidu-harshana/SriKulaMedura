@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  skm-server:
+    build:
+      context: sri-kula-medura-server
+      dockerfile: Dockerfile
+    ports: 
+      - "8080:8080"
+    networks:
+      - skm
+    depends_on:
+      - skmdb
+
+  skmdb:
+    image: mysql
+    restart: always
+    networks:
+      - skm
+    environment:
+      MYSQL_ROOT_PASSWORD: abcd12@ABCD
+    ports:
+      - '3308:3306'
+    volumes:
+      - skm-db:/var/lib/mysql
+
+networks:
+  skm:
+volumes:
+  skm-db:
