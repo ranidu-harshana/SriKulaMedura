@@ -10,7 +10,9 @@ services:
     networks:
       - skm
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://skmdb:3306/skm_db?createDatabaseIfNotExist=true 
+      SPRING_DATASOURCE_URL: jdbc:mysql://skmdb:3306/skm_db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: abcd12@ABCD
     depends_on:
       - skmdb
 
