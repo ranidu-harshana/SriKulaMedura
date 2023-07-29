@@ -1,0 +1,124 @@
+.box {
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.box .section-wrapper {
+    border: 0px none;
+    height: 1116px;
+    overflow-x: hidden;
+    width: 1446px;
+}
+
+.box .section {
+    height: 1116px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 1450px;
+}
+
+.box .overlap-group {
+    height: 1116px;
+    position: relative;
+    width: 1446px;
+}
+
+.box .rectangle {
+    background-color: #c9e8e0;
+    height: 1116px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 2488px;
+}
+
+.box .text-wrapper {
+    color: #378b75;
+    font-family: "Roboto-Bold", Helvetica;
+    font-size: 40px;
+    font-weight: 700;
+    height: 57px;
+    left: 291px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    text-align: center;
+    top: 57px;
+    width: 1949px;
+}
+
+.box .div {
+    background-color: #ffffff;
+    border-radius: 17px;
+    height: 892px;
+    left: 654px;
+    position: relative;
+    top: 72px;
+    width: 1224px;
+}
+
+.box .flex-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    height: 488px;
+    left: 689px;
+    position: absolute;
+    top: 406px;
+    width: 1157px;
+}
+
+.box .text {
+    color: #89918f;
+    font-family: "Lato-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    text-align: center;
+    width: 1157px;
+}
+
+.box .span {
+    color: #89918f;
+    font-family: "Lato-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.box .span-wrapper {
+    color: #89918f;
+    font-family: "Lato-SemiBold", Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: normal;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: 1157px;
+}
+
+.img-fluid {
+    height: 269px;
+    left: 1019px;
+    position: absolute;
+    top: 151px;
+    width: 500px;
+}
+
+.box .rectangle-2 {
+    background-color: #ffffff;
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 1110px;
+    width: 1446px;
+}
