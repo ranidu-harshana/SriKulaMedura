@@ -18,5 +18,5 @@ public class NoteDTO {
     private boolean status;
     private Date created_at;
     private Date updated_at;
-    private Reservation reservation;
+    private Reservation reservation_id;
 }
