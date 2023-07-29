@@ -1,0 +1,42 @@
+name: Trigger auto deployment for skmapi
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main-develop ]
+    paths:
+    - 'sri-kula-medura-server/**'
+    - '.github/workflows/skmapi-AutoDeployTrigger-d183a9e6-9809-4e4c-b835-20c818a2653d.yml'
+
+  # Allow mannually trigger 
+  workflow_dispatch:
+      
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.SKMAPI_AZURE_CREDENTIALS }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}sri-kula-medura-server 
+          registryUrl: docker.io
+          registryUsername: ${{ secrets.SKMAPI_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.SKMAPI_REGISTRY_PASSWORD }}
+          containerAppName: skmapi
+          resourceGroup: resource-group
+          imageToBuild: raniduharshana/skmapi:${{ github.sha }}
+          dockerfilePath: Dockerfile
+
+     
+
