@@ -15,10 +15,6 @@ const storeReservation = (name, address, branchId, mobile_no1, mobno2, function_
 		user_id,
 		branch_id: branchId,
 		name, address, mobile_no1, mobno2
-	}, {
-		headers: {
-			'Content-Type': 'application/json'
-		}
 	})
 }
 

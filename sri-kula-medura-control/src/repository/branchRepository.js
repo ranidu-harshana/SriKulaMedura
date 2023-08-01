@@ -9,11 +9,7 @@ const getBranch = (id) => {
 }
 
 const storeBranch = (name, prefix) => {
-	return Repository.post('/branch/', {name, prefix}, {
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	})
+	return Repository.post('/branch/', {name, prefix})
 }
 
 export {

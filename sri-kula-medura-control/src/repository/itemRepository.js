@@ -9,11 +9,7 @@ const getItem = (id) => {
 }
 
 const storeItem = (item_code, item_name, item_type, item_image_url, item_category_id) => {
-	return Repository.post('/item/', {item_code, item_name, item_type, item_image_url, item_category_id}, {
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	})
+	return Repository.post('/item/', {item_code, item_name, item_type, item_image_url, item_category_id})
 }
 
 export {
