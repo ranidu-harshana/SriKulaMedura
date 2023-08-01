@@ -4,6 +4,7 @@ import Tab from "@mui/material/Tab";
 import {useState} from "react";
 import Bill from "./BillingSection/Bill";
 import Cost from "./CostsSection/Cost";
+import Note from "./NotesSection/Note";
 import DressSelection from "./DressSelectionSection/DressSelection";
 
 const TabPanel = ({ children, value, index, ...other }) => {
@@ -67,7 +68,7 @@ const ReservationTabs = (props) => {
 				<Cost />
 			</TabPanel>
 			<TabPanel value={value} index={4}>
-				Notes
+				<Note/>
 			</TabPanel>
 			<TabPanel value={value} index={5}>
 				Other
