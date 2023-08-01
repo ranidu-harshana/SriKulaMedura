@@ -5,6 +5,7 @@ import {useState} from "react";
 import Bill from "./BillingSection/Bill";
 import Cost from "./CostsSection/Cost";
 import Note from "./NotesSection/Note";
+import DressSelection from "./DressSelectionSection/DressSelection";
 
 const TabPanel = ({ children, value, index, ...other }) => {
 	return (
@@ -58,7 +59,7 @@ const ReservationTabs = (props) => {
 				Measurements
 			</TabPanel>
 			<TabPanel value={value} index={1}>
-				Dress Selection
+				<DressSelection />
 			</TabPanel>
 			<TabPanel value={value} index={2}>
 				<Bill />

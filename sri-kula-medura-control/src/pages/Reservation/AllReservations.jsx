@@ -26,14 +26,16 @@ const AllReservations = (props) => {
 	]
 
 	useEffect(() => {
-		getAllReservations()
-			.then((response) => {
-				dispatcher(addReservations(response.data))
-			})
-			.catch((error) => {
-				console.log("ERROR: "+error)
-			})
-	}, [dispatcher]);
+		if(reservations.length < 1) {
+			getAllReservations()
+				.then((response) => {
+					dispatcher(addReservations(response.data))
+				})
+				.catch((error) => {
+					console.log("ERROR: "+error)
+				})
+		}
+	}, [dispatcher, reservations]);
 
 	return (
 		<div>
