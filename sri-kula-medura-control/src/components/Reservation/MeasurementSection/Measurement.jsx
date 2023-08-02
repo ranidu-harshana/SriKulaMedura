@@ -1,5 +1,4 @@
 import NoOfGroomsPageboys from "../Common/NoOfGroomsPageboys";
-import ResDetailsInModal from "../ResDetailsInModal";
 import BSModal from "../../BSModal/BSModal";
 import {useState} from "react";
 
