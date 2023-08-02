@@ -6,6 +6,7 @@ import Bill from "./BillingSection/Bill";
 import Cost from "./CostsSection/Cost";
 import Note from "./NotesSection/Note";
 import DressSelection from "./DressSelectionSection/DressSelection";
+import Measurement from "./MeasurementSection/Measurement";
 
 const TabPanel = ({ children, value, index, ...other }) => {
 	return (
@@ -56,7 +57,7 @@ const ReservationTabs = (props) => {
 				</Tabs>
 			</Box>
 			<TabPanel value={value} index={0}>
-				Measurements
+				<Measurement />
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				<DressSelection />

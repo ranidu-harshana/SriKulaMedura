@@ -1,7 +1,7 @@
 import Modal from 'react-bootstrap/Modal';
 import './Modal.css'
 
-const BSModal = ({children, show, handleClose, modalTitle}) => {
+const BSModal = ({children, show, handleClose, modalTitle, footer}) => {
 	return (
 		<>
 			<Modal show={show} onHide={handleClose} centered>
