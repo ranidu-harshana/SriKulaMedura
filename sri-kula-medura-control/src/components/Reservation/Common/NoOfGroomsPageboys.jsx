@@ -56,7 +56,7 @@ const NoOfGroomsPageboys = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className="col-12 col-md-4">
+			<div className="col-12 col-md-4 mb-3 mb-md-0">
 				<button className={'btn btn-success'}>Submit</button>
 			</div>
 		</>

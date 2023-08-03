@@ -1,10 +1,4 @@
-import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
-import {useState} from "react";
-
 const NoteSection = (props) => {
-    const [additionalCharge, setAdditionalCharge] = useState()
-
     return (
         <>
             <div className="tab-content-container">
