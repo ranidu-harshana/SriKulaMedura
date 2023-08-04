@@ -7,14 +7,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(builderMethodName = "internalBuilder")
 @Data
+@Component
 public class Billing {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +44,18 @@ public class Billing {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Reservation reservation;
+
+    public static BillingBuilder builder(Billing billing) {
+        if (billing == null) {
+            return internalBuilder();
+        }
+        return internalBuilder()
+                .id(billing.getId())
+                .total_bill(billing.getTotal_bill())
+                .discount(billing.getAdvance())
+                .advance(billing.getAdvance())
+                .created_at(billing.getCreated_at())
+                .updated_at(billing.getUpdated_at())
+                .reservation(billing.getReservation());
+    }
 }

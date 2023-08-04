@@ -18,6 +18,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService, MainService<UserDTO, User> {
     private final UserRepository userRepository;
     private final CustomerServiceImpl customerService;
+    private final User newUser;
 
     @Override
     public List<UserDTO> allUsers() {
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
 
     @Override
     public UserDTO saveUser(UserDTO userDTO) {
-        User user = userRepository.save(User.builder()
+        User user = userRepository.save(User.builder(newUser)
                 .name(userDTO.getName())
                 .email(userDTO.getEmail())
                 .address(userDTO.getAddress())

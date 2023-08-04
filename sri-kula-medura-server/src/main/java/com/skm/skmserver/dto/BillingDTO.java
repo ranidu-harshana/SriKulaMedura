@@ -1,5 +1,6 @@
 package com.skm.skmserver.dto;
 
+import com.skm.skmserver.entity.Billing;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Builder
+@Builder(builderMethodName = "internalBuilder")
 public class BillingDTO {
     private int id;
     private double total_bill;
@@ -19,4 +20,15 @@ public class BillingDTO {
     private Date created_at;
     private Date updated_at;
     private int reservation_id;
+
+    public static BillingDTOBuilder builder(Billing billing) {
+        return internalBuilder()
+                .id(billing.getId())
+                .total_bill(billing.getTotal_bill())
+                .discount(billing.getAdvance())
+                .advance(billing.getAdvance())
+                .created_at(billing.getCreated_at())
+                .updated_at(billing.getUpdated_at())
+                .reservation_id(billing.getReservation().getId());
+    }
 }

@@ -17,8 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BranchServiceImpl implements BranchService, MainService<BranchDTO, Branch> {
     private final BranchRepo branchRepo;
-
     private final MapAll<Branch, BranchDTO> mapAll;
+    private final Branch newBranch;
 
     @Override
     public List<BranchDTO> allBranches() {
@@ -26,7 +26,7 @@ public class BranchServiceImpl implements BranchService, MainService<BranchDTO, 
     }
 
     public BranchDTO saveBranch(BranchDTO branchDTO){
-        Branch branch = branchRepo.save(Branch.builder()
+        Branch branch = branchRepo.save(Branch.builder(newBranch)
                 .name(branchDTO.getName())
                 .prefix(branchDTO.getPrefix())
                 .status(true)
@@ -43,12 +43,9 @@ public class BranchServiceImpl implements BranchService, MainService<BranchDTO, 
     @Override
     public BranchDTO updateBranch(BranchDTO branchDTO, int id) {
         Branch branch = branchRepo.findById(id);
-        return set(branchRepo.save(Branch.builder()
-                .id(branch.getId())
+        return set(branchRepo.save(Branch.builder(branch)
                 .name(branchDTO.getName())
-                .status(branch.isStatus())
                 .prefix(branchDTO.getPrefix())
-                .created_at(branch.getCreated_at())
                 .build()));
     }
 
@@ -63,13 +60,6 @@ public class BranchServiceImpl implements BranchService, MainService<BranchDTO, 
 
     @Override
     public BranchDTO set(Branch branch) {
-        return BranchDTO.builder()
-                .id(branch.getId())
-                .name(branch.getName())
-                .status(branch.isStatus())
-                .prefix(branch.getPrefix())
-                .created_at(branch.getCreated_at())
-                .updated_at(branch.getUpdated_at())
-                .build();
+        return BranchDTO.builder(branch).build();
     }
 }

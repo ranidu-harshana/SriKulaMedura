@@ -18,6 +18,7 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService, MainService<CustomerDTO, Customer> {
     private final CustomerRepository customerRepository;
     private final UserRepository userRepository;
+    private final Customer newCustomer;
 
     @Override
     public List<CustomerDTO> allCustomers() {
@@ -26,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService, MainService<Custome
 
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
-        Customer customer = customerRepository.save(Customer.builder()
+        Customer customer = customerRepository.save(Customer.builder(newCustomer)
                 .status(true)
                 .user(userRepository.findById(customerDTO.getUser_id()))
                 .build());

@@ -1,5 +1,6 @@
 package com.skm.skmserver.controller;
 
+import com.skm.skmserver.dto.BestMenPageBoysCountDTO;
 import com.skm.skmserver.dto.ReservationCustomerDTO;
 import com.skm.skmserver.dto.ReservationDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
@@ -51,5 +52,10 @@ public class ReservationController {
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id){
         return "edit";
+    }
+
+    @PostMapping("/save/bestmenpageboys/count")
+    public ReservationDTO saveBestMenPageBoysCount(@RequestBody BestMenPageBoysCountDTO bestMenPageBoysCountDTO) {
+        return reservationService.saveBestMenPageBoysCount(bestMenPageBoysCountDTO);
     }
 }
