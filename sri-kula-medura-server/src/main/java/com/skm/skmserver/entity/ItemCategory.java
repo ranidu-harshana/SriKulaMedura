@@ -1,5 +1,6 @@
 package com.skm.skmserver.entity;
 
+import com.skm.skmserver.dto.ItemCategoryDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
+@Builder(builderMethodName = "internalBuilder")
 public class ItemCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,4 +37,13 @@ public class ItemCategory {
 
     @OneToMany(mappedBy = "item_category")
     private List<Item> items;
+
+    public static ItemCategoryBuilder builder(ItemCategory itemCategory) {
+        return internalBuilder()
+                .id(itemCategory.getId())
+                .category_name(itemCategory.getCategory_name())
+                .created_at(itemCategory.getCreated_at())
+                .updated_at(itemCategory.getUpdated_at());
+//                .items(itemCategory.getItems().stream().map(itemService::set).toList())
+    }
 }
