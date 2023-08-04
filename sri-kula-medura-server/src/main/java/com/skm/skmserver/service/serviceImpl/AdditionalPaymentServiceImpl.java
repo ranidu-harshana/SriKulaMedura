@@ -16,17 +16,18 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-
 public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,MainService<AdditionalPaymentDTO , AdditionalPayment> {
     private final AdditionalPaymentRepository additionalPaymentRepository;
     private final ReservationRepository reservationRepository;
     private final MapAll<AdditionalPayment,AdditionalPaymentDTO> mapAll;
+    private final AdditionalPayment newAdditionalPayment;
+
     public List<AdditionalPaymentDTO> allAdditionalPayments(){
         return mapAll.mapAllAttributesToDTO(additionalPaymentRepository.findAll(),this);
     }
     @Override
     public AdditionalPaymentDTO saveAdditionalPayment(AdditionalPaymentDTO additionalPaymentDTO){
-        AdditionalPayment additionalPayment = additionalPaymentRepository.save(AdditionalPayment.builder(new AdditionalPayment())
+        AdditionalPayment additionalPayment = additionalPaymentRepository.save(AdditionalPayment.builder(newAdditionalPayment)
                 .payment(additionalPaymentDTO.getPayment())
                 .reason(additionalPaymentDTO.getReason())
                 .status(true)

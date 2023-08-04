@@ -1,6 +1,5 @@
 package com.skm.skmserver.entity;
 
-import com.skm.skmserver.dto.ReservationDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,8 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder(builderMethodName = "internalBuilder")
+@Component
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,6 +92,9 @@ public class Reservation {
     private Billing billing;
 
     public static ReservationBuilder builder(Reservation reservation) {
+        if (reservation == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(reservation.getId())
                 .bill_number(reservation.getBill_number())

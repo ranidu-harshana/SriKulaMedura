@@ -17,8 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BranchServiceImpl implements BranchService, MainService<BranchDTO, Branch> {
     private final BranchRepo branchRepo;
-
     private final MapAll<Branch, BranchDTO> mapAll;
+    private final Branch newBranch;
 
     @Override
     public List<BranchDTO> allBranches() {
@@ -26,7 +26,7 @@ public class BranchServiceImpl implements BranchService, MainService<BranchDTO, 
     }
 
     public BranchDTO saveBranch(BranchDTO branchDTO){
-        Branch branch = branchRepo.save(Branch.builder(new Branch())
+        Branch branch = branchRepo.save(Branch.builder(newBranch)
                 .name(branchDTO.getName())
                 .prefix(branchDTO.getPrefix())
                 .status(true)

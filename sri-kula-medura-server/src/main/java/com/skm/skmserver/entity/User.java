@@ -1,6 +1,5 @@
 package com.skm.skmserver.entity;
 
-import com.skm.skmserver.dto.UserDTO;
 import com.skm.skmserver.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(builderMethodName = "internalBuilder")
+@Component
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,6 +60,9 @@ public class User {
     private List<UserBranches> user_branches;
 
     public static UserBuilder builder(User user) {
+        if (user == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(user.getId())
                 .name(user.getName())

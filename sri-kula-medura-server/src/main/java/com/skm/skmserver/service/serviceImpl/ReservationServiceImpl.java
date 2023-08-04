@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static com.skm.skmserver.util.GenerateBillNumber.generateBillNumber;
@@ -30,6 +29,9 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     private final BranchRepo branchRepo;
     private final UserServiceImpl userService;
     private final MapAll<Reservation, ReservationDTO> mapAll;
+    private Reservation newReservation;
+    private User newUser;
+
 
     @Override
     public List<ReservationDTO> allReservations() {
@@ -45,7 +47,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                 .role(Role.CUSTOMER)
                 .address(reservationCusDTO.getAddress())
                 .build());
-        Reservation reservation = reservationRepository.save(Reservation.builder(new Reservation())
+        Reservation reservation = reservationRepository.save(Reservation.builder(newReservation)
                         .bill_number(generateBillNumber(reservationCusDTO.getBranch_id(), userDTO.getId()))
                         .function_date(reservationCusDTO.getFunction_date())
                         .status(true)

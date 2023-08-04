@@ -20,6 +20,7 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     private final CostRepository costRepository;
     private final ReservationRepository reservationRepository;
     private final MapAll<Cost,CostDTO> mapAll;
+    private final Cost newCost;
 
     public List<CostDTO> allCosts() {
         return mapAll.mapAllAttributesToDTO(costRepository.findAll(), this);
@@ -49,7 +50,7 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     }
 
     public CostDTO saveCost(CostDTO costDTO) {
-        Cost cost = costRepository.save(Cost.builder(new Cost())
+        Cost cost = costRepository.save(Cost.builder(newCost)
                 .transport(costDTO.getTransport())
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())

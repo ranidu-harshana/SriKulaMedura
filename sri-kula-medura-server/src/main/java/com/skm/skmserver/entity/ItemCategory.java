@@ -1,6 +1,5 @@
 package com.skm.skmserver.entity;
 
-import com.skm.skmserver.dto.ItemCategoryDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder(builderMethodName = "internalBuilder")
+@Component
 public class ItemCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +40,9 @@ public class ItemCategory {
     private List<Item> items;
 
     public static ItemCategoryBuilder builder(ItemCategory itemCategory) {
+        if (itemCategory == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(itemCategory.getId())
                 .category_name(itemCategory.getCategory_name())

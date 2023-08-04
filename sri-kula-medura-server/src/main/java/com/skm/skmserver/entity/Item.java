@@ -1,6 +1,5 @@
 package com.skm.skmserver.entity;
 
-import com.skm.skmserver.dto.ItemDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder(builderMethodName = "internalBuilder")
+@Component
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +51,9 @@ public class Item {
     private List<WishList> wishlist;
 
     public static ItemBuilder builder(Item item) {
+        if (item == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(item.getId())
                 .item_code(item.getItem_code())

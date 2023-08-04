@@ -1,5 +1,5 @@
 package com.skm.skmserver.entity;
-import com.skm.skmserver.dto.BranchDTO;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder(builderMethodName = "internalBuilder")
+@Component
 public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +47,9 @@ public class Branch {
     private List<UserBranches> user_branches;
 
     public static BranchBuilder builder(Branch branch) {
+        if (branch == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(branch.getId())
                 .name(branch.getName())

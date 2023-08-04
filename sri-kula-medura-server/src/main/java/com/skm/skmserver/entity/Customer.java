@@ -1,6 +1,5 @@
 package com.skm.skmserver.entity;
 
-import com.skm.skmserver.dto.CustomerDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -17,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(builderMethodName = "internalBuilder")
+@Component
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,6 +52,9 @@ public class Customer {
     private List<WishList> wishlist;
 
     public static CustomerBuilder builder(Customer customer) {
+        if (customer == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(customer.getId())
                 .mobile_no(customer.getMobile_no())

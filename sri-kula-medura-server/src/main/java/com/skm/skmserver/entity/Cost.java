@@ -1,6 +1,5 @@
 package com.skm.skmserver.entity;
 
-import com.skm.skmserver.dto.CostDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -16,6 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 @Builder(builderMethodName = "internalBuilder")
+@Component
 public class Cost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +49,9 @@ public class Cost {
     private Reservation reservation;
 
     public static CostBuilder builder(Cost cost) {
+        if (cost == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(cost.getId())
                 .transport(cost.getTransport())

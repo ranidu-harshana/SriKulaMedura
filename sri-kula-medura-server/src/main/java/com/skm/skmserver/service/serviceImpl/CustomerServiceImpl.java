@@ -57,6 +57,14 @@ public class CustomerServiceImpl implements CustomerService, MainService<Custome
 
     @Override
     public CustomerDTO set(Customer customer) {
-        return CustomerDTO.builder(customer).build();
+        return CustomerDTO.builder()
+                .id(customer.getId())
+                .mobile_no(customer.getMobile_no())
+                .status(customer.isStatus())
+                .discount(customer.getDiscount())
+                .created_at(customer.getCreated_at())
+                .updated_at(customer.getUpdated_at())
+                .user_id(customer.getUser().getId())
+                .build();
     }
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -15,6 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 @Builder(builderMethodName = "internalBuilder")
+@Component
 public class AdditionalPayment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +42,9 @@ public class AdditionalPayment {
     private Reservation reservation;
 
     public static AdditionalPaymentBuilder builder(AdditionalPayment additionalPayment) {
+        if (additionalPayment == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(additionalPayment.getId())
                 .payment(additionalPayment.getPayment())
