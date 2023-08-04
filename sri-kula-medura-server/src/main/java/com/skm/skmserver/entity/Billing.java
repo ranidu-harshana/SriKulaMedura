@@ -1,5 +1,6 @@
 package com.skm.skmserver.entity;
 
+import com.skm.skmserver.dto.BillingDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import java.util.Date;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(builderMethodName = "internalBuilder")
 @Data
 public class Billing {
     @Id
@@ -42,4 +43,15 @@ public class Billing {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Reservation reservation;
+
+    public static BillingBuilder builder(Billing billing) {
+        return internalBuilder()
+                .id(billing.getId())
+                .total_bill(billing.getTotal_bill())
+                .discount(billing.getAdvance())
+                .advance(billing.getAdvance())
+                .created_at(billing.getCreated_at())
+                .updated_at(billing.getUpdated_at())
+                .reservation(billing.getReservation());
+    }
 }

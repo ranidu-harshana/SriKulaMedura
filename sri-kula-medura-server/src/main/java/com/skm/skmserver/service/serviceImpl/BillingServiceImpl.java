@@ -24,8 +24,9 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
     public List<BillingDTO> allBillings(){
         return mapAll.mapAllAttributesToDTO(billingRepository.findAll(),this);
     }
+
     public BillingDTO saveBilling(BillingDTO billingDTO) {
-        Billing billing = billingRepository.save(Billing.builder()
+        Billing billing = billingRepository.save(Billing.builder(new Billing())
                 .total_bill(billingDTO.getTotal_bill())
                 .advance(billingDTO.getAdvance())
                 .discount(billingDTO.getDiscount())
@@ -35,18 +36,16 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
     }
 
     public BillingDTO getBilling(int id){
-        Billing billing= billingRepository.findById(id);
+        Billing billing = billingRepository.findById(id);
         return set(billing);
     }
 
-    public BillingDTO updateBilling(BillingDTO billingDTO,int id){
-        Billing billing= billingRepository.findById(id);
-        return set(billingRepository.save(Billing.builder()
-                        .id(billing.getId())
+    public BillingDTO updateBilling(BillingDTO billingDTO, int id){
+        Billing billing = billingRepository.findById(id);
+        return set(billingRepository.save(Billing.builder(billing)
                         .total_bill(billingDTO.getTotal_bill())
                         .advance(billingDTO.getAdvance())
                         .discount(billingDTO.getDiscount())
-                        .reservation(reservationRepository.findById(billingDTO.getReservation_id()))
                 .build()));
     }
 
@@ -59,14 +58,6 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
     }
 
     public BillingDTO set(Billing billing) {
-        return BillingDTO.builder()
-                .id(billing.getId())
-                .total_bill(billing.getTotal_bill())
-                .discount(billing.getAdvance())
-                .advance(billing.getAdvance())
-                .created_at(billing.getCreated_at())
-                .updated_at(billing.getUpdated_at())
-                .reservation_id(billing.getReservation().getId())
-                .build();
+        return BillingDTO.builder(billing).build();
     }
 }
