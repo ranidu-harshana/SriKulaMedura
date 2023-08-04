@@ -26,7 +26,7 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
     }
     @Override
     public AdditionalPaymentDTO saveAdditionalPayment(AdditionalPaymentDTO additionalPaymentDTO){
-        AdditionalPayment additionalPayment = additionalPaymentRepository.save(AdditionalPayment.builder()
+        AdditionalPayment additionalPayment = additionalPaymentRepository.save(AdditionalPayment.builder(new AdditionalPayment())
                 .payment(additionalPaymentDTO.getPayment())
                 .reason(additionalPaymentDTO.getReason())
                 .status(true)
@@ -42,12 +42,9 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
     }
     public AdditionalPaymentDTO updateAdditionalPayment(AdditionalPaymentDTO additionalPaymentDTO,int id){
         AdditionalPayment additionalPayment = additionalPaymentRepository.findById(id);
-        return set(additionalPaymentRepository.save(AdditionalPayment.builder()
+        return set(additionalPaymentRepository.save(AdditionalPayment.builder(additionalPayment)
                 .payment(additionalPaymentDTO.getPayment())
                 .reason(additionalPaymentDTO.getReason())
-                .status(additionalPayment.isStatus())
-                .created_at(additionalPayment.getCreated_at())
-                .reservation(reservationRepository.findById(additionalPayment.getReservation().getId()))
                 .build()));
     }
 
@@ -61,15 +58,7 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
 
     @Override
     public AdditionalPaymentDTO set(AdditionalPayment additionalPayment) {
-        return AdditionalPaymentDTO.builder()
-                .id(additionalPayment.getId())
-                .payment(additionalPayment.getPayment())
-                .reason(additionalPayment.getReason())
-                .status(additionalPayment.isStatus())
-                .created_at(additionalPayment.getCreated_at())
-                .updated_at(additionalPayment.getUpdated_at())
-                .reservation_id(additionalPayment.getReservation().getId())
-                .build();
+        return AdditionalPaymentDTO.builder(additionalPayment).build();
     }
 
 }

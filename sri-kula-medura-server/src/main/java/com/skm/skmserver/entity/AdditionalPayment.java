@@ -14,8 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Builder
-
+@Builder(builderMethodName = "internalBuilder")
 public class AdditionalPayment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,5 +39,14 @@ public class AdditionalPayment {
     @JoinColumn
     private Reservation reservation;
 
-
+    public static AdditionalPaymentBuilder builder(AdditionalPayment additionalPayment) {
+        return internalBuilder()
+                .id(additionalPayment.getId())
+                .payment(additionalPayment.getPayment())
+                .reason(additionalPayment.getReason())
+                .status(additionalPayment.isStatus())
+                .created_at(additionalPayment.getCreated_at())
+                .updated_at(additionalPayment.getUpdated_at())
+                .reservation(additionalPayment.getReservation());
+    }
 }
