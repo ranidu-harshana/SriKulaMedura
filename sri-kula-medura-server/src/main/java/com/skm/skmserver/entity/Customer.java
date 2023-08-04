@@ -1,5 +1,6 @@
 package com.skm.skmserver.entity;
 
+import com.skm.skmserver.dto.CustomerDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(builderMethodName = "internalBuilder")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,4 +49,15 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer")
     private List<WishList> wishlist;
+
+    public static CustomerBuilder builder(Customer customer) {
+        return internalBuilder()
+                .id(customer.getId())
+                .mobile_no(customer.getMobile_no())
+                .status(customer.isStatus())
+                .discount(customer.getDiscount())
+                .created_at(customer.getCreated_at())
+                .updated_at(customer.getUpdated_at())
+                .user(customer.getUser());
+    }
 }
