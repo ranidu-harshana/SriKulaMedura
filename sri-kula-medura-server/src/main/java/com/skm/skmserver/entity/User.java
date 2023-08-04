@@ -1,5 +1,6 @@
 package com.skm.skmserver.entity;
 
+import com.skm.skmserver.dto.UserDTO;
 import com.skm.skmserver.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(builderMethodName = "internalBuilder")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,4 +57,18 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<UserBranches> user_branches;
+
+    public static UserBuilder builder(User user) {
+        return internalBuilder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .address(user.getAddress())
+                .mobile_no(user.getMobile_no())
+                .email_verified_at(user.getEmail_verified_at())
+                .password(user.getPassword())
+                .created_at(user.getCreated_at())
+                .updated_at(user.getUpdated_at())
+                .role(user.getRole());
+    }
 }

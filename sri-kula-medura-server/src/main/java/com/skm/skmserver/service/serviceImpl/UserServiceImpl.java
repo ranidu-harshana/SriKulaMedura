@@ -2,6 +2,7 @@ package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.CustomerDTO;
 import com.skm.skmserver.dto.UserDTO;
+import com.skm.skmserver.entity.Customer;
 import com.skm.skmserver.entity.User;
 import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.MainService;
@@ -18,6 +19,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService, MainService<UserDTO, User> {
     private final UserRepository userRepository;
     private final CustomerServiceImpl customerService;
+    private final User newUser;
+    private final Customer newCustomer;
 
     @Override
     public List<UserDTO> allUsers() {
@@ -26,7 +29,7 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
 
     @Override
     public UserDTO saveUser(UserDTO userDTO) {
-        User user = userRepository.save(User.builder()
+        User user = userRepository.save(User.builder(newUser)
                 .name(userDTO.getName())
                 .email(userDTO.getEmail())
                 .address(userDTO.getAddress())
@@ -35,7 +38,7 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
                 .role(userDTO.getRole())
                 .build());
 
-        customerService.saveCustomer(CustomerDTO.builder().user_id(user.getId()).build());
+        customerService.saveCustomer(CustomerDTO.builder(newCustomer).user_id(user.getId()).build());
         return set(user);
     }
 
@@ -57,16 +60,6 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
 
     @Override
     public UserDTO set(User user) {
-        return UserDTO.builder()
-                .id(user.getId())
-                .name(user.getName())
-                .email(user.getEmail())
-                .mobile_no(user.getMobile_no())
-                .email_verified_at(user.getEmail_verified_at())
-                .password(user.getPassword())
-                .created_at(user.getCreated_at())
-                .updated_at(user.getUpdated_at())
-                .role(user.getRole())
-                .build();
+        return UserDTO.builder(user).build();
     }
 }
