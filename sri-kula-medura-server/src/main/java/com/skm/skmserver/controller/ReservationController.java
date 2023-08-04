@@ -54,7 +54,7 @@ public class ReservationController {
         return "edit";
     }
 
-    @PostMapping("/save/bestmenpageboys/count")
+    @PostMapping("/bestmenpageboys/count")
     public ReservationDTO saveBestMenPageBoysCount(@RequestBody BestMenPageBoysCountDTO bestMenPageBoysCountDTO) {
         return reservationService.saveBestMenPageBoysCount(bestMenPageBoysCountDTO);
     }

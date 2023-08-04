@@ -9,7 +9,7 @@ const getReservation = (id) => {
 }
 
 const storeReservation = (name, address, branchId, mobile_no1, mobno2, function_date) => {
-	const user_id = 1;
+	const user_id = 1; // TODO: Need to Handle this
 	return Repository.post('/reservation/', {
 		function_date,
 		user_id,
@@ -18,8 +18,17 @@ const storeReservation = (name, address, branchId, mobile_no1, mobno2, function_
 	})
 }
 
+const storeBestMenPageBoysCount = (reservation_id, no_of_bestmen, no_of_pageboys) => {
+	return Repository.post('/reservation/bestmenpageboys/count', {
+		reservation_id,
+		no_of_bestmen,
+		no_of_pageboys
+	})
+}
+
 export {
 	getAllReservations,
 	getReservation,
 	storeReservation,
+	storeBestMenPageBoysCount,
 }
