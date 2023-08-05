@@ -24,5 +24,8 @@ public class NoteController {
         return noteService.saveNote(noteDTO);
     }
 
-
+    @GetMapping("/{id}")
+    public String create(){
+        return "";
+    }
 }
