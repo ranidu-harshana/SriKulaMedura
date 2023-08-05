@@ -45,4 +45,9 @@ public class NoteController {
             return "Note Deleted Successfully";
         return "Note Delete failed";
     }
+
+    @GetMapping("/{id}/edit")
+    public String edit(@PathVariable int id){
+        return "edit";
+    }
 }
