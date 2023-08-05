@@ -17,9 +17,9 @@ const CustomerReviews = (props) => {
                                 <div className="card reviewCard" style={{backgroundColor:"#000000",opacity:"0.8"}}>
                                     <div className="text-center">
                                         <img src={profilePicture} className="profilePicture text-center rounded-circle"/>
-                                        <p className="cardText">
-                                            I recently discovered OnlineClothique.com and I can't stop raving about it! This online clothing shop is an absolute gem for fashion enthusiasts like myself. From trendy outfits to classic staples, they offer a diverse range of styles that cater to every taste.
-                                        </p>
+                                            <p className="cardText">
+                                                I recently discovered OnlineClothique.com and I can't stop raving about it! This online clothing shop is an absolute gem for fashion enthusiasts like myself. From trendy outfits to classic staples, they offer a diverse range of styles that cater to every taste.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
