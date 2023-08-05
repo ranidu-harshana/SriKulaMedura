@@ -28,7 +28,7 @@ const NoOfGroomsPageboys = () => {
 					<div>
 						<p>
 							<span className={'fw-bold'}>Number of Bestmen:</span> {reservation.no_of_bestmen}<br/>
-							<span className={'fw-bold'}>Number of Pageboys:</span> {reservation.no_of_bestmen}
+							<span className={'fw-bold'}>Number of Pageboys:</span> {reservation.no_of_pageboys}
 						</p>
 					</div>
 				</div>

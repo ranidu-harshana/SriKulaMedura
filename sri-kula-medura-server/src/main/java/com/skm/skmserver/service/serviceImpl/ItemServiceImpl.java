@@ -11,7 +11,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+
+import static com.skm.skmserver.util.Helpers.separateItemCodeAndItemName;
 
 @Service
 @Transactional
@@ -63,5 +67,19 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
     @Override
     public ItemDTO set(Item item) {
         return ItemDTO.builder(item).build();
+    }
+
+    public List<ItemDTO> searchItemsByItemCodeOrItemName(String query, String type) {
+        return mapAll.mapAllAttributesToDTO(itemRepository.searchItemsByItemCodeOrItemName(query, type), this);
+    }
+
+    @Override
+    public boolean checkItemExist(String query) {
+        String[] separatedTexts = separateItemCodeAndItemName(query);
+        if (separatedTexts == null || separatedTexts.length < 2) {
+            return false;
+        }
+        Optional<Item> item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
+        return item.isPresent();
     }
 }

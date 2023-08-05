@@ -49,7 +49,7 @@ const ReservationTabs = (props) => {
 				      scrollButtons="auto"
 				      aria-label="scrollable auto tabs example">
 					<Tab label="Measurements" {...a11yProps(0)} />
-					<Tab label="Dress Selection" {...a11yProps(1)} />
+					<Tab label="Dress Selection (Jacket)" {...a11yProps(1)} />
 					<Tab label="Bill" {...a11yProps(2)} />
 					<Tab label="Costs" {...a11yProps(3)} />
 					<Tab label="Notes" {...a11yProps(4)} />
