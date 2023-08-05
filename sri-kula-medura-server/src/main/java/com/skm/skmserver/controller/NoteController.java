@@ -28,4 +28,9 @@ public class NoteController {
     public String create(){
         return "";
     }
+
+    @GetMapping("/{id}")
+    public NoteDTO show(@PathVariable int id){
+        return noteService.getNote(id);
+    }
 }
