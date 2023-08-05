@@ -33,4 +33,9 @@ public class NoteController {
     public NoteDTO show(@PathVariable int id){
         return noteService.getNote(id);
     }
+
+    @PutMapping("/{id}")
+    public NoteDTO update(@RequestBody NoteDTO noteDTO,@PathVariable int id){
+        return noteService.updateNote(noteDTO,id);
+    }
 }
