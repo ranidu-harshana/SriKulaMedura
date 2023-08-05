@@ -3,10 +3,7 @@ package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.NoteDTO;
 import com.skm.skmserver.service.NoteService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,11 @@ public class NoteController {
     @GetMapping("/")
     public List<NoteDTO> index(){
         return noteService.allNotes();
+    }
+
+    @PostMapping("/")
+    public NoteDTO store(@RequestBody NoteDTO noteDTO){
+        return noteService.saveNote(noteDTO);
     }
 
 
