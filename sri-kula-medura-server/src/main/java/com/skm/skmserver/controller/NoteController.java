@@ -38,4 +38,11 @@ public class NoteController {
     public NoteDTO update(@RequestBody NoteDTO noteDTO,@PathVariable int id){
         return noteService.updateNote(noteDTO,id);
     }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id){
+        if(noteService.deleteNote(id))
+            return "Note Deleted Successfully";
+        return "Note Delete failed";
+    }
 }

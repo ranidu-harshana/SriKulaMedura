@@ -22,7 +22,7 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public List<NoteDTO> allNotes() {
-        return mapAll.mapAllAttributesToDTO(noteRepository.findAll(),this);
+        return mapAll.mapAllAttributesToDTO(noteRepository.findAll(),);
     }
 
     @Override
@@ -38,7 +38,10 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public boolean deleteNote(int id) {
-        return false;
+        if(noteRepository.findById(id) == null)
+            return false;
+        noteRepository.deleteById(id);
+        return true;
     }
 
     @Override
