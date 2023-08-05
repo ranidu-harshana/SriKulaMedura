@@ -1,0 +1,25 @@
+.customerReviews{
+    height: 500px;
+    background-color: #12899C;
+    overflow: hidden;
+}
+
+.reviewCard{
+   height: 300px;
+   margin-top: 15%;
+}
+
+.profilePicture{
+    width: 20%;
+    margin-top: -10%;
+}
+
+.cardText{
+    color: white;
+    font-style: italic;
+    font-size: 1.2rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 5%;
+
+}
