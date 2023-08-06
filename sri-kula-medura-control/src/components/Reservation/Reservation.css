@@ -47,6 +47,10 @@
     overflow: scroll;
 }
 
+.reservation-detail-before-edit:hover {
+    color: #009efb;
+}
+
 @media screen and (max-width: 768px) {
     .image-width {
         width: 50%;

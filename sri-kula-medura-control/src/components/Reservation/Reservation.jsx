@@ -13,6 +13,8 @@ const Reservation = ({id}) => {
 	const reservationAlt = useSelector(reservationSelector)
 	const dispatcher = useDispatch()
 
+
+
 	useMemo(() => {
 		if(!reservationCurr) {
 			getReservation(id)
@@ -47,7 +49,7 @@ const Reservation = ({id}) => {
 			<div className="col-12 col-lg-6 row left-border">
 				<ReservationDetails title={"Amount to be paid"} value={"17,874.00"} amountToPaid={true}/>
 				<ReservationDetails title={"Phone 1"} value={reservation.customer.mobile_no1}/>
-				<ReservationDetails title={"Phone 2"} value={"830-673-9495"}/>
+				<ReservationDetails title={"Phone 2"} value={reservation.customer.mobile_no2}/>
 				<ReservationDetails title={"Function Date"} value={reservation.function_date}/>
 				<ReservationDetails title={"Function Place"} value={reservation.function_place}/>
 			</div>
