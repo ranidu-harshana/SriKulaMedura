@@ -17,6 +17,9 @@ const searchItem = (query, type) => {
 }
 
 const checkItemExist = (query) => {
+	if (!query) {
+		query = "-"
+	}
 	return Repository.get('/item/check/exist/'+query)
 }
 

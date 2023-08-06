@@ -1,5 +1,6 @@
 package com.skm.skmserver.service;
 
+import com.skm.skmserver.dto.BooleanResponseDTO;
 import com.skm.skmserver.dto.ItemDTO;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface ItemService {
     boolean deleteItem(int id);
     List<ItemDTO> searchItemsByItemCodeOrItemName(String query, String type);
 
-    boolean checkItemExist(String query);
+    BooleanResponseDTO checkItemExist(String query);
 }

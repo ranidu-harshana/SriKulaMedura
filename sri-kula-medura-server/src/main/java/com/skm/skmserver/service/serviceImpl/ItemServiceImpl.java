@@ -1,5 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.BooleanResponseDTO;
 import com.skm.skmserver.dto.ItemDTO;
 import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.repo.ItemCategoryRepository;
@@ -74,12 +75,15 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
     }
 
     @Override
-    public boolean checkItemExist(String query) {
+    public BooleanResponseDTO checkItemExist(String query) {
+        if (query == null || query.equals("")) {
+            return BooleanResponseDTO.builder().response(false).build();
+        }
         String[] separatedTexts = separateItemCodeAndItemName(query);
         if (separatedTexts == null || separatedTexts.length < 2) {
-            return false;
+            return BooleanResponseDTO.builder().response(false).build();
         }
         Optional<Item> item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
-        return item.isPresent();
+        return BooleanResponseDTO.builder().response(item.isPresent()).build();
     }
 }

@@ -4,7 +4,8 @@ import {BASE_URL} from "./constants";
 const Repository = axios.create({
 	baseURL: BASE_URL,
 	headers: {
-		'Content-Type': 'application/json'
+		'Content-Type': 'application/json',
+		'Accept': 'application/json',
 	},
 	// timeout: 1000,
 })

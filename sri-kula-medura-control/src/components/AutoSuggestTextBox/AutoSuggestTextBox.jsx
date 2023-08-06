@@ -12,19 +12,28 @@ const AutoSuggestTextBox = ({textBoxRef, type, index}) => {
 	const [isInValid, setIsInValid] = useState(false);
 	const [options, setOptions] = useState([]);
 
-	const handleSearch = (query: string) => {
+	const handleSearch = (query) => {
 		setIsLoading(true);
-		setIsValid(true);
 		searchItem(query, type)
 			.then((res) => {
+				if (res.data.length <= 0) {
+					setIsValid(false);
+					setIsInValid(true)
+				} else {
+					setIsValid(true);
+					setIsInValid(false)
+				}
 				setOptions(res.data);
 				setIsLoading(false);
 			});
 	};
 
-	const handleOnInputChange = (text, event) => {
-		checkItemExist(text)
-			.then(res => setIsInValid(!res.data))
+	const handleOnInputChange = (event) => {
+		checkItemExist(event.target.value)
+			.then(res => {
+				setIsValid(res.data.response);
+				setIsInValid(!res.data.response)
+			})
 			.catch(err => console.log(err))
 	}
 
@@ -40,8 +49,9 @@ const AutoSuggestTextBox = ({textBoxRef, type, index}) => {
 					isValid={isValid}
 					isInvalid={isInValid}
 					isLoading={isLoading}
+					highlightOnlyResult={true}
+					minLength={0}
 					labelKey={(item)=>`${item.item_code} - ${item.item_name}`}
-					minLength={2}
 					onSearch={handleSearch}
 					options={options}
 					placeholder={`Select ${firtsLetterTOUppercase(type)} Dress`}
@@ -50,7 +60,8 @@ const AutoSuggestTextBox = ({textBoxRef, type, index}) => {
 							<span className={'fw-bold'}>{item.item_code}</span> - <span>{item.item_name}</span>
 						</>
 					)}
-					onInputChange={handleOnInputChange}
+					onBlur={handleOnInputChange}
+					onKeyDown={handleOnInputChange}
 				/>
 			</Form.Group>
 		</>

@@ -1,5 +1,6 @@
 package com.skm.skmserver.controller;
 
+import com.skm.skmserver.dto.BooleanResponseDTO;
 import com.skm.skmserver.dto.ItemDTO;
 import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.repo.ItemRepository;
@@ -62,7 +63,7 @@ public class ItemController {
     }
 
     @GetMapping("/check/exist/{query}")
-    public ResponseEntity<Boolean> checkItemExist(@PathVariable String query) {
-        return ResponseEntity.ok(itemService.checkItemExist(query));
+    public BooleanResponseDTO checkItemExist(@PathVariable String query) {
+        return itemService.checkItemExist(query);
     }
 }
