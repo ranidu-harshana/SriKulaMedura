@@ -1,0 +1,95 @@
+.customerReviews{
+    height: 500px;
+    background-color: #12899C;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 576px) {
+    .cardText{
+        color: white;
+        font-style: italic;
+        font-size: 1.2rem;
+        padding-top: 5%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .reviewCard{
+        width: 300px;
+        margin-left: -25%;
+        height: 400px;
+        margin-top: 25%;
+    }
+
+    .profilePicture{
+        width: 35%;
+        margin-top: -10%;
+    }
+
+}
+
+@media screen and (min-width: 576px) {
+    .cardText{
+        color: white;
+        font-style: italic;
+        font-size: 1.2rem;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 5%;
+    }
+
+    .reviewCard{
+        margin-left: -25%;
+        height: 300px;
+        margin-top: 25%;
+    }
+
+    .profilePicture{
+        width: 20%;
+        margin-top: -10%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cardText{
+        color: white;
+        font-style: italic;
+        font-size: 1.2rem;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 5%;
+    }
+
+    .reviewCard{
+        margin-left: 0;
+        height: 300px;
+        margin-top: 15%;
+    }
+
+    .profilePicture{
+        width: 20%;
+        margin-top: -10%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cardText{
+        color: white;
+        font-style: italic;
+        font-size: 1.2rem;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 5%;
+    }
+
+    .reviewCard{
+        margin-left: 0;
+        height: 300px;
+        margin-top: 15%;
+    }
+
+    .profilePicture{
+        width: 20%;
+        margin-top: -10%;
+    }
+}
