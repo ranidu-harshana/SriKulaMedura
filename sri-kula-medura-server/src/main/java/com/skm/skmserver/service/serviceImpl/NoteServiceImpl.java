@@ -3,6 +3,7 @@ package com.skm.skmserver.service.serviceImpl;
 import com.skm.skmserver.dto.NoteDTO;
 import com.skm.skmserver.entity.Note;
 import com.skm.skmserver.repo.NoteRepository;
+import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.NoteService;
 import com.skm.skmserver.util.MapAll;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NoteServiceImpl implements NoteService, MainService<NoteDTO,Note> {
     private final NoteRepository noteRepository;
+    private final ReservationRepository reservationRepository;
 
     private final MapAll<Note ,NoteDTO> mapAll;
 
@@ -33,7 +35,15 @@ public class NoteServiceImpl implements NoteService, MainService<NoteDTO,Note> {
 
     @Override
     public NoteDTO updateNote(NoteDTO noteDTO, int id) {
-        return null;
+        Note note = noteRepository.findById(id);
+        return set(noteRepository.save(Note.builder()
+                        .id(note.getId())
+                        .note(noteDTO.getNote())
+                        .status(noteDTO.isStatus())
+                        .updated_at(note.getUpdated_at())
+                        .created_at(note.getCreated_at())
+                        .reservation(reservationRepository.findById(note.getReservation().getId()))
+                .build()));
     }
 
     @Override
@@ -53,6 +63,7 @@ public class NoteServiceImpl implements NoteService, MainService<NoteDTO,Note> {
         Note note = noteRepository.save(Note.builder()
                 .note(noteDTO.getNote())
                 .status(noteDTO.isStatus())
+                .reservation(reservationRepository.findById(noteDTO.getReservation_id()))
                 .build());
                 return set(note);
     }
@@ -64,7 +75,7 @@ public class NoteServiceImpl implements NoteService, MainService<NoteDTO,Note> {
                 .status(note.isStatus())
                 .created_at(note.getCreated_at())
                 .updated_at(note.getUpdated_at())
-                .reservation_id(note.getReservation())
+                .reservation_id(note.getReservation().getId())
                 .build();
     }
 }
