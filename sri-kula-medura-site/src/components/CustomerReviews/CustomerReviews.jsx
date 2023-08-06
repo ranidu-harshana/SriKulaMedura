@@ -8,7 +8,7 @@ const CustomerReviews = (props) => {
     return (
         <>
             <div className="customerReviews">
-                <img src={customerBackground} style={{position:"absolute"}} alt={""}/>
+                <img src={customerBackground} className="img-fluid" style={{position:"absolute"}} alt={""}/>
                 <Carousel>
                     <Carousel.Item>
                         <div className="row">

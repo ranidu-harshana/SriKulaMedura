@@ -9,7 +9,7 @@ const CardBanner = (props) => {
     return(
         <>
             <containor fluid>
-                <div className="CardBannerBox" >
+                <div className="CardBannerBox" style={{overflow:"hidden"}}>
                     <div className="row">
                         <div className="my-3">
                             <h3 className="CardBannerText text-center">
