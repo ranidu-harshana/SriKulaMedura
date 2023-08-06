@@ -3,7 +3,7 @@ package com.skm.skmserver.service.serviceImpl;
 import com.skm.skmserver.dto.NoteDTO;
 import com.skm.skmserver.entity.Note;
 import com.skm.skmserver.repo.NoteRepository;
-import com.skm.skmserver.repo.ReservationRepository;
+import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.NoteService;
 import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
@@ -15,14 +15,14 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class NoteServiceImpl implements NoteService {
+public class NoteServiceImpl implements NoteService, MainService<NoteDTO,Note> {
     private final NoteRepository noteRepository;
-    private final ReservationRepository reservationRepository;
+
     private final MapAll<Note ,NoteDTO> mapAll;
 
     @Override
     public List<NoteDTO> allNotes() {
-        return mapAll.mapAllAttributesToDTO(noteRepository.findAll(),);
+        return mapAll.mapAllAttributesToDTO(noteRepository.findAll(),this);
     }
 
     @Override
