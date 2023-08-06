@@ -1,4 +1,10 @@
 {
+	"bestman": "දෙවැනි මනමාලයා",
+	"branch": "ශාඛාව",
+	"groom": "මනාලයා",
 	"home": "මුල් පිටුව",
-	"branch": "ශාඛාව"
+	"pageboy": "මල් කුමාරයා",
+	"selectGroomDress": "මනාලයාගේ ඇඳුම තෝරන්න",
+	"selectBestmanDress": "දෙවැනි මනමාලයාගේ ඇඳුම තෝරන්න",
+	"selectPageboyDress": "මල් කුමාරයාගේ ඇඳුම තෝරන්න"
 }

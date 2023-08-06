@@ -1,4 +1,10 @@
 {
+	"bestman": "Bestman",
+	"branch": "Branch",
+	"groom": "Groom",
 	"home": "Home",
-	"branch": "Branch"
+	"pageboy": "Pageboy",
+	"selectGroomDress": "Select Groom Dress",
+	"selectBestmanDress": "Select Bestman Dress",
+	"selectPageboyDress": "Select Pageboy Dress"
 }
