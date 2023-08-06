@@ -8,7 +8,7 @@ const CustomerReviews = (props) => {
     return (
         <>
             <div className="customerReviews">
-                <img src={customerBackground} style={{position:"absolute"}}/>
+                <img src={customerBackground} style={{position:"absolute"}} alt={""}/>
                 <Carousel>
                     <Carousel.Item>
                         <div className="row">
@@ -16,7 +16,7 @@ const CustomerReviews = (props) => {
                             <div className="col-6">
                                 <div className="card reviewCard" style={{backgroundColor:"#000000",opacity:"0.8"}}>
                                     <div className="text-center">
-                                        <img src={profilePicture} className="profilePicture text-center rounded-circle"/>
+                                        <img src={profilePicture} className="profilePicture text-center rounded-circle" alt={""}/>
                                             <p className="cardText">
                                                 I recently discovered OnlineClothique.com and I can't stop raving about it! This online clothing shop is an absolute gem for fashion enthusiasts like myself. From trendy outfits to classic staples, they offer a diverse range of styles that cater to every taste.
                                             </p>
@@ -32,7 +32,7 @@ const CustomerReviews = (props) => {
                             <div className="col-6">
                                 <div className="card reviewCard" style={{backgroundColor:"#000000",opacity:"0.8"}}>
                                     <div className="text-center">
-                                        <img src={profilePicture} className="profilePicture text-center rounded-circle"/>
+                                        <img src={profilePicture} className="profilePicture text-center rounded-circle" alt={""}/>
                                         <p className="cardText">
                                             I recently discovered OnlineClothique.com and I can't stop raving about it! This online clothing shop is an absolute gem for fashion enthusiasts like myself. From trendy outfits to classic staples, they offer a diverse range of styles that cater to every taste.
                                         </p>
@@ -48,7 +48,7 @@ const CustomerReviews = (props) => {
                             <div className="col-6">
                                 <div className="card reviewCard" style={{backgroundColor:"#000000",opacity:"0.8"}}>
                                     <div className="text-center">
-                                        <img src={profilePicture} className="profilePicture text-center rounded-circle"/>
+                                        <img src={profilePicture} className="profilePicture text-center rounded-circle" alt={""}/>
                                         <p className="cardText">
                                             I recently discovered OnlineClothique.com and I can't stop raving about it! This online clothing shop is an absolute gem for fashion enthusiasts like myself. From trendy outfits to classic staples, they offer a diverse range of styles that cater to every taste.
                                         </p>
