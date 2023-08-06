@@ -1,7 +1,7 @@
 package com.skm.skmserver.service;
 
-import com.skm.skmserver.dto.ReservationCustomerDTO;
-import com.skm.skmserver.dto.ReservationDTO;
+import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
+import com.skm.skmserver.dto.Reservation.ReservationDTO;
 
 import java.util.List;
 

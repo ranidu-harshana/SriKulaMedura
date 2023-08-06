@@ -1,6 +1,6 @@
 package com.skm.skmserver.service;
 
-import com.skm.skmserver.dto.CustomerDTO;
+import com.skm.skmserver.dto.Customer.CustomerDTO;
 import com.skm.skmserver.entity.Customer;
 
 import java.util.List;

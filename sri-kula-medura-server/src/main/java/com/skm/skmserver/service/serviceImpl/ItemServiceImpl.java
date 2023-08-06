@@ -1,6 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.BooleanResponseDTO;
+import com.skm.skmserver.dto.CommonBooleanDTO;
 import com.skm.skmserver.dto.ItemDTO;
 import com.skm.skmserver.entity.Item;
 import com.skm.skmserver.repo.ItemCategoryRepository;
@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,15 +74,15 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
     }
 
     @Override
-    public BooleanResponseDTO checkItemExist(String query) {
+    public CommonBooleanDTO checkItemExist(String query) {
         if (query == null || query.equals("")) {
-            return BooleanResponseDTO.builder().response(false).build();
+            return CommonBooleanDTO.builder().response(false).build();
         }
         String[] separatedTexts = separateItemCodeAndItemName(query);
         if (separatedTexts == null || separatedTexts.length < 2) {
-            return BooleanResponseDTO.builder().response(false).build();
+            return CommonBooleanDTO.builder().response(false).build();
         }
         Optional<Item> item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
-        return BooleanResponseDTO.builder().response(item.isPresent()).build();
+        return CommonBooleanDTO.builder().response(item.isPresent()).build();
     }
 }

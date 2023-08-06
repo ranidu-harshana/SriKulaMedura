@@ -1,13 +1,9 @@
 package com.skm.skmserver.controller;
 
-import com.skm.skmserver.dto.BooleanResponseDTO;
+import com.skm.skmserver.dto.CommonBooleanDTO;
 import com.skm.skmserver.dto.ItemDTO;
-import com.skm.skmserver.entity.Item;
-import com.skm.skmserver.repo.ItemRepository;
 import com.skm.skmserver.service.serviceImpl.ItemServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -63,7 +59,7 @@ public class ItemController {
     }
 
     @GetMapping("/check/exist/{query}")
-    public BooleanResponseDTO checkItemExist(@PathVariable String query) {
+    public CommonBooleanDTO checkItemExist(@PathVariable String query) {
         return itemService.checkItemExist(query);
     }
 }

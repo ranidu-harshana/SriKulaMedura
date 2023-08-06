@@ -1,18 +1,15 @@
 import NoOfGroomsPageboys from "../Common/NoOfGroomsPageboys";
-import FormControl from "@mui/material/FormControl";
 import InterimPaymentsTable from "../BillingSection/InterimPaymentsTable";
 import {useSelector} from "react-redux";
-import AutoSuggestTextBox from "../../AutoSuggestTextBox/AutoSuggestTextBox";
 import {useRef} from "react";
 import {useParams} from "react-router-dom";
 import {reservationSelector, selectByIdReservation} from "../../../store/slices/reservationSlice";
-import {firtsLetterTOUppercase} from "../../../utils/helpers";
+import DressSelectBox from "./DressSelect/DressSelectBox";
 
 const DressSelection = (props) => {
 	const {id} = useParams()
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
 	const reservationAlt = useSelector(reservationSelector)
-
 	const reservation = reservationCurr ? reservationCurr : reservationAlt
 
 	const dressSelectionsRef = useRef({})
@@ -20,11 +17,11 @@ const DressSelection = (props) => {
 	const bestManArr = []
 	const pageBoyArr = []
 	for (let i=0; i < reservation.no_of_bestmen; i++) {
-		bestManArr.push(<DressSelectBoxes type={"bestman"} dressSelectionsRef={dressSelectionsRef} key={i} index={i}/>)
+		bestManArr.push(<DressSelectBox type={"bestman"} dressSelectionsRef={dressSelectionsRef} key={i} index={i}/>)
 	}
 
 	for (let i=0; i < reservation.no_of_pageboys; i++) {
-		pageBoyArr.push(<DressSelectBoxes type={"pageboy"} dressSelectionsRef={dressSelectionsRef} key={i} index={i}/>)
+		pageBoyArr.push(<DressSelectBox type={"pageboy"} dressSelectionsRef={dressSelectionsRef} key={i} index={i}/>)
 	}
 
 	return (
@@ -43,13 +40,14 @@ const DressSelection = (props) => {
 						<div className={'row mb-2'}>
 							<h5 className={'col'}>Select Dresses</h5>
 						</div>
-						<DressSelectBoxes type={"groom"} dressSelectionsRef={dressSelectionsRef}/>
+						<DressSelectBox type={"groom"} dressSelectionsRef={dressSelectionsRef}/>
 						{bestManArr}
 						{pageBoyArr}
 						<div className="row col-12 text-end">
 							<p>
 								<button className={'btn btn-success'} onClick={()=>{
-									// TODO: save dress selection
+									// TODO: implement this
+									console.log(dressSelectionsRef.current["groom"].getInput().value);
 								}}>Submit</button>
 							</p>
 						</div>
@@ -67,20 +65,3 @@ const DressSelection = (props) => {
 }
 
 export default DressSelection;
-
-const DressSelectBoxes = ({type, dressSelectionsRef, index}) => {
-	return (
-		<div className="row">
-			<div className="row mb-2">
-				<p className={'col-3 d-none d-md-block'}>{firtsLetterTOUppercase(type)}{index>=0?` - ${index}`:null}</p>
-				<div className={'col-12 col-md-9'}>
-					<FormControl sx={{ width: "100%" }} size="small">
-						<AutoSuggestTextBox textBoxRef={(el) => {
-							dressSelectionsRef.current[`${type}${index>0?index:null}`] = el
-						}} key={index-1} type={type} index={index}/>
-					</FormControl>
-				</div>
-			</div>
-		</div>
-	)
-}

@@ -1,4 +1,4 @@
-package com.skm.skmserver.dto;
+package com.skm.skmserver.dto.Customer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

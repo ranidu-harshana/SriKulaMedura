@@ -1,6 +1,10 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.*;
+import com.skm.skmserver.dto.Customer.CustomerUserDTO;
+import com.skm.skmserver.dto.Reservation.BestMenPageBoysCountDTO;
+import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
+import com.skm.skmserver.dto.Reservation.ReservationDTO;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.entity.User;
 import com.skm.skmserver.enums.Role;

@@ -1,6 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.CustomerDTO;
+import com.skm.skmserver.dto.Customer.CustomerDTO;
 import com.skm.skmserver.entity.Customer;
 import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.UserRepository;

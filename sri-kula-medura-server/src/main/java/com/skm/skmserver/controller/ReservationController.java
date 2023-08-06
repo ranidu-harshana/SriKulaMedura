@@ -1,8 +1,8 @@
 package com.skm.skmserver.controller;
 
-import com.skm.skmserver.dto.BestMenPageBoysCountDTO;
-import com.skm.skmserver.dto.ReservationCustomerDTO;
-import com.skm.skmserver.dto.ReservationDTO;
+import com.skm.skmserver.dto.Reservation.BestMenPageBoysCountDTO;
+import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
+import com.skm.skmserver.dto.Reservation.ReservationDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
