@@ -1,7 +1,6 @@
 .customerReviews{
-    height: 500px;
-    background-color: #12899C;
     overflow: hidden;
+    margin-bottom: 2.5%;
 }
 
 @media screen and (max-width: 576px) {

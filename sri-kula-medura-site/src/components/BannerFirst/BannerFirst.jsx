@@ -6,7 +6,7 @@ const BannerFirst = (props) =>{
     return(
         <>
         <containor fluid>
-            <div className="BodyFirstBox">
+            <div className="BodyFirstBox" style={{overflow:"hidden"}}>
                 <div className="row">
                     <div className="col-md-2">
                         <div id="circleSM1"></div>
