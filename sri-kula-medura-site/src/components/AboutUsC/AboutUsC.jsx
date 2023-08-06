@@ -1,8 +1,8 @@
 import React from "react";
-import "./AboutUs.css";
+import "./AboutUsC.css";
 import Logo1 from "../../assets/logos/Logo1.png"
 
-const AboutUs = () => {
+const AboutUsC = () => {
     return (
         <div className="box">
                 <div className="section">
@@ -62,4 +62,4 @@ const AboutUs = () => {
     );
 };
 
-export default AboutUs;
+export default AboutUsC;
