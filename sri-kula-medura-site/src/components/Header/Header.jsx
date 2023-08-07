@@ -11,7 +11,7 @@ import srikulalog2 from '../../assets/header/srikulalogo2.png';
 const Header = (props) => {
     return(
         <div className="gradient-custom">
-            <Navbar expand="lg" className="pt-2 pb-2" >
+            <Navbar expand="lg" className="pt-2 pb-2 shadow-none" >
                 <Container fluid>
                     <Navbar.Brand href="#">
                         <img src={logo} alt="Logo" width={70} height={'auto'} className="logo-alignment"/>
@@ -19,22 +19,28 @@ const Header = (props) => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                         <Nav style={{fontWeight:"Bold", marginTop:"10px", color:"white"}}>
-                            <Nav.Link href="#" className="text-white">Home</Nav.Link>
-                            <Nav.Link href="#" className="text-white">About Us</Nav.Link>
-                            <Nav.Link href="#" className="text-white">FAQ</Nav.Link>
-                            <Nav.Link href="#">
-                                <Button variant="light" size="md" className="rounded-pill button-decoration">Try Outfit</Button>{' '}
-                            </Nav.Link>
+                            <Nav.Item className="mx-2">
+                                <Nav.Link href="#" className="text-white" >Home</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item className="mx-2">
+                                <Nav.Link href="#" className="text-white">About Us</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item className="mx-2">
+                                <Nav.Link href="#" className="text-white">FAQ</Nav.Link>
+                            </Nav.Item>
+                            <Nav.Item className="mx-2">
+                                <Nav.Link href="#">
+                                    <Button variant="light" size="md" className="rounded-pill button-decoration">Try Outfit</Button>{' '}
+                                </Nav.Link>
+                            </Nav.Item>
                         </Nav>
                         <span style={{color:"white"}}>
-              <PersonIcon className="mx-2" /> |
-              <FacebookIcon className="mx-2" />
-              <InstagramIcon/>
-            </span>
+                  <PersonIcon className="mx-2" />
+                </span>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <containor fluid>
+            <Container fluid>
                 <div className="headerBox" style={{overflow:"hidden"}}>
                     <div className="row" >
                         <div className="col-md-2 d-none d-md-block"></div>
@@ -53,7 +59,7 @@ const Header = (props) => {
                         <img src={flower} alt="Flower Pattern" className="flowerimg" width={1920} />
                     </div>
                 </div>
-            </containor>
+            </Container>
         </div>
     )
 }
