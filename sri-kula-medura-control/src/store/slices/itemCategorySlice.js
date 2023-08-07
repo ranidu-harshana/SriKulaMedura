@@ -1,4 +1,4 @@
-import {createEntityAdapter, createSelector, createSlice} from "@reduxjs/toolkit";
+import {createEntityAdapter, createSlice} from "@reduxjs/toolkit";
 
 const item_categoryState = createEntityAdapter({selectId: (item_category)=>item_category.id})
 

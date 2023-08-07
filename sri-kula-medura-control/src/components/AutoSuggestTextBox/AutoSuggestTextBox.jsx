@@ -6,14 +6,21 @@ import {checkItemExist, searchItem} from "../../repository/itemRepository";
 import './Typeahead.bs5.css'
 import './Typeahead.css'
 import {useTranslation} from "react-i18next";
+import {useDispatch} from "react-redux";
+import {useParams} from "react-router-dom";
+import {addSelectedDressByUser} from "../../store/slices/dressSelectionSlice";
 
-const AutoSuggestTextBox = ({textBoxRef, type, index}) => {
+const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 	const {t} = useTranslation()
+
+	const {id} = useParams()
+	const dispatcher = useDispatch()
 
 	const [isLoading, setIsLoading] = useState(false);
 	const [isValid, setIsValid] = useState(false);
 	const [isInValid, setIsInValid] = useState(false);
 	const [options, setOptions] = useState([]);
+	const [isSetValueBySuggestions, setIsSetValueBySuggestions] = useState(false)
 
 	const handleSearch = (query) => {
 		setIsLoading(true);
@@ -40,13 +47,23 @@ const AutoSuggestTextBox = ({textBoxRef, type, index}) => {
 			.catch(err => console.log(err))
 	}
 
+	const handleOnInputChangeBlur = (event) => {
+		handleOnInputChange(event)
+		if (!isSetValueBySuggestions) {
+			if (event.target.value) {
+				if (isInValid) {
+					dispatcher(addSelectedDressByUser(typeWithIndex, event.target.value, parseInt(id)))
+				}
+			}
+		}
+	}
+
 	const filterBy = () => true;
 
 	return (
 		<>
 			<Form.Group>
 				<AsyncTypeahead
-					ref={textBoxRef}
 					filterBy={filterBy}
 					id={`${type}${index}`}
 					isValid={isValid}
@@ -54,17 +71,21 @@ const AutoSuggestTextBox = ({textBoxRef, type, index}) => {
 					isLoading={isLoading}
 					highlightOnlyResult={true}
 					minLength={0}
-					labelKey={(item)=>`${item.item_code} - ${item.item_name}`}
+					labelKey={(item)=>`${item?.item_code} - ${item?.item_name}`}
 					onSearch={handleSearch}
 					options={options}
 					placeholder={t(`select${firtsLetterTOUppercase(type)}Dress`)}
 					renderMenuItemChildren={(item) => (
 						<>
-							<span className={'fw-bold'}>{item.item_code}</span> - <span>{item.item_name}</span>
+							<span className={'fw-bold'}>{item?.item_code}</span> - <span>{item?.item_name}</span>
 						</>
 					)}
-					onBlur={handleOnInputChange}
+					onBlur={handleOnInputChangeBlur}
 					onKeyDown={handleOnInputChange}
+					onChange={(selected)=>{
+						setIsSetValueBySuggestions(true)
+						dispatcher(addSelectedDressByUser(typeWithIndex, selected[0]?.id, parseInt(id)))
+					}}
 				/>
 			</Form.Group>
 		</>
