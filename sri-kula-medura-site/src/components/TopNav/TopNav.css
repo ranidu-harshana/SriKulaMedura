@@ -9,7 +9,8 @@
   }
   
   .button-decoration{
-    margin-top:-6px;
-    font-weight: Bold;
-    color:#12899C;
+      margin-top:-6px;
+      font-weight: Bold;
+      color:#12899C;
+      border-radius: 7px;
   }
