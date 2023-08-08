@@ -25,10 +25,10 @@ const dressSelectionSlice = createSlice({
 					}
 				}
 			},
-			prepare: (typeWithIndex, item_id, reservation_id) => {
+			prepare: (typeWithIndex, item_id, reservation_id, item_description) => {
 				return	{
 					payload: {
-						typeWithIndex, item_id, reservation_id
+						typeWithIndex, item_id, reservation_id, item_description
 					}
 				}
 			}

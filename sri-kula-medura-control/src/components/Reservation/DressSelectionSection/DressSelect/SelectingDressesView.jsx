@@ -2,6 +2,7 @@ import {useSelector} from "react-redux";
 import {reservationSelector, selectByIdReservation} from "../../../../store/slices/reservationSlice";
 import {selectedDressesByUserSelector} from "../../../../store/slices/dressSelectionSlice";
 import DressSelectBox from "./DressSelectBox";
+import {storeDressSelections} from "../../../../repository/dressSelectionRepository";
 
 const SelectingDressesView = ({id}) => {
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
@@ -31,8 +32,13 @@ const SelectingDressesView = ({id}) => {
 				<div className="row col-12 text-end">
 					<p>
 						<button className={'btn btn-success'} onClick={()=>{
-							// TODO: implement this
-							console.log(selectedDressesByUser)
+							storeDressSelections(selectedDressesByUser)
+								.then((response)=>{
+									if(response.data.response) {
+										
+									}
+								})
+								.catch((err)=>console.error(err))
 						}}>Submit</button>
 					</p>
 				</div>

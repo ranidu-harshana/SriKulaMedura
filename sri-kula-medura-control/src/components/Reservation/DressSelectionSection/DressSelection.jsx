@@ -10,7 +10,6 @@ const DressSelection = (props) => {
 	const {id} = useParams()
 
 	const dressSelections = useSelector(selectAllDressSelection)
-	console.log(dressSelections)
 
 	return (
 		<>
@@ -23,7 +22,7 @@ const DressSelection = (props) => {
 			</div>
 
 			<div className="row mt-3">
-				{dressSelections.length > 0 ? <SelectingDressesView id={id}/> : <SelectedDressesView dressSelections={dressSelections}/>}
+				{!dressSelections.length > 0 ? <SelectingDressesView id={id}/> : <SelectedDressesView dressSelections={dressSelections}/>}
 
 				<div className={'col-12 col-md-6 p-0 px-md-2 mt-3 mt-md-0'}>
 					<div className="tab-content-container">

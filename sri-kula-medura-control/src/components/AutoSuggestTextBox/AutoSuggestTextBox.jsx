@@ -52,7 +52,7 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 		if (!isSetValueBySuggestions) {
 			if (event.target.value) {
 				if (isInValid) {
-					dispatcher(addSelectedDressByUser(typeWithIndex, event.target.value, parseInt(id)))
+					dispatcher(addSelectedDressByUser(typeWithIndex, 0, parseInt(id), event.target.value))
 				}
 			}
 		}
@@ -84,7 +84,7 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 					onKeyDown={handleOnInputChange}
 					onChange={(selected)=>{
 						setIsSetValueBySuggestions(true)
-						dispatcher(addSelectedDressByUser(typeWithIndex, selected[0]?.id, parseInt(id)))
+						dispatcher(addSelectedDressByUser(typeWithIndex, selected[0]?.id, parseInt(id), ""))
 					}}
 				/>
 			</Form.Group>
