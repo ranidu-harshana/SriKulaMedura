@@ -1,14 +1,20 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {reservationSelector, selectByIdReservation} from "../../../../store/slices/reservationSlice";
-import {selectedDressesByUserSelector} from "../../../../store/slices/dressSelectionSlice";
+import {
+	addDressSelections,
+	selectAllDressSelection,
+	selectedDressesByUserSelector
+} from "../../../../store/slices/dressSelectionSlice";
 import DressSelectBox from "./DressSelectBox";
 import {storeDressSelections} from "../../../../repository/dressSelectionRepository";
 
-const SelectingDressesView = ({id}) => {
-	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
+const SelectingDressesView = ({reservation_id}) => {
+	const dressSelections = useSelector(selectAllDressSelection)
+	const reservationCurr = useSelector((state) => selectByIdReservation(state, reservation_id))
 	const reservationAlt = useSelector(reservationSelector)
 	const selectedDressesByUser = useSelector(selectedDressesByUserSelector)
 	const reservation = reservationCurr ? reservationCurr : reservationAlt
+	const dispatcher = useDispatch()
 
 	const bestManArr = []
 	const pageBoyArr = []
@@ -32,10 +38,10 @@ const SelectingDressesView = ({id}) => {
 				<div className="row col-12 text-end">
 					<p>
 						<button className={'btn btn-success'} onClick={()=>{
-							storeDressSelections(selectedDressesByUser)
+							storeDressSelections(selectedDressesByUser, reservation_id)
 								.then((response)=>{
-									if(response.data.response) {
-										
+									if(response.data.length > 0) {
+										dispatcher(addDressSelections(response.data))
 									}
 								})
 								.catch((err)=>console.error(err))

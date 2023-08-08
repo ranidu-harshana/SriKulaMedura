@@ -16,13 +16,13 @@ import java.util.List;
 public class DressSelectionController {
     private final DressSelectionServiceImpl dressSelectionService;
 
-    @GetMapping("/")
-    public List<DressSelectionDTO> index() {
-        return null;
+    @GetMapping("/{reservation_id}/all")
+    public List<DressSelectionDTO> getAll(@PathVariable int reservation_id) {
+        return dressSelectionService.allDressSelectionsOfReservation(reservation_id);
     }
 
     @PostMapping("/")
-    public CommonBooleanDTO store(@RequestBody SelectingDressesDTO selectingDressesDTO) {
+    public List<DressSelectionDTO> store(@RequestBody SelectingDressesDTO selectingDressesDTO) {
         return dressSelectionService.saveDressSelections(selectingDressesDTO);
     }
 
