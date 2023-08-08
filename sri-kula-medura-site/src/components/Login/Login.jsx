@@ -20,9 +20,9 @@ const Login = () => {
 
                             {/*<img src={accountcircle} className='img-fluid ' alt='...' style={{width:"8rem", color:"#ffff"}}/>*/}
                             <AccountCircleIcon style={{
-                                fontSize: "100px"
+                                fontSize: "80px"
                             }}/>
-                            <h2 className="fw-bold mb-4 text-uppercase">Login</h2>
+                            <h2 className="fw-bold mt-2 mb-4 text-uppercase">Login</h2>
 
                             <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email address'
                                       id='formControlLg' type='email' size="lg" className={'text-white'}/>
@@ -31,11 +31,12 @@ const Login = () => {
 
                             <p className="small mb-3 pb-lg-2 text-start"><a class="text-white-50" href="#!">Forgot
                                 password?</a></p>
-                            <MDBBtn outline className='mx-2  ' color='white' size='lg' rounded>
+                            <MDBBtn outline className='mx-2  ' color='white' size='md' rounded>
                                 Login
                             </MDBBtn>
 
-                            <div className='d-flex flex-row mt-4 mb-2'>
+                            <hr className="mt-4" style={{color:"white",height:"5px",width:"80%"}}/>
+                            <div className='d-flex flex-row mt-1 mb-2'>
                                 <FacebookIcon style={{color: "#ffff"}}/> &nbsp;
                                 <GoogleIcon style={{color: "#ffff"}}/> &nbsp;
                                 <InstagramIcon style={{color: "#ffff"}}/> &nbsp;
