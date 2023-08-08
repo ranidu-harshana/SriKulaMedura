@@ -8,9 +8,9 @@ import com.skm.skmserver.entity.DressSelection;
 import java.util.List;
 
 public interface DressSelectionService {
-    List<DressSelectionDTO> allDressSelections();
+    List<DressSelectionDTO> allDressSelectionsOfReservation(int reservation_id);
 
-    CommonBooleanDTO saveDressSelections(SelectingDressesDTO dressSelectionDTO);
+    List<DressSelectionDTO> saveDressSelections(SelectingDressesDTO dressSelectionDTO);
 
     DressSelectionDTO getDressSelection(int id);
 

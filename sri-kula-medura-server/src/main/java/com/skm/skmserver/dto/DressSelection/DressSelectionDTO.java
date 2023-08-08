@@ -1,5 +1,6 @@
 package com.skm.skmserver.dto.DressSelection;
 
+import com.skm.skmserver.dto.ItemDTO;
 import com.skm.skmserver.entity.DressSelection;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +20,7 @@ public class DressSelectionDTO {
     private Date updated_at;
     private int reservation_id;
     private int item_id;
+    private ItemDTO item;
     private String item_description;
 
     public static DressSelectionDTOBuilder builder(DressSelection dressSelection) {

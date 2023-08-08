@@ -10,6 +10,7 @@ import com.skm.skmserver.repo.ItemRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.DressSelectionService;
 import com.skm.skmserver.service.MainService;
+import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,33 +28,30 @@ public class DressSelectionServiceImpl implements DressSelectionService, MainSer
     private final ItemRepository itemRepository;
     private final DressSelection newDressSelection;
     private final ItemServiceImpl itemService;
+    private final MapAll<DressSelection, DressSelectionDTO> mapAll;
 
     @Override
-    public List<DressSelectionDTO> allDressSelections() {
-        return null;
+    public List<DressSelectionDTO> allDressSelectionsOfReservation(int reservation_id) {
+        return mapAll.mapAllAttributesToDTO(dressSelectionRepository.findAllByReservationId(reservation_id), this);
     }
 
     @Override
-    public CommonBooleanDTO saveDressSelections(SelectingDressesDTO dressSelectionDTO) {
-        try {
-            for (DressSelectionDTO dto : dressSelectionDTO.getDresses()) {
-                Item item = null;
-                if (dto.getItem_id() > 0) {
-                    item = itemRepository.findById(dto.getItem_id());
-                } else if (itemService.checkItemExist(dto.getItem_description()).isResponse()) {
-                    String[] separatedTexts = separateItemCodeAndItemName(dto.getItem_description());
-                    item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
-                }
-                DressSelection dressSelection = dressSelectionRepository.save(DressSelection.builder(newDressSelection)
-                        .status(true)
-                        .reservation(reservationRepository.findById(dto.getReservation_id()))
-                        .item(item)
-                        .build());
+    public List<DressSelectionDTO> saveDressSelections(SelectingDressesDTO dressSelectionDTO) {
+        for (DressSelectionDTO dto : dressSelectionDTO.getDresses()) {
+            Item item = null;
+            if (dto.getItem_id() > 0) {
+                item = itemRepository.findById(dto.getItem_id());
+            } else if (itemService.checkItemExist(dto.getItem_description()).isResponse()) {
+                String[] separatedTexts = separateItemCodeAndItemName(dto.getItem_description());
+                item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
             }
-            return CommonBooleanDTO.builder().response(true).build();
-        } catch (Exception e) {
-            return CommonBooleanDTO.builder().response(false).build();
+            DressSelection dressSelection = dressSelectionRepository.save(DressSelection.builder(newDressSelection)
+                    .status(true)
+                    .reservation(reservationRepository.findById(dto.getReservation_id()))
+                    .item(item)
+                    .build());
         }
+        return allDressSelectionsOfReservation(dressSelectionDTO.getDresses().get(0).getReservation_id());
     }
 
     @Override
@@ -78,6 +76,8 @@ public class DressSelectionServiceImpl implements DressSelectionService, MainSer
 
     @Override
     public DressSelectionDTO set(DressSelection dressSelection) {
-        return DressSelectionDTO.builder(dressSelection).build();
+        return DressSelectionDTO.builder(dressSelection)
+                .item(itemService.set(dressSelection.getItem()))
+                .build();
     }
 }
