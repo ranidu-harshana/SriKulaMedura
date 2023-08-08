@@ -1,7 +1,7 @@
 package com.skm.skmserver.dto.Reservation;
 
 import com.skm.skmserver.dto.Customer.CustomerUserDTO;
-import com.skm.skmserver.dto.DressSelectionDTO;
+import com.skm.skmserver.dto.DressSelection.DressSelectionDTO;
 import com.skm.skmserver.dto.MeasurementDTO;
 import com.skm.skmserver.dto.NoteDTO;
 import com.skm.skmserver.entity.Reservation;

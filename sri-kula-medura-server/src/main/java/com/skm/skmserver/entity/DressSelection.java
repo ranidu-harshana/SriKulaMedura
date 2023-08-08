@@ -2,6 +2,7 @@ package com.skm.skmserver.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,6 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
+@Builder(builderMethodName = "internalBuilder")
 public class DressSelection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +42,14 @@ public class DressSelection {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Item item;
+
+    public static DressSelectionBuilder builder(DressSelection dressSelection) {
+        return internalBuilder()
+                .id(dressSelection.getId())
+                .status(dressSelection.isStatus())
+                .created_at(dressSelection.getCreated_at())
+                .updated_at(dressSelection.getUpdated_at())
+                .reservation(dressSelection.getReservation())
+                .item(dressSelection.getItem());
+    }
 }
