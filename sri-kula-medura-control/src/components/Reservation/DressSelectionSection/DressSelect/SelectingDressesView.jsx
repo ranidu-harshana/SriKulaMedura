@@ -1,15 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {reservationSelector, selectByIdReservation} from "../../../../store/slices/reservationSlice";
-import {
-	addDressSelections,
-	selectAllDressSelection,
-	selectedDressesByUserSelector
-} from "../../../../store/slices/dressSelectionSlice";
+import {addDressSelections, selectedDressesByUserSelector} from "../../../../store/slices/dressSelectionSlice";
 import DressSelectBox from "./DressSelectBox";
 import {storeDressSelections} from "../../../../repository/dressSelectionRepository";
 
 const SelectingDressesView = ({reservation_id}) => {
-	const dressSelections = useSelector(selectAllDressSelection)
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, reservation_id))
 	const reservationAlt = useSelector(reservationSelector)
 	const selectedDressesByUser = useSelector(selectedDressesByUserSelector)

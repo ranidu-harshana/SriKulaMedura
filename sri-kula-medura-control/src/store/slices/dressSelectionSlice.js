@@ -10,7 +10,7 @@ const dressSelectionSlice = createSlice({
 	name: 'dressSelection',
 	initialState,
 	reducers: {
-		addDressSelections: dressSelectionState.addMany,
+		addDressSelections: dressSelectionState.upsertMany,
 		addSelectedDressByUser: {
 			reducer: (state, {payload}) => {
 				const filtered = state.selectedDressesByUser.filter((dress) => dress.item_id === payload.item_id)
@@ -37,7 +37,8 @@ const dressSelectionSlice = createSlice({
 			reducer: (state, {payload}) => {
 				state.selectedDressesByUser = []
 			}
-		}
+		},
+		clearDressSelectionState: dressSelectionState.removeAll
 	}
 })
 
@@ -45,7 +46,7 @@ export const {
 	selectAll: selectAllDressSelection,
 	selectById: selectByIdDressSelection,
 } = dressSelectionState.getSelectors(store => store.dressSelection)
-export const {addDressSelections, addSelectedDressByUser} = dressSelectionSlice.actions
+export const {addDressSelections, addSelectedDressByUser, clearDressSelectionState} = dressSelectionSlice.actions
 const selectedDressesByUserSel = (store) => store.dressSelection.selectedDressesByUser
 export const selectedDressesByUserSelector = createSelector([selectedDressesByUserSel], (selectedDressesByUser) => selectedDressesByUser)
 export default dressSelectionSlice.reducer

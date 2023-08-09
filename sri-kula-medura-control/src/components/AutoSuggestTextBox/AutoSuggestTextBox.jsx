@@ -9,6 +9,7 @@ import {useTranslation} from "react-i18next";
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
 import {addSelectedDressByUser} from "../../store/slices/dressSelectionSlice";
+import {ITEM_TYPES} from "../../utils/constants";
 
 const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 	const {t} = useTranslation()
@@ -74,7 +75,7 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 					labelKey={(item)=>`${item?.item_code} - ${item?.item_name}`}
 					onSearch={handleSearch}
 					options={options}
-					placeholder={t(`select${firtsLetterTOUppercase(type)}Dress`)}
+					placeholder={t(`select${t(ITEM_TYPES[type.toUpperCase()].FIRSTCHAR_CAP)}Dress`)}
 					renderMenuItemChildren={(item) => (
 						<>
 							<span className={'fw-bold'}>{item?.item_code}</span> - <span>{item?.item_name}</span>

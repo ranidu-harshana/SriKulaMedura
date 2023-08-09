@@ -2,15 +2,33 @@ import NoOfGroomsPageboys from "../Common/NoOfGroomsPageboys";
 import InterimPaymentsTable from "../BillingSection/InterimPaymentsTable";
 import {useParams} from "react-router-dom";
 import SelectingDressesView from "./DressSelect/SelectingDressesView";
-import {useSelector} from "react-redux";
-import {selectAllDressSelection} from "../../../store/slices/dressSelectionSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {
+	addDressSelections,
+	clearDressSelectionState,
+	selectAllDressSelection
+} from "../../../store/slices/dressSelectionSlice";
 import SelectedDressesView from "./DressSelect/SelectedDressesView";
+import {useEffect} from "react";
+import {getAllByReservation} from "../../../repository/dressSelectionRepository";
 
 const DressSelection = (props) => {
 	const {id} = useParams()
 
 	const dressSelections = useSelector(selectAllDressSelection)
-	console.log(dressSelections)
+	const dispatcher = useDispatch()
+
+	useEffect(() => {
+		if (dressSelections[0]?.reservation_id !== undefined && dressSelections[0]?.reservation_id !== parseInt(id)) {
+			dispatcher(clearDressSelectionState())
+		}
+		if (dressSelections.length <= 0) {
+			getAllByReservation(id)
+				.then((response) => dispatcher(addDressSelections(response.data)))
+				.catch(err => console.log(err));
+		}
+	}, [dispatcher, dressSelections, id])
+
 	return (
 		<>
 			<div className="row px-2">
