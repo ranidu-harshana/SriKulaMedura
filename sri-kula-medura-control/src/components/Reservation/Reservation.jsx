@@ -7,8 +7,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {addSingleReservation, reservationSelector, selectByIdReservation} from "../../store/slices/reservationSlice";
 import {useMemo} from "react";
 import {getReservation} from "../../repository/reservationRepository";
+import {useTranslation} from "react-i18next";
 
 const Reservation = ({id}) => {
+	const {t} = useTranslation();
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
 	const reservationAlt = useSelector(reservationSelector)
 	const dispatcher = useDispatch()
@@ -47,11 +49,11 @@ const Reservation = ({id}) => {
 				</div>
 			</div>
 			<div className="col-12 col-lg-6 row left-border">
-				<ReservationDetails title={"Amount to be paid"} value={"17,874.00"} amountToPaid={true}/>
-				<ReservationDetails title={"Phone 1"} value={reservation.customer.mobile_no1}/>
-				<ReservationDetails title={"Phone 2"} value={reservation.customer.mobile_no2}/>
-				<ReservationDetails title={"Function Date"} value={reservation.function_date}/>
-				<ReservationDetails title={"Function Place"} value={reservation.function_place}/>
+				<ReservationDetails title={t('amounttobepaid')} value={"17,874.00"} amountToPaid={true}/>
+				<ReservationDetails title={t('phone1')} value={reservation.customer.mobile_no1}/>
+				<ReservationDetails title={t('phone2')} value={reservation.customer.mobile_no2}/>
+				<ReservationDetails title={t('functionDate')} value={reservation.function_date}/>
+				<ReservationDetails title={t('functionPlace')} value={reservation.function_place}/>
 			</div>
 		</div>
 		<div>

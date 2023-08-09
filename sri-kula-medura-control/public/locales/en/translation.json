@@ -1,5 +1,6 @@
 {
 	"address": "Address",
+	"amounttobepaid" : "Amount to be paid",
 	"bestman": "Bestman",
 	"bill": "Bill",
 	"billNumber" : "Bill Number",
@@ -7,6 +8,8 @@
 	"branch": "Branch",
 	"costs" : "Costs",
 	"dressSelection(Jacket)" : "Dress Selection (Jacket)",
+	"functionDate" : "Function Date",
+	"functionPlace" : "Function Place",
 	"groom": "Groom",
 	"home": "Home",
 	"measurements": "Measurements",
@@ -15,6 +18,8 @@
 	"numberofPageboys" : "Number of Pageboys",
 	"other" : "Other",
 	"pageboy": "Pageboy",
+	"phone1" : "Phone 1",
+	"phone2" : "Phone 2",
 	"selectGroomDress": "Select Groom Dress",
 	"selectBestmanDress": "Select Bestman Dress",
 	"selectPageboyDress": "Select Pageboy Dress"
