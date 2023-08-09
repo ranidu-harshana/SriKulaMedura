@@ -1,7 +1,6 @@
 import {AsyncTypeahead} from "react-bootstrap-typeahead";
 import {useState} from "react";
 import Form from 'react-bootstrap/Form';
-import {firtsLetterTOUppercase} from "../../utils/helpers";
 import {checkItemExist, searchItem} from "../../repository/itemRepository";
 import './Typeahead.bs5.css'
 import './Typeahead.css'
