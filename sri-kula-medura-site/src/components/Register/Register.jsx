@@ -12,16 +12,16 @@ const Test = (props) => {
     return(
         <>
             <container fluid>
-                <div className="">
+                <div>
                     <div className="row">
-                        <div className="col-4"></div>
-                        <div className="col-4 registerBox position-absolute top-50 start-50 translate-middle">
+                        <div className="col-1 col-sm-2 col-lg-4"></div>
+                        <div className="col-10 col-sm-8 col-lg-4 registerBox position-absolute top-50 start-50 translate-middle">
                             <div className="text-center">
                                 <p className="regTitle text-center">REGISTER</p>
                             </div>
                             <div className="registerBox-image">
                                 <div>
-                                <div style={{position:"absolute",marginLeft:"41%",marginTop:"13%"}}>
+                                <div className="heart-shape">
                                     <div id="heart" className="scale-in-center" ></div>
                                 </div>
                                 <div>
@@ -34,15 +34,15 @@ const Test = (props) => {
                                 <hr className="mb-4" style={{backgroundColor:"white",width:"w-100",height:"4px"}}/>
                                 <Form>
                                     <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-                                        <Form.Label column sm={4} className="text-white">
+                                        <Form.Label column sm={5} className="text-white">
                                             Mobile Number
                                         </Form.Label>
-                                        <Col sm={8}>
-                                            <Form.Control type="text" placeholder="+94 XX XXX XXX" />
+                                        <Col sm={7}>
+                                            <Form.Control className="mobilenumber-feild" type="text" placeholder="+94 XX XXX XXX" />
                                         </Col>
                                     </Form.Group>
 
-                                    <Form.Group as={Row} className="mb-3">
+                                    <Form.Group as={Row} className="">
                                         <Col sm={12}>
                                             <Button type="submit" className="bg-white w-100 registerBox-form-text" >SIGN UP</Button>
                                         </Col>
@@ -50,7 +50,7 @@ const Test = (props) => {
                                 </Form>
                             </div>
                         </div>
-                        <div className="col-4"></div>
+                        <div className="col-1 col-sm-2 col-lg-4"></div>
                     </div>
                 </div>
             </container>

@@ -1,25 +1,494 @@
+@media screen and (max-width: 576px) {
+    .registerBox{
+        height: auto;
+        border-radius: 5px;
+        padding-bottom: 10%;
+    }
+
+    .registerBox-form{
+        margin-top: 50%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .mobilenumber-feild{
+        width:100%;
+        margin-left:0;
+    }
+
+    /*----------CSS ANIAMTION---------*/
+    .box {
+        position: absolute;
+        width: 130px;
+        height: 130px;
+        transition: transform 2s ease-in-out;
+    }
+
+    .box1 {
+        left: 45px;
+        animation: slideRightToLeft 4s infinite;
+    }
+
+    .box2 {
+        right: 45px;
+        animation: slideLeftToRight 4s infinite;
+    }
+
+    #heart {
+        position: relative;
+        width: 90px;
+        height: 80px;
+    }
+
+    .heart-shape{
+        position:absolute;
+        margin-left:33%;
+        margin-top:15%;
+    }
+
+    #heart:before, #heart:after {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: red;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    #heart:after {
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin :100% 100%;
+    }
+
+    /*----------#######---------*/
+    /*----------CSS Animation Transitions---------*/
+
+    @keyframes slideRightToLeft {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(45%);
+        }
+    }
+
+    @keyframes slideLeftToRight {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-45%);
+        }
+    }
+
+    .scale-in-center {
+        -webkit-animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+        animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+    }
+
+    @-webkit-keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /*----------#######---------*/
+}
+
+@media screen and (min-width: 576px) {
+    .registerBox{
+        height: auto;
+        border-radius: 10px;
+        padding-bottom: 7%;
+    }
+
+    .registerBox-form{
+        margin-top: 40%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .mobilenumber-feild{
+        width:110%;
+        margin-left:-10%;
+    }
+
+    /*----------CSS ANIAMTION---------*/
+    .box {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        transition: transform 2s ease-in-out;
+    }
+
+    .box1 {
+        left: 80px;
+        animation: slideRightToLeft 4s infinite;
+    }
+
+    .box2 {
+        right: 80px;
+        animation: slideLeftToRight 4s infinite;
+    }
+
+    #heart {
+        position: relative;
+        width: 90px;
+        height: 80px;
+    }
+
+    .heart-shape{
+        position:absolute;
+        margin-left:40%;
+        margin-top:15%;
+    }
+
+    #heart:before, #heart:after {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: red;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    #heart:after {
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin :100% 100%;
+    }
+
+    /*----------#######---------*/
+    /*----------CSS Animation Transitions---------*/
+
+    @keyframes slideRightToLeft {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(45%);
+        }
+    }
+
+    @keyframes slideLeftToRight {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-45%);
+        }
+    }
+
+    .scale-in-center {
+        -webkit-animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+        animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+    }
+
+    @-webkit-keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /*----------#######---------*/
+
+}
+
+@media screen and (min-width: 992px) {
+    .registerBox{
+        height: auto;
+        border-radius: 10px;
+        padding-bottom: 4%;
+
+    }
+
+    .registerBox-form{
+        margin-top: 35%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .mobilenumber-feild{
+        width:110%;
+        margin-left:-10%;
+    }
+
+    /*----------CSS ANIAMTION---------*/
+    .box {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        transition: transform 2s ease-in-out;
+    }
+
+    .box1 {
+        left: 80px;
+        animation: slideRightToLeft 4s infinite;
+    }
+
+    .box2 {
+        right: 80px;
+        animation: slideLeftToRight 4s infinite;
+    }
+
+    #heart {
+        position: relative;
+        width: 100px;
+        height: 90px;
+    }
+
+    .heart-shape{
+        position:absolute;
+        margin-left:41%;
+        margin-top:13%;
+    }
+
+    #heart:before, #heart:after {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: red;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    #heart:after {
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin :100% 100%;
+    }
+
+    /*----------#######---------*/
+    /*----------CSS Animation Transitions---------*/
+
+    @keyframes slideRightToLeft {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(65%);
+        }
+    }
+
+    @keyframes slideLeftToRight {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-65%);
+        }
+    }
+
+    .scale-in-center {
+        -webkit-animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+        animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+    }
+
+    @-webkit-keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    /*----------#######---------*/
+}
+
+@media screen and (min-width: 1200px) {
+    .registerBox{
+        height: auto;
+        border-radius: 10px;
+        padding-bottom: 4%;
+    }
+
+    .registerBox-form{
+        margin-top: 35%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    .mobilenumber-feild{
+        width:110%;
+        margin-left:-10%;
+    }
+
+    /*----------CSS ANIAMTION---------*/
+    .box {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        transition: transform 2s ease-in-out;
+    }
+
+    .box1 {
+        left: 80px;
+        animation: slideRightToLeft 4s infinite;
+    }
+
+    .box2 {
+        right: 80px;
+        animation: slideLeftToRight 4s infinite;
+    }
+
+    #heart {
+        position: relative;
+        width: 100px;
+        height: 90px;
+    }
+
+    .heart-shape{
+        position:absolute;
+        margin-left:41%;
+        margin-top:13%;
+    }
+
+    #heart:before, #heart:after {
+        position: absolute;
+        content: "";
+        left: 50px;
+        top: 0;
+        width: 50px;
+        height: 80px;
+        background: red;
+        border-radius: 50px 50px 0 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+    }
+
+    #heart:after {
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin :100% 100%;
+    }
+
+    /*----------#######---------*/
+
+    /*----------CSS Animation Transitions---------*/
+
+    @keyframes slideRightToLeft {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(65%);
+        }
+    }
+
+    @keyframes slideLeftToRight {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-65%);
+        }
+    }
+
+    .scale-in-center {
+        -webkit-animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+        animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
+    }
+
+    @-webkit-keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes scale-in-center {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    /*----------#######---------*/
+}
+
+
 .registerBox{
     background: #2a2a2b;
     background: -webkit-linear-gradient(to right, rgba(12, 133, 2, 0.9), rgba(19, 138, 164, 0.9));
     background: linear-gradient(to right, rgba(12, 133, 2, 0.9), rgba(19, 138, 164, 0.9));
-    height: 500px;
-    border-radius: 10px;
-}
-
-.registerBox-form{
-    margin-top: 35%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-.registerBox-form-text{
-    color: #46A25E;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.registerBox-form-text:hover{
-    color: #2d643c;
 }
 
 .regTitle{
@@ -30,92 +499,12 @@
     margin-bottom: -5%;
 }
 
-.box {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    transition: transform 2s ease-in-out;
+.registerBox-form-text{
+    color: #46A25E;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
-.box1 {
-    left: 80px;
-    animation: slideRightToLeft 4s infinite;
-}
-
-.box2 {
-    right: 80px;
-    animation: slideLeftToRight 4s infinite;
-}
-
-@keyframes slideRightToLeft {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(65%);
-    }
-}
-
-@keyframes slideLeftToRight {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-65%);
-    }
-}
-
-#heart {
-    position: relative;
-    width: 100px;
-    height: 90px;
-}
-
-#heart:before, #heart:after {
-    position: absolute;
-    content: "";
-    left: 50px;
-    top: 0;
-    width: 50px;
-    height: 80px;
-    background: red;
-    border-radius: 50px 50px 0 0;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
-}
-
-#heart:after {
-    left: 0;
-    transform: rotate(45deg);
-    transform-origin :100% 100%;
-}
-
-.scale-in-center {
-    -webkit-animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
-    animation: scale-in-center 4s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite both;
-}
-
-@-webkit-keyframes scale-in-center {
-    0% {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-        opacity: 1;
-    }
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-@keyframes scale-in-center {
-    0% {
-        -webkit-transform: scale(0);
-        transform: scale(0);
-        opacity: 1;
-    }
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1;
-    }
+.registerBox-form-text:hover{
+    color: #2d643c;
 }
