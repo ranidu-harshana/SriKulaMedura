@@ -1,10 +1,15 @@
+import {useTranslation} from "react-i18next";
+
+
+
 const UserDetails = ({address, billNumber, bookedOn, branch}) => {
+	const {t} = useTranslation();
 	return (
 		<>
-			<span>Address</span> : <span className={'text-secondary'}>{address}</span> <br/>
-			<span>Bill Number</span> : <span className={'text-secondary'}>{billNumber}</span> <br/>
-			<span>Booked On</span> : <span className={'text-secondary'}>{bookedOn}</span> <br/>
-			<span>Branch</span> : <span className={'text-secondary'}>{branch}</span>
+			<span>{t('address')}</span> : <span className={'text-secondary'}>{address}</span> <br/>
+			<span>{t('billNumber')}</span> : <span className={'text-secondary'}>{billNumber}</span> <br/>
+			<span>{t('bookedOn')}</span> : <span className={'text-secondary'}>{bookedOn}</span> <br/>
+			<span>{t('branch')}</span> : <span className={'text-secondary'}>{branch}</span>
 		</>
 	);
 }

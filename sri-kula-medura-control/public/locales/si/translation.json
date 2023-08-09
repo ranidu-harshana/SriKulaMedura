@@ -1,6 +1,9 @@
 {
+	"address" : "ලිපිනය",
 	"bestman": "දෙවැනි මනමාලයා",
 	"bill" : "බිල්පත",
+	"billNumber" : "බිල්පත් අංකය",
+	"bookedOn" : "වෙන් කරන ලද දිනය සහ වේලාව",
 	"branch": "ශාඛාව",
 	"costs" : "වියදම",
 	"dressSelection(Jacket)": "ඇඳුම් තේරීම (ජැකට්)",

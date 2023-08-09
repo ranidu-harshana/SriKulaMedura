@@ -1,6 +1,9 @@
 {
+	"address": "Address",
 	"bestman": "Bestman",
 	"bill": "Bill",
+	"billNumber" : "Bill Number",
+	"bookedOn" : "Booked On",
 	"branch": "Branch",
 	"costs" : "Costs",
 	"dressSelection(Jacket)" : "Dress Selection (Jacket)",
