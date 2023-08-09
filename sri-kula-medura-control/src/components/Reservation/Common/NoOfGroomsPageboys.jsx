@@ -9,8 +9,12 @@ import {reservationSelector, saveReservation, selectByIdReservation} from "../..
 import {updateReservation} from "../../../store/slices/reservationSlice";
 import {storeBestMenPageBoysCount} from "../../../repository/reservationRepository";
 import notify from "../../../utils/notify";
+import {useTranslation} from "react-i18next";
+import Tab from "@mui/material/Tab";
 
 const NoOfGroomsPageboys = () => {
+	const {t} = useTranslation();
+
 	const {id} = useParams()
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
 	const reservationAlt = useSelector(reservationSelector)
@@ -27,8 +31,8 @@ const NoOfGroomsPageboys = () => {
 				<div className="row">
 					<div>
 						<p>
-							<span className={'fw-bold'}>Number of Bestmen:</span> {reservation.no_of_bestmen}<br/>
-							<span className={'fw-bold'}>Number of Pageboys:</span> {reservation.no_of_pageboys}
+							<span className={'fw-bold'} > {t('numberOfBestmen')} :</span> {reservation.no_of_bestmen}<br/>
+							<span className={'fw-bold'}> {t('numberofPageboys')} :</span> {reservation.no_of_pageboys}
 						</p>
 					</div>
 				</div>
