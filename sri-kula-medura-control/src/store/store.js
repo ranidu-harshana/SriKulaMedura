@@ -5,6 +5,7 @@ import itemCategorySlice from "./slices/itemCategorySlice";
 import branchSlice from "./slices/branchSlice";
 import measurementSlice from "./slices/measurementSlice";
 import dressSelectionSlice from "./slices/dressSelectionSlice";
+import noteSlice from "./slices/noteSlice";
 
 const store = configureStore({
 	reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
 		branch: branchSlice,
 		measurement: measurementSlice,
 		dress_selection: dressSelectionSlice,
+		note : noteSlice,
 	}
 })
 
