@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
                 .email(userDTO.getEmail())
                 .address(userDTO.getAddress())
                 .mobile_no(userDTO.getMobile_no())
-                .password(passwordEncoder.encode(userDTO.getPassword()))
+                .password(passwordEncoder.encode("1234"))
                 .role(userDTO.getRole())
                 .build());
 
@@ -45,6 +45,12 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
     @Override
     public UserDTO getUser(int id) {
         User user = userRepository.findById(id);
+        return set(user);
+    }
+
+    @Override
+    public UserDTO getUser(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow();
         return set(user);
     }
 
@@ -66,7 +72,6 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
                 .email(user.getEmail())
                 .mobile_no(user.getMobile_no())
                 .email_verified_at(user.getEmail_verified_at())
-                .password(user.getPassword())
                 .created_at(user.getCreated_at())
                 .updated_at(user.getUpdated_at())
                 .role(user.getRole())

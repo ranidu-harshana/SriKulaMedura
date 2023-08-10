@@ -19,7 +19,6 @@ public class UserDTO {
     private String address;
     private String mobile_no;
     private Date email_verified_at;
-    private String password;
     private Date created_at;
     private Date updated_at;
     private Role role;

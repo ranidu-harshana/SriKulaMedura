@@ -1,8 +1,16 @@
 import {Navigate, Outlet} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 const ProtectedRoute = (props) => {
 	const accessToken = localStorage.getItem("accessToken");
+	const decoded = jwt_decode(accessToken);
+
+	if (Date.now() > decoded.exp * 1000) {
+		localStorage.removeItem("accessToken");
+	}
+
 	const user = accessToken != null
+
 	return (
 		user?<Outlet />:<Navigate to="/adminlogin" />
 	);
