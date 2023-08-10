@@ -36,7 +36,6 @@ const SelectBestManPageboyDresses = ({minusBestman, minusPageboy}) => {
 				<p>
 					<button className={'btn btn-success'} onClick={()=>{
 						if (selectedDressesByUser.length > 0) {
-							console.log(selectedDressesByUser)
 							storeDressSelections(selectedDressesByUser, id)
 								.then((response)=>{
 									if(response.data.length > 0) {
