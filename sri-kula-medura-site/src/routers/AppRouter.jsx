@@ -14,7 +14,7 @@ const router = createBrowserRouter([
 		element: <Home />,
 	},
 	{
-		path:"/skm/login",
+		path:"/login",
 		element: <LoginPage />,
 	},
 	{
