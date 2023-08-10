@@ -1,4 +1,5 @@
 {
+	"action" : "Action",
 	"address": "Address",
 	"amounttobepaid" : "Amount to be paid",
 	"bestman": "Bestman",
@@ -7,11 +8,14 @@
 	"bookedOn" : "Booked On",
 	"branch": "Branch",
 	"costs" : "Costs",
+	"chest" : "Chest",
 	"dressSelection(Jacket)" : "Dress Selection (Jacket)",
 	"functionDate" : "Function Date",
 	"functionPlace" : "Function Place",
 	"groom": "Groom",
+	"groom" : "GROOM",
 	"home": "Home",
+	"head" : "Head",
 	"measurements": "Measurements",
 	"notes": "Notes",
 	"numberOfBestmen":"Number of Bestmen",
@@ -20,7 +24,11 @@
 	"pageboy": "Pageboy",
 	"phone1" : "Phone 1",
 	"phone2" : "Phone 2",
+	"pos" : "POS",
 	"selectGroomDress": "Select Groom Dress",
 	"selectBestmanDress": "Select Bestman Dress",
-	"selectPageboyDress": "Select Pageboy Dress"
+	"selectPageboyDress": "Select Pageboy Dress",
+	"shoulder" : "Shoulder",
+	"weist" : "Weist"
+
 }

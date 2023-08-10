@@ -1,4 +1,5 @@
 {
+	"action" : "කටයුතු",
 	"address" : "ලිපිනය",
 	"amounttobepaid" : "ගෙවිය යුතු මුදල",
 	"bestman": "දෙවැනි මනමාලයා",
@@ -7,6 +8,7 @@
 	"bookedOn" : "වෙන් කරන ලද දිනය සහ වේලාව",
 	"branch": "ශාඛාව",
 	"costs" : "වියදම",
+	"chest" : "පපුව",
 	"dressSelection(Jacket)": "ඇඳුම් තේරීම (ජැකට්)",
 	"functionDate" : "උත්සව දිනය",
 	"functionPlace" : "උත්සව ස්ථානය",
@@ -20,7 +22,11 @@
 	"pageboy": "මල් කුමාරයා",
 	"phone1" : "දුරකථනය 1",
 	"phone2" : "දුරකථනය 2",
+	"pos": "POS",
+	"head" : "හිස",
 	"selectGroomDress": "මනාලයාගේ ඇඳුම තෝරන්න",
 	"selectBestmanDress": "දෙවැනි මනමාලයාගේ ඇඳුම තෝරන්න",
-	"selectPageboyDress": "මල් කුමාරයාගේ ඇඳුම තෝරන්න"
+	"selectPageboyDress": "මල් කුමාරයාගේ ඇඳුම තෝරන්න",
+	"shoulder" : "උරහිස",
+	"weist" : "ඉණ"
 }
