@@ -17,6 +17,6 @@ const noteSlice = createSlice({
     }
 })
 
-export const {addNote, addSingleNote, saveNote} = noteSlice.actions
+export const {addNotes, saveNote} = noteSlice.actions
 export const {selectAll :selectAllNotes} = noteState.getSelectors(store => store.note)
 export default noteSlice.reducer

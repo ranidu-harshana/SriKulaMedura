@@ -11,10 +11,6 @@ const NoteSection = (props) => {
     const [note ,setNote] = useState()
     const dispatcher = useDispatch()
 
-    const SuccessMessage = ({id}) => (
-        <div>Notification save successfully<Link to={"/note/"+id} style={{color: "white"}}> View Note</Link></div>
-    )
-
     return (
         <>
             <div className="tab-content-container">
@@ -42,7 +38,7 @@ const NoteSection = (props) => {
                                     .then(response => {
                                         if (response.status === 200) {
                                             dispatcher(saveNote({...response.data}));
-                                            notify(1, <SuccessMessage id={response.data.id}/>);
+                                            notify(1,"Note Saved Successfully");
                                         } else {
                                             notify(0, "Note not saved")
                                         }
