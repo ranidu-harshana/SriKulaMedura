@@ -43,7 +43,7 @@ const SelectBestManPageboyDresses = ({minusBestman, minusPageboy}) => {
 										dispatcher(addDressSelections(response.data))
 									}
 								})
-								.catch((err)=>console.error(err))
+								.catch((err)=>console.error(err)) 
 						}
 					}}>Submit</button>
 				</p>
