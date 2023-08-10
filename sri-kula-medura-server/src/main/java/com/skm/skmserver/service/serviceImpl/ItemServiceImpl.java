@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 import static com.skm.skmserver.util.Helpers.separateItemCodeAndItemName;
 
@@ -82,7 +81,7 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
         if (separatedTexts == null || separatedTexts.length < 2) {
             return CommonBooleanDTO.builder().response(false).build();
         }
-        Optional<Item> item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
-        return CommonBooleanDTO.builder().response(item.isPresent()).build();
+        Item item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
+        return CommonBooleanDTO.builder().response(item != null).build();
     }
 }

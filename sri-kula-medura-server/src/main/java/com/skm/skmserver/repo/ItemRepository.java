@@ -7,7 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Integer> {
@@ -17,5 +16,5 @@ public interface ItemRepository extends JpaRepository<Item, Integer> {
     List<Item> searchItemsByItemCodeOrItemName(@Param("query") String query, @Param("type") String type);
 
     @Query(value = "SELECT * FROM item WHERE item_code=:item_code AND item_name=:item_name", nativeQuery = true)
-    Optional<Item> findByItemCodeAndItemName(String item_code, String item_name);
+    Item findByItemCodeAndItemName(String item_code, String item_name);
 }

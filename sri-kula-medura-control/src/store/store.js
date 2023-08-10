@@ -13,7 +13,7 @@ const store = configureStore({
 		item_category: itemCategorySlice,
 		branch: branchSlice,
 		measurement: measurementSlice,
-		dress_selection: dressSelectionSlice,
+		dressSelection: dressSelectionSlice,
 	}
 })
 

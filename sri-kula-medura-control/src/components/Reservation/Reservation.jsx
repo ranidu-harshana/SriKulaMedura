@@ -5,7 +5,7 @@ import ReservationTabs from "./ReservationTabs";
 import UserDetails from "./UserDetails";
 import {useDispatch, useSelector} from "react-redux";
 import {addSingleReservation, reservationSelector, selectByIdReservation} from "../../store/slices/reservationSlice";
-import {useMemo} from "react";
+import {useEffect} from "react";
 import {getReservation} from "../../repository/reservationRepository";
 
 const Reservation = ({id}) => {
@@ -13,9 +13,7 @@ const Reservation = ({id}) => {
 	const reservationAlt = useSelector(reservationSelector)
 	const dispatcher = useDispatch()
 
-
-
-	useMemo(() => {
+	useEffect(() => {
 		if(!reservationCurr) {
 			getReservation(id)
 				.then((response) => {

@@ -9,7 +9,7 @@ const ReservationDetails = ({title, value, amountToPaid, handleClick, allowEditV
 					{title}
 				</div>
 				<div
-					className={`col-7 col-xl-8 my-1 my-xl-0 text-end text-md-start text-lg-end text-xl-start ${amountToPaid ? "amount-to-be-paid" : "text-secondary "}`}>
+					className={`col-7 col-xl-8 my-1 my-xl-0 text-end text-md-start text-lg-end text-xl-start ${amountToPaid ? "theme-colored-text" : "text-secondary "}`}>
 					{amountToPaid ? "Rs. " : null}
 					<ReservationDetailValue title={title} value={value}/>
 				</div>
