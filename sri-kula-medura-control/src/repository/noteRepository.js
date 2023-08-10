@@ -8,8 +8,8 @@ const getNote = (id) => {
     return Repository.get('/note/'+id)
 }
 
-const storeNote = (note) => {
-    return Repository.post('/note/', {note})
+const storeNote = (reservation_id, note) => {
+    return Repository.post('/note/', {reservation_id, note})
 }
 
 export {

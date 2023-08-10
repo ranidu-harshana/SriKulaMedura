@@ -4,10 +4,10 @@ import {saveNote} from "../../../store/slices/noteSlice";
 
 import notify from "../../../utils/notify";
 import {storeNote} from "../../../repository/noteRepository";
-import {Link} from "react-router-dom";
-
+import {useParams} from "react-router-dom";
 
 const NoteSection = (props) => {
+    const {id} = useParams()
     const [note ,setNote] = useState()
     const dispatcher = useDispatch()
 
@@ -34,7 +34,7 @@ const NoteSection = (props) => {
                         <div className="col-3"></div>
                         <div className="col-9 text-end">
                             <button type="submit" className="btn btn-primary" onClick={()=>{
-                                storeNote(note)
+                                storeNote(id, note)
                                     .then(response => {
                                         if (response.status === 200) {
                                             dispatcher(saveNote({...response.data}));
