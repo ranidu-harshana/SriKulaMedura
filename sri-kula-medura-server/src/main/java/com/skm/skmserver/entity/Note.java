@@ -2,6 +2,7 @@ package com.skm.skmserver.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,6 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
+@Builder
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
