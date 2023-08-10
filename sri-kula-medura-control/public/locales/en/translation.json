@@ -1,6 +1,8 @@
 {
 	"action" : "Action",
 	"address": "Address",
+	"allInterimPayments" : "All Interim Payments",
+	"amount" : "Amount",
 	"amounttobepaid" : "Amount to be paid",
 	"bestman": "Bestman",
 	"bill": "Bill",
@@ -9,11 +11,12 @@
 	"branch": "Branch",
 	"costs" : "Costs",
 	"chest" : "Chest",
+	"date" : "Date",
 	"dressSelection(Jacket)" : "Dress Selection (Jacket)",
+	"edit" : "Edit",
 	"functionDate" : "Function Date",
 	"functionPlace" : "Function Place",
 	"groom": "Groom",
-	"groom" : "GROOM",
 	"home": "Home",
 	"head" : "Head",
 	"measurements": "Measurements",
@@ -25,10 +28,12 @@
 	"phone1" : "Phone 1",
 	"phone2" : "Phone 2",
 	"pos" : "POS",
+	"selectDresses" : "Select Dresses",
 	"selectGroomDress": "Select Groom Dress",
 	"selectBestmanDress": "Select Bestman Dress",
 	"selectPageboyDress": "Select Pageboy Dress",
 	"shoulder" : "Shoulder",
+	"submit" : "Submit",
 	"weist" : "Weist"
 
 }

@@ -1,8 +1,11 @@
 import NoOfGroomsPageboys from "../Common/NoOfGroomsPageboys";
 import BSModal from "../../BSModal/BSModal";
 import {useState} from "react";
+import {useTranslation} from "react-i18next";
+
 
 const Measurement = (props) => {
+	const {t} = useTranslation();
 	const [show, setShow] = useState(false);
 
 	const handleClose = () => setShow(false);
@@ -22,22 +25,22 @@ const Measurement = (props) => {
 						<table className="table table-sm table-hover table-responsive">
 							<thead>
 								<tr>
-									<th scope="col">POS</th>
-									<th scope="col">Head</th>
-									<th scope="col">Shoulder</th>
-									<th scope="col">Chest</th>
-									<th scope="col">Weist</th>
+									<th scope="col">{t('pos')}</th>
+									<th scope="col">{t('head')}</th>
+									<th scope="col">{t('shoulder')}</th>
+									<th scope="col">{t('chest')}</th>
+									<th scope="col">{t('weist')}</th>
 									<th scope="col">T.Length</th>
 									<th scope="col">S.Size</th>
 									<th scope="col">ARM</th>
 									<th scope="col">J.Height</th>
-									<th scope="col">Other</th>
-									<th scope="col">Action</th>
+									<th scope="col">{t('other')}</th>
+									<th scope="col">{t('action')}</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>GROOM</td>
+									<td>{t('GROOM')}</td>
 									<td>+1</td>
 									<td>+1</td>
 									<td>+1</td>
@@ -47,7 +50,7 @@ const Measurement = (props) => {
 									<td>+1</td>
 									<td>+1</td>
 									<td>+1</td>
-									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>Edit</button></td>
+									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>{t('edit')}</button></td>
 								</tr>
 
 								<tr>
@@ -61,7 +64,7 @@ const Measurement = (props) => {
 									<td>+1</td>
 									<td>+1</td>
 									<td>+1</td>
-									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>Edit</button></td>
+									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>{t('edit')}</button></td>
 								</tr>
 
 								<tr>
@@ -75,7 +78,7 @@ const Measurement = (props) => {
 									<td>+1</td>
 									<td>+1</td>
 									<td>+1</td>
-									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>Edit</button></td>
+									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>{t('edit')}</button></td>
 								</tr>
 							</tbody>
 						</table>

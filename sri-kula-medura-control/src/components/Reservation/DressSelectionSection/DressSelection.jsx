@@ -5,8 +5,10 @@ import {useRef} from "react";
 import {useParams} from "react-router-dom";
 import {reservationSelector, selectByIdReservation} from "../../../store/slices/reservationSlice";
 import DressSelectBox from "./DressSelect/DressSelectBox";
+import {useTranslation} from "react-i18next";
 
 const DressSelection = (props) => {
+	const {t} = useTranslation();
 	const {id} = useParams()
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
 	const reservationAlt = useSelector(reservationSelector)
@@ -38,7 +40,7 @@ const DressSelection = (props) => {
 				<div className={'col-12 col-md-6 p-0 px-md-2'}>
 					<div className="tab-content-container">
 						<div className={'row mb-2'}>
-							<h5 className={'col'}>Select Dresses</h5>
+							<h5 className={'col'}>{t('selectDresses')}</h5>
 						</div>
 						<DressSelectBox type={"groom"} dressSelectionsRef={dressSelectionsRef}/>
 						{bestManArr}
@@ -48,7 +50,7 @@ const DressSelection = (props) => {
 								<button className={'btn btn-success'} onClick={()=>{
 									// TODO: implement this
 									console.log(dressSelectionsRef.current["groom"].getInput().value);
-								}}>Submit</button>
+								}}>{t('submit')}</button>
 							</p>
 						</div>
 					</div>

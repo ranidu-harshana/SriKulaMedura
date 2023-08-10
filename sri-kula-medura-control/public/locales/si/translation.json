@@ -1,7 +1,9 @@
 {
 	"action" : "කටයුතු",
 	"address" : "ලිපිනය",
+	"amount" : "ප්රමාණය",
 	"amounttobepaid" : "ගෙවිය යුතු මුදල",
+	"allInterimPayments" : "සියලුම අතුරු ගෙවීම්",
 	"bestman": "දෙවැනි මනමාලයා",
 	"bill" : "බිල්පත",
 	"billNumber" : "බිල්පත් අංකය",
@@ -9,7 +11,9 @@
 	"branch": "ශාඛාව",
 	"costs" : "වියදම",
 	"chest" : "පපුව",
+	"date" : "දිනය",
 	"dressSelection(Jacket)": "ඇඳුම් තේරීම (ජැකට්)",
+	"edit" : "සංස්කරණය කරන්න",
 	"functionDate" : "උත්සව දිනය",
 	"functionPlace" : "උත්සව ස්ථානය",
 	"groom": "මනාලයා",
@@ -24,9 +28,11 @@
 	"phone2" : "දුරකථනය 2",
 	"pos": "POS",
 	"head" : "හිස",
+	"selectDresses" : "ඇඳුම් තෝරන්න",
 	"selectGroomDress": "මනාලයාගේ ඇඳුම තෝරන්න",
 	"selectBestmanDress": "දෙවැනි මනමාලයාගේ ඇඳුම තෝරන්න",
 	"selectPageboyDress": "මල් කුමාරයාගේ ඇඳුම තෝරන්න",
 	"shoulder" : "උරහිස",
+	"submit" : "ඉදිරිපත් කරන්න",
 	"weist" : "ඉණ"
 }
