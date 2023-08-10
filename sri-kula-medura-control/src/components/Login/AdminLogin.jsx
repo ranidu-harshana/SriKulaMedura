@@ -12,12 +12,15 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {useState} from "react";
+import axios from "axios";
+import {BASE_URL} from "../../utils/constants";
 
 function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
+            <Link color="inherit" to={''}>
                 Your Website
             </Link>{' '}
             {new Date().getFullYear()}
@@ -26,17 +29,18 @@ function Copyright(props: any) {
     );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function AdminLogin() {
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const handleClick = () => {
+        axios.post(BASE_URL+"/auth/authenticate", {email, password})
+            .then((res) => {
+                localStorage.setItem("accessToken", res.data.token);
+                window.location.replace("/")
+            })
+            .catch(error => console.log(error))
     };
 
     return (
@@ -57,7 +61,7 @@ export default function AdminLogin() {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-                    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                    <Box component="form" noValidate sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
                             required
@@ -67,6 +71,8 @@ export default function AdminLogin() {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            value={email}
+                            onChange={(e)=>setEmail(e.target.value)}
                         />
                         <TextField
                             margin="normal"
@@ -77,16 +83,18 @@ export default function AdminLogin() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            value={password}
+                            onChange={(e)=>setPassword(e.target.value)}
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
                         />
                         <Button
-                            type="submit"
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            onClick={handleClick}
                         >
                             Sign In
                         </Button>

@@ -50,6 +50,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                 .mobile_no(reservationCusDTO.getMobile_no1())
                 .role(Role.CUSTOMER)
                 .address(reservationCusDTO.getAddress())
+                .password("1234")
                 .build());
         Reservation reservation = reservationRepository.save(Reservation.builder(newReservation)
                         .bill_number(generateBillNumber(reservationCusDTO.getBranch_id(), userDTO.getId()))
