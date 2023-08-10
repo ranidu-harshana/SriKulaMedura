@@ -44,6 +44,9 @@ public class DressSelection {
     private Item item;
 
     public static DressSelectionBuilder builder(DressSelection dressSelection) {
+        if (dressSelection == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(dressSelection.getId())
                 .status(dressSelection.isStatus())
