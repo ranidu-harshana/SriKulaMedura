@@ -1,0 +1,36 @@
+@media screen and (max-width: 576px) {
+
+}
+
+@media screen and (min-width: 576px) {
+
+}
+
+@media screen and (min-width: 992px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+
+}
+
+.faq-box{
+    background-color: #C9E8E0;
+    height: auto;
+}
+
+.accordion-button {
+    font-weight: bold;
+    color: #419b83;
+}
+
+.accordion-button:focus {
+    color: #276554;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #276554;
+}
+
+
+
