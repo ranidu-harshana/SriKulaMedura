@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import LoginPage from "../pages/Login/LoginPage";
+import RegisterPage from "../pages/Register/RegisterPage";
 
 const router = createBrowserRouter([
 	{
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
 	{
 		path:"/login",
 		element: <LoginPage />,
+	},
+	{
+		path:"/register",
+		element: <RegisterPage />,
 	},
 	{
 		path:"skm",

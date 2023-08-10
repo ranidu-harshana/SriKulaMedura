@@ -25,8 +25,8 @@ const Test = (props) => {
                                     <div id="heart" className="scale-in-center" ></div>
                                 </div>
                                 <div>
-                                    <img src={Groom} className="box box1"/>
-                                    <img src={Bride} className="box box2"/>
+                                    <img src={Groom} className="box box1" alt={''}/>
+                                    <img src={Bride} className="box box2" alt={''}/>
                                 </div>
                                 </div>
                             </div>

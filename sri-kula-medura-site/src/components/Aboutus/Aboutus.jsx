@@ -16,7 +16,7 @@ const AboutUsC = () => {
                             <div className="col-lg-2 col-md-1"></div>
                             <div className="col-lg-8 col-md-10 aboutUs-mid mb-5">
                                 <div className="text-center my-4">
-                                    <img src={Logo1} className="aboutLogo"/>
+                                    <img src={Logo1} className="aboutLogo" alt={''}/>
                                 </div>
                                 <div className="px-xl-5 px-lg-5 px-md-4 aboutUs-mid-text">
                                     <p>

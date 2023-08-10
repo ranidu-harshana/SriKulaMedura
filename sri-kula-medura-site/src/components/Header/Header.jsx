@@ -1,6 +1,4 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import PersonIcon from '@mui/icons-material/Person';
 import './Header.css';
 import logo from '../../assets/logos/srikulaLogo.png';
