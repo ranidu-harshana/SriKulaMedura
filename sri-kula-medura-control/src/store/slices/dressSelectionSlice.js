@@ -13,22 +13,27 @@ const dressSelectionSlice = createSlice({
 		addDressSelections: dressSelectionState.upsertMany,
 		addSelectedDressByUser: {
 			reducer: (state, {payload}) => {
-				const filtered = state.selectedDressesByUser.filter((dress) => dress.item_id === payload.item_id)
-				const changeSelectedDressFiltered = state.selectedDressesByUser.findIndex((dress) => dress.typeWithIndex === payload.typeWithIndex)
-				// if user click on the same value again if already value in the text box ignore it
-				if (!filtered.length > 0) {
-					// if user click on another value if a value already in the text box replace the item_id without adding new item
-					if(changeSelectedDressFiltered === -1) {
-						state.selectedDressesByUser.push(payload)
-					} else {
-						state.selectedDressesByUser[changeSelectedDressFiltered].item_id = payload.item_id
+				if (payload.isEmpty) {
+					const dressIndex = state.selectedDressesByUser.findIndex((dress) => dress.typeWithIndex === payload.typeWithIndex)
+					state.selectedDressesByUser.splice(dressIndex, 1)
+				} else {
+					const filtered = state.selectedDressesByUser.filter((dress) => dress.item_id === payload.item_id)
+					const changeSelectedDressFiltered = state.selectedDressesByUser.findIndex((dress) => dress.typeWithIndex === payload.typeWithIndex)
+					// if user click on the same value again if already value in the text box ignore it
+					if (!filtered.length > 0) {
+						// if user click on another value if a value already in the text box replace the item_id without adding new item
+						if(changeSelectedDressFiltered === -1) {
+							state.selectedDressesByUser.push(payload)
+						} else {
+							state.selectedDressesByUser[changeSelectedDressFiltered].item_id = payload.item_id
+						}
 					}
 				}
 			},
-			prepare: (typeWithIndex, item_id, reservation_id, item_description) => {
+			prepare: (typeWithIndex, item_id, reservation_id, item_description, isEmpty) => {
 				return	{
 					payload: {
-						typeWithIndex, item_id, reservation_id, item_description
+						typeWithIndex, item_id, reservation_id, item_description, isEmpty
 					}
 				}
 			}

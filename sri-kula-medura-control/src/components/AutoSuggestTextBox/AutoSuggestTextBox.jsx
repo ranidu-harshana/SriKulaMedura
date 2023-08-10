@@ -36,6 +36,8 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 	}
 
 	const handleOnInputChange = (event) => {
+		console.log("onKeyDown TRIGGERED", event.target.value)
+
 		checkInputValidity(event.target.value, type)
 			.then(res => {
 				setIsValid(res.data.response);
@@ -45,6 +47,9 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 	}
 
 	const handleOnInputChangeBlur = (event) => {
+		if (event.target.value === '') {
+			dispatcher(addSelectedDressByUser(typeWithIndex, 0, parseInt(id), event.target.value, true))
+		}
 		checkInputValidity(event.target.value, type)
 			.then(res => {
 				setIsValid(res.data.response);
@@ -53,7 +58,7 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 				if (!isSetValueBySuggestions) {
 					if (event.target.value) {
 						if (res.data.response) {
-							dispatcher(addSelectedDressByUser(typeWithIndex, 0, parseInt(id), event.target.value))
+							dispatcher(addSelectedDressByUser(typeWithIndex, 0, parseInt(id), event.target.value, false))
 						}
 					}
 				}
@@ -92,7 +97,7 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 								setIsInValid(!res.data.response)
 
 								if (res.data.response) {
-									dispatcher(addSelectedDressByUser(typeWithIndex, selected[0]?.id, parseInt(id), ""))
+									dispatcher(addSelectedDressByUser(typeWithIndex, selected[0]?.id, parseInt(id), "", false))
 								}
 							})
 							.catch(err => console.log(err))
