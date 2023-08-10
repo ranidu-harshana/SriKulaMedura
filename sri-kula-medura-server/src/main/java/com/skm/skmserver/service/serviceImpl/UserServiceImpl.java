@@ -7,6 +7,7 @@ import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService, MainService<UserDTO, User> {
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final CustomerServiceImpl customerService;
     private final User newUser;
@@ -32,7 +34,7 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
                 .email(userDTO.getEmail())
                 .address(userDTO.getAddress())
                 .mobile_no(userDTO.getMobile_no())
-                .password(userDTO.getPassword())
+                .password(passwordEncoder.encode(userDTO.getPassword()))
                 .role(userDTO.getRole())
                 .build());
 
