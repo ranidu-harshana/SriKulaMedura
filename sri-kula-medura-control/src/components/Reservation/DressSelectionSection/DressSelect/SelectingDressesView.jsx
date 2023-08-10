@@ -1,26 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
-import {reservationSelector, selectByIdReservation} from "../../../../store/slices/reservationSlice";
-import {addDressSelections, selectedDressesByUserSelector} from "../../../../store/slices/dressSelectionSlice";
 import DressSelectBox from "./DressSelectBox";
-import {storeDressSelections} from "../../../../repository/dressSelectionRepository";
+import SelectBestManPageboyDresses from "./SelectBestManPageboyDresses";
 
-const SelectingDressesView = ({reservation_id}) => {
-	const reservationCurr = useSelector((state) => selectByIdReservation(state, reservation_id))
-	const reservationAlt = useSelector(reservationSelector)
-	const selectedDressesByUser = useSelector(selectedDressesByUserSelector)
-	const reservation = reservationCurr ? reservationCurr : reservationAlt
-	const dispatcher = useDispatch()
-
-	const bestManArr = []
-	const pageBoyArr = []
-	for (let i=0; i < reservation.no_of_bestmen; i++) {
-		bestManArr.push(<DressSelectBox type={"bestman"} key={i} index={i}/>)
-	}
-
-	for (let i=0; i < reservation.no_of_pageboys; i++) {
-		pageBoyArr.push(<DressSelectBox type={"pageboy"} key={i} index={i}/>)
-	}
-
+const SelectingDressesView = () => {
 	return (
 		<div className={'col-12 col-md-6 p-0 px-md-2'}>
 			<div className="tab-content-container">
@@ -28,21 +9,7 @@ const SelectingDressesView = ({reservation_id}) => {
 					<h5 className={'col'}>Select Dresses</h5>
 				</div>
 				<DressSelectBox type={"groom"}/>
-				{bestManArr}
-				{pageBoyArr}
-				<div className="row col-12 text-end">
-					<p>
-						<button className={'btn btn-success'} onClick={()=>{
-							storeDressSelections(selectedDressesByUser, reservation_id)
-								.then((response)=>{
-									if(response.data.length > 0) {
-										dispatcher(addDressSelections(response.data))
-									}
-								})
-								.catch((err)=>console.error(err))
-						}}>Submit</button>
-					</p>
-				</div>
+				<SelectBestManPageboyDresses minusBestman={0} minusPageboy={0}/>
 			</div>
 		</div>
 	)

@@ -9,10 +9,10 @@ const DressSelectBox = ({type, index}) => {
 	return (
 		<div className="row">
 			<div className="row mb-2">
-				<p className={'col-3 d-none d-md-block'}>{t(ITEM_TYPES[type.toUpperCase()].ALL_SIM)}{index>=0?` - ${index}`:null}</p>
+				<p className={'col-3 d-none d-md-block'}>{t(ITEM_TYPES[type.toUpperCase()].ALL_SIM)}{index>=0?` - ${index + 1}`:null}</p>
 				<div className={'col-12 col-md-9'}>
 					<FormControl sx={{ width: "100%" }} size="small">
-						<AutoSuggestTextBox key={index-1} type={ITEM_TYPES[type.toUpperCase()].ALL_CAP} typeWithIndex={type.concat(index>=0?index:"")} index={index}/>
+						<AutoSuggestTextBox type={ITEM_TYPES[type.toUpperCase()].ALL_CAP} typeWithIndex={type.concat(index>=0?index:"")} index={index}/>
 					</FormControl>
 				</div>
 			</div>

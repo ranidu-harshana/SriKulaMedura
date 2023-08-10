@@ -65,7 +65,7 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 			<Form.Group>
 				<AsyncTypeahead
 					filterBy={filterBy}
-					id={`${type}${index}`}
+					id={`${type}${index}${Math.random()}`}
 					isValid={isValid}
 					isInvalid={isInValid}
 					isLoading={isLoading}

@@ -46,7 +46,7 @@ export const {
 	selectAll: selectAllDressSelection,
 	selectById: selectByIdDressSelection,
 } = dressSelectionState.getSelectors(store => store.dressSelection)
-export const {addDressSelections, addSelectedDressByUser, clearDressSelectionState} = dressSelectionSlice.actions
+export const {addDressSelections, addSelectedDressByUser, clearDressSelectionState, resetAddSelectedDressByUser} = dressSelectionSlice.actions
 const selectedDressesByUserSel = (store) => store.dressSelection.selectedDressesByUser
 export const selectedDressesByUserSelector = createSelector([selectedDressesByUserSel], (selectedDressesByUser) => selectedDressesByUser)
 export default dressSelectionSlice.reducer
