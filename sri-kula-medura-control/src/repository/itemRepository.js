@@ -16,11 +16,11 @@ const searchItem = (query, type) => {
 	return Repository.get('/item/search/'+query+'/'+type)
 }
 
-const checkItemExist = (query) => {
+const checkItemExist = (query, type) => {
 	if (!query) {
 		query = "-"
 	}
-	return Repository.get('/item/check/exist/'+query)
+	return Repository.get('/item/check/exist/'+query+'/'+type)
 }
 
 export {

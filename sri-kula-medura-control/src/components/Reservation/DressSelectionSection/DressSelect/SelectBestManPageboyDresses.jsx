@@ -28,6 +28,8 @@ const SelectBestManPageboyDresses = ({minusBestman, minusPageboy}) => {
 		pageBoyArr.push(<DressSelectBox type={"pageboy"} key={i} index={i}/>)
 	}
 
+	console.log(selectedDressesByUser)
+
 	return (
 		<>
 			{bestManArr}

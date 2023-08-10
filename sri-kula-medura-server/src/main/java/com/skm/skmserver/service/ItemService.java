@@ -13,5 +13,5 @@ public interface ItemService {
     boolean deleteItem(int id);
     List<ItemDTO> searchItemsByItemCodeOrItemName(String query, String type);
 
-    CommonBooleanDTO checkItemExist(String query);
+    CommonBooleanDTO checkItemExist(String query, String type);
 }

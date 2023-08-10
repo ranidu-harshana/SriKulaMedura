@@ -12,4 +12,8 @@ public class Helpers {
         }
         return sep;
     }
+
+    public static String extractItemType(String text) {
+        return text.replaceAll("\\d", "");
+    }
 }

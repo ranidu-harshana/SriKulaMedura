@@ -73,7 +73,7 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
     }
 
     @Override
-    public CommonBooleanDTO checkItemExist(String query) {
+    public CommonBooleanDTO checkItemExist(String query, String type) {
         if (query == null || query.equals("")) {
             return CommonBooleanDTO.builder().response(false).build();
         }
@@ -81,7 +81,7 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
         if (separatedTexts == null || separatedTexts.length < 2) {
             return CommonBooleanDTO.builder().response(false).build();
         }
-        Item item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
+        Item item = itemRepository.findByItemCodeAndItemNameAndItemType(separatedTexts[0], separatedTexts[1], type);
         return CommonBooleanDTO.builder().response(item != null).build();
     }
 }

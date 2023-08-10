@@ -26,20 +26,17 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 		setIsLoading(true);
 		searchItem(query, type)
 			.then((res) => {
-				if (res.data.length <= 0) {
-					setIsValid(false);
-					setIsInValid(true)
-				} else {
-					setIsValid(true);
-					setIsInValid(false)
-				}
 				setOptions(res.data);
 				setIsLoading(false);
 			});
 	};
 
+	const checkInputValidity = async (item, type) => {
+		return await checkItemExist(item, type)
+	}
+
 	const handleOnInputChange = (event) => {
-		checkItemExist(event.target.value)
+		checkInputValidity(event.target.value, type)
 			.then(res => {
 				setIsValid(res.data.response);
 				setIsInValid(!res.data.response)
@@ -48,14 +45,20 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 	}
 
 	const handleOnInputChangeBlur = (event) => {
-		handleOnInputChange(event)
-		if (!isSetValueBySuggestions) {
-			if (event.target.value) {
-				if (isInValid) {
-					dispatcher(addSelectedDressByUser(typeWithIndex, 0, parseInt(id), event.target.value))
+		checkInputValidity(event.target.value, type)
+			.then(res => {
+				setIsValid(res.data.response);
+				setIsInValid(!res.data.response)
+
+				if (!isSetValueBySuggestions) {
+					if (event.target.value) {
+						if (res.data.response) {
+							dispatcher(addSelectedDressByUser(typeWithIndex, 0, parseInt(id), event.target.value))
+						}
+					}
 				}
-			}
-		}
+			})
+			.catch(err => console.log(err))
 	}
 
 	const filterBy = () => true;
@@ -83,8 +86,17 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 					onBlur={handleOnInputChangeBlur}
 					onKeyDown={handleOnInputChange}
 					onChange={(selected)=>{
+						checkInputValidity(selected[0]?.item_code + " - " + selected[0]?.item_name, type)
+							.then(res => {
+								setIsValid(res.data.response);
+								setIsInValid(!res.data.response)
+
+								if (res.data.response) {
+									dispatcher(addSelectedDressByUser(typeWithIndex, selected[0]?.id, parseInt(id), ""))
+								}
+							})
+							.catch(err => console.log(err))
 						setIsSetValueBySuggestions(true)
-						dispatcher(addSelectedDressByUser(typeWithIndex, selected[0]?.id, parseInt(id), ""))
 					}}
 				/>
 			</Form.Group>

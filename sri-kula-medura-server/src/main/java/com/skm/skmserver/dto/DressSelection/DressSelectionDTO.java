@@ -22,6 +22,7 @@ public class DressSelectionDTO {
     private int item_id;
     private ItemDTO item;
     private String item_description;
+    private String typeWithIndex;
 
     public static DressSelectionDTOBuilder builder(DressSelection dressSelection) {
         return internalBuilder()

@@ -2,6 +2,7 @@ package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.CommonBooleanDTO;
 import com.skm.skmserver.dto.ItemDTO;
+import com.skm.skmserver.entity.Type;
 import com.skm.skmserver.service.serviceImpl.ItemServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -58,8 +59,8 @@ public class ItemController {
         return itemService.searchItemsByItemCodeOrItemName(query, type);
     }
 
-    @GetMapping("/check/exist/{query}")
-    public CommonBooleanDTO checkItemExist(@PathVariable String query) {
-        return itemService.checkItemExist(query);
+    @GetMapping("/check/exist/{query}/{type}")
+    public CommonBooleanDTO checkItemExist(@PathVariable String query, @PathVariable String type) {
+        return itemService.checkItemExist(query, type);
     }
 }

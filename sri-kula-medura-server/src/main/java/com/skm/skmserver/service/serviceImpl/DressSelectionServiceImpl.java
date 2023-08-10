@@ -1,6 +1,5 @@
 package com.skm.skmserver.service.serviceImpl;
 
-import com.skm.skmserver.dto.CommonBooleanDTO;
 import com.skm.skmserver.dto.DressSelection.DressSelectionDTO;
 import com.skm.skmserver.dto.DressSelection.SelectingDressesDTO;
 import com.skm.skmserver.entity.DressSelection;
@@ -17,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.skm.skmserver.util.Helpers.extractItemType;
 import static com.skm.skmserver.util.Helpers.separateItemCodeAndItemName;
 
 @Service
@@ -37,13 +37,14 @@ public class DressSelectionServiceImpl implements DressSelectionService, MainSer
 
     @Override
     public List<DressSelectionDTO> saveDressSelections(SelectingDressesDTO dressSelectionDTO) {
+        var dressData = dressSelectionDTO.getDresses().get(0);
         for (DressSelectionDTO dto : dressSelectionDTO.getDresses()) {
             Item item = null;
             if (dto.getItem_id() > 0) {
                 item = itemRepository.findById(dto.getItem_id());
-            } else if (itemService.checkItemExist(dto.getItem_description()).isResponse()) {
+            } else if (itemService.checkItemExist(dto.getItem_description(), extractItemType(dressData.getTypeWithIndex())).isResponse()) {
                 String[] separatedTexts = separateItemCodeAndItemName(dto.getItem_description());
-                item = itemRepository.findByItemCodeAndItemName(separatedTexts[0], separatedTexts[1]);
+                item = itemRepository.findByItemCodeAndItemNameAndItemType(separatedTexts[0], separatedTexts[1], extractItemType(dressData.getTypeWithIndex()));
             }
             DressSelection dressSelection = dressSelectionRepository.save(DressSelection.builder(newDressSelection)
                     .status(true)
@@ -51,7 +52,7 @@ public class DressSelectionServiceImpl implements DressSelectionService, MainSer
                     .item(item)
                     .build());
         }
-        return allDressSelectionsOfReservation(dressSelectionDTO.getDresses().get(0).getReservation_id());
+        return allDressSelectionsOfReservation(dressData.getReservation_id());
     }
 
     @Override
