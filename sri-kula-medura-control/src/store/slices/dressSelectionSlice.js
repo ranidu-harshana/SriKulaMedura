@@ -15,7 +15,9 @@ const dressSelectionSlice = createSlice({
 			reducer: (state, {payload}) => {
 				if (payload.isEmpty) {
 					const dressIndex = state.selectedDressesByUser.findIndex((dress) => dress.typeWithIndex === payload.typeWithIndex)
-					state.selectedDressesByUser.splice(dressIndex, 1)
+					if (dressIndex >= 0) {
+						state.selectedDressesByUser.splice(dressIndex, 1)
+					}
 				} else {
 					const filtered = state.selectedDressesByUser.filter((dress) => dress.item_id === payload.item_id)
 					const changeSelectedDressFiltered = state.selectedDressesByUser.findIndex((dress) => dress.typeWithIndex === payload.typeWithIndex)

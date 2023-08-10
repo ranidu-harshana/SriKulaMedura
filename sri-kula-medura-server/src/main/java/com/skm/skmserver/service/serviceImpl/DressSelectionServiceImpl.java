@@ -37,22 +37,24 @@ public class DressSelectionServiceImpl implements DressSelectionService, MainSer
 
     @Override
     public List<DressSelectionDTO> saveDressSelections(SelectingDressesDTO dressSelectionDTO) {
-        var dressData = dressSelectionDTO.getDresses().get(0);
+        var dressData = dressSelectionDTO.getDresses();
+        int currentIndex = 0;
         for (DressSelectionDTO dto : dressSelectionDTO.getDresses()) {
             Item item = null;
             if (dto.getItem_id() > 0) {
                 item = itemRepository.findById(dto.getItem_id());
-            } else if (itemService.checkItemExist(dto.getItem_description(), extractItemType(dressData.getTypeWithIndex())).isResponse()) {
+            } else if (itemService.checkItemExist(dto.getItem_description(), extractItemType(dressData.get(currentIndex).getTypeWithIndex())).isResponse()) {
                 String[] separatedTexts = separateItemCodeAndItemName(dto.getItem_description());
-                item = itemRepository.findByItemCodeAndItemNameAndItemType(separatedTexts[0], separatedTexts[1], extractItemType(dressData.getTypeWithIndex()));
+                item = itemRepository.findByItemCodeAndItemNameAndItemType(separatedTexts[0], separatedTexts[1], extractItemType(dressSelectionDTO.getDresses().get(currentIndex).getTypeWithIndex()));
             }
             DressSelection dressSelection = dressSelectionRepository.save(DressSelection.builder(newDressSelection)
                     .status(true)
                     .reservation(reservationRepository.findById(dto.getReservation_id()))
                     .item(item)
                     .build());
+            currentIndex++;
         }
-        return allDressSelectionsOfReservation(dressData.getReservation_id());
+        return allDressSelectionsOfReservation(dressSelectionDTO.getDresses().get(0).getReservation_id());
     }
 
     @Override
