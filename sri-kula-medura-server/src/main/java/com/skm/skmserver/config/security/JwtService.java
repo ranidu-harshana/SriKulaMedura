@@ -1,4 +1,4 @@
-package com.skm.skmserver.config;
+package com.skm.skmserver.config.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

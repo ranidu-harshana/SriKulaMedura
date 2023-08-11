@@ -1,4 +1,4 @@
-package com.skm.skmserver.config;
+package com.skm.skmserver.config.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,6 +1,6 @@
 package com.skm.skmserver.auth;
 
-import com.skm.skmserver.config.JwtService;
+import com.skm.skmserver.config.security.JwtService;
 import com.skm.skmserver.entity.User;
 import com.skm.skmserver.enums.Role;
 import com.skm.skmserver.repo.UserRepository;

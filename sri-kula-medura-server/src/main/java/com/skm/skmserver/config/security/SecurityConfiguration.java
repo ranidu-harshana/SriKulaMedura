@@ -1,4 +1,4 @@
-package com.skm.skmserver.config;
+package com.skm.skmserver.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

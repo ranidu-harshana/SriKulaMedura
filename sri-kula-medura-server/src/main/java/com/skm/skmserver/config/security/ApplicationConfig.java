@@ -1,4 +1,4 @@
-package com.skm.skmserver.config;
+package com.skm.skmserver.config.security;
 
 import com.skm.skmserver.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
