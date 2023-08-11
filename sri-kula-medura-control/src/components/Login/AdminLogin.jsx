@@ -15,7 +15,6 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {useState} from "react";
 import axios from "axios";
 import {BASE_URL} from "../../utils/constants";
-import jwt_decode from "jwt-decode";
 
 function Copyright(props: any) {
     return (
