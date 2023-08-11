@@ -6,6 +6,8 @@ import branchSlice from "./slices/branchSlice";
 import measurementSlice from "./slices/measurementSlice";
 import dressSelectionSlice from "./slices/dressSelectionSlice";
 import userSlice from "./slices/userSlice";
+import additionalPaymentSlice from "./slices/additionalPaymentSlice";
+import noteSlice from "./slices/noteSlice";
 
 const store = configureStore({
 	reducer: {
@@ -16,6 +18,8 @@ const store = configureStore({
 		measurement: measurementSlice,
 		dressSelection: dressSelectionSlice,
 		user: userSlice,
+		additional_payment:additionalPaymentSlice,
+		note:noteSlice
 	}
 })
 

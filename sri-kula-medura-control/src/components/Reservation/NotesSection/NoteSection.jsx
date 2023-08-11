@@ -10,7 +10,8 @@ const NoteSection = (props) => {
     const {id} = useParams()
     const [note ,setNote] = useState()
     const dispatcher = useDispatch()
-
+    const isSubmitDisabled = !note ;
+    
     return (
         <>
             <div className="tab-content-container">
@@ -33,7 +34,9 @@ const NoteSection = (props) => {
                     <div className="row mb-3">
                         <div className="col-3"></div>
                         <div className="col-9 text-end">
-                            <button type="submit" className="btn btn-primary" onClick={()=>{
+                            <button type="submit" className="btn btn-success"
+                                    disabled={isSubmitDisabled}
+                                    onClick={()=>{
                                 storeNote(id, note)
                                     .then(response => {
                                         if (response.status === 200) {

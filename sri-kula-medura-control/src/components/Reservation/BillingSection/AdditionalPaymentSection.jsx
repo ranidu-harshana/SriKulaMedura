@@ -1,9 +1,34 @@
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import {useState} from "react";
+import {useParams} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import notify from "../../../utils/notify";
+import {saveAdditionalPayment} from "../../../store/slices/additionalPaymentSlice";
+import {storeAdditionalPayment} from "../../../repository/additionalPaymentRepository";
 
 const AdditionalPaymentSection = (props) => {
-	const [additionalCharge, setAdditionalCharge] = useState()
+	const {id} = useParams()
+	const [payment ,setPayment] = useState()
+	const [reason ,setReason] = useState()
+	const dispatcher = useDispatch()
+	const isSubmitDisabled = !payment || !reason;
+
+	const handleSubmit = () => {
+		storeAdditionalPayment(id, payment, reason)
+			.then(response => {
+				if (response.status === 200) {
+					dispatcher(saveAdditionalPayment({ ...response.data }));
+					notify(1, "Additional Payment Added Successfully");
+				} else {
+					notify(0, "Additional Payment not saved");
+				}
+			})
+			.catch(error => {
+				console.error("Error submitting additional payment:", error);
+				notify(0, "An error occurred while saving additional payment");
+			});
+	};
 
 	return (
 		<>
@@ -23,8 +48,8 @@ const AdditionalPaymentSection = (props) => {
 									label="Amount"
 									id="amount"
 									size="small"
-									value={additionalCharge}
-									onChange={(e)=>setAdditionalCharge(e.target.value)}
+									value={payment}
+									onChange={(e)=>setPayment(e.target.value)}
 								/>
 							</FormControl>
 						</div>
@@ -32,13 +57,23 @@ const AdditionalPaymentSection = (props) => {
 					<div className="row mb-3">
 						<p className={'col-3'}>Reason</p>
 						<div className={'col-9'}>
-							<textarea className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+							<textarea className="form-control" id="exampleFormControlTextarea1" rows="4"
+									  value={reason}
+									  onChange={(e)=>setReason(e.target.value)}
+							></textarea>
 						</div>
 					</div>
 					<div className="row mb-3">
 						<div className="col-3"></div>
 						<div className="col-9 text-end">
-							<button className={'btn btn-success w-50 w-md-25'}>Submit</button>
+							<button
+								type="submit"
+								className="btn btn-success"
+								onClick={handleSubmit}
+								disabled={isSubmitDisabled}
+							>
+								Submit
+							</button>
 						</div>
 					</div>
 				</div>
