@@ -33,7 +33,7 @@ const NoteSection = (props) => {
                     <div className="row mb-3">
                         <div className="col-3"></div>
                         <div className="col-9 text-end">
-                            <button type="submit" className="btn btn-primary" onClick={()=>{
+                            <button type="submit" className="btn btn-success" onClick={()=>{
                                 storeNote(id, note)
                                     .then(response => {
                                         if (response.status === 200) {
