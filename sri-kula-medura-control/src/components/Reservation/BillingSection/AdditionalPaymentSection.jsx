@@ -12,7 +12,6 @@ const AdditionalPaymentSection = (props) => {
 	const [payment ,setPayment] = useState()
 	const [reason ,setReason] = useState()
 	const dispatcher = useDispatch()
-
 	const isSubmitDisabled = !payment || !reason;
 
 	const handleSubmit = () => {
