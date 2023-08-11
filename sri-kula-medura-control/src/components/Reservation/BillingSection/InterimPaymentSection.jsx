@@ -5,6 +5,7 @@ import {useState} from "react";
 const InterimPaymentSection = (props) => {
 	const [interimPayment, setInterimPayment] = useState()
 
+	const isSubmitDisabled = !interimPayment;
 	return (
 		<>
 			<div className="tab-content-container">
@@ -32,7 +33,9 @@ const InterimPaymentSection = (props) => {
 					<div className="row mb-3">
 						<div className="col-3"></div>
 						<div className="col-9 text-end">
-							<button className={'btn btn-success w-50 w-md-25'}>Submit</button>
+							<button className={'btn btn-success w-50 w-md-25'}
+									disabled={isSubmitDisabled}
+							>Submit</button>
 						</div>
 					</div>
 				</div>
