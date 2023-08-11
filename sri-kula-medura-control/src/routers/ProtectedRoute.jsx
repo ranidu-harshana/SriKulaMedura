@@ -1,18 +1,25 @@
-import {Navigate, Outlet} from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 const ProtectedRoute = (props) => {
 	const accessToken = localStorage.getItem("accessToken");
-	const decoded = jwt_decode(accessToken);
 
-	if (Date.now() > decoded.exp * 1000) {
-		localStorage.removeItem("accessToken");
+	if (accessToken) {
+		try {
+			const decoded = jwt_decode(accessToken);
+			if (Date.now() > (decoded.exp * 1000)) {
+				localStorage.removeItem("accessToken");
+			}
+		} catch (error) {
+			console.error("Error decoding token:", error);
+			localStorage.removeItem("accessToken");
+		}
 	}
 
-	const user = accessToken != null
+	const user = accessToken != null;
 
 	return (
-		user?<Outlet />:<Navigate to="/adminlogin" />
+		user ? <Outlet /> : <Navigate to="/adminlogin" />
 	);
 }
 
