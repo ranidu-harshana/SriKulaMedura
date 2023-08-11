@@ -11,7 +11,6 @@ const ProtectedRoute = (props) => {
 				localStorage.removeItem("accessToken");
 			}
 		} catch (error) {
-			console.error("Error decoding token:", error);
 			localStorage.removeItem("accessToken");
 		}
 	}
