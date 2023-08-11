@@ -1,10 +1,12 @@
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
 
 const InterimPaymentSection = (props) => {
 	const [interimPayment, setInterimPayment] = useState()
 
+	const dispatcher = useDispatch()
 	const isSubmitDisabled = !interimPayment;
 	return (
 		<>
