@@ -8,6 +8,7 @@ const InterimPaymentSection = (props) => {
 
 	const dispatcher = useDispatch()
 	const isSubmitDisabled = !interimPayment;
+
 	return (
 		<>
 			<div className="tab-content-container">
