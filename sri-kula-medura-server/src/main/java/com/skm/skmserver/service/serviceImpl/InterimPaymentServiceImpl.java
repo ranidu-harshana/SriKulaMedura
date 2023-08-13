@@ -55,4 +55,8 @@ public class InterimPaymentServiceImpl implements InterimPaymentService , MainSe
                 .build()
         ));
     }
+
+    public boolean deleteInterimPayment(int id) {
+        return interimPaymentRepository.existsById(id);
+    }
 }

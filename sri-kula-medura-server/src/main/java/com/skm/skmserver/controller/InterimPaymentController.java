@@ -1,6 +1,7 @@
 package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.InterimPaymentDTO;
+import com.skm.skmserver.service.InterimPaymentService;
 import com.skm.skmserver.service.serviceImpl.InterimPaymentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,13 @@ public class InterimPaymentController {
     @PutMapping("/{id}")
     public InterimPaymentDTO update(@RequestBody InterimPaymentDTO interimPaymentDTO,@PathVariable int id){
         return interimPaymentService.updateInterimPayment(interimPaymentDTO,id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id) {
+        return interimPaymentService.deleteInterimPayment(id) ?
+                "Interim Payment successfully deleted" :
+                "Interim Payment delete failed";
     }
 
 }
