@@ -31,8 +31,8 @@ public class InterimPaymentController {
 
     @GetMapping("/create")
     public String create(){
-        return ""
+        return "";
     }
 
-    
+
 }
