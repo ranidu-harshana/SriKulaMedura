@@ -1,7 +1,10 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.BillingDTO;
 import com.skm.skmserver.dto.InterimPaymentDTO;
+import com.skm.skmserver.entity.Billing;
 import com.skm.skmserver.entity.InterimPayment;
+import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.InterimPaymentRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.InterimPaymentService;
@@ -19,10 +22,21 @@ import java.util.List;
 public class InterimPaymentServiceImpl implements InterimPaymentService , MainService<InterimPaymentDTO,InterimPayment> {
     private final InterimPaymentRepository interimPaymentRepository;
     private final ReservationRepository reservationRepository;
+    private final CustomerRepository customerRepository;
     private final MapAll<InterimPayment , InterimPaymentDTO> mapAll;
+    private final InterimPayment newInterimPayment;
 
     public List<InterimPaymentDTO> allInterimPayments(){
         return mapAll.mapAllAttributesToDTO(interimPaymentRepository.findAll(),this);
+    }
+
+    public InterimPaymentDTO saveInterimPayment(InterimPaymentDTO interimPaymentDTO) {
+        InterimPayment interimPayment = interimPaymentRepository.save(InterimPayment.builder(newInterimPayment)
+                .interim_payment(interimPaymentDTO.getInterim_payment())
+                .customer(customerRepository.findById(interimPaymentDTO.getCustomer_id()))
+                .reservation(reservationRepository.findById(interimPaymentDTO.getReservation_id()))
+                .build());
+        return set(interimPayment);
     }
 
     public InterimPaymentDTO set(InterimPayment interimPayment) {

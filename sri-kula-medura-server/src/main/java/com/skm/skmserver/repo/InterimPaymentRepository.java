@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface InterimPaymentRepository extends JpaRepository<InterimPayment ,Integer> {
-    InterimPayment findAllBy(int id);
+    InterimPayment findById(int id);
 }
