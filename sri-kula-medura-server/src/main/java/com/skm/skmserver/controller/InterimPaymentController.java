@@ -28,4 +28,11 @@ public class InterimPaymentController {
     public InterimPaymentDTO show(@PathVariable int id){
         return interimPaymentService.getInterimPayment(id);
     }
+
+    @GetMapping("/create")
+    public String create(){
+        return ""
+    }
+
+    
 }
