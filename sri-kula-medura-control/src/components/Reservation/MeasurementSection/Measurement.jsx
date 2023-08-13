@@ -40,7 +40,7 @@ const Measurement = (props) => {
 							</thead>
 							<tbody>
 								<tr>
-									<td>{t('GROOM')}</td>
+									<td>{t('groomcap')}</td>
 									<td>+1</td>
 									<td>+1</td>
 									<td>+1</td>
@@ -54,7 +54,7 @@ const Measurement = (props) => {
 								</tr>
 
 								<tr>
-									<td>BESTMAN - 1</td>
+									<td>{t('bestmen1')}</td>
 									<td>+1</td>
 									<td>+1</td>
 									<td>+1</td>
@@ -68,7 +68,7 @@ const Measurement = (props) => {
 								</tr>
 
 								<tr>
-									<td>PAGEBOY - 1</td>
+									<td>{t('pageboy1')}</td>
 									<td>+1</td>
 									<td>+1</td>
 									<td>+1</td>

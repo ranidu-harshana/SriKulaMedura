@@ -40,7 +40,7 @@ const Branch = (props) => {
 			           breadcrumbs={[{title: t("home"), link: "/", active: false}, {title: t("branch"), active: true}]}/>
 
 			<div>
-				<input ref={branchNameRef} type="text" placeholder={'Branch Name'}/><br/>
+				<input ref={branchNameRef} type="text" placeholder={t('branchName')}/><br/>
 				<input ref={branchPrefRef} type="text" placeholder={'Prefix'}/><br/>
 				<button onClick={() => {
 					storeBranch(branchNameRef.current.value, branchPrefRef.current.value)
@@ -50,7 +50,7 @@ const Branch = (props) => {
 						.catch(error => {
 							console.log("ERROR: "+error);
 						})
-				}}>Save
+				}}>{t('save')}
 				</button>
 			</div>
 
