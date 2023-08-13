@@ -6,6 +6,7 @@
 	"address": "Address",
 	"allAdditionalCharges" : "All Additional Charges'",
 	"allInterimPayments" : "All Interim Payments",
+	"allOtherCosts" : "All Other Costs",
 	"amount" : "Amount",
 	"amounttobepaid" : "Amount to be paid",
 	"balance" : "Balance",
@@ -19,6 +20,7 @@
 	"branch": "Branch",
 	"branchName" : "Branch Name",
 	"costs" : "Costs",
+	"costText" : "Other costs will apply to the total bill",
 	"chest" : "Chest",
 	"customerDiscount" : "Customer Discount",
 	"date" : "Date",
@@ -39,6 +41,7 @@
 	"numberOfBestmen":"Number of Bestmen",
 	"numberofPageboys" : "Number of Pageboys",
 	"other" : "Other",
+	"otherCosts" : "Other Costs",
 	"pageboy": "Pageboy",
 	"pageboy1" : "PAGEBOY - 1",
 	"phone1" : "Phone 1",
@@ -53,6 +56,7 @@
 	"shoulder" : "Shoulder",
 	"submit" : "Submit",
 	"totalAmount": "Total Amount",
+	"transport" : "Transport",
 	"weist" : "Weist"
 
 }

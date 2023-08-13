@@ -8,6 +8,7 @@
 	"amounttobepaid" : "ගෙවිය යුතු මුදල",
 	"allAdditionalCharges" : "සියලුම අමතර ගාස්තු",
 	"allInterimPayments" : "සියලුම අතුරු ගෙවීම්",
+	"allOtherCosts" : "අනෙකුත් සියලුම වියදම්",
 	"balance" : "ශේෂය",
 	"bestman": "දෙවැනි මනමාලයා",
 	"bestmen1" : "දෙවැනි මනමාලයා - 1",
@@ -19,6 +20,7 @@
 	"branch": "ශාඛාව",
 	"branch Name" : "ශාඛාවේ නම",
 	"costs" : "වියදම",
+	"costText" : "අනෙකුත් වියදම් මුළු බිල්පතට අදාළ වේ",
 	"chest" : "පපුව",
 	"customerDiscount" : "පාරිභෝගික වට්ටම්",
 	"date" : "දිනය",
@@ -38,6 +40,7 @@
 	"numberOfBestmen": "දෙවැනි මනමාලයින් ගණන",
 	"numberofPageboys" : "මල් කුමාරයින් ගණන",
 	"other" : "වෙනත්",
+	"otherCosts" : "වෙනත් වියදම්",
 	"pageboy": "මල් කුමාරයා",
 	"pageboy1" : "මල් කුමාරයා - 1",
 	"phone1" : "දුරකථනය 1",
@@ -53,5 +56,6 @@
 	"shoulder" : "උරහිස",
 	"submit" : "ඉදිරිපත් කරන්න",
 	"totalAmount" : "මුලු වටිනාකම",
+	"transport" : "ප්රවාහනය",
 	"weist" : "ඉණ"
 }
