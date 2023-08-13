@@ -34,5 +34,9 @@ public class InterimPaymentController {
         return "";
     }
 
+    @PutMapping("/{id}")
+    public InterimPaymentDTO update(@RequestBody InterimPaymentDTO interimPaymentDTO,@PathVariable int id{
+        return interimPaymentService.updateInterimPayment(interimPaymentDTO,id);
+    }
 
 }
