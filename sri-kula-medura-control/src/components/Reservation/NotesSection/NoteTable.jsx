@@ -2,14 +2,16 @@ import {ButtonGroup} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import {useTranslation} from "react-i18next";
 
 const NoteTable = (props) => {
+    const {t} = useTranslation();
     return (
         <>
             <div className="tab-content-container">
                 <div className="row mb-2">
                     <div className={'row'}>
-                        <h5 className={'col'}>All Notes </h5>
+                        <h5 className={'col'}>{t('allNotes')} </h5>
                     </div>
                 </div>
                 <div className="row reservation-section-table table-hover px-2">
@@ -17,9 +19,9 @@ const NoteTable = (props) => {
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Note</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">{t('note')}</th>
+                            <th scope="col">{t('date')}</th>
+                            <th scope="col">{t('action')}</th>
                         </tr>
                         </thead>
                         <tbody>
