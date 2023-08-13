@@ -39,6 +39,11 @@ public class InterimPaymentServiceImpl implements InterimPaymentService , MainSe
         return set(interimPayment);
     }
 
+    public InterimPaymentDTO getInterimPayment(int id){
+        InterimPayment interimPayment=interimPaymentRepository.findById(id);
+        return set(interimPayment);
+    }
+
     public InterimPaymentDTO set(InterimPayment interimPayment) {
         return InterimPaymentDTO.builder(interimPayment).build();
     }

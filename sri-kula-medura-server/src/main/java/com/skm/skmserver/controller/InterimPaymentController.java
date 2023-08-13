@@ -23,4 +23,9 @@ public class InterimPaymentController {
     public InterimPaymentDTO store(@RequestBody InterimPaymentDTO interimPaymentDTO){
        return interimPaymentService.saveInterimPayment(interimPaymentDTO);
     }
+
+    @GetMapping("/{id}")
+    public InterimPaymentDTO show(@PathVariable int id){
+        return interimPaymentService.getInterimPayment(id);
+    }
 }
