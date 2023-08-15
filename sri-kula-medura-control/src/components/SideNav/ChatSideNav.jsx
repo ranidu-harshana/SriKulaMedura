@@ -7,13 +7,21 @@ import HomeIcon from '@mui/icons-material/Home';
 import {Divider} from "@mui/material";
 
 const ChatSideNav = () => {
-	const chats = [{
-		title: "Ranidu Harshana", submenu: false, icon: <AccountCircleIcon/>, chatCount: 5, chatStatus: "online"
-	}, {
-		title: "Danilka Shalinda", submenu: false, icon: <AccountCircleIcon/>, chatStatus: "online"
-	}, {
-		title: "Sachindu Malshan", submenu: false, icon: <AccountCircleIcon/>, chatCount: 9, chatStatus: "offline"
-	}, {title: "Sachini Deepashika", submenu: false, icon: <AccountCircleIcon/>, chatCount: 3, chatStatus: "online"},]
+	let chats = null
+	if (localStorage.getItem("loggedUserRole") === "ADMIN") {
+		chats = [{
+			title: "Danilka", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 5, chatStatus: "online", userId: 17
+		}, {
+			title: "Harshana", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatStatus: "online", userId: 19
+		}, {
+			title: "Sunil", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 9, chatStatus: "offline", userId: 20
+		}]
+	} else {
+		chats = [{
+			title: "Admin", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 5, chatStatus: "online", userId: 1
+		}]
+	}
+
 
 	return (<>
 		<div>
