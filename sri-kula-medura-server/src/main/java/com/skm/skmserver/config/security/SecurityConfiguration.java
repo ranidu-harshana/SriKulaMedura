@@ -26,6 +26,8 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
                 .requestMatchers("/api/v1/auth/**")
                 .permitAll()
+                .requestMatchers("/ws/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
