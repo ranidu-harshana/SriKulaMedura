@@ -7,7 +7,7 @@ import ChatUserDetails from "./ChatUserDetails";
 import RoundedImage from "../RoundedImage/RoundedImage";
 import {SelectChatReceiverId} from "../../store/slices/chatSlice";
 import {useSelector} from "react-redux";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {webSocketConnection} from "../../context/WebSocketConnection";
 import ChatFooter from "./ChatFooter";
 import {getAllMessagesBySenderReceiver} from "../../repository/chatRepository";
@@ -18,6 +18,7 @@ const ChatBody = () => {
 	const {stompClient, senderMessages, setSenderMessages, isClickOnChatName, setIsClickOnChatName} = useContext(webSocketConnection)
 	const [message, setMessage] = useState('')
 	const chatReceiverId = useSelector(SelectChatReceiverId)
+	const bottomEl = useRef(null);
 	
 	useEffect(()=>{
 		const getMessageFromDb = () => {
@@ -39,9 +40,11 @@ const ChatBody = () => {
 				getMessageFromDb()
 			}
 		}
+		scrollToBottom()
 	}, [chatReceiverId, isClickOnChatName, senderMessages, setIsClickOnChatName, setSenderMessages, userId])
 
 	const sendMessage = () => {
+		setMessage("")
 		if (stompClient) {
 			const chatMessage = {
 				message,
@@ -60,6 +63,9 @@ const ChatBody = () => {
 			stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
 		}
 	}
+	const scrollToBottom = () => {
+		bottomEl?.current?.scrollIntoView({ behavior: 'smooth' });
+	};
 
 	return (<>
 			<div className={"chat-body-container"} style={{minHeight: `${wHeight}px`}}>
@@ -93,6 +99,7 @@ const ChatBody = () => {
 			</div>
 
 			<ChatFooter message={message} setMessage={setMessage} sendMessage={sendMessage}/>
+			<div ref={bottomEl}></div>
 		</>);
 }
 

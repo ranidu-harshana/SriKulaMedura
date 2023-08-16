@@ -9,6 +9,7 @@ import {webSocketConnection} from "../../context/WebSocketConnection";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
 import './SideNav.css'
+import {WEBSOCKET_URL} from "../../utils/constants";
 
 let stompClient = null
 const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCount, chatStatus, userId, isChat, isChatLink}) => {
@@ -30,10 +31,9 @@ const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCo
 		})
 		linkRef.current.className = "text-info"
 
-
 		if(isChatLink) {
 			setIsClickOnChatName(true)
-			const Sock = new SockJS('http://localhost:8080/ws');
+			const Sock = new SockJS(WEBSOCKET_URL);
 			stompClient = Stomp.over(Sock)
 			setStompClient(stompClient)
 			stompClient.connect({}, () => {
