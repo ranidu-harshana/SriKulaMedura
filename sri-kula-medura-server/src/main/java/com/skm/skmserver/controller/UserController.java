@@ -19,6 +19,11 @@ public class UserController {
         return reservationService.allUsers();
     }
 
+    @GetMapping("/employees")
+    public List<UserDTO> allEmployees(){
+        return reservationService.getAllEmployees();
+    }
+
     @GetMapping("/{id}")
     public UserDTO show(@PathVariable int id){
         return reservationService.getUser(id);

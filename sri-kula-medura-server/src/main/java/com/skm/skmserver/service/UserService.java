@@ -11,4 +11,5 @@ public interface UserService {
     UserDTO getUser(String email);
     UserDTO updateUser(UserDTO reservationDTO, int id);
     boolean deleteUser(int id);
+    List<UserDTO> getAllEmployees();
 }

@@ -1,9 +1,10 @@
 package com.skm.skmserver.auth;
 
-import com.skm.skmserver.config.JwtService;
+import com.skm.skmserver.config.security.JwtService;
 import com.skm.skmserver.entity.User;
 import com.skm.skmserver.enums.Role;
 import com.skm.skmserver.repo.UserRepository;
+import com.skm.skmserver.service.serviceImpl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +19,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final User newUser;
+    private final UserServiceImpl userService;
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder(newUser)
@@ -41,6 +43,7 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .user(userService.set(user))
                 .build();
     }
 }

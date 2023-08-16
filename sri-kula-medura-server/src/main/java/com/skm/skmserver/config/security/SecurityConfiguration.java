@@ -1,4 +1,4 @@
-package com.skm.skmserver.config;
+package com.skm.skmserver.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +25,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
                 .requestMatchers("/api/v1/auth/**")
+                .permitAll()
+                .requestMatchers("/ws/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
