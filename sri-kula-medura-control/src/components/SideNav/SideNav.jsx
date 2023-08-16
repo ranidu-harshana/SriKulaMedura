@@ -29,7 +29,7 @@ const SideNav = () => {
 				{title: "Create Employee", link: "createemployee"}
 			]
 		},
-		{title: "Chat", link: "chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5},
+		{title: "Chat", link: "chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5, isChat: true},
 		{title: "Reports", link: "#", submenu: true, icon: <FlagIcon/>, subMenuLinks: [
 				{title: "Wedding Reservation"},
 				{title: "Reserved Items"},

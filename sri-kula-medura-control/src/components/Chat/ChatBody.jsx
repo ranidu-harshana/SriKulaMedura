@@ -5,26 +5,42 @@ import GoogleIcon from '@mui/icons-material/Google';
 import './Chat.css'
 import ChatUserDetails from "./ChatUserDetails";
 import RoundedImage from "../RoundedImage/RoundedImage";
-import {SelectChatMessages, SelectChatReceiverId} from "../../store/slices/chatSlice";
+import {SelectChatReceiverId} from "../../store/slices/chatSlice";
 import {useSelector} from "react-redux";
-import TextareaAutosize from "@mui/base/TextareaAutosize";
-import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
-import {useMemo, useState} from "react";
-import SockJS from "sockjs-client";
-import Stomp from "stompjs";
+import {useContext, useEffect, useState} from "react";
+import {webSocketConnection} from "../../context/WebSocketConnection";
+import ChatFooter from "./ChatFooter";
+import {getAllMessagesBySenderReceiver} from "../../repository/chatRepository";
 
-let stompClient = null
 const ChatBody = () => {
 	const wHeight = window.innerHeight;
-	const chatMessages = useSelector(SelectChatMessages)
 	const userId = localStorage.getItem("loggedUserId")
-	const [connected, setConnected] = useState(false)
-	const [senderMessages, setSenderMessages] = useState(new Map())
+	const {stompClient, senderMessages, setSenderMessages, isClickOnChatName, setIsClickOnChatName} = useContext(webSocketConnection)
 	const [message, setMessage] = useState('')
 	const chatReceiverId = useSelector(SelectChatReceiverId)
+	
+	useEffect(()=>{
+		const getMessageFromDb = () => {
+			getAllMessagesBySenderReceiver(userId, chatReceiverId)
+				.then((response) => {
+					const payloadData = response.data;
+					if (senderMessages.get("chatId"+chatReceiverId)) {
+						payloadData.forEach((data) => senderMessages.get("chatId"+chatReceiverId).push(data))
+						setSenderMessages(new Map(senderMessages))
+					} else {
+						senderMessages.set("chatId" + chatReceiverId, payloadData)
+						setSenderMessages(new Map(senderMessages))
+					}
+					setIsClickOnChatName(false)
+				})
+		}
+		if (isClickOnChatName) {
+			if (!senderMessages.get("chatId"+chatReceiverId)) {
+				getMessageFromDb()
+			}
+		}
+	}, [chatReceiverId, isClickOnChatName, senderMessages, setIsClickOnChatName, setSenderMessages, userId])
 
-	console.log(senderMessages)
 	const sendMessage = () => {
 		if (stompClient) {
 			const chatMessage = {
@@ -44,32 +60,6 @@ const ChatBody = () => {
 			stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
 		}
 	}
-
-	useMemo(() => {
-		if (stompClient !== null && connected) {
-			stompClient.subscribe('/user/' + userId + '/private', (payload) => {
-				const payloadData = JSON.parse(payload.body)
-				const senderIdOfReceivedMsg = parseInt(payloadData.senderId)
-				if (senderMessages.get("chatId"+senderIdOfReceivedMsg)) {
-					senderMessages.get("chatId"+senderIdOfReceivedMsg).push(payloadData)
-					setSenderMessages(new Map(senderMessages))
-				} else {
-					const list = []
-					list.push(payloadData)
-					senderMessages.set("chatId"+senderIdOfReceivedMsg, list)
-					setSenderMessages(new Map(senderMessages))
-				}
-			});
-		} else {
-			const Sock = new SockJS('http://localhost:8080/ws');
-			stompClient = Stomp.over(Sock)
-			stompClient.connect({}, () => {
-				setConnected(true)
-			}, () => {
-				console.log("Server Error")
-			});
-		}
-	}, [connected])
 
 	return (<>
 			<div className={"chat-body-container"} style={{minHeight: `${wHeight}px`}}>
@@ -102,18 +92,7 @@ const ChatBody = () => {
 				</div>
 			</div>
 
-			<div className="row">
-				<div className="chat-footer" style={{padding: "10px"}}>
-					<div className="d-flex inner-footer" style={{marginRight: "230px"}}>
-						<TextareaAutosize className={"form-control"} value={message} onChange={(e)=>setMessage(e.target.value)}/>
-						<span className="input-group-append">
-							<Button variant="contained" sx={{height: "100%", border: "none"}} onClick={sendMessage}>
-								<SendIcon/>
-							</Button>
-						</span>
-					</div>
-				</div>
-			</div>
+			<ChatFooter message={message} setMessage={setMessage} sendMessage={sendMessage}/>
 		</>);
 }
 

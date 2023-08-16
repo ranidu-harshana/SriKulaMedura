@@ -5,14 +5,44 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {controlActivity} from "../../context/ControlActivity";
 import {useDispatch} from "react-redux";
 import {setChatReceiverId} from "../../store/slices/chatSlice";
+import {webSocketConnection} from "../../context/WebSocketConnection";
+import SockJS from "sockjs-client";
+import Stomp from "stompjs";
 
-const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCount, chatStatus, userId}) => {
+let stompClient = null
+const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCount, chatStatus, userId, isChat, isChatLink}) => {
 	const dispatcher = useDispatch()
 	const linkRef = useRef()
 	const [subMenuVisibility, setSubMenuVisibility] = useState(false);
 	const {setSideNavVisibility, matchesMedia768} = useContext(controlActivity)
+	const {senderMessages, setSenderMessages, setStompClient, setIsClickOnChatName} = useContext(webSocketConnection)
+	const loggedUserId = localStorage.getItem("loggedUserId")
+
 	const handleVisibilityOfSubMenu = () => {
 		dispatcher(setChatReceiverId(linkRef.current?.dataset.userid))
+		if(isChatLink) {
+			setIsClickOnChatName(true)
+			const Sock = new SockJS('http://localhost:8080/ws');
+			stompClient = Stomp.over(Sock)
+			setStompClient(stompClient)
+			stompClient.connect({}, () => {
+				stompClient.subscribe('/user/' + loggedUserId + '/private', (payload) => {
+					const payloadData = JSON.parse(payload.body)
+					const senderIdOfReceivedMsg = parseInt(payloadData.senderId)
+					if (senderMessages.get("chatId"+senderIdOfReceivedMsg)) {
+						senderMessages.get("chatId"+senderIdOfReceivedMsg).push(payloadData)
+						setSenderMessages(new Map(senderMessages))
+					} else {
+						const list = []
+						list.push(payloadData)
+						senderMessages.set("chatId" + senderIdOfReceivedMsg, list)
+						setSenderMessages(new Map(senderMessages))
+					}
+				});
+			}, () => {
+				console.log("Server Error")
+			})
+		}
 		setSideNavVisibility(matchesMedia768 && !submenu)
 		setSubMenuVisibility(prevState => !prevState)
 	}

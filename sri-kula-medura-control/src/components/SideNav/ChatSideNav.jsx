@@ -10,15 +10,15 @@ const ChatSideNav = () => {
 	let chats = null
 	if (localStorage.getItem("loggedUserRole") === "ADMIN") {
 		chats = [{
-			title: "Danilka", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 5, chatStatus: "online", userId: 17
+			title: "Danilka", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 5, chatStatus: "online", userId: 17, isChatLink: true
 		}, {
-			title: "Harshana", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatStatus: "online", userId: 19
+			title: "Harshana", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatStatus: "online", userId: 19, isChatLink: true
 		}, {
-			title: "Sunil", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 9, chatStatus: "offline", userId: 20
+			title: "Sunil", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 9, chatStatus: "offline", userId: 20, isChatLink: true
 		}]
 	} else {
 		chats = [{
-			title: "Admin", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 5, chatStatus: "online", userId: 1
+			title: "Admin", link: "#", submenu: false, icon: <AccountCircleIcon/>, chatCount: 5, chatStatus: "online", userId: 1, isChatLink: true
 		}]
 	}
 

@@ -2,13 +2,13 @@ import {createContext, useState} from "react";
 
 export const webSocketConnection = createContext({})
 const WebSocketConnection = ({children}) => {
-	const [stompClient, setStompClientTest] = useState(null)
-	const [connected, setConnected] = useState(false)
-	const [subscribe, setSubscribe] = useState(false)
+	const [senderMessages, setSenderMessages] = useState(new Map())
+	const [stompClient, setStompClient] = useState(new Map())
+	const [isClickOnChatName, setIsClickOnChatName] = useState(false)
 
 	return (
 		<webSocketConnection.Provider
-			value={{stompClient, setStompClientTest, connected, setConnected, subscribe, setSubscribe}}>
+			value={{senderMessages, setSenderMessages, stompClient, setStompClient, isClickOnChatName, setIsClickOnChatName}}>
 			{children}
 		</webSocketConnection.Provider>
 	);

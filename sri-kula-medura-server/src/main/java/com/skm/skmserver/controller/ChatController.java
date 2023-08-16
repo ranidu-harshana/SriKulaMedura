@@ -7,9 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -26,5 +26,8 @@ public class ChatController {
         return chatDTOResponse;
     }
 
-
+    @GetMapping("/get-messages/{fid}/{sid}")
+    public List<ChatDTOResponse> getMessages(@PathVariable int fid, @PathVariable int sid) {
+        return chatService.getAllMessagesBySenderReceiver(fid,sid);
+    }
 }
