@@ -8,6 +8,7 @@ import {setChatReceiverId} from "../../store/slices/chatSlice";
 import {webSocketConnection} from "../../context/WebSocketConnection";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
+import './SideNav.css'
 
 let stompClient = null
 const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCount, chatStatus, userId, isChat, isChatLink}) => {
@@ -20,6 +21,16 @@ const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCo
 
 	const handleVisibilityOfSubMenu = () => {
 		dispatcher(setChatReceiverId(linkRef.current?.dataset.userid))
+
+		const parentUlChildren = linkRef.current.parentElement.parentElement.childNodes
+		parentUlChildren.forEach((child)=>{
+			if (child.tagName === "LI") {
+				child.firstChild.className = ""
+			}
+		})
+		linkRef.current.className = "text-info"
+
+
 		if(isChatLink) {
 			setIsClickOnChatName(true)
 			const Sock = new SockJS('http://localhost:8080/ws');
