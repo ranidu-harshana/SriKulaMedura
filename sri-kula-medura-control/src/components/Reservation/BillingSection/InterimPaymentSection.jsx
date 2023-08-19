@@ -2,13 +2,32 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
+import {useParams} from "react-router-dom";
+import notify from "../../../utils/notify";
+import {storeInterimPayment} from "../../../repository/InterimPaymentRepository";
+import {saveInterimPayment} from "../../../store/slices/InterimPaymentSlice";
 
 const InterimPaymentSection = (props) => {
 	const [interimPayment, setInterimPayment] = useState()
-
+	const {id} = useParams()
 	const dispatcher = useDispatch()
 	const isSubmitDisabled = !interimPayment;
 
+	const handleSubmit = () => {
+		storeInterimPayment(id, interimPayment)
+			.then(response => {
+				if (response.status === 200) {
+					dispatcher(saveInterimPayment({ ...response.data }));
+					notify(1, "Interim Payment Added Successfully");
+				} else {
+					notify(0, "Interim payment not saved");
+				}
+			})
+			.catch(error => {
+				console.error("Error submitting Interim payment:", error);
+				notify(0, "An error occurred while saving Interim payment");
+			});
+	};
 	return (
 		<>
 			<div className="tab-content-container">
@@ -38,6 +57,7 @@ const InterimPaymentSection = (props) => {
 						<div className="col-9 text-end">
 							<button className={'btn btn-success w-50 w-md-25'}
 									disabled={isSubmitDisabled}
+									onClick={handleSubmit}
 							>Submit</button>
 						</div>
 					</div>

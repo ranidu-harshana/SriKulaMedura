@@ -1,6 +1,6 @@
 import Repository from "../utils/Repository";
 
-const getAllInterimPayment = () => {
+const getAllInterimPayments = () => {
     return Repository.get('/interim-payment/')
 }
 
@@ -14,6 +14,6 @@ const storeInterimPayment = (reservation_id, interimPayment) => {
 
 export {
     getInterimPayment,
-    getAllInterimPayment,
+    getAllInterimPayments,
     storeInterimPayment,
 }
