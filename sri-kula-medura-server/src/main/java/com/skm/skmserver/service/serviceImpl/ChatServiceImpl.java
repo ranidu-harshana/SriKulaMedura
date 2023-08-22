@@ -28,6 +28,7 @@ public class ChatServiceImpl implements ChatService, MainService<ChatDTOResponse
                 .senderId(Integer.parseInt(chatDTORequest.getSenderId()))
                 .receiverId(Integer.parseInt(chatDTORequest.getReceiverId()))
                 .message(chatDTORequest.getMessage())
+                .time(chatDTORequest.getTime())
                 .build());
         return set(chat);
     }
@@ -44,6 +45,7 @@ public class ChatServiceImpl implements ChatService, MainService<ChatDTOResponse
                 .senderName(userRepository.findById(chat.getSenderId()).getName())
                 .senderId(chat.getSenderId())
                 .receiverId(chat.getReceiverId())
+                .time(chat.getTime())
                 .build();
     }
 }

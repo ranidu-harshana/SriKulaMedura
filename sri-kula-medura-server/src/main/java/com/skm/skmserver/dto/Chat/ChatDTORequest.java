@@ -13,4 +13,5 @@ public class ChatDTORequest {
     private String message;
     private String senderId;
     private String receiverId;
+    private String time;
 }

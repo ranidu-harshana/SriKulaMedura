@@ -14,4 +14,5 @@ public class ChatDTOResponse {
     private int senderId;
     private String senderName;
     private int receiverId;
+    private String time;
 }

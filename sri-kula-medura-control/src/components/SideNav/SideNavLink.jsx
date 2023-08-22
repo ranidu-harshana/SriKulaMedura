@@ -3,16 +3,16 @@ import {useContext, useRef, useState} from "react";
 import {Link} from "react-router-dom";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {controlActivity} from "../../context/ControlActivity";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setChatReceiverId} from "../../store/slices/chatSlice";
 import {webSocketConnection} from "../../context/WebSocketConnection";
-import SockJS from "sockjs-client";
-import Stomp from "stompjs";
 import './SideNav.css'
-import {WEBSOCKET_URL} from "../../utils/constants";
+import {handleWebSocketConnOnClickChatLink, highlightOrRemoveHighlightActiveLink} from "../../utils/helpers";
+import {getUserById} from "../../repository/userRepository";
+import {addOneUser} from "../../store/slices/userSlice";
 
 let stompClient = null
-const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCount, chatStatus, userId, isChat, isChatLink}) => {
+const SideNavLink = ({title, link, submenu, icon, subMenuLinks, chatCount, chatStatus, userId, isChatLink}) => {
 	const dispatcher = useDispatch()
 	const linkRef = useRef()
 	const [subMenuVisibility, setSubMenuVisibility] = useState(false);
@@ -22,39 +22,19 @@ const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCo
 
 	const handleVisibilityOfSubMenu = () => {
 		dispatcher(setChatReceiverId(linkRef.current?.dataset.userid))
-
-		const parentUlChildren = linkRef.current.parentElement.parentElement.childNodes
-		parentUlChildren.forEach((child)=>{
-			if (child.tagName === "LI") {
-				child.firstChild.className = ""
-			}
-		})
-		linkRef.current.className = "text-info"
-
-		if(isChatLink) {
-			setIsClickOnChatName(true)
-			const Sock = new SockJS(WEBSOCKET_URL);
-			stompClient = Stomp.over(Sock)
-			setStompClient(stompClient)
-			stompClient.connect({}, () => {
-				stompClient.unsubscribe()
-				stompClient.subscribe('/user/' + loggedUserId + '/private', (payload) => {
-					const payloadData = JSON.parse(payload.body)
-					const senderIdOfReceivedMsg = parseInt(payloadData.senderId)
-					if (senderMessages.get("chatId"+senderIdOfReceivedMsg)) {
-						senderMessages.get("chatId"+senderIdOfReceivedMsg).push(payloadData)
-						setSenderMessages(new Map(senderMessages))
-					} else {
-						const list = []
-						list.push(payloadData)
-						senderMessages.set("chatId" + senderIdOfReceivedMsg, list)
-						setSenderMessages(new Map(senderMessages))
-					}
-				});
-			}, () => {
-				console.log("Server Error")
-			})
+		if (isChatLink) {
+			getUserById(linkRef.current?.dataset.userid)
+				.then((res) => {
+					dispatcher(addOneUser({...res.data}))
+				})
 		}
+
+		// for highlighting of removing highlight of active link
+		highlightOrRemoveHighlightActiveLink(linkRef);
+
+		// if it is a chat make the connection when clicked
+		handleWebSocketConnOnClickChatLink(stompClient, isChatLink, setIsClickOnChatName, setStompClient, loggedUserId, senderMessages, setSenderMessages);
+
 		setSideNavVisibility(matchesMedia768 && !submenu)
 		setSubMenuVisibility(prevState => !prevState)
 	}

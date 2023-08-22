@@ -4,7 +4,7 @@ const getAllUsers = () => {
 	return Repository.get(`/user/`)
 }
 
-const getUser = (id) => {
+const getUserById = (id) => {
 	return Repository.get(`/user/`+id)
 }
 
@@ -14,6 +14,6 @@ const getUserByEmail = (email) => {
 
 export {
 	getAllUsers,
-	getUser,
+	getUserById,
 	getUserByEmail,
 }

@@ -82,6 +82,7 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
                 .name(user.getName())
                 .email(user.getEmail())
                 .mobile_no(user.getMobile_no())
+                .address(user.getAddress())
                 .email_verified_at(user.getEmail_verified_at())
                 .created_at(user.getCreated_at())
                 .updated_at(user.getUpdated_at())

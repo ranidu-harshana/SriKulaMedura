@@ -6,7 +6,6 @@ const Chat = (props) => {
 	return (<>
 			<ChatHeader/>
 			<ChatBody/>
-			{/*<ChatFooter stompClient={stompClient} userId={userId} setSenderMessages={setSenderMessages}/>*/}
 		</>);
 }
 

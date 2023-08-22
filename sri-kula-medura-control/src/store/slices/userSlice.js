@@ -18,6 +18,7 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 		addAllUsers: userState.addMany,
+		addOneUser: userState.addOne,
 		addLoggedUser: {
 			reducer: (state, {payload}) => {
 				if (payload) {
@@ -33,7 +34,11 @@ const userSlice = createSlice({
 	}
 })
 
-export const {addAllUsers, addLoggedUser} = userSlice.actions
+export const {
+	selectById: selectByIdUser,
+	selectAll: selectAllUser
+} = userState.getSelectors(store => store.user)
+export const {addAllUsers, addLoggedUser, addOneUser} = userSlice.actions
 const selLoggedUser = (store) => store.user.loggedUser
 export const selectLoggedUser = createSelector([selLoggedUser], (user) => user)
 export default userSlice.reducer

@@ -23,6 +23,7 @@ public class Chat {
     private int senderId;
     private int receiverId;
     private String message;
+    private String time;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)

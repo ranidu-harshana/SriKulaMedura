@@ -11,15 +11,17 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {webSocketConnection} from "../../context/WebSocketConnection";
 import ChatFooter from "./ChatFooter";
 import {getAllMessagesBySenderReceiver} from "../../repository/chatRepository";
+import {selectByIdUser} from "../../store/slices/userSlice";
 
 const ChatBody = () => {
-	const wHeight = window.innerHeight;
+	const wHeight = window.innerHeight - 100;
 	const userId = localStorage.getItem("loggedUserId")
 	const {stompClient, senderMessages, setSenderMessages, isClickOnChatName, setIsClickOnChatName} = useContext(webSocketConnection)
 	const [message, setMessage] = useState('')
 	const chatReceiverId = useSelector(SelectChatReceiverId)
+	const user = useSelector((store)=>selectByIdUser(store, chatReceiverId))
 	const bottomEl = useRef(null);
-	
+
 	useEffect(()=>{
 		const getMessageFromDb = () => {
 			getAllMessagesBySenderReceiver(userId, chatReceiverId)
@@ -46,10 +48,12 @@ const ChatBody = () => {
 	const sendMessage = () => {
 		setMessage("")
 		if (stompClient) {
+			const time = new Date();
 			const chatMessage = {
 				message,
 				senderId: userId,
-				receiverId: chatReceiverId
+				receiverId: chatReceiverId,
+				time: time.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
 			};
 			if (senderMessages.get("chatId"+chatReceiverId)) {
 				senderMessages.get("chatId"+chatReceiverId).push(chatMessage)
@@ -83,7 +87,7 @@ const ChatBody = () => {
 			<div className={'chat-user-details'}>
 				<div className="text-center">
 					<RoundedImage userAvatar={useravatar}/>
-					<h4 className={'mt-2'}>Sachini Deepashika</h4>
+					<h4 className={'mt-2'}>{user?.name}</h4>
 				</div>
 
 				<div className="text-center">
@@ -91,10 +95,10 @@ const ChatBody = () => {
 				</div>
 
 				<div className={'mt-4'}>
-					<ChatUserDetails topic="Mobile No" value={"0776006495"}/>
-					<ChatUserDetails topic="Email" value={"harshanaranidum@gmail.com"}/>
-					<ChatUserDetails topic="Address" value={"172/1, Anikat Rd, Kinigama, Buthpitya"}/>
-					<ChatUserDetails topic="Branches" value={"Colombo, Gampaha"}/>
+					<ChatUserDetails topic="Mobile No" value={user?.name}/>
+					<ChatUserDetails topic="Email" value={user?.email}/>
+					<ChatUserDetails topic="Address" value={user?.address}/>
+					<ChatUserDetails topic="Branches" value={''}/>
 				</div>
 			</div>
 
@@ -115,7 +119,7 @@ const ChatBubble = ({message, userId}) => (
 	<div className={`chat-bubble chat-${'chatId'+message.senderId === 'chatId'+userId?'right':'left'}`}>
 		<div className="chat-content">
 			<p className={''}>{message.message}</p>
-			<span className="chat-time small">8:30 am</span>
+			<span className="chat-time small">{message.time}</span>
 		</div>
 	</div>
 )
