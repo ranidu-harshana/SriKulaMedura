@@ -37,6 +37,7 @@ const SideNavLink = ({children, title, link, submenu, icon, subMenuLinks, chatCo
 			stompClient = Stomp.over(Sock)
 			setStompClient(stompClient)
 			stompClient.connect({}, () => {
+				stompClient.unsubscribe()
 				stompClient.subscribe('/user/' + loggedUserId + '/private', (payload) => {
 					const payloadData = JSON.parse(payload.body)
 					const senderIdOfReceivedMsg = parseInt(payloadData.senderId)
