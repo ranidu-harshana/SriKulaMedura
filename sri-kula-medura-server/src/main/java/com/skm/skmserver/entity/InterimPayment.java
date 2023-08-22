@@ -38,10 +38,6 @@ public class InterimPayment {
     @JoinColumn
     private Reservation reservation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
-    private Customer customer;
-
     public static InterimPaymentBuilder builder(InterimPayment interimPayment) {
         if (interimPayment == null) {
             return internalBuilder();
@@ -51,7 +47,6 @@ public class InterimPayment {
                 .interim_payment(interimPayment.getInterim_payment())
                 .created_at(interimPayment.getCreated_at())
                 .updated_at(interimPayment.getUpdated_at())
-                .reservation(interimPayment.getReservation())
-                .customer(interimPayment.getCustomer());
+                .reservation(interimPayment.getReservation());
     }
 }

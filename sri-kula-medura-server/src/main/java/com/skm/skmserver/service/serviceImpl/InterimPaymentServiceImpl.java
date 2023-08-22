@@ -33,7 +33,6 @@ public class InterimPaymentServiceImpl implements InterimPaymentService , MainSe
     public InterimPaymentDTO saveInterimPayment(InterimPaymentDTO interimPaymentDTO) {
         InterimPayment interimPayment = interimPaymentRepository.save(InterimPayment.builder(newInterimPayment)
                 .interim_payment(interimPaymentDTO.getInterim_payment())
-                .customer(customerRepository.findById(interimPaymentDTO.getCustomer_id()))
                 .reservation(reservationRepository.findById(interimPaymentDTO.getReservation_id()))
                 .build());
         return set(interimPayment);
