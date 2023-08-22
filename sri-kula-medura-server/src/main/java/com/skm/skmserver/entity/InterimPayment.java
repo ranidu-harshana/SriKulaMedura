@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Builder(builderMethodName = "internalBuilder")
 @Component
 public class InterimPayment {
@@ -22,6 +22,7 @@ public class InterimPayment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false)
     private double interim_payment;
 
     @Column(nullable = false, updatable = false)
@@ -38,10 +39,6 @@ public class InterimPayment {
     @JoinColumn
     private Reservation reservation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
-    private Customer customer;
-
     public static InterimPaymentBuilder builder(InterimPayment interimPayment) {
         if (interimPayment == null) {
             return internalBuilder();
@@ -51,7 +48,6 @@ public class InterimPayment {
                 .interim_payment(interimPayment.getInterim_payment())
                 .created_at(interimPayment.getCreated_at())
                 .updated_at(interimPayment.getUpdated_at())
-                .reservation(interimPayment.getReservation())
-                .customer(interimPayment.getCustomer());
+                .reservation(interimPayment.getReservation());
     }
 }

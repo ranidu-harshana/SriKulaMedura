@@ -18,7 +18,6 @@ public class InterimPaymentDTO {
     private Date created_at;
     private Date updated_at;
     private int reservation_id;
-    private int customer_id;
 
     public static InterimPaymentDTOBuilder builder(InterimPayment interimPayment){
         return internalBuilder()
@@ -26,7 +25,6 @@ public class InterimPaymentDTO {
                 .interim_payment(interimPayment.getInterim_payment())
                 .created_at(interimPayment.getCreated_at())
                 .updated_at(interimPayment.getUpdated_at())
-                .reservation_id(interimPayment.getReservation().getId())
-                .customer_id(interimPayment.getCustomer().getId());
+                .reservation_id(interimPayment.getReservation().getId());
     }
 }

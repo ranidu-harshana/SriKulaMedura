@@ -74,6 +74,9 @@ public class Reservation {
     private List<DressSelection> dress_selections;
 
     @OneToMany(mappedBy = "reservation")
+    private List<InterimPayment> interimPayments;
+
+    @OneToMany(mappedBy = "reservation")
     private List<AdditionalPayment> additionalPayments;
 
     @ManyToOne(fetch = FetchType.LAZY)

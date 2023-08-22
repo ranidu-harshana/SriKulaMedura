@@ -1,7 +1,6 @@
 package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.InterimPaymentDTO;
-import com.skm.skmserver.service.InterimPaymentService;
 import com.skm.skmserver.service.serviceImpl.InterimPaymentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/interim-payment")
+@RequestMapping("/api/v1/interim-payment")
 @RequiredArgsConstructor
 @CrossOrigin
 public class InterimPaymentController {
