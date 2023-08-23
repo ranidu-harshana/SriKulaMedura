@@ -37,7 +37,11 @@ export default function AdminLogin() {
     const handleClick = () => {
         axios.post(BASE_URL+"/auth/authenticate", {email, password})
             .then((res) => {
-                localStorage.setItem("accessToken", res.data.token);
+                localStorage.setItem("loggedUserToken", res.data.token);
+                localStorage.setItem("loggedUserName", res.data.user.name);
+                localStorage.setItem("loggedUserEmail", res.data.user.email);
+                localStorage.setItem("loggedUserId", res.data.user.id);
+                localStorage.setItem("loggedUserRole", res.data.user.role);
                 window.location.replace("/")
             })
             .catch(error => console.log(error))

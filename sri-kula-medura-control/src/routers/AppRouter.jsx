@@ -16,6 +16,7 @@ import CreateReservation from "../pages/Reservation/CreateReservation";
 import AllReservations from "../pages/Reservation/AllReservations";
 import ReservationProfile from "../pages/Reservation/ReservationProfile";
 import ProtectedRoute from "./ProtectedRoute";
+import WebSocketConnection from "../context/WebSocketConnection";
 
 const router = createBrowserRouter([
 	{
@@ -100,7 +101,9 @@ const router = createBrowserRouter([
 const AppRouter = (props) => {
 	return (
 		<ControlActivity>
-			<RouterProvider router={router}/>
+			<WebSocketConnection>
+				<RouterProvider router={router}/>
+			</WebSocketConnection>
 		</ControlActivity>
 	);
 }
