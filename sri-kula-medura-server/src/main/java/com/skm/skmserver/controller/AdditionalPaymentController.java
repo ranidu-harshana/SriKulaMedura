@@ -1,6 +1,7 @@
 package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.AdditionalPaymentDTO;
+import com.skm.skmserver.dto.InterimPaymentDTO;
 import com.skm.skmserver.service.serviceImpl.AdditionalPaymentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,11 @@ public class AdditionalPaymentController {
     @GetMapping("/")
     public List<AdditionalPaymentDTO> index() {
         return additionalPaymentService.allAdditionalPayments();
+    }
+
+    @GetMapping("/reservation/{reservation}")
+    public List<AdditionalPaymentDTO> additionalPaymentsOfReservation(@PathVariable int reservation) {
+        return additionalPaymentService.allAdditionalPaymentsOfReservation(reservation);
     }
 
     @PostMapping("/")

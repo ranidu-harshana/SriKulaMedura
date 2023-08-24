@@ -20,6 +20,11 @@ public class InterimPaymentController {
         return interimPaymentService.allInterimPayments();
     }
 
+    @GetMapping("/reservation/{reservation}")
+    public List<InterimPaymentDTO> interimPaymentsOfReservation(@PathVariable int reservation) {
+        return interimPaymentService.allInterimPaymentsOfReservation(reservation);
+    }
+
     @PostMapping("/")
     public InterimPaymentDTO store(@RequestBody InterimPaymentDTO interimPaymentDTO){
        return interimPaymentService.saveInterimPayment(interimPaymentDTO);
