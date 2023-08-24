@@ -10,7 +10,7 @@ const noteSlice = createSlice({
     reducers: {
         addNotes: {
             reducer: (state, action) => {
-                noteState.addMany(state, action.payload)
+                noteState.upsertMany(state, action.payload)
             }
         },
         saveNote: noteState.addOne

@@ -8,7 +8,7 @@ const measurementSlice = createSlice({
 	name: 'measurement',
 	initialState,
 	reducers: {
-		addMeasurements: measurementState.addMany,
+		addMeasurements: measurementState.upsertMany,
 		updateMeasurement: measurementState.updateOne
 	}
 })

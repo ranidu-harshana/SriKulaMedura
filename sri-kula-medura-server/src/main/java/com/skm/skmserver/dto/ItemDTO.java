@@ -18,6 +18,7 @@ public class ItemDTO {
     private String item_name;
     private String item_type;
     private String item_image_url;
+    private double item_price;
     private Date created_at;
     private Date updated_at;
     private boolean rented_status;
@@ -31,6 +32,7 @@ public class ItemDTO {
                 .item_name(item.getItem_name())
                 .item_type(item.getItem_type())
                 .item_image_url(item.getItem_image_url())
+                .item_price(item.getItem_price())
                 .created_at(item.getCreated_at())
                 .updated_at(item.getUpdated_at())
                 .rented_status(item.isRented_status())

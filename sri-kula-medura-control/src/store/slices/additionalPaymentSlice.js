@@ -10,7 +10,7 @@ const additionalPaymentSlice = createSlice({
     reducers: {
         addAdditionalPayments: {
             reducer: (state, action) => {
-                additionalPaymentState.addMany(state, action.payload)
+                additionalPaymentState.upsertMany(state, action.payload)
             }
         },
         saveAdditionalPayment: additionalPaymentState.addOne

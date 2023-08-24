@@ -35,7 +35,7 @@ const reservationSlice = createSlice({
 		addReservations: {
 			reducer: (state, action) => {
 				if (action.payload.length > 0) {
-					reservationState.addMany(state, action.payload)
+					reservationState.upsertMany(state, action.payload)
 				}
 			},
 		},

@@ -10,7 +10,7 @@ const itemSlice = createSlice({
 	reducers: {
 		addItems: {
 			reducer: (state, action) => {
-				itemState.addMany(state, action.payload)
+				itemState.upsertMany(state, action.payload)
 			}
 		},
 		saveItem: itemState.addOne,

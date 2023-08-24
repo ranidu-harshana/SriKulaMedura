@@ -17,7 +17,7 @@ const userSlice = createSlice({
 	name: "user",
 	initialState,
 	reducers: {
-		addAllUsers: userState.addMany,
+		addAllUsers: userState.upsertMany,
 		addOneUser: userState.addOne,
 		addLoggedUser: {
 			reducer: (state, {payload}) => {

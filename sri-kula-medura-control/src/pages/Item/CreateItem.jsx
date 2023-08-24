@@ -22,6 +22,7 @@ const CreateItem = (props) => {
 	const [item_name, setItemName] = useState('')
 	const [item_type, setItemType] = useState('')
 	const [item_image_url, setItemImageUrl] = useState('')
+	const [item_price, setItemPrice] = useState('')
 
 	useEffect(() => {
 		if(item_cats < 1) {
@@ -80,6 +81,18 @@ const CreateItem = (props) => {
 
 				<div className="mt-4">
 					<FormControl sx={{ width: "100%" }} size="small">
+						<TextField
+							label="Item Price"
+							id="itemprice"
+							size="small"
+							value={item_price}
+							onChange={(e)=>setItemPrice(e.target.value)}
+						/>
+					</FormControl>
+				</div>
+
+				<div className="mt-4">
+					<FormControl sx={{ width: "100%" }} size="small">
 						<InputLabel id="demo-select-small-label">Item Category</InputLabel>
 						<Select
 							labelId="demo-select-small-label"
@@ -107,7 +120,7 @@ const CreateItem = (props) => {
 
 				<div className="text-end mt-4">
 					<button type="submit" className="btn btn-primary" onClick={()=>{
-						storeItem(item_code, item_name, item_type, item_image_url, item_category_id)
+						storeItem(item_code, item_name, item_type, item_image_url, item_price, item_category_id)
 							.then(response => {
 								if (response.status === 200) {
 									dispatcher(saveItem({...response.data}));

@@ -14,21 +14,20 @@ const Inventory = (props) => {
 		{field: 'item_code', headerName: "Item Code"},
 		{field: 'item_name', headerName: "Item Name"},
 		{field: 'item_type', headerName: "Item Type"},
+		{field: 'item_price', headerName: "Item Price"},
 		{field: 'rented_status', headerName: "Status"},
 		{field: 'item_category_id', headerName: "Item Category"},
 		{field: 'created_at', headerName: "Created At"}
 	]
 
 	useEffect(() => {
-		if(items.length < 1) {
-			getAllItems()
-				.then((response) => {
-					dispatcher(addItems(response.data))
-				})
-				.catch(error => {
-					console.log("ERROR: " + error)
-				})
-		}
+		getAllItems()
+			.then((response) => {
+				dispatcher(addItems(response.data))
+			})
+			.catch(error => {
+				console.log("ERROR: " + error)
+			})
 	}, [dispatcher, items]);
 
 	return (

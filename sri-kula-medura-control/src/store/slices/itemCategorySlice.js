@@ -10,7 +10,7 @@ const item_categorySlice = createSlice({
 	reducers: {
 		addItemCats: {
 			reducer: (state, action) => {
-				item_categoryState.addMany(state, action.payload)
+				item_categoryState.upsertMany(state, action.payload)
 			}
 		},
 	}

@@ -10,7 +10,7 @@ const branchSlice = createSlice({
 	reducers: {
 		addBranches: {
 			reducer: (state, action) => {
-				branchState.addMany(state, action.payload)
+				branchState.upsertMany(state, action.payload)
 			}
 		},
 		saveBranch: branchState.addOne

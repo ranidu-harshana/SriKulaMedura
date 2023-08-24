@@ -35,6 +35,7 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
                 .item_name(itemDTO.getItem_name())
                 .item_type(itemDTO.getItem_type())
                 .item_image_url(itemDTO.getItem_image_url())
+                .item_price(itemDTO.getItem_price())
                 .rented_status(false)
                 .item_category(itemCategoryRepository.findById(itemDTO.getItem_category_id()))
                 .build());
@@ -52,6 +53,8 @@ public class ItemServiceImpl implements ItemService, MainService<ItemDTO, Item> 
                 .item_name(itemDTO.getItem_name())
                 .item_type(itemDTO.getItem_type())
                 .item_image_url(itemDTO.getItem_image_url())
+                .item_price(itemDTO.getItem_price())
+                .item_price(itemDTO.getItem_price())
                 .build()));
     }
 
