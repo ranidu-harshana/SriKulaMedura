@@ -9,8 +9,8 @@ import {storeAdditionalPayment} from "../../../repository/additionalPaymentRepos
 
 const AdditionalPaymentSection = (props) => {
 	const {id} = useParams()
-	const [payment ,setPayment] = useState()
-	const [reason ,setReason] = useState()
+	const [payment ,setPayment] = useState('')
+	const [reason ,setReason] = useState('')
 	const dispatcher = useDispatch()
 	const isSubmitDisabled = !payment || !reason;
 

@@ -8,7 +8,7 @@ import {storeInterimPayment} from "../../../repository/InterimPaymentRepository"
 import {saveInterimPayment} from "../../../store/slices/InterimPaymentSlice";
 
 const InterimPaymentSection = (props) => {
-	const [interimPayment, setInterimPayment] = useState()
+	const [interimPayment, setInterimPayment] = useState('')
 	const {id} = useParams()
 	const dispatcher = useDispatch()
 	const isSubmitDisabled = !interimPayment;
