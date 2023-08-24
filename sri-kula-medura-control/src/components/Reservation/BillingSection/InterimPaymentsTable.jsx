@@ -2,12 +2,35 @@ import {ButtonGroup} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {useParams} from "react-router-dom";
-import useBillGenerator from "../../../hooks/useBillGenerator";
+import {useDispatch, useSelector} from "react-redux";
+import {addInterimPayments, selectAllInterimPayment} from "../../../store/slices/InterimPaymentSlice";
+import {Link} from "react-router-dom";
+import {useEffect} from "react";
+import {getAllInterimPayments} from "../../../repository/InterimPaymentRepository";
+import Table from "../../Table/Table";
 
 const InterimPaymentsTable = () => {
-	const {id} = useParams()
-	const {interimPayments} = useBillGenerator(id)
+	const interimPayments = useSelector(selectAllInterimPayment)
+	const dispatcher = useDispatch()
+
+	const columns=[
+		{field:'id',headerName:"Id",maxWidth:300},
+		{field:'interim_payment',headerName:"Interim Payment"},
+		{field: 'created_at', headerName: "Created At"},
+		{field: 'id', headerName: "Actions", cellRenderer: InterimActionBtn}
+
+	]
+	useEffect(() => {
+		if(interimPayments.length < 1) {
+			getAllInterimPayments()
+				.then((response) => {
+					dispatcher(addInterimPayments(response.data))
+				})
+				.catch((error) => {
+					console.log("ERROR: "+error)
+				})
+		}
+	}, [dispatcher, interimPayments]);
 
 	return (
 		<>
@@ -18,35 +41,7 @@ const InterimPaymentsTable = () => {
 					</div>
 				</div>
 				<div className="row reservation-section-table px-2">
-					<table className="table table-striped table-sm table-hover">
-						<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Amount</th>
-							<th scope="col">Date</th>
-							<th scope="col">Action</th>
-						</tr>
-						</thead>
-						<tbody>
-							{interimPayments?.map((interimPayment, index) =>
-								<tr key={index}>
-									<th scope="row">{interimPayment.id}</th>
-									<td>{interimPayment.interim_payment}</td>
-									<td>{interimPayment.created_at}</td>
-									<td>
-										<ButtonGroup size="small">
-											<IconButton color="success" size="small">
-												<EditIcon />
-											</IconButton>
-											<IconButton sx={{color:"red"}} size="small">
-												<DeleteIcon />
-											</IconButton>
-										</ButtonGroup>
-									</td>
-								</tr>
-							)}
-						</tbody>
-					</table>
+					<Table columns={columns} payload={interimPayments}/>
 				</div>
 			</div>
 		</>
@@ -54,3 +49,22 @@ const InterimPaymentsTable = () => {
 }
 
 export default InterimPaymentsTable;
+
+const InterimActionBtn = (props) =>  {
+	const id = props.valueFormatted ? props.valueFormatted : props.value;
+
+	return (
+		<>
+			<ButtonGroup aria-label="button group">
+				<Link to={`/interim-payment/${id}`}>
+					<IconButton aria-label="fingerprint" color="success">
+						<EditIcon />
+					</IconButton>
+				</Link>
+				<IconButton sx={{color:"red"}} size="small">
+					<DeleteIcon />
+				</IconButton>
+			</ButtonGroup>
+		</>
+	);
+}
