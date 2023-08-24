@@ -43,8 +43,15 @@ function highlightOrRemoveHighlightActiveLink(linkRef) {
 	linkRef.current.className = "text-info"
 }
 
+function convertNumberToPriceFormat (number) {
+	return number.toLocaleString('en', {
+		minimumFractionDigits: 2
+	})
+}
+
 export {
 	firtsLetterTOUppercase,
 	handleWebSocketConnOnClickChatLink,
 	highlightOrRemoveHighlightActiveLink,
+	convertNumberToPriceFormat,
 }

@@ -13,10 +13,11 @@ const additionalPaymentSlice = createSlice({
                 additionalPaymentState.upsertMany(state, action.payload)
             }
         },
-        saveAdditionalPayment: additionalPaymentState.addOne
+        saveAdditionalPayment: additionalPaymentState.addOne,
+        clearAdditionalPaymentState: additionalPaymentState.removeAll
     }
 })
 
-export const {addAdditionalPayments, saveAdditionalPayment} = additionalPaymentSlice.actions
-export const { selectAll: selectAllAdditionalPayments } = additionalPaymentState.getSelectors(state => state.additional_payment);
+export const {addAdditionalPayments, saveAdditionalPayment, clearAdditionalPaymentState} = additionalPaymentSlice.actions
+export const { selectAll: selectAllAdditionalPayments } = additionalPaymentState.getSelectors(store => store.additional_payment);
 export default additionalPaymentSlice.reducer

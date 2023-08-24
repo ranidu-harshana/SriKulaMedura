@@ -5,9 +5,9 @@ import {checkItemExist, searchItem} from "../../repository/itemRepository";
 import './Typeahead.bs5.css'
 import './Typeahead.css'
 import {useTranslation} from "react-i18next";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
-import {addSelectedDressByUser, selectedDressesByUserSelector} from "../../store/slices/dressSelectionSlice";
+import {addSelectedDressByUser} from "../../store/slices/dressSelectionSlice";
 import {ITEM_TYPES} from "../../utils/constants";
 
 const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
@@ -21,7 +21,6 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 	const [isInValid, setIsInValid] = useState(false);
 	const [options, setOptions] = useState([]);
 	const [isSetValueBySuggestions, setIsSetValueBySuggestions] = useState(false)
-	const selectedDressesByUser = useSelector(selectedDressesByUserSelector)
 
 	const handleSearch = (query) => {
 		setIsLoading(true);
@@ -46,8 +45,6 @@ const AutoSuggestTextBox = ({type, typeWithIndex, index}) => {
 	}
 
 	const handleOnInputChangeBlur = (event) => {
-		console.log(selectedDressesByUser)
-
 		if (event.target.value === '') {
 			dispatcher(addSelectedDressByUser(typeWithIndex, 0, parseInt(id), event.target.value, true))
 		}

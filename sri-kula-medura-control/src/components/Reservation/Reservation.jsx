@@ -7,11 +7,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {addSingleReservation, reservationSelector, selectByIdReservation} from "../../store/slices/reservationSlice";
 import {useEffect} from "react";
 import {getReservation} from "../../repository/reservationRepository";
+import useBillGenerator from "../../hooks/useBillGenerator";
+import {convertNumberToPriceFormat} from "../../utils/helpers";
 
 const Reservation = ({id}) => {
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
 	const reservationAlt = useSelector(reservationSelector)
 	const dispatcher = useDispatch()
+	const {balanceToPay} = useBillGenerator(id)
 
 	useEffect(() => {
 		if(!reservationCurr) {
@@ -45,7 +48,7 @@ const Reservation = ({id}) => {
 				</div>
 			</div>
 			<div className="col-12 col-lg-6 row left-border">
-				<ReservationDetails title={"Amount to be paid"} value={"17,874.00"} amountToPaid={true}/>
+				<ReservationDetails title={"Amount to be paid"} value={convertNumberToPriceFormat(balanceToPay)} amountToPaid={true}/>
 				<ReservationDetails title={"Phone 1"} value={reservation.customer.mobile_no1}/>
 				<ReservationDetails title={"Phone 2"} value={reservation.customer.mobile_no2}/>
 				<ReservationDetails title={"Function Date"} value={reservation.function_date}/>

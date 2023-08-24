@@ -2,8 +2,13 @@ import {ButtonGroup} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import {useParams} from "react-router-dom";
+import useBillGenerator from "../../../hooks/useBillGenerator";
 
-const AdditionalPaymentsTable = (props) => {
+const AdditionalPaymentsTable = () => {
+	const {id} = useParams()
+	const {additionalPayments} = useBillGenerator(id)
+
 	return (
 		<>
 			<div className="tab-content-container">
@@ -24,118 +29,24 @@ const AdditionalPaymentsTable = (props) => {
 						</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>2000</td>
-								<td>sdjfnsdfkjsndfkjdsfnskfjnsfj Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam debitis dolores hic inventore libero nemo nesciunt nihil, nisi obcaecati, omnis, perspiciatis velit voluptate! Architecto illo ipsa ipsum tempora ut!</td>
-								<td>2023-12-01</td>
+						{additionalPayments?.map((additionalPayment, index) =>
+							<tr key={index}>
+								<th scope="row">{additionalPayment.id}</th>
+								<td>{additionalPayment.payment}</td>
+								<td>{additionalPayment.reason}</td>
+								<td>{additionalPayment.created_at}</td>
 								<td>
 									<ButtonGroup size="small">
 										<IconButton color="success" size="small">
-											<EditIcon />
+											<EditIcon/>
 										</IconButton>
-										<IconButton sx={{color:"red"}} size="small">
-											<DeleteIcon />
+										<IconButton sx={{color: "red"}} size="small">
+											<DeleteIcon/>
 										</IconButton>
 									</ButtonGroup>
 								</td>
 							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>2023-12-01</td>
-								<td>
-									<ButtonGroup size="small">
-										<IconButton color="success" size="small">
-											<EditIcon />
-										</IconButton>
-										<IconButton sx={{color:"red"}} size="small">
-											<DeleteIcon />
-										</IconButton>
-									</ButtonGroup>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>30000</td>
-								<td>Larry the Bird</td>
-								<td>2023-12-01</td>
-								<td>
-									<ButtonGroup size="small">
-										<IconButton color="success" size="small">
-											<EditIcon />
-										</IconButton>
-										<IconButton sx={{color:"red"}} size="small">
-											<DeleteIcon />
-										</IconButton>
-									</ButtonGroup>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>30000</td>
-								<td>Larry the Bird</td>
-								<td>2023-12-01</td>
-								<td>
-									<ButtonGroup size="small">
-										<IconButton color="success" size="small">
-											<EditIcon />
-										</IconButton>
-										<IconButton sx={{color:"red"}} size="small">
-											<DeleteIcon />
-										</IconButton>
-									</ButtonGroup>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>30000</td>
-								<td>Larry the Bird</td>
-								<td>2023-12-01</td>
-								<td>
-									<ButtonGroup size="small">
-										<IconButton color="success" size="small">
-											<EditIcon />
-										</IconButton>
-										<IconButton sx={{color:"red"}} size="small">
-											<DeleteIcon />
-										</IconButton>
-									</ButtonGroup>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>30000</td>
-								<td>Larry the Bird</td>
-								<td>2023-12-01</td>
-								<td>
-									<ButtonGroup size="small">
-										<IconButton color="success" size="small">
-											<EditIcon />
-										</IconButton>
-										<IconButton sx={{color:"red"}} size="small">
-											<DeleteIcon />
-										</IconButton>
-									</ButtonGroup>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>30000</td>
-								<td>Larry the Bird</td>
-								<td>2023-12-01</td>
-								<td>
-									<ButtonGroup size="small">
-										<IconButton color="success" size="small">
-											<EditIcon />
-										</IconButton>
-										<IconButton sx={{color:"red"}} size="small">
-											<DeleteIcon />
-										</IconButton>
-									</ButtonGroup>
-								</td>
-							</tr>
+						)}
 						</tbody>
 					</table>
 				</div>
