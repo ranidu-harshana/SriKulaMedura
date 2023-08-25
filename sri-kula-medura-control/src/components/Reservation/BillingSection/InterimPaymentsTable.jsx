@@ -3,11 +3,19 @@ import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {useDispatch, useSelector} from "react-redux";
-import {addInterimPayments, selectAllInterimPayment} from "../../../store/slices/InterimPaymentSlice";
 import {Link} from "react-router-dom";
-import {useEffect} from "react";
-import {getAllInterimPayments} from "../../../repository/InterimPaymentRepository";
+import {useEffect, useState} from "react";
+import {
+	deleteInterimPaymentOfReservation,
+	getAllInterimPayments, storeInterimPayment,
+} from "../../../repository/InterimPaymentRepository";
 import Table from "../../Table/Table";
+import notify from "../../../utils/notify";
+import {
+	addInterimPayments,
+	deleteInterimPayment, saveInterimPayment,
+	selectAllInterimPayment
+} from "../../../store/slices/InterimPaymentSlice";
 
 const InterimPaymentsTable = () => {
 	const interimPayments = useSelector(selectAllInterimPayment)
@@ -32,14 +40,13 @@ const InterimPaymentsTable = () => {
 		}
 	}, [dispatcher, interimPayments]);
 
+
 	return (
 		<>
 			<div className="tab-content-container">
-				<div className="row mb-2">
 					<div className={'row'}>
 						<h5 className={'col'}>All Interim Payments</h5>
 					</div>
-				</div>
 				<div className="row reservation-section-table px-2">
 					<Table columns={columns} payload={interimPayments}/>
 				</div>
@@ -50,21 +57,34 @@ const InterimPaymentsTable = () => {
 
 export default InterimPaymentsTable;
 
-const InterimActionBtn = (props) =>  {
-	const id = props.valueFormatted ? props.valueFormatted : props.value;
+const InterimActionBtn = (props) => {
+	const { valueFormatted, value, interimPaymentId, reservationId} = props;
+	const id = valueFormatted ? valueFormatted : value;
+
+	const dispatcher = useDispatch();
+
+	const handleDelete = () => {
+		deleteInterimPaymentOfReservation(reservationId, interimPaymentId)
+			.then(() => {
+				dispatcher(deleteInterimPayment({ id: interimPaymentId }));
+				notify(1, "Interim Payment Deleted Successfully");
+			})
+			.catch(error => {
+				console.error("Error deleting Interim payment:", error);
+				notify(0, "An error occurred while deleting Interim payment");
+			});
+	};
 
 	return (
-		<>
-			<ButtonGroup aria-label="button group">
-				<Link to={`/interim-payment/${id}`}>
-					<IconButton aria-label="fingerprint" color="success">
-						<EditIcon />
-					</IconButton>
-				</Link>
-				<IconButton sx={{color:"red"}} size="small">
-					<DeleteIcon />
+		<ButtonGroup aria-label="button group">
+			<Link to={`/interim-payment/reservation/${id}`}>
+				<IconButton aria-label="edit" color="success">
+					<EditIcon />
 				</IconButton>
-			</ButtonGroup>
-		</>
+			</Link>
+			<IconButton sx={{ color: "red" }} size="small" aria-label="delete" color="error" onClick={handleDelete}>
+				<DeleteIcon />
+			</IconButton>
+		</ButtonGroup>
 	);
 }

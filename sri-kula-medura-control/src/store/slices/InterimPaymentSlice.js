@@ -14,10 +14,12 @@ const interimPaymentSlice = createSlice({
             }
         },
         saveInterimPayment: interimPaymentState.addOne,
+        deleteInterimPayment: interimPaymentState.removeOne,
         clearInterimPaymentState: interimPaymentState.removeAll
     }
+
 })
 
-export const {addInterimPayments, saveInterimPayment, clearInterimPaymentState} = interimPaymentSlice.actions
+export const {addInterimPayments, saveInterimPayment,deleteInterimPayment, clearInterimPaymentState} = interimPaymentSlice.actions
 export const { selectAll: selectAllInterimPayment } = interimPaymentState.getSelectors(store => store.interim_payment);
 export default interimPaymentSlice.reducer
