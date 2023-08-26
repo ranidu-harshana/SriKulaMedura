@@ -1,12 +1,14 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.BillingDTO;
+import com.skm.skmserver.dto.Email.TransactionEmailDTO;
 import com.skm.skmserver.dto.InterimPaymentDTO;
 import com.skm.skmserver.entity.Billing;
 import com.skm.skmserver.entity.InterimPayment;
 import com.skm.skmserver.repo.CustomerRepository;
 import com.skm.skmserver.repo.InterimPaymentRepository;
 import com.skm.skmserver.repo.ReservationRepository;
+import com.skm.skmserver.service.EmailService;
 import com.skm.skmserver.service.InterimPaymentService;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.util.MapAll;
@@ -25,6 +27,7 @@ public class InterimPaymentServiceImpl implements InterimPaymentService , MainSe
     private final CustomerRepository customerRepository;
     private final MapAll<InterimPayment , InterimPaymentDTO> mapAll;
     private final InterimPayment newInterimPayment;
+    private final EmailService emailService;
 
     public List<InterimPaymentDTO> allInterimPayments(){
         return mapAll.mapAllAttributesToDTO(interimPaymentRepository.findAll(),this);
@@ -34,6 +37,12 @@ public class InterimPaymentServiceImpl implements InterimPaymentService , MainSe
         InterimPayment interimPayment = interimPaymentRepository.save(InterimPayment.builder(newInterimPayment)
                 .interim_payment(interimPaymentDTO.getInterim_payment())
                 .reservation(reservationRepository.findById(interimPaymentDTO.getReservation_id()))
+                .build());
+        emailService.sendTransactionInvoiceEmail(TransactionEmailDTO.builder()
+                .subject("Payment Acknowledgement")
+                .paymentType("Interim Payment")
+                .amount(String.valueOf(interimPaymentDTO.getInterim_payment()))
+                .recipient(reservationRepository.findById(interimPaymentDTO.getReservation_id()).getCustomer().getUser().getEmail())
                 .build());
         return set(interimPayment);
     }
