@@ -1,14 +1,15 @@
 import Reservation from "../../components/Reservation/Reservation";
 import {useParams} from "react-router-dom";
-import {useSelector} from "react-redux";
-import {selectByIdReservation} from "../../store/slices/reservationSlice";
+import NotificationContainer from "../../components/ToastNotification/NotificationContainer";
 
 const ReservationProfile = (props) => {
 	const {id} = useParams()
-	const reservation = useSelector((state)=>selectByIdReservation(state, id))
 
 	return (
-		<><Reservation {...reservation}/></>
+		<>
+			<Reservation id={id}/>
+			<NotificationContainer />
+		</>
 	);
 }
 

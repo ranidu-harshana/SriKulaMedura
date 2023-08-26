@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -16,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Builder
+@Builder(builderMethodName = "internalBuilder")
+@Component
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,4 +87,30 @@ public class Reservation {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Branch branch;
+
+    @OneToOne(mappedBy = "reservation")
+    private Billing billing;
+
+    public static ReservationBuilder builder(Reservation reservation) {
+        if (reservation == null) {
+            return internalBuilder();
+        }
+        return internalBuilder()
+                .id(reservation.getId())
+                .bill_number(reservation.getBill_number())
+                .function_date(reservation.getFunction_date())
+                .function_place(reservation.getFunction_place())
+                .no_of_bestmen(reservation.getNo_of_bestmen())
+                .no_of_pageboys(reservation.getNo_of_pageboys())
+                .dressing_place(reservation.getDressing_place())
+                .goingaway_change_place(reservation.getGoingaway_change_place())
+                .status(reservation.isStatus())
+                .measurement_date(reservation.getMeasurement_date())
+                .created_at(reservation.getCreated_at())
+                .updated_at(reservation.getUpdated_at())
+                .user(reservation.getUser())
+                .customer(reservation.getCustomer())
+                .branch(reservation.getBranch())
+                .billing(reservation.getBilling());
+    }
 }

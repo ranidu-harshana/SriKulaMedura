@@ -1,18 +1,20 @@
 package com.skm.skmserver.controller;
 
+import com.skm.skmserver.dto.CommonBooleanDTO;
 import com.skm.skmserver.dto.ItemDTO;
+import com.skm.skmserver.entity.Type;
 import com.skm.skmserver.service.serviceImpl.ItemServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/item")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ItemController {
     private final ItemServiceImpl itemService;
-    public ItemController(ItemServiceImpl itemService) {
-        this.itemService = itemService;
-    }
 
     @GetMapping("/")
     public List<ItemDTO> index(){
@@ -50,5 +52,15 @@ public class ItemController {
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id){
         return "edit";
+    }
+
+    @GetMapping("/search/{query}/{type}")
+    public List<ItemDTO> searchItem (@PathVariable String query, @PathVariable String type) {
+        return itemService.searchItemsByItemCodeOrItemName(query, type);
+    }
+
+    @GetMapping("/check/exist/{query}/{type}")
+    public CommonBooleanDTO checkItemExist(@PathVariable String query, @PathVariable String type) {
+        return itemService.checkItemExist(query, type);
     }
 }

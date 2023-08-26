@@ -17,8 +17,12 @@ import {controlActivity} from "../../context/ControlActivity";
 import Avatar from "@mui/material/Avatar";
 import {Divider, ListItemIcon} from "@mui/material";
 import {Logout, Settings} from "@mui/icons-material";
+import {useTranslation} from "react-i18next";
+import Clock from 'react-live-clock';
+import './TopNav.css'
 
 const TopNav =()=> {
+    const {i18n} = useTranslation()
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
     const {setSideNavVisibility, matchesMedia768} = useContext(controlActivity)
@@ -43,6 +47,12 @@ const TopNav =()=> {
     };
 
     const menuId = 'primary-search-account-menu';
+
+    const lngs = {
+        en: { nativeName: 'En' },
+        si: { nativeName: 'සිං' }
+    };
+
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
@@ -150,6 +160,20 @@ const TopNav =()=> {
                         Admin
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
+                    <Box>
+                        <button className={'btn btn-sm clockbtn me-3'}>
+                            <Clock format={'LTS'} ticking={true} timezone={Intl.DateTimeFormat().resolvedOptions().timeZone}/>
+                        </button>
+                    </Box>
+                    <Box>
+                        <div className="btn-group" role="group">
+                            {Object.keys(lngs).map((lng) => (
+                                <button key={lng} className={`btn btn-sm ${i18n.resolvedLanguage === lng ? 'language-btn-active' : 'language-btn'}`} type="submit" onClick={() => i18n.changeLanguage(lng)}>
+                                    {lngs[lng].nativeName}
+                                </button>
+                            ))}
+                        </div>
+                    </Box>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                             <Badge badgeContent={4} color="error">

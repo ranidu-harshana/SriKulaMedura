@@ -10,6 +10,7 @@ import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -19,6 +20,7 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     private final CostRepository costRepository;
     private final ReservationRepository reservationRepository;
     private final MapAll<Cost,CostDTO> mapAll;
+    private final Cost newCost;
 
     public List<CostDTO> allCosts() {
         return mapAll.mapAllAttributesToDTO(costRepository.findAll(), this);
@@ -39,18 +41,16 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
 
     public CostDTO updateCost(CostDTO costDTO, int id) {
         Cost cost = costRepository.findById(id);
-        return set(costRepository.save(Cost.builder()
-                .id(cost.getId())
+        return set(costRepository.save(Cost.builder(cost)
                 .transport(costDTO.getTransport())
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
                 .depreciation(costDTO.getDepreciation())
-                .reservation(reservationRepository.findById(cost.getReservation().getId()))
                 .build()));
     }
 
     public CostDTO saveCost(CostDTO costDTO) {
-        Cost cost = costRepository.save(Cost.builder()
+        Cost cost = costRepository.save(Cost.builder(newCost)
                 .transport(costDTO.getTransport())
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
@@ -62,15 +62,6 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
 
     @Override
     public CostDTO set(Cost cost) {
-        return CostDTO.builder()
-                .id(cost.getId())
-                .transport(cost.getTransport())
-                .salary(cost.getSalary())
-                .cleaning(cost.getCleaning())
-                .depreciation(cost.getDepreciation())
-                .created_at(cost.getCreated_at())
-                .updated_at(cost.getUpdated_at())
-                .reservation_id(cost.getReservation().getId())
-                .build();
+        return CostDTO.builder(cost).build();
     }
 }

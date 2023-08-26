@@ -3,6 +3,8 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import LoginPage from "../pages/Login/LoginPage";
+import RegisterPage from "../pages/Register/RegisterPage";
+import FaqPage from "../pages/Faq/FaqPage";
 
 const router = createBrowserRouter([
 	{
@@ -14,8 +16,12 @@ const router = createBrowserRouter([
 		element: <Home />,
 	},
 	{
-		path:"/skm/login",
+		path:"/login",
 		element: <LoginPage />,
+	},
+	{
+		path:"/register",
+		element: <RegisterPage />,
 	},
 	{
 		path:"skm",
@@ -24,6 +30,10 @@ const router = createBrowserRouter([
 			{
 				path:"aboutus",
 				element: <AboutUs />
+			},
+			{
+				path:"faq",
+				element: <FaqPage />
 			},
 		],
 	}

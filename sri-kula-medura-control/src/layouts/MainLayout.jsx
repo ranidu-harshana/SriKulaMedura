@@ -6,6 +6,7 @@ import {controlActivity} from "../context/ControlActivity";
 import {useContext} from "react";
 
 const MainLayout = (props) => {
+	const windowHeight = window.innerHeight - 110
 	const {sideNavVisibility, setSideNavVisibility, matchesMedia768} = useContext(controlActivity)
 
 	return (<>
@@ -16,7 +17,7 @@ const MainLayout = (props) => {
 				</div>
 				<div className={sideNavVisibility ? "content-wrapper" : "content-wrapper-open-side-nav"}
 				     onClick={() => setSideNavVisibility(matchesMedia768)}>
-					<div className="content">
+					<div className="content" style={{minHeight: `${windowHeight}px`}}>
 						<Outlet/>
 					</div>
 				</div>

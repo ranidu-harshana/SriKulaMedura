@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
+@Builder(builderMethodName = "internalBuilder")
+@Component
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,7 @@ public class Item {
     private String item_name;
     private String item_type;
     private String item_image_url;
+    private double item_price;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,4 +50,21 @@ public class Item {
 
     @OneToMany(mappedBy = "item")
     private List<WishList> wishlist;
+
+    public static ItemBuilder builder(Item item) {
+        if (item == null) {
+            return internalBuilder();
+        }
+        return internalBuilder()
+                .id(item.getId())
+                .item_code(item.getItem_code())
+                .item_name(item.getItem_name())
+                .item_type(item.getItem_type())
+                .item_image_url(item.getItem_image_url())
+                .item_price(item.getItem_price())
+                .created_at(item.getCreated_at())
+                .updated_at(item.getUpdated_at())
+                .rented_status(item.isRented_status())
+                .item_category(item.getItem_category());
+    }
 }

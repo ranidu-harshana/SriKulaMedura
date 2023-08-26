@@ -1,20 +1,20 @@
 package com.skm.skmserver.controller;
 
-import com.skm.skmserver.dto.ReservationDTO;
+import com.skm.skmserver.dto.Reservation.BestMenPageBoysCountDTO;
+import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
+import com.skm.skmserver.dto.Reservation.ReservationDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/reservation")
+@RequiredArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ReservationController {
     private final ReservationServiceImpl reservationService;
-
-    public ReservationController(ReservationServiceImpl reservationServiceImpl) {
-        this.reservationService = reservationServiceImpl;
-    }
 
     @GetMapping("/")
     public List<ReservationDTO> index(){
@@ -22,8 +22,8 @@ public class ReservationController {
     }
 
     @PostMapping("/")
-    public ReservationDTO store(@RequestBody ReservationDTO reservationDTO){
-        return reservationService.saveReservation(reservationDTO);
+    public ReservationDTO store(@RequestBody ReservationCustomerDTO reservationCusDTO){
+        return reservationService.saveReservation(reservationCusDTO);
     }
 
     @GetMapping("/create")
@@ -52,5 +52,10 @@ public class ReservationController {
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable int id){
         return "edit";
+    }
+
+    @PostMapping("/bestmenpageboys/count")
+    public ReservationDTO saveBestMenPageBoysCount(@RequestBody BestMenPageBoysCountDTO bestMenPageBoysCountDTO) {
+        return reservationService.saveBestMenPageBoysCount(bestMenPageBoysCountDTO);
     }
 }

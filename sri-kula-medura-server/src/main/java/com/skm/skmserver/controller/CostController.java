@@ -4,11 +4,13 @@ import com.skm.skmserver.dto.CostDTO;
 import com.skm.skmserver.service.serviceImpl.CostServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/cost")
 @RequiredArgsConstructor
+@CrossOrigin
 public class CostController {
     private final CostServiceImpl costService;
 

@@ -1,0 +1,29 @@
+.clockbtn {
+    font-weight: bold;
+    background-color: white;
+    color: black;
+}
+
+.language-btn-active {
+    font-weight: bold;
+    background-color: #76D219;
+    color: white
+}
+
+.language-btn {
+    font-weight: normal;
+    background-color: white;
+    color: black;
+}
+
+.language-btn-active:hover {
+    font-weight: bold;
+    background-color: #8FE737;
+    color: white
+}
+
+.language-btn:hover {
+    font-weight: normal;
+    background-color: #D2D119;
+    color: black;
+}

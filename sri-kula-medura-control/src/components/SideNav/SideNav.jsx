@@ -15,7 +15,7 @@ const SideNav = () => {
 		{title: "Branch", link: "branch", submenu: false, icon: <DomainIcon/>},
 		{title: "Customers", link: "#", submenu: false, icon: <PeopleIcon/>},
 		{title: "Reservations", link: "#", submenu: true, icon: <DomainIcon/>, subMenuLinks: [
-				{title: "Reservations List", link: "allreservations"}, {title: "Add Reservation"}
+				{title: "Reservations List", link: "allreservations"}, {title: "Add Reservation", link: "createreservation"}
 			]
 		},
 		{title: "Item", link: "#", submenu: true, icon: <InventoryIcon/>, subMenuLinks: [
@@ -29,7 +29,7 @@ const SideNav = () => {
 				{title: "Create Employee", link: "createemployee"}
 			]
 		},
-		{title: "Chat", link: "chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5},
+		{title: "Chat", link: "chat", submenu: false, icon: <QuestionAnswerIcon/>, chatCount: 5, isChat: true},
 		{title: "Reports", link: "#", submenu: true, icon: <FlagIcon/>, subMenuLinks: [
 				{title: "Wedding Reservation"},
 				{title: "Reserved Items"},

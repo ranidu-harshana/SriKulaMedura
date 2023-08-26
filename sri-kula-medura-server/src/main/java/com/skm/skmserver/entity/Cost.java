@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -14,7 +15,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Builder
+@Builder(builderMethodName = "internalBuilder")
+@Component
 public class Cost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,4 +47,19 @@ public class Cost {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Reservation reservation;
+
+    public static CostBuilder builder(Cost cost) {
+        if (cost == null) {
+            return internalBuilder();
+        }
+        return internalBuilder()
+                .id(cost.getId())
+                .transport(cost.getTransport())
+                .salary(cost.getSalary())
+                .cleaning(cost.getCleaning())
+                .depreciation(cost.getDepreciation())
+                .created_at(cost.getCreated_at())
+                .updated_at(cost.getUpdated_at())
+                .reservation(cost.getReservation());
+    }
 }

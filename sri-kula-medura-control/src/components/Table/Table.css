@@ -7,3 +7,9 @@
 .filter-text-container {
     width: 50%;
 }
+
+@media screen and (max-width: 768px) {
+    .filter-text-container {
+        width: 100%;
+    }
+}

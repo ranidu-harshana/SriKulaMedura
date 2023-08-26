@@ -1,4 +1,5 @@
 package com.skm.skmserver.entity;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -14,7 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Builder
+@Builder(builderMethodName = "internalBuilder")
+@Component
 public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,4 +45,17 @@ public class Branch {
 
     @OneToMany(mappedBy = "branch")
     private List<UserBranches> user_branches;
+
+    public static BranchBuilder builder(Branch branch) {
+        if (branch == null) {
+            return internalBuilder();
+        }
+        return internalBuilder()
+                .id(branch.getId())
+                .name(branch.getName())
+                .status(branch.isStatus())
+                .prefix(branch.getPrefix())
+                .created_at(branch.getCreated_at())
+                .updated_at(branch.getUpdated_at());
+    }
 }

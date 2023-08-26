@@ -18,14 +18,14 @@ import java.util.List;
 public class ItemCategoryServiceImpl implements ItemCategoryService, MainService<ItemCategoryDTO, ItemCategory> {
     private final ItemCategoryRepository itemCategoryRepository;
     private final MapAll<ItemCategory, ItemCategoryDTO> mapAll;
-    private final ItemServiceImpl itemService;
+    private final ItemCategory newItemCategory;
 
     public List<ItemCategoryDTO> allItemCategories() {
         return mapAll.mapAllAttributesToDTO(itemCategoryRepository.findAll(), this);
     }
 
     public ItemCategoryDTO saveItemCategory(ItemCategoryDTO itemCategoryDTO) {
-        ItemCategory itemCategory = itemCategoryRepository.save(ItemCategory.builder()
+        ItemCategory itemCategory = itemCategoryRepository.save(ItemCategory.builder(newItemCategory)
                 .category_name(itemCategoryDTO.getCategory_name())
                 .build());
         return set(itemCategory);
@@ -38,10 +38,8 @@ public class ItemCategoryServiceImpl implements ItemCategoryService, MainService
 
     public ItemCategoryDTO updateItemCategory(ItemCategoryDTO itemCategoryDTO, int id) {
         ItemCategory itemCategory = itemCategoryRepository.findById(id);
-        return set(itemCategoryRepository.save(ItemCategory.builder()
-                .id(itemCategory.getId())
+        return set(itemCategoryRepository.save(ItemCategory.builder(itemCategory)
                 .category_name(itemCategoryDTO.getCategory_name())
-                .created_at(itemCategory.getCreated_at())
                 .build()));
     }
 
@@ -55,12 +53,6 @@ public class ItemCategoryServiceImpl implements ItemCategoryService, MainService
 
     @Override
     public ItemCategoryDTO set(ItemCategory itemCategory) {
-        return ItemCategoryDTO.builder()
-                .id(itemCategory.getId())
-                .category_name(itemCategory.getCategory_name())
-                .created_at(itemCategory.getCreated_at())
-                .updated_at(itemCategory.getUpdated_at())
-//                .items(itemCategory.getItems().stream().map(itemService::set).toList())
-                .build();
+        return ItemCategoryDTO.builder(itemCategory).build();
     }
 }

@@ -2,7 +2,12 @@ import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import {useState} from "react";
-import Typography from "@mui/material/Typography";
+import Bill from "./BillingSection/Bill";
+import Cost from "./CostsSection/Cost";
+import Note from "./NotesSection/Note";
+import DressSelection from "./DressSelectionSection/DressSelection";
+import Measurement from "./MeasurementSection/Measurement";
+import {useTranslation} from "react-i18next";
 
 const TabPanel = ({ children, value, index, ...other }) => {
 	return (
@@ -15,7 +20,7 @@ const TabPanel = ({ children, value, index, ...other }) => {
 		>
 			{value === index && (
 				<Box sx={{ p: 3 }}>
-					<Typography>{children}</Typography>
+					<div>{children}</div>
 				</Box>
 			)}
 		</div>
@@ -30,6 +35,7 @@ const a11yProps = (index) => {
 }
 
 const ReservationTabs = (props) => {
+	const {t} = useTranslation();
 	const [value, setValue] = useState(0);
 
 	const handleChange = (event, newValue) => {
@@ -44,28 +50,28 @@ const ReservationTabs = (props) => {
 				      variant="scrollable"
 				      scrollButtons="auto"
 				      aria-label="scrollable auto tabs example">
-					<Tab label="Measurements" {...a11yProps(0)} />
-					<Tab label="Dress Selection" {...a11yProps(1)} />
-					<Tab label="Bill" {...a11yProps(2)} />
-					<Tab label="Costs" {...a11yProps(3)} />
-					<Tab label="Notes" {...a11yProps(4)} />
-					<Tab label="Other" {...a11yProps(5)} />
+					<Tab label= {t('measurements')} {...a11yProps(0)} />
+					<Tab label={t('dressSelection(Jacket)')} {...a11yProps(1)} />
+					<Tab label={t('bill')} {...a11yProps(2)} />
+					<Tab label={t('costs')} {...a11yProps(3)} />
+					<Tab label={t('notes')} {...a11yProps(4)} />
+					<Tab label={t('other')} {...a11yProps(5)} />
 				</Tabs>
 			</Box>
 			<TabPanel value={value} index={0}>
-				Measurements
+				<Measurement/>
 			</TabPanel>
 			<TabPanel value={value} index={1}>
-				Dress Selection
+				<DressSelection/>
 			</TabPanel>
 			<TabPanel value={value} index={2}>
-				Bill
+				<Bill/>
 			</TabPanel>
 			<TabPanel value={value} index={3}>
-				Costs
+				<Cost/>
 			</TabPanel>
 			<TabPanel value={value} index={4}>
-				Notes
+				<Note/>
 			</TabPanel>
 			<TabPanel value={value} index={5}>
 				Other

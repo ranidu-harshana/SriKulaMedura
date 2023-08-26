@@ -23,28 +23,28 @@ const Table = ({payload, columns}) => {
 
 	return (
 		<div>
-				<div className="example-wrapper">
-					<div className="example-header">
-						<div className={'filter-text-container mb-2'}>
-							<div className="input-group flex-nowrap">
-								<span className="input-group-text" id="addon-wrapping"><SearchIcon/></span>
-								<input type="text" className="form-control" placeholder="Search" aria-label="Search" id="filter-text-box" onInput={onFilterTextBoxChanged}
-								       aria-describedby="addon-wrapping"/>
-							</div>
-						</div>
-
-						<div className="ag-theme-alpine" style={{width: "100%", height: `${windowHeight}px`}}>
-							<AgGridReact
-								ref={gridRef}
-								rowData={payload}
-								columnDefs={columns}
-								defaultColDef={defaultColDef}
-								pagination={true}
-								paginationAutoPageSize={true}
-							/>
+			<div className="example-wrapper">
+				<div className="example-header">
+					<div className={'filter-text-container mb-2'}>
+						<div className="input-group flex-nowrap">
+							<span className="input-group-text" id="addon-wrapping"><SearchIcon/></span>
+							<input type="text" className="form-control" placeholder="Search" aria-label="Search" id="filter-text-box" onInput={onFilterTextBoxChanged}
+							       aria-describedby="addon-wrapping"/>
 						</div>
 					</div>
+
+					<div className="ag-theme-alpine" style={{width: "100%", height: `${windowHeight}px`}}>
+						<AgGridReact
+							ref={gridRef}
+							rowData={payload}
+							columnDefs={columns}
+							defaultColDef={defaultColDef}
+							pagination={true}
+							paginationAutoPageSize={true}
+						/>
+					</div>
 				</div>
+			</div>
 		</div>
 	);
 }

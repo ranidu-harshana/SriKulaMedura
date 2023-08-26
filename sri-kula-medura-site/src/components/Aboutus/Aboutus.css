@@ -1,0 +1,49 @@
+@media screen and (max-width: 576px) {
+    .aboutUs-mid{
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+    }
+
+    .aboutLogo{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .aboutLogo{
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .aboutLogo{
+        width: 35%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .aboutLogo{
+        width: 35%;
+    }
+}
+
+
+
+
+
+.aboutUs-box{
+    background-color: #C9E8E0;
+    height: auto;
+}
+
+.aboutUs-mid{
+    background-color: white;
+    border-radius: 20px;
+}
+
+.aboutUs-mid-text{
+    font-size: 1.2rem;
+    text-align: center;
+    color: #8A9290;
+}

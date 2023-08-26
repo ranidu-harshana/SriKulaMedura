@@ -1,19 +1,17 @@
 package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.BranchDTO;
 import com.skm.skmserver.service.serviceImpl.BranchServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/branch")
+@RequiredArgsConstructor
 @CrossOrigin
 public class BranchController {
     private final BranchServiceImpl branchServiceImpl;
-
-    public BranchController(BranchServiceImpl branchServiceImpl) {
-        this.branchServiceImpl = branchServiceImpl;
-    }
 
     @GetMapping("/")
     public List<BranchDTO> index(){
