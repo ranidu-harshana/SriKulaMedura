@@ -1,5 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import com.skm.skmserver.dto.CostDTO;
 import com.skm.skmserver.entity.Cost;
 import com.skm.skmserver.repo.CostRepository;
@@ -24,6 +25,10 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
 
     public List<CostDTO> allCosts() {
         return mapAll.mapAllAttributesToDTO(costRepository.findAll(), this);
+    }
+
+    public List<CostDTO> allCostsOfReservation(int reservation) {
+        return mapAll.mapAllAttributesToDTO(costRepository.findAllByReservationId(reservation),this);
     }
 
     public CostDTO getCost(int id) {
