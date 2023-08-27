@@ -40,7 +40,7 @@ public class AdditionalPaymentServiceImpl implements AdditionalPaymentService ,M
 
     @Override
     public List<AdditionalPaymentDTO> allAdditionalPaymentsOfReservation(int reservation) {
-        return mapAll.mapAllAttributesToDTO(additionalPaymentRepository.findAllByReservationId(reservation),this);
+        return mapAll.mapAllAttributesToDTO(additionalPaymentRepository.findAllByReservationIdOrderByIdDesc(reservation),this);
     }
 
     public AdditionalPaymentDTO getAdditionalPayment(int id){

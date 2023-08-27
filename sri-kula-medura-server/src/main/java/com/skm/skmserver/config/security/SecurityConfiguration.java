@@ -29,7 +29,8 @@ public class SecurityConfiguration {
                         "/swagger-ui.html",
                         "/swagger-ui/**",
                         "/v3/api-docs",
-                        "/v3/api-docs/**"
+                        "/v3/api-docs/**",
+                        "api/v1/online-payment/**"
                 )
                 .permitAll()
                 .requestMatchers("/ws/**")

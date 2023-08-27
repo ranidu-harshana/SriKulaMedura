@@ -3,7 +3,7 @@ import {useContext, useRef, useState} from "react";
 import {Link} from "react-router-dom";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {controlActivity} from "../../context/ControlActivity";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setChatReceiverId} from "../../store/slices/chatSlice";
 import {webSocketConnection} from "../../context/WebSocketConnection";
 import './SideNav.css'

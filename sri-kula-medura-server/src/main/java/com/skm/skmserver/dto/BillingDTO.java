@@ -1,6 +1,7 @@
 package com.skm.skmserver.dto;
 
 import com.skm.skmserver.entity.Billing;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +15,8 @@ import java.util.Date;
 @Builder(builderMethodName = "internalBuilder")
 public class BillingDTO {
     private int id;
-    private double total_bill;
+    private double bill_amount;
+    private double amount_payable;
     private double discount;
     private double advance;
     private Date created_at;
@@ -24,7 +26,8 @@ public class BillingDTO {
     public static BillingDTOBuilder builder(Billing billing) {
         return internalBuilder()
                 .id(billing.getId())
-                .total_bill(billing.getTotal_bill())
+                .bill_amount(billing.getBill_amount())
+                .amount_payable(billing.getAmount_payable())
                 .discount(billing.getAdvance())
                 .advance(billing.getAdvance())
                 .created_at(billing.getCreated_at())

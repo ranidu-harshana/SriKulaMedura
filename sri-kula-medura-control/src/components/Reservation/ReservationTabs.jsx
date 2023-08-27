@@ -8,6 +8,7 @@ import Note from "./NotesSection/Note";
 import DressSelection from "./DressSelectionSection/DressSelection";
 import Measurement from "./MeasurementSection/Measurement";
 import {useTranslation} from "react-i18next";
+import Other from "./Other/Other";
 
 const TabPanel = ({ children, value, index, ...other }) => {
 	return (
@@ -74,7 +75,7 @@ const ReservationTabs = (props) => {
 				<Note/>
 			</TabPanel>
 			<TabPanel value={value} index={5}>
-				Other
+				<Other/>
 			</TabPanel>
 		</>
 	);

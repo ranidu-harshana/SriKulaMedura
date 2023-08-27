@@ -1,5 +1,7 @@
 package com.skm.skmserver.service;
 
-public interface BillingService {
+import com.skm.skmserver.dto.BillingDTO;
 
+public interface BillingService {
+    BillingDTO updateAmountPayable(BillingDTO billingDTO);
 }

@@ -22,8 +22,12 @@ public class Billing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    // Sum of all dresses price
     @Column(nullable = false)
-    private double total_bill;
+    private double bill_amount;
+
+    @Column(nullable = false)
+    private double amount_payable;
 
     @Column(nullable = true)
     private double discount;
@@ -51,7 +55,8 @@ public class Billing {
         }
         return internalBuilder()
                 .id(billing.getId())
-                .total_bill(billing.getTotal_bill())
+                .bill_amount(billing.getBill_amount())
+                .amount_payable(billing.getAmount_payable())
                 .discount(billing.getAdvance())
                 .advance(billing.getAdvance())
                 .created_at(billing.getCreated_at())

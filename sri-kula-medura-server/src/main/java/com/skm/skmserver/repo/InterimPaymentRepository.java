@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface InterimPaymentRepository extends JpaRepository<InterimPayment ,Integer> {
     InterimPayment findById(int id);
-    List<InterimPayment> findAllByReservationId(int reservationId);
+    List<InterimPayment> findAllByReservationIdOrderByIdDesc(int reservationId);
 }

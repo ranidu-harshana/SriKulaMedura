@@ -1,11 +1,10 @@
 import NoOfGroomsPageboys from "../Common/NoOfGroomsPageboys";
-import InterimPaymentsTable from "../BillingSection/InterimPaymentsTable";
 import {useParams} from "react-router-dom";
 import SelectingDressesView from "./DressSelect/SelectingDressesView";
 import SelectedDressesView from "./DressSelect/SelectedDressesView";
 import useGetOrSetDressSelections from "../../../hooks/useGetOrSetDressSelections";
 
-const DressSelection = (props) => {
+const DressSelection = () => {
 	const {id} = useParams()
 	const dressSelections = useGetOrSetDressSelections(id)
 
@@ -24,7 +23,7 @@ const DressSelection = (props) => {
 
 				<div className={'col-12 col-md-6 p-0 px-md-2 mt-3 mt-md-0'}>
 					<div className="tab-content-container">
-						<InterimPaymentsTable />
+						{/*<InterimPaymentsTable />*/}
 					</div>
 				</div>
 			</div>

@@ -38,6 +38,7 @@ public class ReservationDTO {
     private int user_id;
     private int branch_id;
     private String branch_name;
+    private double amount_payable;
     // TODO: rented date range should be added as a column
     private List<NoteDTO> notes;
     private List<MeasurementDTO> measurements;

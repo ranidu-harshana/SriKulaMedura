@@ -39,6 +39,11 @@ public class BillingController {
         return billingService.updateBilling(billingDTO,id);
     }
 
+    @PutMapping("/edit/payable")
+    public BillingDTO updateAmountPayable(@RequestBody BillingDTO billingDTO){
+        return billingService.updateAmountPayable(billingDTO);
+    }
+
     @DeleteMapping("/{id}")
     public String delete(@PathVariable int id){
         if(billingService.deleteBilling(id)){

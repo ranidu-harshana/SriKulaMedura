@@ -25,6 +25,7 @@ const initialState = reservationState.getInitialState({
 		user_id: null,
 		branch_id: null,
 		branch_name: null,
+		amount_payable: null
 	}
 })
 
@@ -61,7 +62,8 @@ const reservationSlice = createSlice({
 						  customer,
 				          user_id,
 				          branch_id,
-				          branch_name}) => ({
+				          branch_name,
+				          amount_payable}) => ({
 				payload: {
 					id,
 					bill_number,
@@ -80,7 +82,8 @@ const reservationSlice = createSlice({
 					customer,
 					user_id,
 					branch_id,
-					branch_name
+					branch_name,
+					amount_payable
 				}
 			})
 		},

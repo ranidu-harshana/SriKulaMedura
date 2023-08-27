@@ -17,6 +17,9 @@ import AllReservations from "../pages/Reservation/AllReservations";
 import ReservationProfile from "../pages/Reservation/ReservationProfile";
 import ProtectedRoute from "./ProtectedRoute";
 import WebSocketConnection from "../context/WebSocketConnection";
+import PaymentPage from "../pages/Payment/PaymentPage";
+import PaymentSuccessPage from "../pages/Payment/PaymentSuccessPage";
+import PaymentCancelPage from "../components/Payment/PaymentCancelPage";
 
 const router = createBrowserRouter([
 	{
@@ -96,6 +99,18 @@ const router = createBrowserRouter([
 				]
 			}
 		]
+	},
+	{
+		path: "skm/payment/:id",
+		element: <PaymentPage/>
+	},
+	{
+		path: "skm/payment/success",
+		element: <PaymentSuccessPage/>
+	},
+	{
+		path: "skm/payment/cancel",
+		element: <PaymentCancelPage/>
 	}
 ])
 const AppRouter = (props) => {

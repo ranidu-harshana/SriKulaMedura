@@ -28,7 +28,8 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
 
     public BillingDTO saveBilling(BillingDTO billingDTO) {
         Billing billing = billingRepository.save(Billing.builder(newBilling)
-                .total_bill(billingDTO.getTotal_bill())
+                .bill_amount(billingDTO.getBill_amount())
+                .amount_payable(billingDTO.getAmount_payable())
                 .advance(billingDTO.getAdvance())
                 .discount(billingDTO.getDiscount())
                 .reservation(reservationRepository.findById(billingDTO.getReservation_id()))
@@ -44,7 +45,8 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
     public BillingDTO updateBilling(BillingDTO billingDTO, int id){
         Billing billing = billingRepository.findById(id);
         return set(billingRepository.save(Billing.builder(billing)
-                        .total_bill(billingDTO.getTotal_bill())
+                        .bill_amount(billingDTO.getBill_amount())
+                        .amount_payable(billingDTO.getAmount_payable())
                         .advance(billingDTO.getAdvance())
                         .discount(billingDTO.getDiscount())
                 .build()));
@@ -60,5 +62,13 @@ public class BillingServiceImpl implements BillingService, MainService<BillingDT
 
     public BillingDTO set(Billing billing) {
         return BillingDTO.builder(billing).build();
+    }
+
+    @Override
+    public BillingDTO updateAmountPayable(BillingDTO billingDTO) {
+        Billing billing = billingRepository.findByReservation(reservationRepository.findById(billingDTO.getReservation_id()));
+        return set(billingRepository.save(Billing.builder(billing)
+                .amount_payable(billingDTO.getAmount_payable())
+                .build()));
     }
 }

@@ -49,7 +49,7 @@ public class InterimPaymentServiceImpl implements InterimPaymentService , MainSe
 
     @Override
     public List<InterimPaymentDTO> allInterimPaymentsOfReservation(int reservation) {
-        return mapAll.mapAllAttributesToDTO(interimPaymentRepository.findAllByReservationId(reservation),this);
+        return mapAll.mapAllAttributesToDTO(interimPaymentRepository.findAllByReservationIdOrderByIdDesc(reservation),this);
     }
 
     public InterimPaymentDTO getInterimPayment(int id){

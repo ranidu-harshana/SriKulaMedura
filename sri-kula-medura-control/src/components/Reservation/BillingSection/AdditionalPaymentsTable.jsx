@@ -4,10 +4,28 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {useParams} from "react-router-dom";
 import useBillGenerator from "../../../hooks/useBillGenerator";
+import {useEffect} from "react";
+import {addAdditionalPayments, clearAdditionalPaymentState} from "../../../store/slices/additionalPaymentSlice";
+import {getAllAdditionalPaymentsByReservation} from "../../../repository/additionalPaymentRepository";
+import {useDispatch} from "react-redux";
 
 const AdditionalPaymentsTable = () => {
 	const {id} = useParams()
 	const {additionalPayments} = useBillGenerator(id)
+	const dispatcher = useDispatch()
+
+	useEffect(() => {
+		if (additionalPayments[0]?.reservation_id !== undefined && additionalPayments[0]?.reservation_id !== parseInt(id)) {
+			dispatcher(clearAdditionalPaymentState())
+		}
+		if (additionalPayments.length <= 0) {
+			getAllAdditionalPaymentsByReservation(id)
+				.then((res) => {
+					dispatcher(addAdditionalPayments(res.data))
+				})
+				.catch(err => console.log(err))
+		}
+	}, [id, dispatcher, additionalPayments])
 
 	return (
 		<>

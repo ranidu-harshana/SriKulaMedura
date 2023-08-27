@@ -5,13 +5,11 @@ import com.skm.skmserver.dto.Customer.CustomerUserDTO;
 import com.skm.skmserver.dto.Reservation.BestMenPageBoysCountDTO;
 import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
 import com.skm.skmserver.dto.Reservation.ReservationDTO;
+import com.skm.skmserver.entity.Billing;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.entity.User;
 import com.skm.skmserver.enums.Role;
-import com.skm.skmserver.repo.BranchRepo;
-import com.skm.skmserver.repo.CustomerRepository;
-import com.skm.skmserver.repo.ReservationRepository;
-import com.skm.skmserver.repo.UserRepository;
+import com.skm.skmserver.repo.*;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.ReservationService;
 import com.skm.skmserver.util.MapAll;
@@ -30,12 +28,12 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     private final ReservationRepository reservationRepository;
     private final CustomerRepository customerRepository;
     private final UserRepository userRepository;
+    private final BillingRepository billingRepository;
     private final BranchRepo branchRepo;
     private final UserServiceImpl userService;
     private final MapAll<Reservation, ReservationDTO> mapAll;
     private Reservation newReservation;
     private User newUser;
-
 
     @Override
     public List<ReservationDTO> allReservations() {
@@ -110,8 +108,15 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                 .status(reservation.getCustomer().isStatus())
                 .discount(reservation.getCustomer().getDiscount())
                 .build();
+        double amount_payable = 0.0;
+        try {
+            amount_payable = billingRepository.findByReservation(reservation).getBill_amount();
+        } catch (Exception e) {
+            amount_payable = 0.0;
+        }
         return ReservationDTO.builder(reservation)
                 .customer(customerUserDTO)
+                .amount_payable(amount_payable)
                 .build();
     }
 }
