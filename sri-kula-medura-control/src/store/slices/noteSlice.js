@@ -13,10 +13,11 @@ const noteSlice = createSlice({
                 noteState.upsertMany(state, action.payload)
             }
         },
-        saveNote: noteState.addOne
+        saveNote: noteState.addOne,
+        clearNoteState:noteState.removeAll
     }
 })
 
-export const {addNotes, saveNote} = noteSlice.actions
+export const {addNotes, saveNote,clearNoteState} = noteSlice.actions
 export const {selectAll :selectAllNotes} = noteState.getSelectors(store => store.note)
 export default noteSlice.reducer
