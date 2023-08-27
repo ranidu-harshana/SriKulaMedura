@@ -1,5 +1,6 @@
 package com.skm.skmserver.controller;
 
+import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,11 @@ public class NoteController {
     @GetMapping("/create")
     public String create(){
         return "";
+    }
+
+    @GetMapping("/reservation/{reservation}")
+    public List<NoteDTO> noteOfReservation(@PathVariable int reservation) {
+        return noteService.allNotesOfReservation(reservation);
     }
 
     @GetMapping("/{id}")

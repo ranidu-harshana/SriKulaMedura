@@ -2,8 +2,30 @@ import {ButtonGroup} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {addNotes, clearNoteState, selectAllNotes} from "../../../store/slices/noteSlice";
+import {useEffect} from "react";
+import {getAllNoteOfReservation} from "../../../repository/noteRepository";
 
 const NoteTable = (props) => {
+    const {id} = useParams()
+    const notes = useSelector(selectAllNotes)
+    const dispatcher = useDispatch()
+    
+    useEffect(() => {
+        if (notes[0]?.reservation_id !== undefined && notes[0]?.reservation_id !== parseInt(id)) {
+            dispatcher(clearNoteState())
+        }
+        if (notes.length <= 0) {
+            getAllNoteOfReservation(id)
+                .then((res) => {
+                    dispatcher(addNotes(res.data))
+                })
+                .catch(err => console.log(err))
+        }
+    }, [id, dispatcher, notes])
+
     return (
         <>
             <div className="tab-content-container">
@@ -23,10 +45,11 @@ const NoteTable = (props) => {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>sdjfnsdfkjsndfkjdsfnskfjnsfj Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam debitis dolores hic inventore libero nemo nesciunt nihil, nisi obcaecati, omnis, perspiciatis velit voluptate! Architecto illo ipsa ipsum tempora ut!</td>
-                            <td>2023-12-01</td>
+                        {notes?.map((note,index)=>
+                        <tr key={index}>
+                            <th scope="row">{note.id}</th>
+                            <td>{note.note}</td>
+                            <td>{note.created_at}</td>
                             <td>
                                 <ButtonGroup size="small">
                                     <IconButton color="success" size="small">
@@ -38,96 +61,7 @@ const NoteTable = (props) => {
                                 </ButtonGroup>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>awdawdavfawcawd</td>
-                            <td>2023-12-01</td>
-                            <td>
-                                <ButtonGroup size="small">
-                                    <IconButton color="success" size="small">
-                                        <EditIcon />
-                                    </IconButton>
-                                    <IconButton sx={{color:"red"}} size="small">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </ButtonGroup>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>awdawdavfawcawd</td>
-                            <td>2023-12-01</td>
-                            <td>
-                                <ButtonGroup size="small">
-                                    <IconButton color="success" size="small">
-                                        <EditIcon />
-                                    </IconButton>
-                                    <IconButton sx={{color:"red"}} size="small">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </ButtonGroup>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>2023-12-01</td>
-                            <td>
-                                <ButtonGroup size="small">
-                                    <IconButton color="success" size="small">
-                                        <EditIcon />
-                                    </IconButton>
-                                    <IconButton sx={{color:"red"}} size="small">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </ButtonGroup>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>2023-12-01</td>
-                            <td>
-                                <ButtonGroup size="small">
-                                    <IconButton color="success" size="small">
-                                        <EditIcon />
-                                    </IconButton>
-                                    <IconButton sx={{color:"red"}} size="small">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </ButtonGroup>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>2023-12-01</td>
-                            <td>
-                                <ButtonGroup size="small">
-                                    <IconButton color="success" size="small">
-                                        <EditIcon />
-                                    </IconButton>
-                                    <IconButton sx={{color:"red"}} size="small">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </ButtonGroup>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>2023-12-01</td>
-                            <td>
-                                <ButtonGroup size="small">
-                                    <IconButton color="success" size="small">
-                                        <EditIcon />
-                                    </IconButton>
-                                    <IconButton sx={{color:"red"}} size="small">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </ButtonGroup>
-                            </td>
-                        </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>
