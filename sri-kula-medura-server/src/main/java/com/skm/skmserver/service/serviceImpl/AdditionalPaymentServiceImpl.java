@@ -1,12 +1,10 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.AdditionalPaymentDTO;
-import com.skm.skmserver.dto.Email.TransactionEmailDTO;
 import com.skm.skmserver.entity.AdditionalPayment;
 import com.skm.skmserver.repo.AdditionalPaymentRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.AdditionalPaymentService;
-import com.skm.skmserver.service.EmailService;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;

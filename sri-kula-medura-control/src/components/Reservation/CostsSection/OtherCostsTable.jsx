@@ -2,8 +2,29 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from "@mui/material/IconButton";
 import {ButtonGroup} from "@mui/material";
+import {useParams} from "react-router-dom";
+import {useEffect} from "react";
+import {addCost, clearCostState, selectAllCost} from "../../../store/slices/costSlice";
+import {getAllOtherCostByReservation} from "../../../repository/costRepository";
+import {useDispatch, useSelector} from "react-redux";
 
 const OtherCostsTable = (props) => {
+	const {id} = useParams()
+	const costs = useSelector(selectAllCost)
+	const dispatcher = useDispatch()
+
+	useEffect(()=>{
+		if(costs[0]?.reservation_id !== undefined && costs[0]?.reservation_id !== parseInt(id)){
+			dispatcher(clearCostState())
+		}
+		if(costs.length <= 0){
+			getAllOtherCostByReservation(id)
+				.then((res) =>{
+					dispatcher(addCost(res.data))
+				})
+		}
+	},[dispatcher,id,costs])
+
 	return (
 		<>
 			<div className="tab-content-container">
@@ -16,6 +37,7 @@ const OtherCostsTable = (props) => {
 					<table className="table table-striped table-sm table-hover">
 					<thead>
 						<tr>
+							<th scope="col">#</th>
 							<th scope="col">amount</th>
 							<th scope="col">Reason</th>
 							<th scope="col">Date</th>
@@ -23,10 +45,12 @@ const OtherCostsTable = (props) => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>2023-07-14</td>
+					{costs?.map((cost,index)=>
+						<tr key={index}>
+							<th scope="row">{cost.id}</th>
+							<td>{cost.other_cost}</td>
+							<td>{cost.reason}</td>
+							<td>{cost.created_at}</td>
 							<td>
 								<ButtonGroup size="small">
 									<IconButton color="success" size="small">
@@ -38,36 +62,7 @@ const OtherCostsTable = (props) => {
 								</ButtonGroup>
 							</td>
 						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae cum distinctio eum eveniet facilis illum, iste, necessitatibus quo rem similique totam unde! A consequatur dolore harum laudantium omnis voluptatem.</td>
-							<td>2023-07-14</td>
-							<td>
-								<ButtonGroup size="small">
-									<IconButton color="success" size="small">
-										<EditIcon />
-									</IconButton>
-									<IconButton sx={{color:"red"}} size="small">
-										<DeleteIcon />
-									</IconButton>
-								</ButtonGroup>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>@twitter Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad enim eum perspiciatis! Assumenda aut ducimus ea impedit molestias nemo, quis reiciendis soluta? Cum dignissimos eligendi esse ex labore laborum ratione.</td>
-							<td>2023-12-12</td>
-							<td>
-								<ButtonGroup size="small">
-									<IconButton color="success" size="small">
-										<EditIcon />
-									</IconButton>
-									<IconButton sx={{color:"red"}} size="small">
-										<DeleteIcon />
-									</IconButton>
-								</ButtonGroup>
-							</td>
-						</tr>
+						)}
 					</tbody>
 				</table>
 				</div>

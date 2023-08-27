@@ -1,5 +1,6 @@
 package com.skm.skmserver.controller;
 
+import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import com.skm.skmserver.dto.CostDTO;
 import com.skm.skmserver.service.serviceImpl.CostServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,11 @@ public class CostController {
     @PostMapping("/")
     public CostDTO store(@RequestBody CostDTO costDTO){
         return costService.saveCost(costDTO);
+    }
+
+    @GetMapping("/reservation/{reservation}")
+    public List<CostDTO> costsOfReservation(@PathVariable int reservation) {
+        return costService.allCostsOfReservation(reservation);
     }
 
     @GetMapping("/create")

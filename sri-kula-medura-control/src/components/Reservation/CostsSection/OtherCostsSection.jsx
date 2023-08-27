@@ -1,9 +1,34 @@
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import {useState} from "react";
+import {useParams} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import notify from "../../../utils/notify";
+import {saveCost} from "../../../store/slices/costSlice";
+import {storeCost} from "../../../repository/costRepository";
 
 const OtherCostsSection = (props) => {
-	const [otherCostAmount, setOtherCostAmount] = useState()
+	const [cost, setCost] = useState('')
+	const {id} = useParams()
+	const [reason ,setReason] = useState('')
+	const dispatcher = useDispatch()
+	const isSubmitDisabled = !cost || !reason;
+
+	const handleSubmit = () => {
+		storeCost(id, cost, reason)
+			.then(response => {
+				if (response.status === 200) {
+					dispatcher(saveCost({ ...response.data }));
+					notify(1, "Other Cost Added Successfully");
+				} else {
+					notify(0, "Other Cost not saved");
+				}
+			})
+			.catch(error => {
+				console.error("Error submitting Other Cost:", error);
+				notify(0, "An error occurred while saving Other Cost");
+			});
+	};
 
 	return (
 		<>
@@ -23,8 +48,8 @@ const OtherCostsSection = (props) => {
 									label="Amount"
 									id="amount"
 									size="small"
-									value={otherCostAmount}
-									onChange={(e) => setOtherCostAmount(e.target.value)}
+									value={cost}
+									onChange={(e) => setCost(e.target.value)}
 								/>
 							</FormControl>
 						</div>
@@ -32,13 +57,19 @@ const OtherCostsSection = (props) => {
 					<div className="row mb-3">
 						<p className={'col-3'}>Reason</p>
 						<div className={'col-9'}>
-							<textarea className="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+							<textarea className="form-control" id="exampleFormControlTextarea1" rows="4"
+									  value={reason}
+									  onChange={(e)=>setReason(e.target.value)}
+							></textarea>
 						</div>
 					</div>
 					<div className="row mb-3">
 						<div className="col-3"></div>
 						<div className="col-9 text-end">
-							<button className={'btn btn-success w-50 w-md-25'}>Submit</button>
+							<button className={'btn btn-success w-50 w-md-25'}
+									onClick={handleSubmit}
+									disabled={isSubmitDisabled}
+							>Submit</button>
 						</div>
 					</div>
 				</div>

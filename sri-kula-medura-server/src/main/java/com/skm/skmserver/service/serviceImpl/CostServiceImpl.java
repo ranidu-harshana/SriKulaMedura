@@ -1,5 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import com.skm.skmserver.dto.CostDTO;
 import com.skm.skmserver.entity.Cost;
 import com.skm.skmserver.repo.CostRepository;
@@ -26,6 +27,10 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
         return mapAll.mapAllAttributesToDTO(costRepository.findAll(), this);
     }
 
+    public List<CostDTO> allCostsOfReservation(int reservation) {
+        return mapAll.mapAllAttributesToDTO(costRepository.findAllByReservationId(reservation),this);
+    }
+
     public CostDTO getCost(int id) {
         Cost cost = costRepository.findById(id);
         return set(cost);
@@ -46,6 +51,8 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
                 .depreciation(costDTO.getDepreciation())
+                .reason(costDTO.getReason())
+                .other_cost(cost.getOther_cost())
                 .build()));
     }
 
@@ -55,6 +62,8 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
                 .depreciation(costDTO.getDepreciation())
+                .reason(costDTO.getReason())
+                .other_cost(costDTO.getOther_cost())
                 .reservation(reservationRepository.findById(costDTO.getReservation_id()))
                 .build());
         return set(cost);
