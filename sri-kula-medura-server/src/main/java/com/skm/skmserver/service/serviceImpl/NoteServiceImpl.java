@@ -1,5 +1,6 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import com.skm.skmserver.dto.NoteDTO;
 import com.skm.skmserver.entity.Note;
 import com.skm.skmserver.repo.NoteRepository;
@@ -31,6 +32,10 @@ public class NoteServiceImpl implements NoteService, MainService<NoteDTO,Note> {
     public NoteDTO getNote(int id) {
         Note note = noteRepository.findById(id);
         return set(note);
+    }
+
+    public List<NoteDTO> allNotesOfReservation(int reservation) {
+        return mapAll.mapAllAttributesToDTO(noteRepository.findAllByReservationId(reservation),this);
     }
 
     @Override
