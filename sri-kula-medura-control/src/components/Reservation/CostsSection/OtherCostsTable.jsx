@@ -4,9 +4,9 @@ import IconButton from "@mui/material/IconButton";
 import {ButtonGroup} from "@mui/material";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
-import {addCost, clearCostState, selectAllCost} from "../../../store/slices/costSlice";
-import {getAllOtherCostByReservation} from "../../../repository/costRepository";
+import {addCosts, clearCostState, selectAllCost} from "../../../store/slices/costSlice";
 import {useDispatch, useSelector} from "react-redux";
+import {getAllOtherCostByReservation} from "../../../repository/costRepository";
 
 const OtherCostsTable = (props) => {
 	const {id} = useParams()
@@ -14,17 +14,16 @@ const OtherCostsTable = (props) => {
 	const dispatcher = useDispatch()
 
 	useEffect(()=>{
-		if(costs[0]?.reservation_id !== undefined && costs[0]?.reservation_id !== parseInt(id)){
+		if (costs[0]?.reservation_id !== undefined && costs[0]?.reservation_id !== parseInt(id)) {
 			dispatcher(clearCostState())
 		}
-		if(costs.length <= 0){
+		if (costs.length <= 0) {
 			getAllOtherCostByReservation(id)
-				.then((res) =>{
-					dispatcher(addCost(res.data))
+				.then((res) => {
+					dispatcher(addCosts(res.data))
 				})
 		}
-	},[dispatcher,id,costs])
-
+	}, [id,dispatcher,costs])
 	return (
 		<>
 			<div className="tab-content-container">

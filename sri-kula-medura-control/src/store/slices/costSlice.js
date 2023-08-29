@@ -8,7 +8,7 @@ const costSlice = createSlice({
     name: 'cost',
     initialState,
     reducers: {
-        addCost: {
+        addCosts: {
             reducer: (state, action) => {
                 costState.upsertMany(state, action.payload)
             }
@@ -18,6 +18,6 @@ const costSlice = createSlice({
     }
 })
 
-export const {addCost, saveCost, clearCostState} = costSlice.actions
+export const {addCosts, saveCost, clearCostState} = costSlice.actions
 export const { selectAll: selectAllCost } = costState.getSelectors(store => store.cost);
 export default costSlice.reducer
