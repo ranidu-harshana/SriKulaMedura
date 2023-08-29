@@ -1,6 +1,5 @@
 package com.skm.skmserver.repo;
 
-import com.skm.skmserver.entity.AdditionalPayment;
 import com.skm.skmserver.entity.Cost;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
