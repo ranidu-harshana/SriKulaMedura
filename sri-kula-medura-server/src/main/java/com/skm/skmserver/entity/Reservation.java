@@ -71,6 +71,9 @@ public class Reservation {
     private List<Cost> costs;
 
     @OneToMany(mappedBy = "reservation")
+    private List<OtherCost> otherCosts;
+
+    @OneToMany(mappedBy = "reservation")
     private List<DressSelection> dress_selections;
 
     @OneToMany(mappedBy = "reservation")

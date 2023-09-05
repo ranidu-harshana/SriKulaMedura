@@ -47,7 +47,8 @@ public class OtherCost {
                 .other_cost(otherCost.getOther_cost())
                 .reason(otherCost.getReason())
                 .created_at(otherCost.getCreated_at())
-                .updated_at(otherCost.getUpdated_at());
+                .updated_at(otherCost.getUpdated_at())
+                .reservation(otherCost.getReservation());
     }
 
 }
