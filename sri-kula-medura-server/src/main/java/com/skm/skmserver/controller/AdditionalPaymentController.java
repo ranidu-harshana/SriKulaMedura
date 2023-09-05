@@ -2,6 +2,8 @@ package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import com.skm.skmserver.dto.InterimPaymentDTO;
+import com.skm.skmserver.exceptions.AdditionalDetails;
+import com.skm.skmserver.exceptions.ResourceNotFoundException;
 import com.skm.skmserver.service.serviceImpl.AdditionalPaymentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -46,11 +48,11 @@ public class AdditionalPaymentController {
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable int id){
+    public String delete(@PathVariable int id) {
         if(additionalPaymentService.deleteAdditionalPayment(id)){
             return "Reservation deleted successfully";
         }
-        return "Reservation delete failed";
+        throw new ResourceNotFoundException("Reservation deleted failed").additionalDetails("id", id);
     }
 
     @GetMapping("/{id}/edit")
