@@ -1,4 +1,4 @@
-package com.skm.skmserver.exception;
+package com.skm.skmserver.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {
