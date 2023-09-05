@@ -8,6 +8,11 @@ const getReservation = (id) => {
 	return Repository.get(`/reservation/`+id)
 }
 
+const getReservationsByDate = (date) => {
+	console.log(date)
+	return Repository.post(`/reservation/reservations/by-date`, {function_date: date})
+}
+
 const storeReservation = (name, address, branchId, mobile_no1, mobno2, function_date) => {
 	const user_id = 1; // TODO: Need to Handle this
 	return Repository.post('/reservation/', {
@@ -29,6 +34,7 @@ const storeBestMenPageBoysCount = (reservation_id, no_of_bestmen, no_of_pageboys
 export {
 	getAllReservations,
 	getReservation,
+	getReservationsByDate,
 	storeReservation,
 	storeBestMenPageBoysCount,
 }

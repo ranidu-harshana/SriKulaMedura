@@ -3,6 +3,7 @@ package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.Reservation.BestMenPageBoysCountDTO;
 import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
 import com.skm.skmserver.dto.Reservation.ReservationDTO;
+import com.skm.skmserver.dto.Reservation.ReservationDateDTO;
 import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -57,5 +58,12 @@ public class ReservationController {
     @PostMapping("/bestmenpageboys/count")
     public ReservationDTO saveBestMenPageBoysCount(@RequestBody BestMenPageBoysCountDTO bestMenPageBoysCountDTO) {
         return reservationService.saveBestMenPageBoysCount(bestMenPageBoysCountDTO);
+    }
+
+    @PostMapping("/reservations/by-date")
+    public List<ReservationDTO> getReservationsByDate(@RequestBody ReservationDateDTO reservationDateDTO) {
+        System.out.println(reservationDateDTO.getFunction_date());
+//        return reservationService.allReservationsByDate(reservationDateDTO);
+        return reservationService.allReservations();
     }
 }

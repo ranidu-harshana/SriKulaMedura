@@ -5,6 +5,7 @@ import com.skm.skmserver.dto.Customer.CustomerUserDTO;
 import com.skm.skmserver.dto.Reservation.BestMenPageBoysCountDTO;
 import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
 import com.skm.skmserver.dto.Reservation.ReservationDTO;
+import com.skm.skmserver.dto.Reservation.ReservationDateDTO;
 import com.skm.skmserver.entity.Billing;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.entity.User;
@@ -86,6 +87,11 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
         }
         reservationRepository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public List<ReservationDTO> allReservationsByDate(ReservationDateDTO reservationDateDTO) {
+        return mapAll.mapAllAttributesToDTO(reservationRepository.findAllByFunction_date(reservationDateDTO.getFunction_date()), this);
     }
 
     public ReservationDTO saveBestMenPageBoysCount(BestMenPageBoysCountDTO bestMenPageBoysCountDTO) {

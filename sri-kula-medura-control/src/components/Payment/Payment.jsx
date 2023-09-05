@@ -22,7 +22,7 @@ const Payment = () => {
 				<input type="hidden" name="merchant_id" value={paymentData?.merchant_id || ""} readOnly/>
 				<input type="hidden" name="return_url" value={PAYHERE_RETURN_URL} readOnly/>
 				<input type="hidden" name="cancel_url" value="http://sample.com/cancel" readOnly/>
-				<input type="hidden" name="notify_url" value="http://localhost:3000/skm/payment/notify" readOnly/>
+				<input type="hidden" name="notify_url" value="http://localhost:8080/api/v1/online-payment/notify_url" readOnly/>
 				Item Details<br/>
 				<input type="text" name="order_id" value={paymentData?.bill_number || ""} readOnly/><br/>
 				<input type="text" name="items" value="Interim Payment" readOnly/><br/>
