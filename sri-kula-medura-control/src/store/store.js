@@ -11,6 +11,7 @@ import noteSlice from "./slices/noteSlice";
 import interimPaymentSlice from "./slices/InterimPaymentSlice";
 import chatSlice from "./slices/chatSlice";
 import costSlice from "./slices/costSlice";
+import otherCostSlice from "./slices/otherCostSlice";
 
 
 const store = configureStore({
@@ -26,7 +27,8 @@ const store = configureStore({
 		note:noteSlice,
 		interim_payment:interimPaymentSlice,
 		chat: chatSlice,
-		cost:costSlice
+		cost:costSlice,
+		other_cost:otherCostSlice
 	}
 })
 

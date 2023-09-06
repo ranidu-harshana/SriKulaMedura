@@ -51,8 +51,6 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
                 .depreciation(costDTO.getDepreciation())
-                .reason(costDTO.getReason())
-                .other_cost(cost.getOther_cost())
                 .build()));
     }
 
@@ -62,8 +60,6 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
                 .depreciation(costDTO.getDepreciation())
-                .reason(costDTO.getReason())
-                .other_cost(costDTO.getOther_cost())
                 .reservation(reservationRepository.findById(costDTO.getReservation_id()))
                 .build());
         return set(cost);

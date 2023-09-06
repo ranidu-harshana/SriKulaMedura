@@ -4,26 +4,28 @@ import IconButton from "@mui/material/IconButton";
 import {ButtonGroup} from "@mui/material";
 import {useParams} from "react-router-dom";
 import {useEffect} from "react";
-import {addCost, clearCostState, selectAllCost} from "../../../store/slices/costSlice";
-import {getAllOtherCostByReservation} from "../../../repository/costRepository";
+import {clearCostState} from "../../../store/slices/costSlice";
+
 import {useDispatch, useSelector} from "react-redux";
+import {getAllOtherCostByReservation} from "../../../repository/otherCostRepository";
+import {addOtherCost, selectAllOtherCosts} from "../../../store/slices/otherCostSlice";
 
 const OtherCostsTable = (props) => {
 	const {id} = useParams()
-	const costs = useSelector(selectAllCost)
+	const other_costs = useSelector(selectAllOtherCosts)
 	const dispatcher = useDispatch()
 
 	useEffect(()=>{
-		if(costs[0]?.reservation_id !== undefined && costs[0]?.reservation_id !== parseInt(id)){
+		if(other_costs[0]?.reservation_id !== undefined && other_costs[0]?.reservation_id !== parseInt(id)){
 			dispatcher(clearCostState())
 		}
-		if(costs.length <= 0){
+		if(other_costs.length <= 0){
 			getAllOtherCostByReservation(id)
 				.then((res) =>{
-					dispatcher(addCost(res.data))
+					dispatcher(addOtherCost(res.data))
 				})
 		}
-	},[dispatcher,id,costs])
+	},[dispatcher,id,other_costs])
 
 	return (
 		<>
@@ -45,12 +47,12 @@ const OtherCostsTable = (props) => {
 						</tr>
 					</thead>
 					<tbody>
-					{costs?.map((cost,index)=>
+					{other_costs?.map((other_cost,index)=>
 						<tr key={index}>
-							<th scope="row">{cost.id}</th>
-							<td>{cost.other_cost}</td>
-							<td>{cost.reason}</td>
-							<td>{cost.created_at}</td>
+							<th scope="row">{other_cost.id}</th>
+							<td>{other_cost.other_cost}</td>
+							<td>{other_cost.reason}</td>
+							<td>{other_cost.created_at}</td>
 							<td>
 								<ButtonGroup size="small">
 									<IconButton color="success" size="small">

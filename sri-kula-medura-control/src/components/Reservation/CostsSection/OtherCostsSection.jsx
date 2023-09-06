@@ -4,21 +4,21 @@ import {useState} from "react";
 import {useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import notify from "../../../utils/notify";
-import {saveCost} from "../../../store/slices/costSlice";
-import {storeCost} from "../../../repository/costRepository";
+import {saveOtherCost} from "../../../store/slices/otherCostSlice";
+import {storeOtherCost} from "../../../repository/otherCostRepository";
 
 const OtherCostsSection = (props) => {
-	const [cost, setCost] = useState('')
+	const [otherCost, setOtherCost] = useState('')
 	const {id} = useParams()
 	const [reason ,setReason] = useState('')
 	const dispatcher = useDispatch()
-	const isSubmitDisabled = !cost || !reason;
+	const isSubmitDisabled = !otherCost || !reason;
 
 	const handleSubmit = () => {
-		storeCost(id, cost, reason)
+		storeOtherCost(id, otherCost, reason)
 			.then(response => {
 				if (response.status === 200) {
-					dispatcher(saveCost({ ...response.data }));
+					dispatcher(saveOtherCost({ ...response.data }));
 					notify(1, "Other Cost Added Successfully");
 				} else {
 					notify(0, "Other Cost not saved");
@@ -48,8 +48,8 @@ const OtherCostsSection = (props) => {
 									label="Amount"
 									id="amount"
 									size="small"
-									value={cost}
-									onChange={(e) => setCost(e.target.value)}
+									value={otherCost}
+									onChange={(e) => setOtherCost(e.target.value)}
 								/>
 							</FormControl>
 						</div>
