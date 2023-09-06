@@ -57,4 +57,8 @@ public class OtherCostServiceImpl implements OtherCostService , MainService<Othe
     public OtherCostDTO set(OtherCost otherCost) {
         return OtherCostDTO.builder(otherCost).build();
     }
+
+    public List<OtherCostDTO> allOtherCostsOfReservation(int reservation){
+        return mapAll.mapAllAttributesToDTO(otherCostRepository.findAllByReservationIdOrderByIdDesc(reservation),this);
+    }
 }

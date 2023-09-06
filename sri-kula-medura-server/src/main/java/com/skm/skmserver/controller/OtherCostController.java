@@ -34,4 +34,9 @@ public class OtherCostController {
         return otherCostService.deleteOtherCost(id) ? "Other Cost Deleted Successfully" : "Other cost Delete Failed";
     }
 
+    @GetMapping("/reservation/{reservation}")
+    public List<OtherCostDTO> otherCostOfReservation(@PathVariable int reservation){
+        return otherCostService.allOtherCostsOfReservation(reservation);
+    }
+
 }
