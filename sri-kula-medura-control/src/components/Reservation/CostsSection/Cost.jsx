@@ -1,9 +1,14 @@
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
-import {useState} from "react";
+import { useState} from "react";
 import SectionDetails from "../SectionDetails";
 import OtherCostsSection from "./OtherCostsSection";
 import OtherCostsTable from "./OtherCostsTable";
+import {saveOtherCost} from "../../../store/slices/otherCostSlice";
+import notify from "../../../utils/notify";
+import {storeCost} from "../../../repository/costRepository";
+import {useParams} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 const Cost = (props) => {
 	const [editingStatus, setEditingStatus] = useState(false)
@@ -38,10 +43,29 @@ const Cost = (props) => {
 export default Cost;
 
 const EditingCost = () => {
-	const [transportCost, setTransportCost] = useState(null)
-	const [salaryCost, setSalaryCost] = useState(null)
-	const [cleaningCost, setCleaningCost] = useState(null)
-	const [depreciationCost, setDepreciationCost] = useState(null)
+	const {id} = useParams()
+	const [transport, setTransport] = useState(null)
+	const [salary, setSalary] = useState(null)
+	const [cleaning, setCleaning] = useState(null)
+	const [depreciation, setDepreciation] = useState(null)
+	const dispatcher = useDispatch()
+	// const isSubmitDisabled = !transport || !salary || !cleaning || !depreciation;
+
+	const handleSubmit = () => {
+		storeCost(id, transport,salary,cleaning,depreciation )
+			.then(response => {
+				if (response.status === 200) {
+					dispatcher(saveOtherCost({ ...response.data }));
+					notify(1, "Other Cost Added Successfully");
+				} else {
+					notify(0, "Other Cost not saved");
+				}
+			})
+			.catch(error => {
+				console.error("Error submitting Other Cost:", error);
+				notify(0, "An error occurred while saving Other Cost");
+			});
+	};
 
 	return (<>
 		<div className="row mb-3">
@@ -52,8 +76,8 @@ const EditingCost = () => {
 						label="Transport"
 						id="transport"
 						size="small"
-						value={transportCost}
-						onChange={(e) => setTransportCost(e.target.value)}
+						value={transport}
+						onChange={(e) => setTransport(e.target.value)}
 					/>
 				</FormControl>
 			</div>
@@ -67,8 +91,8 @@ const EditingCost = () => {
 						label="Salary"
 						id="salary"
 						size="small"
-						value={salaryCost}
-						onChange={(e) => setSalaryCost(e.target.value)}
+						value={salary}
+						onChange={(e) => setSalary(e.target.value)}
 					/>
 				</FormControl>
 			</div>
@@ -82,8 +106,8 @@ const EditingCost = () => {
 						label="Cleaning"
 						id="cleaning"
 						size="small"
-						value={cleaningCost}
-						onChange={(e) => setCleaningCost(e.target.value)}
+						value={cleaning}
+						onChange={(e) => setCleaning(e.target.value)}
 					/>
 				</FormControl>
 			</div>
@@ -97,8 +121,8 @@ const EditingCost = () => {
 						label="Depreciation"
 						id="depreciation"
 						size="small"
-						value={depreciationCost}
-						onChange={(e) => setDepreciationCost(e.target.value)}
+						value={depreciation}
+						onChange={(e) => setDepreciation(e.target.value)}
 					/>
 				</FormControl>
 			</div>
@@ -107,13 +131,17 @@ const EditingCost = () => {
 		<div className="row mb-3">
 			<div className="col-3"></div>
 			<div className={'col-9 text-end'}>
-				<button className={'btn btn-success w-25'}>Submit</button>
+				<button className={'btn btn-success w-50 w-md-25'}
+						onClick={handleSubmit}
+						// disabled={isSubmitDisabled}
+				>Submit</button>
 			</div>
 		</div>
 	</>)
 }
 
-const ViewingCost = () => {
+const ViewingCost = ({id}) => {
+
 	return (<>
 			<SectionDetails topic={'Transport'} value={'Rs. 17,874.00'}/>
 			<SectionDetails topic={'Salary'} value={'Rs. 17,874.00'}/>
