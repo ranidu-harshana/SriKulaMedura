@@ -34,12 +34,6 @@ public class Cost {
     @Column(nullable = true)
     private double depreciation;
 
-    @Column(nullable = true)
-    private double other_cost;
-
-    @Column(nullable = true)
-    private String reason;
-
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
@@ -64,8 +58,6 @@ public class Cost {
                 .salary(cost.getSalary())
                 .cleaning(cost.getCleaning())
                 .depreciation(cost.getDepreciation())
-                .reason(cost.getReason())
-                .other_cost(cost.getOther_cost())
                 .created_at(cost.getCreated_at())
                 .updated_at(cost.getUpdated_at())
                 .reservation(cost.getReservation());

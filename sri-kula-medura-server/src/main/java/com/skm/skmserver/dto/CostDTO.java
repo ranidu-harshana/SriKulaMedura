@@ -18,8 +18,6 @@ public class CostDTO {
     private double salary;
     private double cleaning;
     private double depreciation;
-    private double other_cost;
-    private String reason;
     private Date created_at;
     private Date updated_at;
     private int reservation_id;
@@ -31,8 +29,6 @@ public class CostDTO {
                 .salary(cost.getSalary())
                 .cleaning(cost.getCleaning())
                 .depreciation(cost.getDepreciation())
-                .reason(cost.getReason())
-                .other_cost(cost.getOther_cost())
                 .created_at(cost.getCreated_at())
                 .updated_at(cost.getUpdated_at())
                 .reservation_id(cost.getReservation().getId());
