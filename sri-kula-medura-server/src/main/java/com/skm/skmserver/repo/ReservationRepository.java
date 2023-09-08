@@ -14,5 +14,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     Reservation findById(int id);
 
     @Query(value = "SELECT * FROM reservation WHERE function_date=:function_date", nativeQuery = true)
-    List<Reservation> findAllByFunction_date(@Param("function_date") String date);
+    List<Reservation> findAllByFunction_date(@Param("function_date") LocalDate date);
 }

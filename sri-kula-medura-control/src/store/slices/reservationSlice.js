@@ -26,7 +26,8 @@ const initialState = reservationState.getInitialState({
 		branch_id: null,
 		branch_name: null,
 		amount_payable: null
-	}
+	},
+	 reservationsByDate: [],
 })
 
 const reservationSlice = createSlice({
@@ -87,6 +88,16 @@ const reservationSlice = createSlice({
 				}
 			})
 		},
+		addReservationsByDate: {
+			reducer: (state, action) => {
+				state.reservationsByDate.push(action.payload)
+			}
+		},
+		clearReservationsByDate: {
+			reducer: state => {
+				state.reservationsByDate = []
+			}
+		},
 		saveReservation: reservationState.addOne,
 		updateReservation: reservationState.updateOne
 	}
@@ -98,7 +109,16 @@ export const {
 	selectAll: selectAllReservation,
 	selectEntities: selectEntitiesReservation,
 	selectTotal: selectTotalReservation} = reservationState.getSelectors(store => store.reservation)
-export const {addReservations, addSingleReservation, saveReservation, updateReservation} = reservationSlice.actions
+export const {
+	addReservations,
+	addSingleReservation,
+	saveReservation,
+	updateReservation,
+	addReservationsByDate,
+	clearReservationsByDate,
+} = reservationSlice.actions
 const reservationSel = (store) => store.reservation.single_reservation
+const reservationsByDateSel = (store) => store.reservation.reservationsByDate
 export const reservationSelector = createSelector([reservationSel], (reservation) => reservation)
+export const reservationsByDateSelector = createSelector([reservationsByDateSel], (reservation) => reservation)
 export default reservationSlice.reducer

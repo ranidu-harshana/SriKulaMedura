@@ -8,7 +8,10 @@ import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping(value = "api/v1/reservation")
@@ -62,8 +65,6 @@ public class ReservationController {
 
     @PostMapping("/reservations/by-date")
     public List<ReservationDTO> getReservationsByDate(@RequestBody ReservationDateDTO reservationDateDTO) {
-        System.out.println(reservationDateDTO.getFunction_date());
-//        return reservationService.allReservationsByDate(reservationDateDTO);
-        return reservationService.allReservations();
+        return reservationService.allReservationsByDate(reservationDateDTO);
     }
 }

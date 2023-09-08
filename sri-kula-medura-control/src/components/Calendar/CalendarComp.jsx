@@ -4,13 +4,18 @@ import ReservationIndicator from "./ReservationIndicator";
 import {useState} from 'react';
 import BSModal from "../BSModal/BSModal";
 import ResDetailsInModal from "../Reservation/ResDetailsInModal";
-import axios from "axios";
-import {BASE_URL} from "../../utils/constants";
-import {getReservation, getReservationsByDate} from "../../repository/reservationRepository";
+import {getReservationsByDate} from "../../repository/reservationRepository";
+import {useDispatch} from "react-redux";
+import {
+	addReservationsByDate,
+	clearReservationsByDate
+} from "../../store/slices/reservationSlice";
 
 const CalendarComp = ({dates, type}) => {
 	const [show, setShow] = useState(false);
 	const [onDate, setOnDate] = useState();
+	const [reservationsByDate, setReservationsByDate] = useState([])
+	const dispatcher = useDispatch()
 
 	const handleClose = () => setShow(false);
 	const handleShow = (date) => {
@@ -18,10 +23,13 @@ const CalendarComp = ({dates, type}) => {
 		setShow(true)
 		getReservationsByDate(new Date(date).toLocaleDateString())
 			.then(res => {
-				console.log(res.data)
+				dispatcher(clearReservationsByDate())
+				dispatcher(addReservationsByDate(res.data))
+				setReservationsByDate(res.data)
 			})
 			.catch(err => console.error(err))
 	};
+	console.log(reservationsByDate)
 
 	return (<div>
 			<Calendar
@@ -36,9 +44,15 @@ const CalendarComp = ({dates, type}) => {
 			/>
 			<BSModal show={show} handleClose={handleClose} modalTitle={"All Functions On: " + onDate}>
 				<div>
-					<ResDetailsInModal billNumber={'SMB2744'} cancelled={true} cusName={"Sachini Deepashika"}/>
-					<ResDetailsInModal billNumber={'SMB2746'} cusName={"Sachindu Malshan"}/>
-					<ResDetailsInModal billNumber={'SMB2745'} postponed={true} cusName={"Danilka Shalinda"}/>
+					{
+						reservationsByDate?.map((reservation, index) =>
+							<ResDetailsInModal billNumber={reservation?.bill_number} cancelled={false} cusName={reservation?.customer?.name} key={index}/>
+						)
+					}
+
+					{/*<ResDetailsInModal billNumber={'SMB2744'} cancelled={true} cusName={"Sachini Deepashika"}/>*/}
+					{/*<ResDetailsInModal billNumber={'SMB2746'} cusName={"Sachindu Malshan"}/>*/}
+					{/*<ResDetailsInModal billNumber={'SMB2745'} postponed={true} cusName={"Danilka Shalinda"}/>*/}
 				</div>
 			</BSModal>
 		</div>);

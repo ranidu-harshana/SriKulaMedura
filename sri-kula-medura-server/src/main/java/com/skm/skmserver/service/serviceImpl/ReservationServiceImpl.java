@@ -18,7 +18,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 import static com.skm.skmserver.util.GenerateBillNumber.generateBillNumber;
 
@@ -91,7 +94,9 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
 
     @Override
     public List<ReservationDTO> allReservationsByDate(ReservationDateDTO reservationDateDTO) {
-        return mapAll.mapAllAttributesToDTO(reservationRepository.findAllByFunction_date(reservationDateDTO.getFunction_date()), this);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy", Locale.ENGLISH);
+        LocalDate functionDate = LocalDate.parse(reservationDateDTO.getFunction_date(), formatter);
+        return mapAll.mapAllAttributesToDTO(reservationRepository.findAllByFunction_date(functionDate), this);
     }
 
     public ReservationDTO saveBestMenPageBoysCount(BestMenPageBoysCountDTO bestMenPageBoysCountDTO) {
