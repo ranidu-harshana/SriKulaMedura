@@ -5,6 +5,7 @@ import com.skm.skmserver.dto.Email.TransactionEmailDTO;
 import com.skm.skmserver.service.EmailService;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
@@ -16,6 +17,7 @@ import static org.antlr.v4.runtime.misc.Utils.readFile;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class EmailServiceImpl implements EmailService {
     private final JavaMailSender javaMailSender;
 
@@ -37,7 +39,7 @@ public class EmailServiceImpl implements EmailService {
             javaMailSender.send(message);
             return CommonBooleanDTO.builder().response(true).build();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error("Failed to send mail" + e.getMessage());
             return CommonBooleanDTO.builder().response(false).build();
         }
     }
