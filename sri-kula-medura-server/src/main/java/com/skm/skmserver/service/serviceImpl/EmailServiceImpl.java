@@ -7,6 +7,7 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +37,7 @@ public class EmailServiceImpl implements EmailService {
             javaMailSender.send(message);
             return CommonBooleanDTO.builder().response(true).build();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return CommonBooleanDTO.builder().response(false).build();
         }
     }

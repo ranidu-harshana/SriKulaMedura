@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface InterimPaymentService {
     List<InterimPaymentDTO> allInterimPayments();
-    InterimPaymentDTO saveInterimPayment(InterimPaymentDTO interimPaymentDTO);
+    InterimPaymentDTO saveInterimPayment(InterimPaymentDTO interimPaymentDTO) throws InterruptedException;
 
     List<InterimPaymentDTO> allInterimPaymentsOfReservation(int reservation);
 }

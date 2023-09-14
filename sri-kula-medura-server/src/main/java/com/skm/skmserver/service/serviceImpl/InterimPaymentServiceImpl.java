@@ -1,6 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.BillingDTO;
+import com.skm.skmserver.dto.CommonBooleanDTO;
 import com.skm.skmserver.dto.Email.TransactionEmailDTO;
 import com.skm.skmserver.dto.InterimPaymentDTO;
 import com.skm.skmserver.entity.Billing;
@@ -13,6 +14,7 @@ import com.skm.skmserver.service.InterimPaymentService;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,17 +35,24 @@ public class InterimPaymentServiceImpl implements InterimPaymentService , MainSe
         return mapAll.mapAllAttributesToDTO(interimPaymentRepository.findAll(),this);
     }
 
-    public InterimPaymentDTO saveInterimPayment(InterimPaymentDTO interimPaymentDTO) {
+    public InterimPaymentDTO saveInterimPayment(InterimPaymentDTO interimPaymentDTO) throws InterruptedException {
+        String recipientMail = reservationRepository.findById(interimPaymentDTO.getReservation_id()).getCustomer().getUser().getEmail();
+
+        Thread t = new Thread(() -> {
+            CommonBooleanDTO booleanDTO = emailService.sendTransactionInvoiceEmail(TransactionEmailDTO.builder()
+                    .subject("Payment Acknowledgement")
+                    .paymentType("Interim Payment")
+                    .amount(String.valueOf(interimPaymentDTO.getInterim_payment()))
+                    .recipient(recipientMail)
+                    .build());
+        });
+
         InterimPayment interimPayment = interimPaymentRepository.save(InterimPayment.builder(newInterimPayment)
                 .interim_payment(interimPaymentDTO.getInterim_payment())
                 .reservation(reservationRepository.findById(interimPaymentDTO.getReservation_id()))
                 .build());
-        emailService.sendTransactionInvoiceEmail(TransactionEmailDTO.builder()
-                .subject("Payment Acknowledgement")
-                .paymentType("Interim Payment")
-                .amount(String.valueOf(interimPaymentDTO.getInterim_payment()))
-                .recipient(reservationRepository.findById(interimPaymentDTO.getReservation_id()).getCustomer().getUser().getEmail())
-                .build());
+
+        t.start();
         return set(interimPayment);
     }
 

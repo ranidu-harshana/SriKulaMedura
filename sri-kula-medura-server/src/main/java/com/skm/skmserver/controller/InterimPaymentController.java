@@ -26,7 +26,7 @@ public class InterimPaymentController {
     }
 
     @PostMapping("/")
-    public InterimPaymentDTO store(@RequestBody InterimPaymentDTO interimPaymentDTO){
+    public InterimPaymentDTO store(@RequestBody InterimPaymentDTO interimPaymentDTO) throws InterruptedException {
        return interimPaymentService.saveInterimPayment(interimPaymentDTO);
     }
 
