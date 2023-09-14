@@ -15,8 +15,6 @@ const Payment = () => {
 			})
 	}, [id])
 
-	console.log(paymentData)
-
 	return (<>
 			<form method="post" action="https://sandbox.payhere.lk/pay/checkout">
 				<input type="hidden" name="merchant_id" value={paymentData?.merchant_id || ""} readOnly/>
