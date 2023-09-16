@@ -121,7 +121,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                 .build();
         double amount_payable = 0.0;
         try {
-            amount_payable = billingRepository.findByReservation(reservation).getBill_amount();
+            amount_payable = billingRepository.findByReservation(reservation).getBill_amount(); // TODO: change this - calculate
         } catch (Exception e) {
             amount_payable = 0.0;
         }
