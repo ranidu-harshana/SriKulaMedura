@@ -25,6 +25,8 @@ public class MeasurementDTO {
     private String ssize;
     private String arm;
     private String jheight;
+    private String head;
+    private String other;
     private String type; // (GROOM, BRIDE, ...)
     private String name;
     private Date created_at;
@@ -41,6 +43,8 @@ public class MeasurementDTO {
                 .ssize(measurement.getSsize())
                 .arm(measurement.getArm())
                 .jheight(measurement.getJheight())
+                .head(measurement.getHead())
+                .other(measurement.getOther())
                 .type(measurement.getType())
                 .name(measurement.getName())
                 .created_at(measurement.getCreated_at())

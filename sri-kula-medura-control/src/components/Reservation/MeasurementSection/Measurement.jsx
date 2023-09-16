@@ -9,13 +9,14 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {ITEM_TYPES} from "../../../utils/constants";
-import {saveMeasurements} from "../../../repository/measurementRepository";
+import {getMeasurementByTypeAndReservation, saveMeasurements} from "../../../repository/measurementRepository";
 import notify from "../../../utils/notify";
 
 const Measurement = () => {
 	const {id} = useParams()
 	const [showAddMeasurementModal, setShowAddMeasurementModal] = useState(false);
 	const [show, setShow] = useState(false);
+	const [isDisabled, setIsDisabled] = useState(true)
 	const [type, setType] = useState('');
 	const [name, setName] = useState('');
 	const [head, setHead] = useState('');
@@ -48,6 +49,34 @@ const Measurement = () => {
 
 	const handleSelectBoxChange = (event) => {
 		setType(event.target.value);
+
+		getMeasurementByTypeAndReservation(event.target.value, reservation.id)
+			.then(res => {
+				if(res.status === 200) {
+					setName(res.data.name)
+					setHead(res.data.head)
+					setShoulder(res.data.shoulder)
+					setChest(res.data.chest)
+					setWeist(res.data.weist)
+					setLength(res.data.tlength)
+					setSSize(res.data.ssize)
+					setArm(res.data.arm)
+					setJHeight(res.data.jheight)
+					setOther(res.data.other)
+				}
+			})
+			.catch(err => {
+				setName("")
+				setHead("")
+				setShoulder("")
+				setChest("")
+				setWeist("")
+				setLength("")
+				setSSize("")
+				setArm("")
+				setJHeight("")
+				setOther("")
+			})
 	};
 
 	return (
@@ -331,7 +360,7 @@ const Measurement = () => {
 					</div>
 					<div className="form-group row mt-3 text-end">
 						<p>
-							<button className={'btn btn-success'} onClick={() => {
+							<button className={'btn btn-success'} disabled={isDisabled} onClick={() => {
 								saveMeasurements(type, name, head, shoulder, chest, weist, tlength, ssize, arm, jheight, other, reservation.id)
 									.then(() => notify(1, "Measurement Saved"))
 									.catch(() => notify(0, "Measurement Saving Failed"))

@@ -36,6 +36,10 @@ public class Measurement {
 
     private String jheight;
 
+    private String head;
+
+    private String other;
+
     private String type; // (GROOM, BRIDE, ...)
     private String name;
 

@@ -4,6 +4,11 @@ const saveMeasurements = (type, name, head, shoulder, chest, weist, tlength, ssi
 	return Repository.post("/measurements/", {type, name, head, shoulder, chest, weist, tlength, ssize, arm, jheight, other, reservation_id})
 }
 
+const getMeasurementByTypeAndReservation = (type, reservation_id) => {
+	return Repository.get("/measurements/by/"+type+"/"+reservation_id+"")
+}
+
 export {
-	saveMeasurements
+	saveMeasurements,
+	getMeasurementByTypeAndReservation
 }

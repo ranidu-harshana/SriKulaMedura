@@ -3,7 +3,6 @@ package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.MeasurementDTO;
 import com.skm.skmserver.exceptions.ResourceNotFoundException;
 import com.skm.skmserver.service.MeasurementService;
-import com.skm.skmserver.service.serviceImpl.MeasurementServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,5 +46,10 @@ public class MeasurementController {
             return "Reservation deleted successfully";
         }
         throw new ResourceNotFoundException("Reservation deleted failed").additionalDetails("id", id);
+    }
+
+    @GetMapping("/by/{type}/{reservation_id}")
+    public MeasurementDTO getByTypeAndReservation (@PathVariable String type, @PathVariable int reservation_id) {
+        return measurementService.getByTypeAndReservationId(type, reservation_id);
     }
 }

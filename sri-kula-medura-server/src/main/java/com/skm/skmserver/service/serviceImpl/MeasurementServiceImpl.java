@@ -2,6 +2,7 @@ package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.MeasurementDTO;
 import com.skm.skmserver.entity.Measurement;
+import com.skm.skmserver.exceptions.ResourceNotFoundException;
 import com.skm.skmserver.repo.MeasurementRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.MainService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -18,7 +20,6 @@ import java.util.List;
 public class MeasurementServiceImpl implements MeasurementService, MainService<MeasurementDTO, Measurement> {
     private final MeasurementRepository measurementRepository;
     private final ReservationRepository reservationRepository;
-    private final Measurement newMeasurement;
 
     @Override
     public List<MeasurementDTO> allMeasurements() {
@@ -35,6 +36,8 @@ public class MeasurementServiceImpl implements MeasurementService, MainService<M
                 .ssize(measurementDTO.getSsize())
                 .arm(measurementDTO.getArm())
                 .jheight(measurementDTO.getJheight())
+                .head(measurementDTO.getHead())
+                .other(measurementDTO.getOther())
                 .type(measurementDTO.getType())
                 .name(measurementDTO.getName())
                 .reservation(reservationRepository.findById(measurementDTO.getReservation_id()))
@@ -60,6 +63,15 @@ public class MeasurementServiceImpl implements MeasurementService, MainService<M
     @Override
     public List<MeasurementDTO> allMeasurementsOfReservation(int reservation) {
         return null;
+    }
+
+    @Override
+    public MeasurementDTO getByTypeAndReservationId(String type, int reservation_id) {
+        Optional<Measurement> measurement = measurementRepository.findByTypeAndReservationId(type, reservation_id);
+
+        if (!measurement.isPresent()) throw new ResourceNotFoundException("No measurements found for this  type and reservation");
+
+        return set(measurement.get());
     }
 
     @Override
