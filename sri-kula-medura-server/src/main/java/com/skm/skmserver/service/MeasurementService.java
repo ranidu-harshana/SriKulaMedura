@@ -2,14 +2,16 @@ package com.skm.skmserver.service;
 
 import com.skm.skmserver.dto.MeasurementDTO;
 import com.skm.skmserver.entity.Measurement;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface MeasurementService {
     List<MeasurementDTO> allMeasurements();
     MeasurementDTO saveMeasurement(MeasurementDTO measurementDTO);
     MeasurementDTO getMeasurement (int id);
     MeasurementDTO updateMeasurement(MeasurementDTO measurementDTO, int id);
     boolean deleteMeasurement(int id);
-    MeasurementDTO getMeasurementDTOWithValues(Measurement measurement);
+    List<MeasurementDTO> allMeasurementsOfReservation(int reservation);
 }

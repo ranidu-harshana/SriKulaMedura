@@ -32,7 +32,4 @@ public class Type {
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
     private Date updated_at;
-
-    @OneToMany(mappedBy = "type")
-    private List<Measurement> measurements;
 }
