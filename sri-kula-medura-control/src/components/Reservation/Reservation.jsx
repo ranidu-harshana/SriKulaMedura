@@ -1,5 +1,5 @@
 import RoundedImage from "../RoundedImage/RoundedImage";
-import useravatar from "../../assets/chat/patient-thumb-02.jpg";
+import useravatar from "../../assets/chat/userdefault.png";
 import ReservationDetails from "./ReservationDetails";
 import ReservationTabs from "./ReservationTabs";
 import UserDetails from "./UserDetails";
@@ -7,7 +7,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {addSingleReservation, reservationSelector, selectByIdReservation} from "../../store/slices/reservationSlice";
 import {useEffect} from "react";
 import {getReservation} from "../../repository/reservationRepository";
-import {convertNumberToPriceFormat} from "../../utils/helpers";
 
 const Reservation = ({id}) => {
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
@@ -28,8 +27,6 @@ const Reservation = ({id}) => {
 
 	const reservation = reservationCurr ? reservationCurr : reservationAlt
 
-	console.log(reservation)
-
 	return (
 		<>
 		<div className={`row p-1 p-lg-3`}>
@@ -48,7 +45,7 @@ const Reservation = ({id}) => {
 				</div>
 			</div>
 			<div className="col-12 col-lg-6 row left-border">
-				<ReservationDetails title={"Amount to be paid"} value={convertNumberToPriceFormat(reservation.amount_payable == null ? 0 : reservation.amount_payable)} amountToPaid={true}/>
+				{/*<ReservationDetails title={"Amount to be paid"} value={convertNumberToPriceFormat(reservation.amount_payable == null ? 0 : reservation.amount_payable)} amountToPaid={true}/>*/}
 				<ReservationDetails title={"Phone 1"} value={reservation.customer.mobile_no1}/>
 				<ReservationDetails title={"Phone 2"} value={reservation.customer.mobile_no2}/>
 				<ReservationDetails title={"Function Date"} value={reservation.function_date}/>

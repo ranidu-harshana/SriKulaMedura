@@ -8,7 +8,12 @@ const getMeasurementByTypeAndReservation = (type, reservation_id) => {
 	return Repository.get("/measurements/by/"+type+"/"+reservation_id+"")
 }
 
+const getAllMeasurementsOfReservation = (reservation_id) => {
+	return Repository.get("measurements/reservation/" + reservation_id)
+}
+
 export {
 	saveMeasurements,
-	getMeasurementByTypeAndReservation
+	getMeasurementByTypeAndReservation,
+	getAllMeasurementsOfReservation
 }

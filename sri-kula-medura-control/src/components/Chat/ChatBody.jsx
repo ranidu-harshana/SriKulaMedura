@@ -1,4 +1,4 @@
-import useravatar from "../../assets/chat/patient-thumb-02.jpg";
+import useravatar from "../../assets/chat/userdefault.png";
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -86,7 +86,7 @@ const ChatBody = () => {
 
 			<div className={'chat-user-details'}>
 				<div className="text-center">
-					<RoundedImage userAvatar={useravatar}/>
+					<RoundedImage width={50} userAvatar={useravatar}/>
 					<h4 className={'mt-2'}>{user?.name}</h4>
 				</div>
 

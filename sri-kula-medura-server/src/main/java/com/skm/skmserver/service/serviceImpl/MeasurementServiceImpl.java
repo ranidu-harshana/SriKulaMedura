@@ -7,6 +7,7 @@ import com.skm.skmserver.repo.MeasurementRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.MeasurementService;
+import com.skm.skmserver.util.MapAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,8 @@ import java.util.Optional;
 public class MeasurementServiceImpl implements MeasurementService, MainService<MeasurementDTO, Measurement> {
     private final MeasurementRepository measurementRepository;
     private final ReservationRepository reservationRepository;
+
+    private final MapAll<Measurement, MeasurementDTO> mapAll;
 
     @Override
     public List<MeasurementDTO> allMeasurements() {
@@ -62,14 +65,14 @@ public class MeasurementServiceImpl implements MeasurementService, MainService<M
 
     @Override
     public List<MeasurementDTO> allMeasurementsOfReservation(int reservation) {
-        return null;
+        return mapAll.mapAllAttributesToDTO(measurementRepository.findAllByReservationId(reservation), this);
     }
 
     @Override
     public MeasurementDTO getByTypeAndReservationId(String type, int reservation_id) {
         Optional<Measurement> measurement = measurementRepository.findByTypeAndReservationId(type, reservation_id);
 
-        if (!measurement.isPresent()) throw new ResourceNotFoundException("No measurements found for this  type and reservation");
+        if (measurement.isEmpty()) throw new ResourceNotFoundException("No measurements found for this  type and reservation");
 
         return set(measurement.get());
     }

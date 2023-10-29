@@ -40,6 +40,7 @@ const SelectBestManPageboyDresses = ({minusBestman, minusPageboy}) => {
 								.then((response)=>{
 									if(response.data.length > 0) {
 										dispatcher(resetAddSelectedDressByUser())
+										console.log(response.data)
 										dispatcher(addDressSelections(response.data))
 									}
 								})

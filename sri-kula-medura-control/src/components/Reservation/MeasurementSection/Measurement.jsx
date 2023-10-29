@@ -1,6 +1,6 @@
 import NoOfGroomsPageboys from "../Common/NoOfGroomsPageboys";
 import BSModal from "../../BSModal/BSModal";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {reservationSelector, selectByIdReservation} from "../../../store/slices/reservationSlice";
 import {useParams} from "react-router-dom";
@@ -9,28 +9,33 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import {ITEM_TYPES} from "../../../utils/constants";
-import {getMeasurementByTypeAndReservation, saveMeasurements} from "../../../repository/measurementRepository";
+import {
+	getAllMeasurementsOfReservation,
+	getMeasurementByTypeAndReservation,
+	saveMeasurements
+} from "../../../repository/measurementRepository";
 import notify from "../../../utils/notify";
 
 const Measurement = () => {
 	const {id} = useParams()
 	const [showAddMeasurementModal, setShowAddMeasurementModal] = useState(false);
 	const [show, setShow] = useState(false);
-	const [isDisabled, setIsDisabled] = useState(true)
-	const [type, setType] = useState('');
-	const [name, setName] = useState('');
-	const [head, setHead] = useState('');
-	const [shoulder, setShoulder] = useState('');
-	const [chest, setChest] = useState('');
-	const [weist, setWeist] = useState('');
-	const [tlength, setLength] = useState('');
-	const [ssize, setSSize] = useState('');
-	const [arm, setArm] = useState('');
-	const [jheight, setJHeight] = useState('');
-	const [other, setOther] = useState('');
+	const [type, setType] = useState("");
+	const [name, setName] = useState("");
+	const [head, setHead] = useState("");
+	const [shoulder, setShoulder] = useState("");
+	const [chest, setChest] = useState("");
+	const [weist, setWeist] = useState("");
+	const [tlength, setLength] = useState("");
+	const [ssize, setSSize] = useState("");
+	const [arm, setArm] = useState("");
+	const [jheight, setJHeight] = useState("");
+	const [other, setOther] = useState("");
 	const reservationCurr = useSelector((state) => selectByIdReservation(state, id))
 	const reservationAlt = useSelector(reservationSelector)
 	const reservation = reservationCurr ? reservationCurr : reservationAlt
+
+	const [measurementData, setMeasurementData] = useState([])
 
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
@@ -46,6 +51,13 @@ const Measurement = () => {
 	for (let i=0; i < reservation.no_of_pageboys; i++) {
 		pageBoyArr.push(<MenuItem value={ITEM_TYPES.PAGEBOY.ALL_CAP + " - " + (i+1)} key={i}>{ITEM_TYPES.PAGEBOY.FIRSTCHAR_CAP} - {i + 1}</MenuItem>)
 	}
+
+	useEffect(() => {
+		getAllMeasurementsOfReservation(id)
+			.then(res => {
+				setMeasurementData(res.data)
+			})
+	})
 
 	const handleSelectBoxChange = (event) => {
 		setType(event.target.value);
@@ -112,47 +124,8 @@ const Measurement = () => {
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>GROOM</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>Edit</button></td>
-								</tr>
-
-								<tr>
-									<td>BESTMAN - 1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>Edit</button></td>
-								</tr>
-
-								<tr>
-									<td>PAGEBOY - 1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td>+1</td>
-									<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>Edit</button></td>
-								</tr>
+								{measurementData?.map( (measurement, i) =>
+										<TableData measurement={measurement} handleShow={handleShow} key={i}/>)}
 							</tbody>
 						</table>
 					</div>
@@ -360,7 +333,7 @@ const Measurement = () => {
 					</div>
 					<div className="form-group row mt-3 text-end">
 						<p>
-							<button className={'btn btn-success'} disabled={isDisabled} onClick={() => {
+							<button className={'btn btn-success'} onClick={() => {
 								saveMeasurements(type, name, head, shoulder, chest, weist, tlength, ssize, arm, jheight, other, reservation.id)
 									.then(() => notify(1, "Measurement Saved"))
 									.catch(() => notify(0, "Measurement Saving Failed"))
@@ -374,3 +347,19 @@ const Measurement = () => {
 }
 
 export default Measurement;
+
+const TableData = ({measurement, handleShow}) => (
+	<tr>
+		<td>{measurement.type===""?"-":measurement.type}</td>
+		<td>{measurement.head===""?"-":measurement.head}</td>
+		<td>{measurement.shoulder===""?"-":measurement.shoulder}</td>
+		<td>{measurement.chest===""?"-":measurement.chest}</td>
+		<td>{measurement.weist===""?"-":measurement.weist}</td>
+		<td>{measurement.tlength===""?"-":measurement.tlength}</td>
+		<td>{measurement.ssize===""?"-":measurement.ssize}</td>
+		<td>{measurement.arm===""?"-":measurement.arm}</td>
+		<td>{measurement.jheight===""?"-":measurement.jheight}</td>
+		<td>{measurement.other===""?"-":measurement.other}</td>
+		<td><button className={'btn btn-sm btn-success'} onClick={handleShow}>Edit</button></td>
+	</tr>
+)
