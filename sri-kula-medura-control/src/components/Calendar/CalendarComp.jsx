@@ -11,7 +11,7 @@ import {
 	clearReservationsByDate
 } from "../../store/slices/reservationSlice";
 
-const CalendarComp = ({dates, type}) => {
+const CalendarComp = ({dates}) => {
 	const [show, setShow] = useState(false);
 	const [onDate, setOnDate] = useState();
 	const [reservationsByDate, setReservationsByDate] = useState([])
@@ -46,7 +46,7 @@ const CalendarComp = ({dates, type}) => {
 				<div>
 					{
 						reservationsByDate?.map((reservation, index) =>
-							<ResDetailsInModal billNumber={reservation?.bill_number} cancelled={false} cusName={reservation?.customer?.name} key={index}/>
+							<ResDetailsInModal reservationId={reservation?.id} billNumber={reservation?.bill_number} cancelled={false} cusName={reservation?.customer?.name} key={index}/>
 						)
 					}
 

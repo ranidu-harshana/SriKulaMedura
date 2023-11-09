@@ -77,7 +77,7 @@ const Measurement = () => {
 					setOther(res.data.other)
 				}
 			})
-			.catch(err => {
+			.catch(() => {
 				setName("")
 				setHead("")
 				setShoulder("")
@@ -96,10 +96,10 @@ const Measurement = () => {
 			<div className="row">
 				<div className="tab-content-container pt-3 pb-0" style={{minHeight: 0}}>
 					<div className="row">
-						<div className="col-6 col-md-4">
+						<div className="row col-6 col-md-7">
 							<NoOfGroomsPageboys />
 						</div>
-						<div className="col-6 col-md-8 text-end my-auto">
+						<div className="col-6 col-md-5 text-end my-auto">
 							<button onClick={handleAddMeasurementModalShow} className={'btn btn-sm btn-primary'}>Add Measurement</button>
 						</div>
 					</div>
