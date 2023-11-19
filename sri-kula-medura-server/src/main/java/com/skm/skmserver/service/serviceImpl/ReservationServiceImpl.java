@@ -9,6 +9,8 @@ import com.skm.skmserver.entity.User;
 import com.skm.skmserver.enums.Role;
 import com.skm.skmserver.exceptions.ResourceNotFoundException;
 import com.skm.skmserver.repo.*;
+import com.skm.skmserver.service.AdditionalPaymentService;
+import com.skm.skmserver.service.InterimPaymentService;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.ReservationService;
 import com.skm.skmserver.util.MapAll;
@@ -28,6 +30,8 @@ import static com.skm.skmserver.util.GenerateBillNumber.generateBillNumber;
 @Transactional
 @RequiredArgsConstructor
 public class ReservationServiceImpl implements ReservationService, MainService<ReservationDTO, Reservation> {
+    private final AdditionalPaymentService additionalPaymentService;
+    private final InterimPaymentService interimPaymentService;
     private final ReservationRepository reservationRepository;
     private final CustomerRepository customerRepository;
     private final UserRepository userRepository;
@@ -131,13 +135,22 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     }
 
     @Override
-    public ReservationDTO getByBillNumber(BillNumberRequestDTO billNumberRequestDTO) {
+    public PublicReservationDTO getByBillNumber(BillNumberRequestDTO billNumberRequestDTO) {
         Optional<Reservation> reservation = reservationRepository.findByBill_number(billNumberRequestDTO.getBillNumber());
 
         if (reservation.isEmpty()) throw new ResourceNotFoundException("Reservation not found")
                 .additionalDetails("bill no", billNumberRequestDTO.getBillNumber());
 
-        return set(reservation.get());
+        List<AdditionalPaymentDTO> additionalPayments = additionalPaymentService.allAdditionalPaymentsOfReservation(reservation.get().getId());
+        List<InterimPaymentDTO> interimPayments = interimPaymentService.allInterimPaymentsOfReservation(reservation.get().getId());
+
+        return PublicReservationDTO.builder()
+                .bill_number(reservation.get().getBill_number())
+                .customerName(reservation.get().getCustomer().getUser().getName())
+                .dueAmount(reservation.get().getBilling().getAmount_payable())
+                .additionalPayments(additionalPayments)
+                .interimPayments(interimPayments)
+                .build();
     }
 
     @Override

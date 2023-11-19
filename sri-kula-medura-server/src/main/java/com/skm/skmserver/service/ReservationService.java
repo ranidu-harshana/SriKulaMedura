@@ -24,5 +24,5 @@ public interface ReservationService {
 
     ReservationDTO postponeReservation(PostponeResRequestDTO postponeResRequestDTO);
 
-    ReservationDTO getByBillNumber(BillNumberRequestDTO billNumberRequestDTO);
+    PublicReservationDTO getByBillNumber(BillNumberRequestDTO billNumberRequestDTO);
 }

@@ -3,6 +3,7 @@ package com.skm.skmserver.controller;
 import com.skm.skmserver.dto.PaymentDTO;
 import com.skm.skmserver.dto.PaymentRequestDTO;
 import com.skm.skmserver.dto.Reservation.BillNumberRequestDTO;
+import com.skm.skmserver.dto.Reservation.PublicReservationDTO;
 import com.skm.skmserver.dto.Reservation.ReservationDTO;
 import com.skm.skmserver.service.PaymentService;
 import com.skm.skmserver.service.ReservationService;
@@ -18,7 +19,7 @@ public class PublicController {
     private final PaymentService paymentService;
 
     @PostMapping("/reservation/get-by-billno")
-    public ReservationDTO getByBillNumber(@RequestBody BillNumberRequestDTO billNumberRequestDTO) {
+    public PublicReservationDTO getByBillNumber(@RequestBody BillNumberRequestDTO billNumberRequestDTO) {
         return reservationService.getByBillNumber(billNumberRequestDTO);
     }
 

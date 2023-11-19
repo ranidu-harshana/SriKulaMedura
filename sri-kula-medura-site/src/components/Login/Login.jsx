@@ -26,7 +26,7 @@ const Login = () => {
                             }}/>
                             <h2 className="fw-bold mt-2 mb-4 text-uppercase">Load Profile</h2>
 
-                            <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='NIC No'
+                            <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Bill No'
                                       id='formControlLg' type='email' size="lg" className={'text-white'} value={billNo} onChange={(e)=>setBillNo(e.target.value)}/>
                             {/*<MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Password'*/}
                             {/*          id='formControlLg' type='password' size="lg" className={'text-white'}/>*/}

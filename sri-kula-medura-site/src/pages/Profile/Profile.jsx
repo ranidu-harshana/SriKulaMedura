@@ -19,7 +19,7 @@ const Profile = () => {
                     navigate('/login');
                 }
             })
-            .catch(err => {
+            .catch(() => {
                 navigate('/login');
             })
     }, [billNo, navigate])
@@ -32,7 +32,9 @@ const Profile = () => {
         <>
             <div className="container">
                 <div className="row text-center">
-                    Hi {reservationData?.customer?.name}
+                    Hi {reservationData?.customerName} <br/>
+                    Due Amount {reservationData?.dueAmount} <br/>
+                    Bill Number {reservationData?.bill_number}
                 </div>
                 <input type="text" value={payAmount} onChange={(e)=>setPayAmount(e.target.value)}/>
                 <button onClick={()=>setPay(true)}>Pay</button>

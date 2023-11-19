@@ -81,6 +81,9 @@ public class Reservation {
     @OneToMany(mappedBy = "reservation")
     private List<AdditionalPayment> additionalPayments;
 
+    @OneToMany(mappedBy = "reservation")
+    private List<InterimPayment> interimPayments;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private User user;
