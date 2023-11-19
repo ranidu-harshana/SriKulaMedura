@@ -33,6 +33,8 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     private final BranchRepo branchRepo;
     private final UserServiceImpl userService;
     private final MapAll<Reservation, ReservationDTO> mapAll;
+    private Reservation newReservation;
+    private User newUser;
 
     @Override
     public List<ReservationDTO> allReservations() {
