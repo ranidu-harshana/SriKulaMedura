@@ -13,13 +13,13 @@ const getReservationsByDate = (date) => {
 	return Repository.post(`/reservation/reservations/by-date`, {function_date: date})
 }
 
-const storeReservation = (name, address, branchId, mobile_no1, mobno2, function_date) => {
+const storeReservation = (name, nic, address, branchId, mobile_no1, mobno2, function_date) => {
 	const user_id = 1; // TODO: Need to Handle this
 	return Repository.post('/reservation/', {
 		function_date,
 		user_id,
 		branch_id: branchId,
-		name, address, mobile_no1, mobno2
+		name, nic, address, mobile_no1, mobno2
 	})
 }
 

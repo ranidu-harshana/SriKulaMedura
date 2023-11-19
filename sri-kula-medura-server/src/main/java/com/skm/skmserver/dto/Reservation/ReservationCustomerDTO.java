@@ -16,6 +16,7 @@ public class ReservationCustomerDTO {
     private int user_id;
     private int branch_id;
     private String name;
+    private String nic;
     private String address;
     private String mobile_no1;
     private String mobile_no2;

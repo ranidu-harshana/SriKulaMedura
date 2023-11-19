@@ -30,6 +30,8 @@ public class User implements UserDetails {
 
     private String name;
 
+    private String nic;
+
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -57,6 +59,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToOne(mappedBy = "user")
+    private Customer customer;
+
     @OneToMany(mappedBy = "user")
     private List<Reservation> reservations;
 
@@ -70,6 +75,7 @@ public class User implements UserDetails {
         return internalBuilder()
                 .id(user.getId())
                 .name(user.getName())
+                .nic(user.getNic())
                 .email(user.getEmail())
                 .address(user.getAddress())
                 .mobile_no(user.getMobile_no())

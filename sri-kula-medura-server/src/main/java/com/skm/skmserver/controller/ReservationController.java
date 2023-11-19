@@ -71,4 +71,6 @@ public class ReservationController {
     public ReservationDTO postponeReservation(@RequestBody PostponeResRequestDTO postponeResRequestDTO) {
         return reservationService.postponeReservation(postponeResRequestDTO);
     }
+
+
 }

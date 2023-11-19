@@ -15,9 +15,10 @@ import notify from "../../utils/notify";
 import {Link} from "react-router-dom";
 import NotificationContainer from "../../components/ToastNotification/NotificationContainer";
 
-const CreateReservation = (props) => {
+const CreateReservation = () => {
 	const [branchId, setBranchId] = useState('')
 	const [name, setName] = useState('')
+	const [nic, setNic] = useState('')
 	const [address, setAddress] = useState('')
 	const [mobno1, setMobno1] = useState('')
 	const [mobno2, setMobno2] = useState('')
@@ -80,6 +81,18 @@ const CreateReservation = (props) => {
 				<div className="mt-4">
 					<FormControl sx={{ width: "100%" }} size="small">
 						<TextField
+							label="NIC"
+							id="nic"
+							size="small"
+							value={nic}
+							onChange={(e)=>setNic(e.target.value)}
+						/>
+					</FormControl>
+				</div>
+
+				<div className="mt-4">
+					<FormControl sx={{ width: "100%" }} size="small">
+						<TextField
 							label="Address"
 							id="address"
 							size="small"
@@ -128,7 +141,7 @@ const CreateReservation = (props) => {
 
 				<div className="text-end mt-4">
 					<button type="submit" className="btn btn-primary" onClick={()=>{
-						storeReservation(name, address, branchId, mobno2, mobno1, function_date)
+						storeReservation(name, nic, address, branchId, mobno2, mobno1, function_date)
 							.then(response => {
 								if (response.status === 200) {
 									dispatcher(saveReservation({...response.data}));

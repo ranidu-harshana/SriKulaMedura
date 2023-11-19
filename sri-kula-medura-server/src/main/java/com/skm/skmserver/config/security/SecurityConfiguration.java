@@ -26,6 +26,7 @@ public class SecurityConfiguration {
                 .requestMatchers(HttpMethod.OPTIONS).permitAll()
                 .requestMatchers(
                         "/api/v1/auth/**",
+                        "/api/v1/public/**",
                         "/swagger-ui.html",
                         "/swagger-ui/**",
                         "/v3/api-docs",

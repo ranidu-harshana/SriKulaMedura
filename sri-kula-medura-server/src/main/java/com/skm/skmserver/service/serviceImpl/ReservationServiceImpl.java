@@ -7,6 +7,7 @@ import com.skm.skmserver.dto.Reservation.*;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.entity.User;
 import com.skm.skmserver.enums.Role;
+import com.skm.skmserver.exceptions.ResourceNotFoundException;
 import com.skm.skmserver.repo.*;
 import com.skm.skmserver.service.MainService;
 import com.skm.skmserver.service.ReservationService;
@@ -19,6 +20,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 import static com.skm.skmserver.util.GenerateBillNumber.generateBillNumber;
 
@@ -45,6 +47,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     public ReservationDTO saveReservation(ReservationCustomerDTO reservationCusDTO) {
         UserDTO userDTO = userService.saveUser(UserDTO.builder()
                 .name(reservationCusDTO.getName())
+                .nic(reservationCusDTO.getNic())
                 .email("EmailAddress"+Math.random())
                 .mobile_no(reservationCusDTO.getMobile_no1())
                 .role(Role.CUSTOMER)
@@ -128,11 +131,22 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     }
 
     @Override
+    public ReservationDTO getByBillNumber(BillNumberRequestDTO billNumberRequestDTO) {
+        Optional<Reservation> reservation = reservationRepository.findByBill_number(billNumberRequestDTO.getBillNumber());
+
+        if (reservation.isEmpty()) throw new ResourceNotFoundException("Reservation not found")
+                .additionalDetails("bill no", billNumberRequestDTO.getBillNumber());
+
+        return set(reservation.get());
+    }
+
+    @Override
     public ReservationDTO set(Reservation reservation) {
         User user = userRepository.findById(reservation.getCustomer().getUser().getId());
         CustomerUserDTO customerUserDTO = CustomerUserDTO.builder()
                 .id(reservation.getCustomer().getId())
                 .name(user.getName())
+                .nic(user.getNic())
                 .address(user.getAddress())
                 .mobile_no1(user.getMobile_no())
                 .mobile_no2(reservation.getCustomer().getMobile_no())

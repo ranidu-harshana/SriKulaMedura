@@ -15,6 +15,7 @@ import java.util.Date;
 public class UserDTO {
     private int id;
     private String name;
+    private String nic;
     private String email;
     private String address;
     private String mobile_no;

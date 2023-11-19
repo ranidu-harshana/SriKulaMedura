@@ -23,6 +23,7 @@ public class AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder(newUser)
                 .name(request.getName())
+                .nic(request.getNic())
                 .email(request.getEmail())
                 .address(request.getAddress())
                 .mobile_no(request.getMobile_no())

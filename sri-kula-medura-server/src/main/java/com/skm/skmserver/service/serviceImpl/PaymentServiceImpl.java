@@ -1,6 +1,7 @@
 package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.PaymentDTO;
+import com.skm.skmserver.dto.PaymentRequestDTO;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.PaymentService;
@@ -25,7 +26,25 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public PaymentDTO payOnline(int id) {
         Reservation reservation = reservationRepository.findById(id);
-        double amountPayable = 1000;
+        double amountPayable = reservation.getBilling().getAmount_payable();
+
+        String generatedHash = Helpers.generateHashForPayHere(merchantId, merchantSecret, reservation.getBill_number(), amountPayable);
+        return PaymentDTO.builder()
+                .amount_payable(amountPayable)
+                .bill_number(reservation.getBill_number())
+                .name(reservation.getCustomer().getUser().getName())
+                .mobno(reservation.getCustomer().getUser().getMobile_no())
+                .email(reservation.getCustomer().getUser().getEmail())
+                .address(reservation.getCustomer().getUser().getAddress())
+                .hash(generatedHash)
+                .merchant_id(merchantId)
+                .build();
+    }
+
+    @Override
+    public PaymentDTO payOnlinePublic(PaymentRequestDTO paymentRequestDTO) {
+        Reservation reservation = reservationRepository.findById(paymentRequestDTO.getReservationId());
+        double amountPayable = paymentRequestDTO.getAmount();
 
         String generatedHash = Helpers.generateHashForPayHere(merchantId, merchantSecret, reservation.getBill_number(), amountPayable);
         return PaymentDTO.builder()

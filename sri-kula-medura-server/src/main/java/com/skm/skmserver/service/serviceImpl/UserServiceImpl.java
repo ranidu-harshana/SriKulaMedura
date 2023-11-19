@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService, MainService<UserDTO, User> 
     public UserDTO saveUser(UserDTO userDTO) {
         User user = userRepository.save(User.builder(newUser)
                 .name(userDTO.getName())
+                .nic(userDTO.getNic())
                 .email(userDTO.getEmail())
                 .address(userDTO.getAddress())
                 .mobile_no(userDTO.getMobile_no())
