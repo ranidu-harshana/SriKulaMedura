@@ -52,7 +52,7 @@ const Payment = ({id, amount}) => {
             .then((response) => {
                 setPaymentData({...response.data})
             })
-    }, [id])
+    }, [id, amount])
 
     let PAYHERE_RETURN_URL = "http://sample.com/return";
     return (<>
