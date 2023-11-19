@@ -2,11 +2,8 @@ package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.*;
 import com.skm.skmserver.dto.Customer.CustomerUserDTO;
-import com.skm.skmserver.dto.Reservation.BestMenPageBoysCountDTO;
-import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
-import com.skm.skmserver.dto.Reservation.ReservationDTO;
-import com.skm.skmserver.dto.Reservation.ReservationDateDTO;
-import com.skm.skmserver.entity.Billing;
+import com.skm.skmserver.dto.Report.BetweenDatesDTO;
+import com.skm.skmserver.dto.Reservation.*;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.entity.User;
 import com.skm.skmserver.enums.Role;
@@ -36,8 +33,6 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     private final BranchRepo branchRepo;
     private final UserServiceImpl userService;
     private final MapAll<Reservation, ReservationDTO> mapAll;
-    private Reservation newReservation;
-    private User newUser;
 
     @Override
     public List<ReservationDTO> allReservations() {
@@ -100,11 +95,33 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
         return mapAll.mapAllAttributesToDTO(reservationRepository.findAllByFunction_date(functionDate), this);
     }
 
+    @Override
+    public List<ReservationDTO> getReservationsBetweenDates(BetweenDatesDTO betweenDatesDto) {
+        return mapAll.mapAllAttributesToDTO(reservationRepository.findAllByFunction_dateBetween(
+                betweenDatesDto.getFromDate(), betweenDatesDto.getToDate()), this);
+    }
+
     public ReservationDTO saveBestMenPageBoysCount(BestMenPageBoysCountDTO bestMenPageBoysCountDTO) {
         Reservation reservation = reservationRepository.findById(bestMenPageBoysCountDTO.getReservation_id());
         return set(reservationRepository.save(Reservation.builder(reservation)
                 .no_of_bestmen(bestMenPageBoysCountDTO.getNo_of_bestmen())
                 .no_of_pageboys(bestMenPageBoysCountDTO.getNo_of_pageboys())
+                .build()));
+    }
+
+    @Override
+    public ReservationDTO cancelRescheduleReservation(ReservationCancelDTO reservationCancelDTO) {
+        Reservation reservation = reservationRepository.findById(reservationCancelDTO.getReservationId());
+        return set(reservationRepository.save(Reservation.builder(reservation)
+                .status(reservationCancelDTO.isCanceled()).build()));
+    }
+
+    @Override
+    public ReservationDTO postponeReservation(PostponeResRequestDTO postponeResRequestDTO) {
+        Reservation reservation = reservationRepository.findById(postponeResRequestDTO.getReservationId());
+        return set(reservationRepository.save(Reservation.builder(reservation)
+                .function_date(postponeResRequestDTO.getPostponeDate())
+                .before_postpone_date(reservation.getFunction_date())
                 .build()));
     }
 

@@ -7,6 +7,7 @@ import CreateItem from "../pages/Item/CreateItem";
 import Branch from "../pages/Branch/Branch";
 import CreateEmployee from "../pages/Employee/CreateEmployee";
 import EmployeesList from "../pages/Employee/EmployeesList";
+import Test from "../pages/Employee/Test";
 import ControlActivity from "../context/ControlActivity";
 import AdminLogin from "../components/Login/AdminLogin";
 import UserLogin from "../components/Login/UserLogin";
@@ -18,6 +19,7 @@ import ReservationProfile from "../pages/Reservation/ReservationProfile";
 import ProtectedRoute from "./ProtectedRoute";
 import WebSocketConnection from "../context/WebSocketConnection";
 import PaymentPage from "../pages/Payment/PaymentPage";
+import WeddingReservationReport from "../pages/Reports/WeddingReservationReport";
 import PaymentSuccessPage from "../pages/Payment/PaymentSuccessPage";
 import PaymentCancelPage from "../components/Payment/PaymentCancelPage";
 
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
 					{
 						index: true,
 						element: <Home />
+					},
+					{
+						path: 'fuck',
+						element: <Test />
 					},
 					{
 						path: 'inventory',
@@ -72,6 +78,15 @@ const router = createBrowserRouter([
 					{
 						path: "reservation/:id",
 						element: <ReservationProfile />
+					},
+					{
+						path: "report/",
+						children: [
+							{
+								path: "reservations",
+								element: <WeddingReservationReport />
+							}
+						]
 					}
 				]
 			}

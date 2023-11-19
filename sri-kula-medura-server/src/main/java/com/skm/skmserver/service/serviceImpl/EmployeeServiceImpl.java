@@ -22,7 +22,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public UserDTO saveEmployee(UserDTO userDTO) {
         User user = userRepository.save(User.builder(newUser)
-                .id(userDTO.getId())
                 .name(userDTO.getName())
                 .email(userDTO.getEmail())
                 .address(userDTO.getAddress())

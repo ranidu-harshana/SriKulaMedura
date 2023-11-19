@@ -45,14 +45,16 @@ const CalendarComp = ({dates}) => {
 			<BSModal show={show} handleClose={handleClose} modalTitle={"All Functions On: " + onDate}>
 				<div>
 					{
-						reservationsByDate?.map((reservation, index) =>
-							<ResDetailsInModal reservationId={reservation?.id} billNumber={reservation?.bill_number} cancelled={false} cusName={reservation?.customer?.name} key={index}/>
-						)
+						reservationsByDate?.map((reservation, index) => {
+							if (reservation.before_postpone_date != null)
+								return <ResDetailsInModal reservationId={reservation?.id} billNumber={reservation?.bill_number}
+												   cancelled={false} postponed={true}
+												   cusName={reservation?.customer?.name} key={index} postponedDate={reservation.before_postpone_date}/>
+							return <ResDetailsInModal reservationId={reservation?.id} billNumber={reservation?.bill_number}
+												   cancelled={reservation?.status} cusName={reservation?.customer?.name}
+												   key={index}/>
+						})
 					}
-
-					{/*<ResDetailsInModal billNumber={'SMB2744'} cancelled={true} cusName={"Sachini Deepashika"}/>*/}
-					{/*<ResDetailsInModal billNumber={'SMB2746'} cusName={"Sachindu Malshan"}/>*/}
-					{/*<ResDetailsInModal billNumber={'SMB2745'} postponed={true} cusName={"Danilka Shalinda"}/>*/}
 				</div>
 			</BSModal>
 		</div>);

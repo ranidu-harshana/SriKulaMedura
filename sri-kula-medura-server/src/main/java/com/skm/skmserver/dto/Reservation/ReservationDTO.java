@@ -30,6 +30,7 @@ public class ReservationDTO {
     private String goingaway_change_place;
     private boolean status;
     private LocalDate measurement_date;
+    private LocalDate before_postpone_date;
     private Date created_at;
     private Date updated_at;
     private String date;
@@ -54,8 +55,9 @@ public class ReservationDTO {
                 .no_of_pageboys(reservation.getNo_of_pageboys())
                 .dressing_place(reservation.getDressing_place())
                 .goingaway_change_place(reservation.getGoingaway_change_place())
-                .status(reservation.isStatus())
+                .status(reservation.getStatus())
                 .measurement_date(reservation.getMeasurement_date())
+                .before_postpone_date(reservation.getBefore_postpone_date())
                 .created_at(reservation.getCreated_at())
                 .updated_at(reservation.getUpdated_at())
                 .date(new SimpleDateFormat("EEEE, MMMM dd, YYYY").format(reservation.getCreated_at()))

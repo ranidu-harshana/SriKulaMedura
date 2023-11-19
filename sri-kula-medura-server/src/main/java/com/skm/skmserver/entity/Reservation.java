@@ -27,10 +27,10 @@ public class Reservation {
     @Column(nullable = false, unique = true)
     private String bill_number;
 
-    @Column(nullable = true)
+    @Column()
     private LocalDate function_date;
 
-    @Column(nullable = true)
+    @Column()
     private String function_place;
 
     @Column(nullable = true, columnDefinition = "INT DEFAULT 0")
@@ -45,11 +45,13 @@ public class Reservation {
     @Column(nullable = true)
     private String goingaway_change_place;
 
-    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
-    private boolean status;
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT false")
+    private Boolean status;
 
     @Column(nullable = true)
     private LocalDate measurement_date;
+
+    private LocalDate before_postpone_date;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -107,8 +109,9 @@ public class Reservation {
                 .no_of_pageboys(reservation.getNo_of_pageboys())
                 .dressing_place(reservation.getDressing_place())
                 .goingaway_change_place(reservation.getGoingaway_change_place())
-                .status(reservation.isStatus())
+                .status(reservation.getStatus())
                 .measurement_date(reservation.getMeasurement_date())
+                .before_postpone_date(reservation.getBefore_postpone_date())
                 .created_at(reservation.getCreated_at())
                 .updated_at(reservation.getUpdated_at())
                 .user(reservation.getUser())

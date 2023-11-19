@@ -1,24 +1,18 @@
 package com.skm.skmserver.controller;
 
-import com.skm.skmserver.dto.Reservation.BestMenPageBoysCountDTO;
-import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
-import com.skm.skmserver.dto.Reservation.ReservationDTO;
-import com.skm.skmserver.dto.Reservation.ReservationDateDTO;
-import com.skm.skmserver.service.serviceImpl.ReservationServiceImpl;
+import com.skm.skmserver.dto.Reservation.*;
+import com.skm.skmserver.service.ReservationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 
 @RestController
 @RequestMapping(value = "api/v1/reservation")
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ReservationController {
-    private final ReservationServiceImpl reservationService;
+    private final ReservationService reservationService;
 
     @GetMapping("/")
     public List<ReservationDTO> index(){
@@ -66,5 +60,15 @@ public class ReservationController {
     @PostMapping("/reservations/by-date")
     public List<ReservationDTO> getReservationsByDate(@RequestBody ReservationDateDTO reservationDateDTO) {
         return reservationService.allReservationsByDate(reservationDateDTO);
+    }
+
+    @PostMapping("/cancel")
+    public ReservationDTO cancelRescheduleReservation(@RequestBody ReservationCancelDTO reservationCancelDTO) {
+        return reservationService.cancelRescheduleReservation(reservationCancelDTO);
+    }
+
+    @PostMapping("/postpone")
+    public ReservationDTO postponeReservation(@RequestBody PostponeResRequestDTO postponeResRequestDTO) {
+        return reservationService.postponeReservation(postponeResRequestDTO);
     }
 }

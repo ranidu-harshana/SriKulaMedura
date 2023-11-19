@@ -1,5 +1,9 @@
 import Repository from "../utils/Repository";
 
+const storeUser = (name, email, address, mobile_no, role) => {
+	return Repository.post('/auth/register', {name, email, address, mobile_no, role})
+}
+
 const getAllUsers = () => {
 	return Repository.get(`/user/`)
 }
@@ -13,6 +17,7 @@ const getUserByEmail = (email) => {
 }
 
 export {
+	storeUser,
 	getAllUsers,
 	getUserById,
 	getUserByEmail,

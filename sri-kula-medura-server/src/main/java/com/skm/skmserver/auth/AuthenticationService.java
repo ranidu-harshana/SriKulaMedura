@@ -2,7 +2,6 @@ package com.skm.skmserver.auth;
 
 import com.skm.skmserver.config.security.JwtService;
 import com.skm.skmserver.entity.User;
-import com.skm.skmserver.enums.Role;
 import com.skm.skmserver.repo.UserRepository;
 import com.skm.skmserver.service.serviceImpl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +26,8 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .address(request.getAddress())
                 .mobile_no(request.getMobile_no())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.STANDARD_USER)
+                .password(passwordEncoder.encode("1234"))
+                .role(request.getRole())
                 .build();
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);

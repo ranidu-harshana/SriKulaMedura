@@ -31,7 +31,7 @@ const SideNav = () => {
 		},
 		{title: "Chat", link: "chat", submenu: false, icon: <QuestionAnswerIcon/>}, // chatCount: 5, isChat: true
 		{title: "Reports", link: "#", submenu: true, icon: <FlagIcon/>, subMenuLinks: [
-				{title: "Wedding Reservation"},
+				{title: "Wedding Reservation", link: "report/reservations"},
 				{title: "Reserved Items"},
 				{title: "Dress Frequency"},
 				{title: "Measurement Report"},

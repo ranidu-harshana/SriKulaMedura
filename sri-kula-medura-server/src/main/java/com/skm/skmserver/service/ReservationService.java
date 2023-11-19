@@ -1,11 +1,12 @@
 package com.skm.skmserver.service;
 
-import com.skm.skmserver.dto.Reservation.ReservationCustomerDTO;
-import com.skm.skmserver.dto.Reservation.ReservationDTO;
-import com.skm.skmserver.dto.Reservation.ReservationDateDTO;
+import com.skm.skmserver.dto.Report.BetweenDatesDTO;
+import com.skm.skmserver.dto.Reservation.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface ReservationService {
     List<ReservationDTO> allReservations();
     ReservationDTO saveReservation(ReservationCustomerDTO reservationCusDTO);
@@ -14,4 +15,12 @@ public interface ReservationService {
     boolean deleteReservation(int id);
 
     List<ReservationDTO> allReservationsByDate(ReservationDateDTO reservationDateDTO);
+
+    List<ReservationDTO> getReservationsBetweenDates(BetweenDatesDTO betweenDatesDto);
+
+    ReservationDTO saveBestMenPageBoysCount(BestMenPageBoysCountDTO bestMenPageBoysCountDTO);
+
+    ReservationDTO cancelRescheduleReservation(ReservationCancelDTO reservationCancelDTO);
+
+    ReservationDTO postponeReservation(PostponeResRequestDTO postponeResRequestDTO);
 }

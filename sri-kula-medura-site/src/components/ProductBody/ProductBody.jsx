@@ -7,8 +7,6 @@ import tShirt1 from '../../assets/Product/t1.jpeg';
 import tShirt2 from '../../assets/Product/t2.jpeg';
 import tShirt3 from '../../assets/Product/t3.jpeg';
 import tShirt5 from '../../assets/Product/t5.jpeg';
-import CounterInput from 'react-bootstrap-counter';
-
 
 const ProductNav = (props) => {
     return (

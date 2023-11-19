@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addBranches, saveBranch, selectAllBranch} from "../../store/slices/branchSlice";
 import {useTranslation} from "react-i18next";
 
-const Branch = (props) => {
+const Branch = () => {
 	const {t} = useTranslation()
 	const branches = useSelector(selectAllBranch)
 	const dispatcher = useDispatch()
@@ -17,11 +17,9 @@ const Branch = (props) => {
 	const columns = [{field: 'id', headerName: "Id", maxWidth: 300}, {
 		field: 'name',
 		headerName: "Branch Name"
-	}, {field: 'prefix', headerName: "Prefix"}, {field: 'created_at', headerName: "Created At"}, {
-		field: 'id',
-		headerName: "Actions",
-		cellRenderer: BranchActionBtns
-	},]
+	}, {field: 'prefix', headerName: "Prefix"}, {field: 'created_at', headerName: "Created At"},
+		// { field: 'id', headerName: "Actions", cellRenderer: BranchActionBtns },
+	]
 
 	useEffect(() => {
 		if (branches.length < 1) {
@@ -40,8 +38,8 @@ const Branch = (props) => {
 			           breadcrumbs={[{title: t("home"), link: "/", active: false}, {title: t("branch"), active: true}]}/>
 
 			<div>
-				<input ref={branchNameRef} type="text" placeholder={'Branch Name'}/><br/>
-				<input ref={branchPrefRef} type="text" placeholder={'Prefix'}/><br/>
+				<input ref={branchNameRef} type="text" placeholder={'Branch Name'} className={'form-control-sm mb-2'}/><br/>
+				<input ref={branchPrefRef} type="text" placeholder={'Prefix'} className={'form-control-sm mb-2'}/><br/>
 				<button onClick={() => {
 					storeBranch(branchNameRef.current.value, branchPrefRef.current.value)
 						.then(response => {
@@ -50,7 +48,7 @@ const Branch = (props) => {
 						.catch(error => {
 							console.log("ERROR: "+error);
 						})
-				}}>Save
+				}} className={'btn btn-sm btn-success mb-2'}>Save
 				</button>
 			</div>
 
@@ -60,6 +58,6 @@ const Branch = (props) => {
 
 export default Branch;
 
-const BranchActionBtns = (props) => {
-	return (<div>BranchActionBtns</div>);
-}
+// const BranchActionBtns = () => {
+// 	return (<div>BranchActionBtns</div>);
+// }

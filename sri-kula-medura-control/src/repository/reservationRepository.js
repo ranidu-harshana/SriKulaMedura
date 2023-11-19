@@ -31,10 +31,24 @@ const storeBestMenPageBoysCount = (reservation_id, no_of_bestmen, no_of_pageboys
 	})
 }
 
+const cancelReservation = (reservationId) => {
+	let canceled = true;
+	return Repository.post('/reservation/cancel', {
+		reservationId, canceled
+	})
+}
+const postponeReservation = (reservationId, postponeDate) => {
+	return Repository.post('/reservation/postpone', {
+		reservationId, postponeDate
+	})
+}
+
 export {
 	getAllReservations,
 	getReservation,
 	getReservationsByDate,
 	storeReservation,
 	storeBestMenPageBoysCount,
+	cancelReservation,
+	postponeReservation,
 }

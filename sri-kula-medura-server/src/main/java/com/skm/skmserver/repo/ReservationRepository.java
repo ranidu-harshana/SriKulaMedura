@@ -16,5 +16,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     @Query(value = "SELECT * FROM reservation WHERE function_date=:function_date", nativeQuery = true)
     List<Reservation> findAllByFunction_date(@Param("function_date") LocalDate date);
 
-    Reservation findFirstByOrderByIdDesc();
+    @Query(value = "SELECT * FROM reservation WHERE function_date between :fromDate AND :toDate", nativeQuery = true)
+    List<Reservation> findAllByFunction_dateBetween(
+            @Param("fromDate") LocalDate fromDate, @Param("toDate") LocalDate toDate);
 }
