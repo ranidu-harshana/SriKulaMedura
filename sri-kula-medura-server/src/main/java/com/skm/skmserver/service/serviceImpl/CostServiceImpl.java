@@ -2,8 +2,11 @@ package com.skm.skmserver.service.serviceImpl;
 
 import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import com.skm.skmserver.dto.CostDTO;
+import com.skm.skmserver.dto.OtherCostDTO;
 import com.skm.skmserver.entity.Cost;
+import com.skm.skmserver.entity.OtherCost;
 import com.skm.skmserver.repo.CostRepository;
+import com.skm.skmserver.repo.OtherCostRepository;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.CostService;
 import com.skm.skmserver.service.MainService;
@@ -19,16 +22,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     private final CostRepository costRepository;
+    private final OtherCostRepository otherCostRepository;
     private final ReservationRepository reservationRepository;
     private final MapAll<Cost,CostDTO> mapAll;
     private final Cost newCost;
+    private final OtherCost newOtherCost;
 
     public List<CostDTO> allCosts() {
         return mapAll.mapAllAttributesToDTO(costRepository.findAll(), this);
     }
 
-    public List<CostDTO> allCostsOfReservation(int reservation) {
-        return mapAll.mapAllAttributesToDTO(costRepository.findAllByReservationId(reservation),this);
+    public List<OtherCostDTO> allCostsOfReservation(int reservation) {
+        List<OtherCost> otherCosts = otherCostRepository.findAllByReservationId(reservation);
+
+        return otherCosts.stream().map(otherCost -> OtherCostDTO.builder(otherCost).build()).toList();
     }
 
     public CostDTO getCost(int id) {
@@ -58,6 +65,7 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
 
     public CostDTO saveCost(CostDTO costDTO) {
         Cost cost = costRepository.save(Cost.builder(newCost)
+                .id(costDTO.getId())
                 .transport(costDTO.getTransport())
                 .salary(costDTO.getSalary())
                 .cleaning(costDTO.getCleaning())
@@ -72,5 +80,29 @@ public class CostServiceImpl implements CostService,MainService<CostDTO ,Cost> {
     @Override
     public CostDTO set(Cost cost) {
         return CostDTO.builder(cost).build();
+    }
+
+    @Override
+    public CostDTO mainCostsOfReservation(int reservation) {
+        Cost cost = costRepository.findByReservationId(reservation);
+
+        return CostDTO.builder(cost).build();
+    }
+
+    @Override
+    public OtherCostDTO saveOtherCost(OtherCostDTO otherCostDTO) {
+        OtherCost otherCost = otherCostRepository.save(OtherCost.builder(newOtherCost)
+                .reason(otherCostDTO.getReason())
+                .other_cost(otherCostDTO.getOther_cost())
+                .reservation(reservationRepository.findById(otherCostDTO.getReservation_id()))
+                .build());
+        return OtherCostDTO.builder(otherCost).build();
+    }
+
+    @Override
+    public List<OtherCostDTO> allOtherCosts() {
+        List<OtherCost> otherCosts = otherCostRepository.findAll();
+
+        return otherCosts.stream().map(otherCost -> OtherCostDTO.builder(otherCost).build()).toList();
     }
 }

@@ -11,4 +11,5 @@ import java.util.List;
 public interface CostRepository extends JpaRepository<Cost ,Integer> {
     Cost findById(int id);
     List<Cost> findAllByReservationId(int reservationId);
+    Cost findByReservationId(int reservationId);
 }

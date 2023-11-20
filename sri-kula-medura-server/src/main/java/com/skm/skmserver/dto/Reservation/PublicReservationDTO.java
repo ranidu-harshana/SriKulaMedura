@@ -15,6 +15,7 @@ import java.util.List;
 @Data
 @Builder
 public class PublicReservationDTO {
+    private int reservationId;
     private String bill_number;
     private String customerName;
     private double dueAmount;

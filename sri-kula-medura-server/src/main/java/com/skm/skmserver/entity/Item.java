@@ -48,8 +48,8 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<DressSelection> dress_selections;
 
-    @OneToMany(mappedBy = "item")
-    private List<WishList> wishlist;
+//    @OneToMany(mappedBy = "item")
+//    private List<WishList> wishlist;
 
     public static ItemBuilder builder(Item item) {
         if (item == null) {

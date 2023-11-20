@@ -1,3 +1,5 @@
+import './Profile.css'
+
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getReservationByBillNo} from "../../repository/reservationRespository";
@@ -26,18 +28,82 @@ const Profile = () => {
 
     console.log(reservationData)
     if(pay) {
-        return <Payment id={reservationData.id} amount={payAmount}/>
+        return <Payment id={reservationData.reservationId} amount={payAmount} pay={pay}/>
     }
     return (
         <>
-            <div className="container">
-                <div className="row text-center">
-                    Hi {reservationData?.customerName} <br/>
-                    Due Amount {reservationData?.dueAmount} <br/>
-                    Bill Number {reservationData?.bill_number}
+            <div className="container justify-content-center">
+                <div className="row mt-4 mb-4">
+                    <div className={'tab-content-container-heading col-12'}>
+                        <div className="row text-center mt-4">
+                            <h2>Hi {reservationData?.customerName} </h2>
+                        </div>
+                        <div className="row">
+                            <div className="col-6 d-flex justify-content-end">Due Amount </div>
+                            <div className="col-6">Rs. {reservationData?.dueAmount}</div>
+                        </div>
+                        <div className="row">
+                            <div className="col-6 d-flex justify-content-end">Bill Number </div>
+                            <div className="col-6">{reservationData?.bill_number}</div>
+                        </div>
+                        <div className="row">
+                            <div className="col-4"></div>
+                            <div className="col-2 d-flex justify-content-end"><input type="text" className={'form-control-md'} value={payAmount} onChange={(e)=>setPayAmount(e.target.value)}/> </div>
+                            <div className="col-2"><button className={'btn btn-md btn-success'} onClick={()=>setPay(true)}>Pay</button></div>
+                            <div className="col-4"></div>
+                        </div>
+                    </div>
                 </div>
-                <input type="text" value={payAmount} onChange={(e)=>setPayAmount(e.target.value)}/>
-                <button onClick={()=>setPay(true)}>Pay</button>
+
+                <div className={'row mt-4 mb-4 column-gap-4'}>
+                    <div className={'tab-content-container-table col'}>
+                        <table className="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col"><b>#</b></th>
+                                <th scope="col"><b>Amount</b></th>
+                                <th scope="col"><b>Reason</b></th>
+                                <th scope="col"><b>Date</b></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                reservationData?.additionalPayments?.map((additionalPayment, index) => (
+                                    <tr key={index}>
+                                        <th scope="row">{additionalPayment?.id}</th>
+                                        <td>{additionalPayment?.payment}</td>
+                                        <td>{additionalPayment?.reason}</td>
+                                        <td>{additionalPayment?.created_at}</td>
+                                    </tr>
+                                ))
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className={'tab-content-container-table col'}>
+                        <table className="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col"><b>#</b></th>
+                                <th scope="col"><b>Amount</b></th>
+                                <th scope="col"><b>Date</b></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                reservationData?.interimPayments?.map((interimPayment, index) => (
+                                    <tr key={index}>
+                                        <th scope="row">{interimPayment?.id}</th>
+                                        <td>{interimPayment?.interim_payment}</td>
+                                        <td>{interimPayment?.created_at}</td>
+                                    </tr>
+                                ))
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </>
     );
@@ -45,7 +111,11 @@ const Profile = () => {
 
 export default Profile;
 
-const Payment = ({id, amount}) => {
+const Payment = ({id, amount, pay}) => {
+    const navigate = useNavigate();
+
+    if (!pay) navigate('/login')
+
     const [paymentData, setPaymentData] = useState()
     const [city, setCity] = useState("")
 

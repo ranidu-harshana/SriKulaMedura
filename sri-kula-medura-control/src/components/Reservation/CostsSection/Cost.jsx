@@ -1,12 +1,24 @@
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import SectionDetails from "../SectionDetails";
 import OtherCostsSection from "./OtherCostsSection";
 import OtherCostsTable from "./OtherCostsTable";
+import {getAllMainCostByReservation, storeMainCost} from "../../../repository/costRepository";
+import {useParams} from "react-router-dom";
+import notify from "../../../utils/notify";
 
-const Cost = (props) => {
+const Cost = () => {
 	const [editingStatus, setEditingStatus] = useState(false)
+	const [cost, setCost] = useState({})
+	const {id} = useParams()
+
+	useEffect(() => {
+		getAllMainCostByReservation(id)
+			.then(res => {
+				setCost(res.data)
+			})
+	})
 
 	return (<>
 		<div className="row">
@@ -20,7 +32,7 @@ const Cost = (props) => {
 								        onClick={() => setEditingStatus(pre => !pre)}>{editingStatus ? "Cancel" : "Edit Costs"}</button>
 							</div>
 						</div>
-						{editingStatus ? <EditingCost/> : <ViewingCost/>}
+						{editingStatus ? <EditingCost cost={cost}/> : <ViewingCost cost={cost}/>}
 					</div>
 				</div>
 			</div>
@@ -37,11 +49,11 @@ const Cost = (props) => {
 
 export default Cost;
 
-const EditingCost = () => {
-	const [transportCost, setTransportCost] = useState(null)
-	const [salaryCost, setSalaryCost] = useState(null)
-	const [cleaningCost, setCleaningCost] = useState(null)
-	const [depreciationCost, setDepreciationCost] = useState(null)
+const EditingCost = ({cost}) => {
+	const [transportCost, setTransportCost] = useState(cost?.transport)
+	const [salaryCost, setSalaryCost] = useState(cost?.salary)
+	const [cleaningCost, setCleaningCost] = useState(cost?.cleaning)
+	const [depreciationCost, setDepreciationCost] = useState(cost?.depreciation)
 
 	return (<>
 		<div className="row mb-3">
@@ -107,20 +119,25 @@ const EditingCost = () => {
 		<div className="row mb-3">
 			<div className="col-3"></div>
 			<div className={'col-9 text-end'}>
-				<button className={'btn btn-success w-25'}>Submit</button>
+				<button className={'btn btn-success w-25'} onClick={() => {
+					storeMainCost(cost.id, transportCost, salaryCost, cleaningCost, depreciationCost, cost.reservation_id)
+						.then(() => {
+							notify(1, " Cost Updated Successfully");
+						}).catch(() => notify(0, " Cost Added failed"))
+				}}>Submit</button>
 			</div>
 		</div>
 	</>)
 }
 
-const ViewingCost = () => {
+const ViewingCost = ({cost}) => {
 	return (<>
-			<SectionDetails topic={'Transport'} value={'Rs. 17,874.00'}/>
-			<SectionDetails topic={'Salary'} value={'Rs. 17,874.00'}/>
-			<SectionDetails topic={'Cleaning'} value={'17,874.00'}/>
-			<SectionDetails topic={'Depreciation'} value={'17,874.00'}/>
-			<SectionDetails topic={'Other'} value={'17,874.00'}/>
+			<SectionDetails topic={'Transport'} value={cost?.transport}/>
+			<SectionDetails topic={'Salary'} value={cost?.salary}/>
+			<SectionDetails topic={'Cleaning'} value={cost?.cleaning}/>
+			<SectionDetails topic={'Depreciation'} value={cost?.depreciation}/>
+			{/*<SectionDetails topic={'Other'} value={'17,874.00'}/>*/}
 			<hr className={'mt-1'}/>
-			<SectionDetails topic={'Total'} value={'17,874.00'}/>
+			<SectionDetails topic={'Total'} value={cost?.transport + cost?.salary + cost?.cleaning + cost?.depreciation}/>
 		</>)
 }
