@@ -4,7 +4,6 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import DomainIcon from '@mui/icons-material/Domain';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import PeopleIcon from '@mui/icons-material/People';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import FlagIcon from '@mui/icons-material/Flag';
 import SideNavLink from "./SideNavLink";
@@ -13,7 +12,11 @@ const SideNav = () => {
 	const navLinks = [
 		{title: "Dashboard", link: "/", submenu: false, icon: <DashboardIcon/>},
 		{title: "Branch", link: "branch", submenu: false, icon: <DomainIcon/>},
-		{title: "Customers", link: "#", submenu: false, icon: <PeopleIcon/>},
+		{title: "Customer", link: "#", submenu: true, icon: <InventoryIcon/>, subMenuLinks: [
+				{title: "Create Customer", link: "createcustomer"},
+				{title: "Customers", link: "customers"}
+			]
+		},
 		{title: "Reservations", link: "#", submenu: true, icon: <DomainIcon/>, subMenuLinks: [
 				{title: "Reservations List", link: "allreservations"}, {title: "Add Reservation", link: "createreservation"}
 			]
@@ -25,7 +28,7 @@ const SideNav = () => {
 			]
 		},
 		{title: "Employees", link: "#", submenu: true, icon: <AccountCircleIcon/>, subMenuLinks: [
-				{title: "Employees List", link: "employeelist"},
+				{title: "Employees", link: "employeelist"},
 				{title: "Create Employee", link: "createemployee"}
 			]
 		},

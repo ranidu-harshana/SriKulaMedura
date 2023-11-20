@@ -4,12 +4,17 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import {storeUser} from "../../repository/userRepository";
+import {storeItem} from "../../repository/itemRepository";
+import {saveItem} from "../../store/slices/itemSlice";
 import notify from "../../utils/notify";
 import NotificationContainer from "../../components/ToastNotification/NotificationContainer";
-import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {addItemCats} from "../../store/slices/itemCategorySlice";
+import {useEffect, useState} from "react";
+import {getAllItemCategories} from "../../repository/itemCategoryRepository";
+import {storeUser} from "../../repository/userRepository";
+const CreateCustomer = () => {
 
-const CreateEmployee = () => {
 
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -82,8 +87,6 @@ const CreateEmployee = () => {
 							value={role}
 							onChange={(e)=>setRole(e.target.value)}
 						>
-							<MenuItem value={"ADMIN"}>Admin</MenuItem>
-							<MenuItem value={"MANAGER"}>Manager</MenuItem>
 							<MenuItem value={"STANDARD_USER"}>Standard User</MenuItem>
 						</Select>
 					</FormControl>
@@ -94,9 +97,9 @@ const CreateEmployee = () => {
 						storeUser(name, email, address, mobile_no, role)
 							.then(response => {
 								if (response.status === 200) {
-									notify(1, "Employee Created Successfully.");
+									notify(1, "Customer Created Successfully.");
 								} else {
-									notify(0, "Employee not saved")
+									notify(0, "Customer not saved")
 								}
 							})
 							.catch(error => console.log(error))
@@ -108,4 +111,4 @@ const CreateEmployee = () => {
 	);
 }
 
-export default CreateEmployee;
+export default CreateCustomer;

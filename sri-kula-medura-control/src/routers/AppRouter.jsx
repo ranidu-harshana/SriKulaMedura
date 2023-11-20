@@ -22,6 +22,8 @@ import PaymentPage from "../pages/Payment/PaymentPage";
 import WeddingReservationReport from "../pages/Reports/WeddingReservationReport";
 import PaymentSuccessPage from "../pages/Payment/PaymentSuccessPage";
 import PaymentCancelPage from "../components/Payment/PaymentCancelPage";
+import CreateCustomer from "../pages/Customer/CreateCustomer";
+import CustomerList from "../pages/Customer/CustomerList";
 
 const router = createBrowserRouter([
 	{
@@ -62,6 +64,14 @@ const router = createBrowserRouter([
 					{
 						path: "employeelist",
 						element: <EmployeesList />
+					},
+					{
+						path: "createcustomer",
+						element: <CreateCustomer />
+					},
+					{
+						path: "customers",
+						element: <CustomerList />
 					},
 					{
 						path: "reservation",
