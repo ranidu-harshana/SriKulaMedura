@@ -2,6 +2,8 @@ package com.skm.skmserver.controller;
 
 import com.skm.skmserver.dto.AdditionalPaymentDTO;
 import com.skm.skmserver.dto.CostDTO;
+import com.skm.skmserver.dto.OtherCostDTO;
+import com.skm.skmserver.entity.OtherCost;
 import com.skm.skmserver.service.serviceImpl.CostServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,14 +22,29 @@ public class CostController {
         return costService.allCosts();
     }
 
-    @PostMapping("/")
+    @GetMapping("/other")
+    public List<OtherCostDTO> indexOther(){
+        return costService.allOtherCosts();
+    }
+
+    @PostMapping("/main")
     public CostDTO store(@RequestBody CostDTO costDTO){
         return costService.saveCost(costDTO);
     }
 
-    @GetMapping("/reservation/{reservation}")
-    public List<CostDTO> costsOfReservation(@PathVariable int reservation) {
+    @PostMapping("/other")
+    public OtherCostDTO storeOtherCost(@RequestBody OtherCostDTO otherCostDTO){
+        return costService.saveOtherCost(otherCostDTO);
+    }
+
+    @GetMapping("/reservation/other/{reservation}")
+    public List<OtherCostDTO> costsOfReservation(@PathVariable int reservation) {
         return costService.allCostsOfReservation(reservation);
+    }
+
+    @GetMapping("/reservation/main/{reservation}")
+    public CostDTO mainCostsOfReservation(@PathVariable int reservation) {
+        return costService.mainCostsOfReservation(reservation);
     }
 
     @GetMapping("/create")

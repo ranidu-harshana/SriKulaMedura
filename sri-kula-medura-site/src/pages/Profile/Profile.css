@@ -1,0 +1,15 @@
+.tab-content-container-heading {
+    min-height: 240px;
+    max-height: 500px;
+    padding-top: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+}
+
+.tab-content-container-table {
+    min-height: 240px;
+    max-height: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+    overflow: auto;
+}

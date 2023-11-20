@@ -4,6 +4,7 @@ import com.skm.skmserver.dto.*;
 import com.skm.skmserver.dto.Customer.CustomerUserDTO;
 import com.skm.skmserver.dto.Report.BetweenDatesDTO;
 import com.skm.skmserver.dto.Reservation.*;
+import com.skm.skmserver.entity.Cost;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.entity.User;
 import com.skm.skmserver.enums.Role;
@@ -41,6 +42,8 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
     private final MapAll<Reservation, ReservationDTO> mapAll;
     private Reservation newReservation;
     private User newUser;
+    private final Cost newCost;
+    private final CostRepository costRepository;
 
     @Override
     public List<ReservationDTO> allReservations() {
@@ -49,6 +52,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
 
     @Override
     public ReservationDTO saveReservation(ReservationCustomerDTO reservationCusDTO) {
+
         UserDTO userDTO = userService.saveUser(UserDTO.builder()
                 .name(reservationCusDTO.getName())
                 .nic(reservationCusDTO.getNic())
@@ -66,6 +70,11 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
                         .user(userRepository.findById(reservationCusDTO.getUser_id()))
                         .branch(branchRepo.findById(reservationCusDTO.getBranch_id()))
                         .build());
+
+        costRepository.save(Cost.builder(newCost)
+                .reservation(reservation)
+                .build());
+
         return set(reservation);
     }
 
@@ -145,6 +154,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
         List<InterimPaymentDTO> interimPayments = interimPaymentService.allInterimPaymentsOfReservation(reservation.get().getId());
 
         return PublicReservationDTO.builder()
+                .reservationId(reservation.get().getId())
                 .bill_number(reservation.get().getBill_number())
                 .customerName(reservation.get().getCustomer().getUser().getName())
                 .dueAmount(reservation.get().getBilling().getAmount_payable())
