@@ -38,7 +38,7 @@ const WeddingReservationReport = () => {
 		);
 
 	return (
-		<PDFReport/>
+		<PDFReport items={reservations}/>
 	)
 }
 

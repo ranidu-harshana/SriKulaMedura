@@ -65,7 +65,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
         Reservation reservation = reservationRepository.save(Reservation.builder(newReservation)
                         .bill_number(generateBillNumber(reservationCusDTO.getBranch_id(), userDTO.getId()))
                         .function_date(reservationCusDTO.getFunction_date())
-                        .status(true)
+                        .status(false)
                         .customer(customerRepository.findByUserId(userDTO.getId()))
                         .user(userRepository.findById(reservationCusDTO.getUser_id()))
                         .branch(branchRepo.findById(reservationCusDTO.getBranch_id()))

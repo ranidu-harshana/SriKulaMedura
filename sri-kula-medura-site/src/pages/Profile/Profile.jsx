@@ -126,7 +126,7 @@ const Payment = ({id, amount, pay}) => {
             })
     }, [id, amount])
 
-    let PAYHERE_RETURN_URL = "http://sample.com/return";
+    let PAYHERE_RETURN_URL = "http://localhost:3001/";
     return (<>
         <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
             <input type="hidden" name="merchant_id" value={paymentData?.merchant_id || ""} readOnly/>

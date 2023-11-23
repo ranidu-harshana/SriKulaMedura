@@ -7,6 +7,7 @@ import RegisterPage from "../pages/Register/RegisterPage";
 import FaqPage from "../pages/Faq/FaqPage";
 import ProductPage from "../pages/Product/ProductPage";
 import Profile from "../pages/Profile/Profile";
+import PaymentSuccess from "../pages/PaymentSuccess/PaymentSuccess";
 
 const router = createBrowserRouter([
 	{
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
 	{
 		path:"/register",
 		element: <RegisterPage />,
+	},
+	{
+		path:"payment-success",
+		element: <PaymentSuccess />
 	},
 	{
 		path:"skm",

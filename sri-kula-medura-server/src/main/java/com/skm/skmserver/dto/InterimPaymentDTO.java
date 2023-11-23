@@ -20,6 +20,12 @@ public class InterimPaymentDTO {
     private int reservation_id;
 
     public static InterimPaymentDTOBuilder builder(InterimPayment interimPayment){
+        if (interimPayment == null) {
+            return internalBuilder();
+        }
+        if(interimPayment.getReservation() == null) {
+            return internalBuilder();
+        }
         return internalBuilder()
                 .id(interimPayment.getId())
                 .interim_payment(interimPayment.getInterim_payment())

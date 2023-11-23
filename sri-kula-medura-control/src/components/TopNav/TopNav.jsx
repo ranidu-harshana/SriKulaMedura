@@ -20,6 +20,7 @@ import {Logout, Settings} from "@mui/icons-material";
 import {useTranslation} from "react-i18next";
 import Clock from 'react-live-clock';
 import './TopNav.css'
+import {Link} from "react-router-dom";
 
 const TopNav =()=> {
     const {i18n} = useTranslation()
@@ -75,10 +76,11 @@ const TopNav =()=> {
                 Settings
             </MenuItem>
             <MenuItem >
+                <Link to={"/adminlogin"}>
                 <ListItemIcon>
                     <Logout fontSize="small" />
                 </ListItemIcon>
-                Logout
+                Logout</Link>
             </MenuItem>
         </Menu>
     );

@@ -1,7 +1,9 @@
 package com.skm.skmserver.service.serviceImpl;
 
+import com.skm.skmserver.dto.InterimPaymentDTO;
 import com.skm.skmserver.dto.PaymentDTO;
 import com.skm.skmserver.dto.PaymentRequestDTO;
+import com.skm.skmserver.entity.InterimPayment;
 import com.skm.skmserver.entity.Reservation;
 import com.skm.skmserver.repo.ReservationRepository;
 import com.skm.skmserver.service.PaymentService;
@@ -16,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService {
     private final ReservationRepository reservationRepository;
+    private final InterimPaymentServiceImpl interimPaymentService;
+    private final InterimPayment newInterimPayment;
 
     @Value("${merchant.secret}")
     private String merchantSecret;
@@ -45,6 +49,12 @@ public class PaymentServiceImpl implements PaymentService {
     public PaymentDTO payOnlinePublic(PaymentRequestDTO paymentRequestDTO) {
         Reservation reservation = reservationRepository.findById(paymentRequestDTO.getReservationId());
         double amountPayable = paymentRequestDTO.getAmount();
+
+        InterimPaymentDTO interimPa = InterimPaymentDTO.builder(newInterimPayment)
+                .interim_payment(paymentRequestDTO.getAmount())
+                .reservation_id(reservation.getId())
+                .build();
+        interimPaymentService.saveInterimPayment(interimPa);
 
         String generatedHash = Helpers.generateHashForPayHere(merchantId, merchantSecret, reservation.getBill_number(), amountPayable);
         return PaymentDTO.builder()

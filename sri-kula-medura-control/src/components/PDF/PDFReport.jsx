@@ -3,6 +3,7 @@ import PDFTableHeader from "./PDFTableHeader";
 import PDFTableRow from "./PDFTableRow";
 
 const PdfReport = ({items}) => {
+	console.log(items)
 	return (
 		<>
 			<PDFViewer style={styles.viewer}>
@@ -11,8 +12,9 @@ const PdfReport = ({items}) => {
 						<Text style={styles.title}>Wedding Reservation Report</Text>
 						<View><PDFTableHeader/></View>
 
-						<PDFTableRow/>
-						<PDFTableRow/>
+						{
+							items?.map((item) => <PDFTableRow item={item}/>)
+						}
 
 						<Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
 							`${pageNumber} / ${totalPages}`

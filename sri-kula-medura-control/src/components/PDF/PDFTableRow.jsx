@@ -37,34 +37,15 @@ const styles = StyleSheet.create({
 		paddingRight: 8,
 	},
 });
-const PDFTableRow = ({items}) => (<>
+const PDFTableRow = ({item}) => (<>
 	<View style={styles.row} >
-		<Text style={styles.description}>Ranidu Harshana</Text>
-		<Text style={styles.qty}>2023/10/02</Text>
-		<Text style={styles.rate}>SKM</Text>
-		<Text style={styles.amount}>20000</Text>
+		<Text style={styles.description}>{item.customer.name}</Text>
+		<Text style={styles.qty}>{item.created_at}</Text>
+		<Text style={styles.rate}>{item.branch_name}</Text>
+		<Text style={styles.amount}>{item.amount_payable}</Text>
 	</View>
 
-<View style={styles.row} >
-	<Text style={styles.description}>Sachinfu</Text>
-	<Text style={styles.qty}>2023/10/02</Text>
-	<Text style={styles.rate}>SKM</Text>
-	<Text style={styles.amount}>25000</Text>
-</View>
-
-<View style={styles.row} >
-	<Text style={styles.description}>Ranidu Harshana</Text>
-	<Text style={styles.qty}>2023/09/02</Text>
-	<Text style={styles.rate}>SKM</Text>
-	<Text style={styles.amount}>30000</Text>
-</View>
-
-<View style={styles.row} >
-	<Text style={styles.description}>Danilka Shalinda</Text>
-	<Text style={styles.qty}>2023/09/02</Text>
-	<Text style={styles.rate}>SKM</Text>
-	<Text style={styles.amount}>20500</Text>
-</View></>
+</>
 );
 
 export default PDFTableRow;
