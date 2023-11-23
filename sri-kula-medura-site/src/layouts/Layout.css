@@ -1,0 +1,110 @@
+.content-wrapper {
+    left: 0;
+    position: relative;
+    margin-left: 230px;
+    padding: 15px 10px;
+    margin-top: 60px;
+}
+
+.content-wrapper-open-side-nav {
+    left: 0;
+    position: relative;
+    margin-left: 230px;
+    padding: 15px 10px;
+    transition: margin-left 1ms linear;
+    margin-top: 60px;
+}
+
+.content-wrapper-open-side-nav.expanded {
+    margin-left: 5000px;
+}
+
+.content {
+    margin: 10px;
+    padding: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.chat-content-wrapper {
+    left: 0;
+    position: relative;
+    margin-left: 230px;
+    background-color: #eee;
+    margin-top: 60px;
+}
+
+.chat-content-wrapper-open-side-nav {
+    left: 0;
+    position: relative;
+    margin-left: 230px;
+    transition: margin-left 1ms linear;
+    background-color: #eee;
+    margin-top: 60px;
+}
+
+.chat-content-wrapper-open-side-nav.expanded {
+    margin-left: 5000px;
+}
+
+.open-side-nav {
+    padding-top: 15px;
+    width: 230px;
+    position: fixed;
+    height: 100%;
+    overflow: scroll;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.closed-side-nav {
+    padding-top: 15px;
+    width: 230px;
+    position: fixed;
+    height: 100%;
+    overflow: scroll;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: width 1ms linear;
+}
+
+.closed-side-nav {
+    width: 230px;
+}
+
+@media screen and (max-width: 768px) {
+    .content-wrapper {
+        left: 0;
+        position: relative;
+        margin-left: 0;
+        padding: 15px 10px;
+        transition: margin-left 1ms linear;
+    }
+
+    .content-wrapper.expanded {
+        position: relative;
+    }
+
+    .chat-content-wrapper {
+        left: 0;
+        position: relative;
+        margin-left: 0;
+        background-color: #eee;
+        transition: margin-left 1ms linear;
+    }
+
+    .chat-content-wrapper.expanded {
+        position: relative;
+    }
+
+    .open-side-nav {
+        padding-top: 15px;
+        width: 0;
+        position: fixed;
+        height: 100%;
+        overflow: scroll;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        transition: width 1ms linear;
+    }
+
+    .open-side-nav.expanded {
+        width: 0;
+    }
+}

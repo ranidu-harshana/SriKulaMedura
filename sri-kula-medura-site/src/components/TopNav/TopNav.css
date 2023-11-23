@@ -1,0 +1,45 @@
+@media screen and (max-width: 576px) {
+    .button-decoration{
+        margin-left: 50%;
+        width: 120px;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .button-decoration{
+        margin-left: 220%;
+        width: 120px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .button-decoration{
+        margin-left: 0;
+        width: 120px;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .button-decoration{
+        margin-left: 0;
+        width: 120px;
+    }
+
+}
+
+.gradient-custom {
+    background: #2a2a2b;
+    background: -webkit-linear-gradient(to right, rgba(12, 133, 2, 0.9), rgba(19, 138, 164, 0.9));
+    background: linear-gradient(to right, rgba(12, 133, 2, 0.9), rgba(19, 138, 164, 0.9));
+}
+
+.logo-alignment{
+    margin-left: 25%;
+}
+
+.button-decoration{
+    margin-top:-6px;
+    font-weight: Bold;
+    color:#12899C;
+}

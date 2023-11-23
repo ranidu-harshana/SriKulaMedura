@@ -1,0 +1,72 @@
+.theme-colored-text {
+    color: #009efb;
+    font-weight: bold;
+}
+
+.image-width {
+    width: 100%;
+}
+
+.text-details {
+    font-size: 15px;
+}
+
+.left-border {
+    border-left-style: dashed;
+    border-left-color: #9FA6B2;
+    border-left-width: 2px;
+}
+
+.res-detail-link {
+    color: white;
+    font-size: 14px;
+    text-decoration: none
+}
+
+.normal-reservation {
+    background-color: #14A44D;
+}
+
+.cancelled-reservation {
+    background-color: #DC4C64;
+}
+
+.postponed-reservation {
+    background-color: #E4A11B;
+}
+
+.tab-content-container {
+    min-height: 365px;
+    max-height: 500px;
+    padding: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+}
+
+.reservation-section-table {
+    max-height: 400px;
+    overflow: scroll;
+}
+
+.reservation-detail-before-edit:hover {
+    color: #009efb;
+}
+
+@media screen and (max-width: 768px) {
+    .image-width {
+        width: 50%;
+    }
+
+    .tab-content-container {
+        font-size: 14px;
+    }
+
+    .text-details {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .left-border {
+        border: none;
+    }
+}
