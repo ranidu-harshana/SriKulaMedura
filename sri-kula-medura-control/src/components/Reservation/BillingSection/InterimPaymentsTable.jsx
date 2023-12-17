@@ -1,14 +1,15 @@
 import {ButtonGroup} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {useParams} from "react-router-dom";
 import useBillGenerator from "../../../hooks/useBillGenerator";
 import {useEffect} from "react";
-import {addInterimPayments, clearInterimPaymentState} from "../../../store/slices/InterimPaymentSlice";
-import {getAllInterimPaymentsOfReservation} from "../../../repository/InterimPaymentRepository";
+import {addInterimPayments, clearInterimPaymentState,deleteInterimPayments,updateInterimPayments} from "../../../store/slices/InterimPaymentSlice";
+import {getAllInterimPaymentsOfReservation,deleteInterimPayment,updateInterimPayment} from "../../../repository/InterimPaymentRepository";
 import {useDispatch} from "react-redux";
-
+import Swal from "sweetalert2";
+import {formatTime} from "../../../utils/formatTime";
+import EditIcon from "@mui/icons-material/Edit";
 const InterimPaymentsTable = () => {
 	const {id} = useParams()
 	const {interimPayments} = useBillGenerator(id)
@@ -25,6 +26,69 @@ const InterimPaymentsTable = () => {
 				})
 		}
 	}, [dispatcher, id, interimPayments])
+
+	const handleDeleteInterimPayment = (id) => {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!"
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deleteInterimPayment(id)
+					.then(() => {
+						Swal.fire({
+							title: "Deleted!",
+							text: "Successfully Deleted",
+							icon: "success"
+						});
+						dispatcher(deleteInterimPayments(id))
+					})
+
+					.catch(error => {
+						console.error('Error deleting note:', error);
+					});
+			}
+		});
+	};
+	async function handleUpdateInterimPayment(id,interim_payment,reservation_id) {
+		const {value: text} = await Swal.fire({
+			input: "textarea",
+			inputLabel: "Interim Payment",
+			inputPlaceholder: interim_payment,
+			inputAttributes: {
+				"aria-label": "Type your note here"
+			},
+			showCancelButton: true
+		});
+		if (text) {
+			// const data={
+			// 	id:id,
+			// 	interim_payment:text,
+			// 	reservation_id:reservation_id
+			// }
+			updateInterimPayment(id,text,reservation_id)
+				.then((res)=>{
+					Swal.fire({
+						title: "Updated!",
+						text: "Successfully Updated",
+						// Your file has been deleted.
+						icon: "success"
+					});
+					console.log(id,text,reservation_id)
+					dispatcher(updateInterimPayments({id, text, reservation_id}))
+				})
+		}else {
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: "Update Failed",
+			});
+		}
+	}
 
 	return (
 		<>
@@ -49,14 +113,16 @@ const InterimPaymentsTable = () => {
 								<tr key={index}>
 									<th scope="row">{interimPayment.id}</th>
 									<td>{interimPayment.interim_payment}</td>
-									<td>{interimPayment.created_at}</td>
+									<td>{formatTime(interimPayment.created_at)}</td>
 									<td>
 										<ButtonGroup size="small">
-											<IconButton color="success" size="small">
-												<EditIcon />
+											<IconButton color="success" size="small"
+														onClick={() => handleUpdateInterimPayment(interimPayment.id, interimPayment.interim_payment,interimPayment.reservation_id)}>
+												<EditIcon/>
 											</IconButton>
-											<IconButton sx={{color:"red"}} size="small">
-												<DeleteIcon />
+											<IconButton sx={{color: "red"}} size="small"
+														onClick={() => handleDeleteInterimPayment(interimPayment.id)}>
+												<DeleteIcon/>
 											</IconButton>
 										</ButtonGroup>
 									</td>
