@@ -16,7 +16,6 @@ const noteSlice = createSlice({
         updateNotes: {
             reducer: (state, action) => {
                 const {id, reservation_id, text} = action.payload;
-                console.log("ssss",action.payload)
                 noteState.upsertOne(state, {
                     id:id,
                     note: text,
@@ -27,7 +26,6 @@ const noteSlice = createSlice({
         saveNote: noteState.addOne,
         deleteNotes: noteState.removeOne,
         clearNoteState: noteState.removeAll,
-        // updateNotes:noteState.updateOne
     }
 })
 
