@@ -10,8 +10,6 @@ import {useDispatch} from "react-redux";
 import Swal from "sweetalert2";
 import {formatTime} from "../../../utils/formatTime";
 import EditIcon from "@mui/icons-material/Edit";
-import {updateNote} from "../../../repository/noteRepository";
-import {updateNotes} from "../../../store/slices/noteSlice";
 const InterimPaymentsTable = () => {
 	const {id} = useParams()
 	const {interimPayments} = useBillGenerator(id)
@@ -56,6 +54,41 @@ const InterimPaymentsTable = () => {
 			}
 		});
 	};
+	async function handleUpdateInterimPayment(id,interim_payment,reservation_id) {
+		const {value: text} = await Swal.fire({
+			input: "textarea",
+			inputLabel: "Interim Payment",
+			inputPlaceholder: interim_payment,
+			inputAttributes: {
+				"aria-label": "Type your note here"
+			},
+			showCancelButton: true
+		});
+		if (text) {
+			// const data={
+			// 	id:id,
+			// 	interim_payment:text,
+			// 	reservation_id:reservation_id
+			// }
+			updateInterimPayment(id,text,reservation_id)
+				.then((res)=>{
+					Swal.fire({
+						title: "Updated!",
+						text: "Successfully Updated",
+						// Your file has been deleted.
+						icon: "success"
+					});
+					console.log(id,text,reservation_id)
+					dispatcher(updateInterimPayments({id, text, reservation_id}))
+				})
+		}else {
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: "Update Failed",
+			});
+		}
+	}
 
 	return (
 		<>

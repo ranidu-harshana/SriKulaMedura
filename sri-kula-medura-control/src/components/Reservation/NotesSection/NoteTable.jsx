@@ -12,8 +12,6 @@ import Swal from "sweetalert2";
 const NoteTable = (props) => {
     const {id} = useParams()
     const notes = useSelector(selectAllNotes)
-    const deleteNotesOne = useSelector(deleteNotes)
-    const updateNotesOne = useSelector(updateNotes)
     const dispatcher = useDispatch();
 
     useEffect(() => {

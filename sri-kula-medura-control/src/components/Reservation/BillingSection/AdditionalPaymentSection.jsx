@@ -4,8 +4,9 @@ import {useState} from "react";
 import {useParams} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import notify from "../../../utils/notify";
-import {saveAdditionalPayment} from "../../../store/slices/additionalPaymentSlice";
-import {storeAdditionalPayment} from "../../../repository/additionalPaymentRepository";
+import {deletePayments, saveAdditionalPayment} from "../../../store/slices/additionalPaymentSlice";
+import {storeAdditionalPayment,deletePayment,updatePayment} from "../../../repository/additionalPaymentRepository";
+import Swal from "sweetalert2";
 
 const AdditionalPaymentSection = (props) => {
 	const {id} = useParams()
@@ -29,6 +30,7 @@ const AdditionalPaymentSection = (props) => {
 				notify(0, "An error occurred while saving additional payment");
 			});
 	};
+
 
 	return (
 		<>
