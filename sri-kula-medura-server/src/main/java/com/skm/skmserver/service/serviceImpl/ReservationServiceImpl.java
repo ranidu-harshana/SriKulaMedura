@@ -56,7 +56,7 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
         UserDTO userDTO = userService.saveUser(UserDTO.builder()
                 .name(reservationCusDTO.getName())
                 .nic(reservationCusDTO.getNic())
-                .email("EmailAddress"+Math.random())
+                .email("EmailAddress")
                 .mobile_no(reservationCusDTO.getMobile_no1())
                 .role(Role.CUSTOMER)
                 .address(reservationCusDTO.getAddress())
@@ -108,7 +108,8 @@ public class ReservationServiceImpl implements ReservationService, MainService<R
 
     @Override
     public List<ReservationDTO> allReservationsByDate(ReservationDateDTO reservationDateDTO) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy", Locale.ENGLISH);
+        System.out.println(reservationDateDTO.getFunction_date());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy", Locale.ENGLISH);
         LocalDate functionDate = LocalDate.parse(reservationDateDTO.getFunction_date(), formatter);
         return mapAll.mapAllAttributesToDTO(reservationRepository.findAllByFunction_date(functionDate), this);
     }

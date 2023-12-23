@@ -57,7 +57,7 @@ const Measurement = () => {
 			.then(res => {
 				setMeasurementData(res.data)
 			})
-	})
+	}, [id])
 
 	const handleSelectBoxChange = (event) => {
 		setType(event.target.value);

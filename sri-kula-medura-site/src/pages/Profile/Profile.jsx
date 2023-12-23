@@ -9,8 +9,10 @@ const Profile = () => {
     const {billNo} = useParams()
     const navigate = useNavigate();
     const [reservationData, setReservationData] = useState({})
-    const [payAmount, setPayAmount] = useState("")
+    const [payAmount, setPayAmount] = useState(0)
     const [pay, setPay] = useState(false)
+    const [paymentData, setPaymentData] = useState()
+    const [city, setCity] = useState("")
 
     useEffect(() => {
         getReservationByBillNo(billNo)
@@ -26,10 +28,71 @@ const Profile = () => {
             })
     }, [billNo, navigate])
 
-    console.log(reservationData)
-    if(pay) {
-        return <Payment id={reservationData.reservationId} amount={payAmount} pay={pay}/>
+    const doPayment = (req, res) => {
+        payAmountOnline(reservationData.reservationId, payAmount)
+            .then((response) => {
+                console.log(response.data)
+                let PAYHERE_RETURN_URL = "http://localhost:3001/";
+                const payhereObj = {
+                    "sandbox": true,
+                    "merchant_id": response.data?.merchant_id || "",
+                    "return_url": PAYHERE_RETURN_URL,
+                    "cancel_url": PAYHERE_RETURN_URL,     // Important
+                    "notify_url": "http://sample.com/notify",
+                    "order_id": response.data?.bill_number || "",
+                    "items": "Interim Payment",
+                    "amount": response.data?.amount_payable || "",
+                    "currency": "LKR",
+                    "hash": response.data?.hash || "",
+                    "first_name": response.data?.name || "",
+                    "last_name": "",
+                    "email": response.data?.email || "",
+                    "phone": response.data?.mobno || "",
+                    "address": response.data?.address || "",
+                    "city": "Colombo",
+                    "country": "Sri Lanka",
+                    "delivery_address": "No. 46, Galle road, Kalutara South",
+                    "delivery_city": "Kalutara",
+                    "delivery_country": "Sri Lanka",
+                    "custom_1": "",
+                    "custom_2": ""
+                };
+
+                window.payhere.startPayment(payhereObj)
+            })
+
+
     }
+
+
+
+        window.payhere.onCompleted = function onCompleted(orderId) {
+            console.log("Payment completed. OrderID:" + orderId);
+            // Note: validate the payment and show success or failure page to the customer
+        };
+
+        // Payment window closed
+        window.payhere.onDismissed = function onDismissed() {
+            // Note: Prompt user to pay again or show an error page
+            console.log("Payment dismissed");
+        };
+
+        // Error occurred
+        window.payhere.onError = function onError(error) {
+            // Note: show an error page
+            console.log("Error:"  + error);
+        };
+
+        // Put the payment variables here
+    console.log(paymentData?.merchant_id)
+
+
+        // Show the payhere.js popup, when "PayHere Pay" is clicked
+        // document.getElementById('payhere-payment').onclick = function (e) {
+        //     payhere.startPayment(payment);
+        // };
+        // return <Payment id={reservationData.reservationId} amount={payAmount} pay={pay}/>
+
     return (
         <>
             <div className="container justify-content-center">
@@ -49,7 +112,7 @@ const Profile = () => {
                         <div className="row">
                             <div className="col-4"></div>
                             <div className="col-2 d-flex justify-content-end"><input type="text" className={'form-control-md'} value={payAmount} onChange={(e)=>setPayAmount(e.target.value)}/> </div>
-                            <div className="col-2"><button className={'btn btn-md btn-success'} onClick={()=>setPay(true)}>Pay</button></div>
+                            <div className="col-2"><button className={'btn btn-md btn-success'} onClick={doPayment}>Pay</button></div>
                             <div className="col-4"></div>
                         </div>
                     </div>

@@ -16,9 +16,14 @@ const getUserByEmail = (email) => {
 	return Repository.get(`/user/email/`+email)
 }
 
+const getAllEmployees = () => {
+	return Repository.get(`/user/employees`)
+}
+
 export {
 	storeUser,
 	getAllUsers,
 	getUserById,
 	getUserByEmail,
+	getAllEmployees,
 }

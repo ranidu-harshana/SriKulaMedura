@@ -61,9 +61,9 @@ const ResActionBtns = (props) =>  {
 						<RemoveRedEyeIcon />
 					</IconButton>
 				</Link>
-				<IconButton aria-label="fingerprint" color="info">
-					<CalendarMonthIcon />
-				</IconButton>
+				{/*<IconButton aria-label="fingerprint" color="info">*/}
+				{/*	<CalendarMonthIcon />*/}
+				{/*</IconButton>*/}
 			</ButtonGroup>
 		</>
 	);

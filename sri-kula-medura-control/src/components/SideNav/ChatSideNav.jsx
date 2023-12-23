@@ -5,17 +5,31 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Link} from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import {Divider} from "@mui/material";
+import {useEffect, useState} from "react";
+import {getAllEmployees} from "../../repository/userRepository";
 
 const ChatSideNav = () => {
 	let chats = null
+
+	const [employees, setEmployees] = useState([])
+
+	useEffect(() => {
+		getAllEmployees().then(res => setEmployees(res.data))
+	}, [])
 	if (localStorage.getItem("loggedUserRole") === "ADMIN") {
-		chats = [{
-			title: "Dasun Kalhara", link: "#", submenu: false, icon: <AccountCircleIcon/>, userId: 5, isChatLink: true
-		}, {
-			title: "Sunil Perera", link: "#", submenu: false, icon: <AccountCircleIcon/>, userId: 6, isChatLink: true
-		}, {
-			title: "Kusal Jayasanka", link: "#", submenu: false, icon: <AccountCircleIcon/>, userId: 7, isChatLink: true
-		}]
+		chats = []
+		employees.forEach(employee => {
+			chats.push({
+				title: employee?.name, link: "#", submenu: false, icon: <AccountCircleIcon/>, userId: employee?.id, isChatLink: true
+			})
+		})
+		// chats = [{
+		// 	title: "Dasun Kalhara", link: "#", submenu: false, icon: <AccountCircleIcon/>, userId: 5, isChatLink: true
+		// }, {
+		// 	title: "Sunil Perera", link: "#", submenu: false, icon: <AccountCircleIcon/>, userId: 6, isChatLink: true
+		// }, {
+		// 	title: "Kusal Jayasanka", link: "#", submenu: false, icon: <AccountCircleIcon/>, userId: 7, isChatLink: true
+		// }]
 	} else {
 		chats = [{
 			title: "Admin", link: "#", submenu: false, icon: <AccountCircleIcon/>, userId: 1, isChatLink: true
